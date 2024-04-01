@@ -1,31 +1,31 @@
-import { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { AppBehaviorContext } from '../../../../../../providers'
+import { useContext } from "react"
+import { Link } from "react-router-dom"
+import { AppBehaviorContext } from "../../../../../../providers"
 
 export const ListNavBlogPage = () => {
-    const { all } = useContext(AppBehaviorContext)
+    const { resetStadeCategorys } = useContext(AppBehaviorContext)
 
     return(
         <ul>
             <li>
                 <Link
-                    onClick={()=>{ all()}} 
-                    to={'/'}
+                    onClick={()=>{ resetStadeCategorys()}} 
+                    to={"/"}
                 >
                     Home
                 </Link>
             </li>
             <li>
                 <Link
-                    onClick={()=>{ all()}} 
-                    to={'/projects'}>
+                    onClick={()=>{ resetStadeCategorys()}} 
+                    to={"/projects"}>
                     Projects
                 </Link>
             </li>
             <li>
                 <Link
-                    onClick={()=>{ all()}} 
-                    to={'/curriculum'}>
+                    onClick={()=>{ resetStadeCategorys()}} 
+                    to={"/curriculum"}>
                     Curriculum
                 </Link>
             </li>

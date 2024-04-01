@@ -1,7 +1,9 @@
-import { FormSendMeEmail } from './FormSendMeEmail'
-import { FormSearchArticles } from './FormSearchArticles'
+import { FormSendMeEmail } from "./FormSendMeEmail"
+import { FormSearchArticles } from "./FormSearchArticles"
+import { FormLoginPage } from "./FormLoginPage"
 
 export { 
     FormSendMeEmail, 
-    FormSearchArticles 
+    FormSearchArticles,
+    FormLoginPage 
 }

@@ -1,8 +1,9 @@
-import { useContext, useState } from 'react'
-import { DefaultTemplade } from '../../components'
-import { ArticlesContext } from '../../providers'
-import { SectionArticle, SectionTopArticle } from '../../components/SectionsArticlePage'
-import { NavModal } from '../../components/fragments'
+import { useContext, useState } from "react"
+
+import { DefaultTemplade } from "../../components"
+import { ArticlesContext } from "../../providers"
+import { SectionArticle, SectionTopArticle } from "../../components/sectionsPage/SectionsArticlePage"
+import { NavModal } from "../../components/fragments"
 
 export const ArticlePage = () => {
     const { data } = useContext(ArticlesContext)

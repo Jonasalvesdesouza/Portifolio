@@ -1,10 +1,10 @@
-import { IoCloseOutline } from 'react-icons/io5'
+import { IoCloseOutline } from "react-icons/io5"
 
-import IconLinkedinYellow from '../../../../assets/IconLinkedinYellow.svg'
-import IconLinkedinBalck from '../../../../assets/IconLinkedinBlack.svg'
+import IconLinkedinYellow from "../../../../assets/IconLinkedinYellow.svg"
+import IconLinkedinBalck from "../../../../assets/IconLinkedinBlack.svg"
 
-import IconGitHubYellow from '../../../../assets/IconGitHubYellow.svg'
-import IconGitHubBlack from '../../../../assets/IconGithubBlack.svg'
+import IconGitHubYellow from "../../../../assets/IconGitHubYellow.svg"
+import IconGitHubBlack from "../../../../assets/IconGithubBlack.svg"
 
 import { 
     ListNavHomePage, 
@@ -12,12 +12,12 @@ import {
     ListNavProjectsPage,
     ListNavBlogPage,
     ListNavCurriculumPage 
-} from './lists'
+} from "./lists"
 
-import { Button } from '../../Button'
-import { useContext } from 'react'
-import { AppBehaviorContext } from '../../../../providers'
-import { useKeydown, useOutclick } from '../../../../hooks'
+import { Button } from "../../Button"
+import { useContext } from "react"
+import { AppBehaviorContext } from "../../../../providers"
+import { useKeydown, useOutclick } from "../../../../hooks"
 
 export const NavModal = ({ setIsOpen }) => {
 
@@ -33,25 +33,25 @@ export const NavModal = ({ setIsOpen }) => {
       
 
     const compareRoutesDefault = routeLocation === 
-        '/' || 
-        '/projects' || 
-        '/blog' || 
-        '/articles' || 
-        '/curriculum' || 
-        '/login'
+        "/" || 
+        "/projects" || 
+        "/blog" || 
+        "/articles" || 
+        "/curriculum" || 
+        "/login"
 
-    const compareRouteHomePage = routeLocation === '/'
-    const compareRouteProjectsPage = routeLocation === '/projects'
-    const compareRouteBlogPage = routeLocation === '/blog'
-    const compareRouteAticlesPage = routeLocation === '/articlepage'
-    const compareRouteCurriculumPage = routeLocation === '/curriculum'
-    const compareRouteLoginPage = routeLocation === '/login'
+    const compareRouteHomePage = routeLocation === "/"
+    const compareRouteProjectsPage = routeLocation === "/projects"
+    const compareRouteBlogPage = routeLocation === "/blog"
+    const compareRouteAticlesPage = routeLocation === "/articlepage"
+    const compareRouteCurriculumPage = routeLocation === "/curriculum"
+    const compareRouteLoginPage = routeLocation === "/login"
 
     const colorIconClose = 
     compareRouteHomePage ||
     compareRouteAticlesPage ||
     compareRouteLoginPage  ? 
-    '#e8e9ea' : '#1b1f24'
+    "#e8e9ea" : "#1b1f24"
     
     const renderIconsGitHub =  
         compareRouteHomePage || 
@@ -67,7 +67,7 @@ export const NavModal = ({ setIsOpen }) => {
 
     return(
         <div
-            role='dialog'
+            role="dialog"
             ref={closeModalOutClick}
         >
             <div>
@@ -95,18 +95,18 @@ export const NavModal = ({ setIsOpen }) => {
                 <div>
                    <div>
                         <a 
-                            href='https://github.com/Jonasalvesdesouza'
+                            href="https://github.com/Jonasalvesdesouza"
                             target="_blank"
                         >
-                            <img src={renderIconsGitHub} alt='GitHub Icon' />
+                            <img src={renderIconsGitHub} alt="GitHub Icon" />
                         </a>                                  
                     </div>
                     <div>
                         <a
-                            href='https://www.linkedin.com/in/jonas-alves-de-souza-61540b114/'
+                            href="https://www.linkedin.com/in/jonas-alves-de-souza-61540b114/"
                             target="_blank"
                         >
-                            <img src={renderIconsLinkedin} alt='Linkdin Icon' />
+                            <img src={renderIconsLinkedin} alt="Linkdin Icon" />
                         </a>
                     </div>
                 </div>     

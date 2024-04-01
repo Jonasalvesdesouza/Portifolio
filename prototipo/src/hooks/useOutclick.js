@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from "react"
 
 export const useOutclick = (callback) => {
     const ref = useRef(null)
@@ -11,10 +11,10 @@ export const useOutclick = (callback) => {
                 }
             }
 
-            window.addEventListener('mousedown', handleOutclick)
+            window.addEventListener("mousedown", handleOutclick)
 
             return () => {
-                window.removeEventListener('mousedown', handleOutclick)
+                window.removeEventListener("mousedown", handleOutclick)
             }
         }, []
     )

@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { createContext, useEffect, useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
 
 export const AppBehaviorContext = createContext({})
 
@@ -7,12 +7,13 @@ export const AppBehaviorProvider = ({children}) =>{
     const location = useLocation().pathname.toLocaleLowerCase()
     const [ routeLocation, setRouteLocation ] = useState()
 
-    const [ search, setSearch ] = useState('')
-    const [ categorysProject, setCategorysProject ] = useState('')
-    const [ categorysArticles, setCategorysArticles ] = useState('')
-      const all = () =>{
-        setCategorysArticles('')
-        setCategorysProject('')
+    const [ search, setSearch ] = useState("")
+    const [ categorysProject, setCategorysProject ] = useState("")
+    const [ categorysArticles, setCategorysArticles ] = useState("")
+
+    const resetStadeCategorys = () =>{
+        setCategorysArticles("")
+        setCategorysProject("")
     }
     
     return(
@@ -26,7 +27,7 @@ export const AppBehaviorProvider = ({children}) =>{
             setCategorysProject,
             categorysArticles, 
             setCategorysArticles,
-            all 
+            resetStadeCategorys 
         }}>
             {children}
         </AppBehaviorContext.Provider>

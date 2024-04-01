@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useState } from "react"
 
-import { DefaultTemplade } from '../../components'
-import { NavModal } from '../../components/fragments'
+import { DefaultTemplade } from "../../components"
+import { NavModal } from "../../components/fragments"
 
 export const NotFoudPage = () => {
     const [ isOpen, setIsOpen ] = useState(false)

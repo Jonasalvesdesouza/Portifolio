@@ -1,3 +1,3 @@
-import { DefaultTemplade } from './DefaultTemplade'
+import { DefaultTemplade } from "./DefaultTemplade"
 
 export { DefaultTemplade }

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from "react"
 
 export const useKeydown = (callback) => {
     const ref = useRef(null)
@@ -6,17 +6,17 @@ export const useKeydown = (callback) => {
     useEffect( 
         ()=>{
             const handleKeydown = (event) =>{
-                if(event.key === 'Escape'){
+                if(event.key === "Escape"){
                     if(callback){
                         callback(ref.current)
                     }  
                 }
             }
 
-            window.addEventListener('keydown', handleKeydown)
+            window.addEventListener("keydown", handleKeydown)
 
             return () => {
-                window.removeEventListener('keydown', handleKeydown)
+                window.removeEventListener("keydown", handleKeydown)
             }
         },
         [callback] )

@@ -1,4 +1,4 @@
-import { Footer, Header } from '../fragments'
+import { Footer, Header } from "../fragments"
 
 export const DefaultTemplade = ({children, setIsOpen}) => {
 

@@ -1,7 +1,7 @@
-import { createContext, useContext, useState } from 'react'
-import { UserAdmContext } from '.'
-import { NotifyError, NotifySucess } from '../components/fragments'
-import { api } from '../services'
+import { createContext, useContext, useState } from "react"
+import { UserAdmContext } from "."
+import { NotifyError, NotifySucess } from "../components/fragments"
+import { api } from "../services"
 
 export const ProjectsContext = createContext([])
 
@@ -15,10 +15,10 @@ export const ProjectsProvider = ({ children }) => {
             const { data } = await api.post(`/user/projects`, payload)
             
             setProjectsList( [ ...projectsList, data ] )
-            NotifySucess('Project registered successfully')
+            NotifySucess("Project registered successfully")
         } catch (error) {
             console.log(error)
-            NotifyError('Unfortunately something went wrong')
+            NotifyError("Unfortunately something went wrong")
         }finally{
             setLoading(false)
         }
@@ -38,10 +38,10 @@ export const ProjectsProvider = ({ children }) => {
                 }
             })
             setProjectsList(newProjectsList)
-            NotifySucess('Project edited successfully')
+            NotifySucess("Project edited successfully")
         } catch (error) {
             console.log(error)
-            NotifyError('Unfortunately something went wrong')            
+            NotifyError("Unfortunately something went wrong")            
         }finally{
             setLoading(false)
         }
@@ -54,9 +54,9 @@ export const ProjectsProvider = ({ children }) => {
             await api.delete(`/user/projects/${projectId}`)
             const newProjectsList = projectsList.filter((project) => project.id !== projectId)
             setProjectsList(newProjectsList)
-            NotifySucess('Project deleted successfully')
+            NotifySucess("Project deleted successfully")
         } catch (error) {
-            NotifyError('Unfortunately something went wrong')            
+            NotifyError("Unfortunately something went wrong")            
         }finally{
             setLoading(false)
         }

@@ -1,12 +1,12 @@
-import { useForm } from 'react-hook-form'
-import { useContext, useState } from 'react'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { useContext, useState } from "react"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
 
-import { SlArrowRight } from 'react-icons/sl'
+import { SlArrowRight } from "react-icons/sl"
 
-import { Button, Input, TextArea } from '../..'
-import { sendMeEmailFormSchema } from '../../../schema'
-import { MessageMeContext } from '../../../../providers/MessageMeContext'
+import { Button, Input, TextArea } from "../.."
+import { sendMeEmailFormSchema } from "../../../schema"
+import { MessageMeContext } from "../../../../providers/MessageMeContext"
 
 export const FormSendMeEmail = () => {
     const { messageMeRegister } = useContext(MessageMeContext)
@@ -25,37 +25,38 @@ export const FormSendMeEmail = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <Input
-                    label='You Name.'
-                    planceholder='Enter your name'
-                    type='text'
+                    label="You Name."
+                    placeholder="Enter your name"
+                    type="text"
                     error={errors.name}
-                    {...register('name')} 
+                    {...register("name")} 
                 />
                 <Input
-                    label='Email Anddress.'
-                    planceholder='Enter your email address'
-                    type='text'
+                    label="Email Anddress."
+                    placeholder="Enter your email address"
+                    type="email"
                     error={errors.email}
-                    {...register('email')} 
+                    {...register("email")} 
                 />
                 <div>
                     <TextArea
-                        label='Your Message'
+                        label="Your Message"
+                        placeholder="Come on, don't be shy, send a message..."
                         cols={30}
                         row={5}
                         error={errors.message}
-                        {...register('message')}
+                        {...register("message")}
                     />
                 </div>
                 <div>
                     <Button
-                        type='submit'
+                        type="submit"
                     >
-                       { !loading ? <span> TO SEND </span> : <span>SENDING</span>}
+                       { !loading ? <span> TO SEND </span> : <span>SENDING...</span>}
 
                         <SlArrowRight
                             size={20}
-                            color='#1b1f24' 
+                            color="#1b1f24" 
                         />                        
                     </Button>
                 </div>

@@ -1,6 +1,6 @@
-import IconLinkedin from '../../../assets/IconLinkedinYellow.svg'
-import IconGitHub from '../../../assets/IconGitHubYellow.svg'
-import IconC from '../../../assets/IconWaterMark.png'
+import IconLinkedin from "../../../assets/IconLinkedinYellow.svg"
+import IconGitHub from "../../../assets/IconGitHubYellow.svg"
+import IconC from "../../../assets/IconWaterMark.png"
 
 export const Footer = () => {
     return(
@@ -8,7 +8,7 @@ export const Footer = () => {
             <div>
                 <div>
                     <div>
-                        <img src={IconC} alt='Icon C' />
+                        <img src={IconC} alt="Icon C" />
                     </div>
                     <div>
                         <p>Jonas Alves de Souza 2024</p>
@@ -16,10 +16,10 @@ export const Footer = () => {
                 </div>
                 <div>
                     <div>
-                        <img src={IconLinkedin} alt='Icon Linkedin' />
+                        <img src={IconLinkedin} alt="Icon Linkedin" />
                     </div>
                     <div>
-                        <img src={IconGitHub} alt='Icon GitHub' />
+                        <img src={IconGitHub} alt="Icon GitHub" />
                     </div>                    
                 </div>
             </div>

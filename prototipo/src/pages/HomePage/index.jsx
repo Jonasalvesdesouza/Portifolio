@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { useState } from "react"
 
-import { DefaultTemplade } from '../../components'
+import { DefaultTemplade } from "../../components"
 import { 
     SectionBannerHomePage,
     SectionAboutHomePage,
     SectionMyLatestProjectsHomePage,
     SectionMeEmail,
     SectionReadMyBlogHomePage 
- } from '../../components/sectionsHomePage'
+ } from "../../components/sectionsPage/sectionsHomePage"
 
-import { NavModal } from '../../components/fragments'
+import { NavModal } from "../../components/fragments"
 
 
 export const HomePage = () =>{

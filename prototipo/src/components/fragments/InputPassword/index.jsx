@@ -1,5 +1,5 @@
-import { forwardRef, useState } from 'react'
-import { FaRegEyeSlash, FaRegEye } from 'react-icons/fa'
+import { forwardRef, useState } from "react"
+import { FaRegEyeSlash, FaRegEye } from "react-icons/fa"
 
 export const InputPassword = forwardRef(({ label, error, ...rest }, ref) => {
     const [isHidden, setHidden] = useState(false)
@@ -15,10 +15,10 @@ export const InputPassword = forwardRef(({ label, error, ...rest }, ref) => {
 
                     {...rest}
                     ref={ref}
-                    type={isHidden ? 'Text' : 'password'} 
+                    type={isHidden ? "Text" : "password"} 
                 />
                 <span onClick={()=> setHidden(!isHidden)}>
-                    {isHidden ? <FaRegEyeSlash size={21} color='868E96'/> :  <FaRegEye size={21} color='868E96'/>}
+                    {isHidden ? <FaRegEyeSlash size={21} color="868E96"/> :  <FaRegEye size={21} color="868E96"/>}
                 </span>
             </div>
 

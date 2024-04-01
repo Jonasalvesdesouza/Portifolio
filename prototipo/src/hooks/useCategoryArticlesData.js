@@ -1,5 +1,5 @@
-import { useContext } from 'react'
-import { UserAdmContext } from '../providers'
+import { useContext } from "react"
+import { UserAdmContext } from "../providers"
 
 export const useCategoryArticlesData = () => {
     const { articlesList } = useContext(UserAdmContext)

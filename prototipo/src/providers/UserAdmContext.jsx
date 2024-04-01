@@ -1,17 +1,17 @@
-import { createContext, useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { createContext, useState } from "react"
+import { useQuery } from "@tanstack/react-query"
+import { useLocation, useNavigate } from "react-router-dom"
 
-import { api } from '../services'
-import { NotifyError, NotifySucess } from '../components/fragments'
+import { api } from "../services"
+import { NotifyError, NotifySucess } from "../components/fragments"
 
 export const UserAdmContext = createContext({})
 
 export const UserAdmProvider = ({children}) =>{
 
-    const localToken = localStorage.getItem('@KEYADM')
-    const idAdm = localStorage.getItem('@IDADM')
-    const [ token, setToken ] = useState(localToken ? localToken: '')
+    const localToken = localStorage.getItem("@KEYADM")
+    const idAdm = localStorage.getItem("@IDADM")
+    const [ token, setToken ] = useState(localToken ? localToken: "")
     const [ user, setUser ] = useState([])
     const [ messageList, setMessageList ] = useState([])
     const [ projectsList, setProjectsList ] = useState([])
@@ -25,7 +25,7 @@ export const UserAdmProvider = ({children}) =>{
 
    /*  const { data } = useQuery(
         {
-            queryKey: [ 'adm' ],
+            queryKey: [ "adm" ],
             queryFn: async () => {
                 const { data } = await api.get(`/users/${idAdm}`, { ...headers })
                 setUser(data)
@@ -37,7 +37,7 @@ export const UserAdmProvider = ({children}) =>{
     
     const { data } = useQuery(
         {
-            queryKey: [ 'user' ],
+            queryKey: [ "adm" ],
             queryFn: async () => {
                 const { data } = await api.get(`/user`)
                 const userData = data[0]
@@ -54,19 +54,19 @@ export const UserAdmProvider = ({children}) =>{
         try {
             setLoading(true)
 
-            const { data } = await api.post('/login', payLoad)
-            localStorage.setItem('@KEYADM', data?.accessToken)
-            localStorage.setItem('@IDADM', data?.user.id)
+            const { data } = await api.post("/login", payLoad)
+            localStorage.setItem("@KEYADM", data?.accessToken)
+            localStorage.setItem("@IDADM", data?.user.id)
             setToken(data?.accessToken)
             setUser(data?.user)
 
-            NotifySucess('Login Successfull!')
-            navigate(state?.lastRoute ? state.lastRoute : '/dashgboardadm')
+            NotifySucess("Login Successfull!")
+            navigate(state?.lastRoute ? state.lastRoute : "/dashgboard")
             reset()
 
         } catch (error) {
             console.log(error)
-            NotifyError('Invalid Wsername or Password')
+            NotifyError("Invalid Wsername or Password")
             
         }finally{
             setLoading(false)
@@ -75,8 +75,8 @@ export const UserAdmProvider = ({children}) =>{
 
     const userLogout = () => {
         setUser(null)
-        localStorage.removeItem('@TOKEN')
-        navigate('/login')
+        localStorage.removeItem("@TOKEN")
+        navigate("/login")
     }
 
     return(
