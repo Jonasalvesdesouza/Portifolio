@@ -1,7 +1,11 @@
+import { useContext } from "react"
 import { SlArrowRight } from "react-icons/sl"
-import { Button } from "../../../fragments/Button"
+import { Link } from "react-router-dom"
+import { AppBehaviorContext } from "../../../../../providers"
 
 export const SectionReadMyBlogHomePage = () => {
+    const { setSectionHomepage } = useContext(AppBehaviorContext)
+
     return(
         <div>
             <h3>
@@ -13,7 +17,12 @@ export const SectionReadMyBlogHomePage = () => {
                 you some of the knowledge I've acquired
                 during my journey.
             </p>
-            <Button>
+            <Link
+                onClick={()=>{
+                    setSectionHomepage("")
+                }}
+                to={"/blog"}
+            >
                 <span>
                     READ MY ARTICLES
                 </span>
@@ -23,7 +32,7 @@ export const SectionReadMyBlogHomePage = () => {
                         color="#e8e9ea" 
                     />
                 </samp>
-            </Button>
+            </Link>
         </div>
     )
 }

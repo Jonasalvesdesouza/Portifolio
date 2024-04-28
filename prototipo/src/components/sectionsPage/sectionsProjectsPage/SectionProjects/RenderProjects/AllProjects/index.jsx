@@ -12,6 +12,7 @@ export const AllProjects = () => {
     return(
         <div>  
             <div>
+                <h2>Independent Projects.</h2>
                 <ul>
                     {
                         independentProjects?.map(project => {
@@ -26,6 +27,7 @@ export const AllProjects = () => {
                 </ul>
             </div>
             <div>
+                <h2>Study Projects.</h2>
                 <ul>
                     {
                         studyProjects?.map(project => {

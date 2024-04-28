@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 
-import { DefaultTemplade } from "../../components"
+import { DefaultTemplate } from "../../components/templade"
 import { ArticlesContext } from "../../providers"
 import { SectionArticle, SectionTopArticle } from "../../components/sectionsPage/SectionsArticlePage"
 import { NavModal } from "../../components/fragments"
@@ -11,7 +11,7 @@ export const ArticlePage = () => {
     const [ isOpen, setIsOpen ] = useState()
 
     return(
-        <DefaultTemplade setIsOpen={setIsOpen}>
+        <DefaultTemplate setIsOpen={setIsOpen}>
             <div>
                 <SectionTopArticle />
                 <SectionArticle />                
@@ -21,6 +21,6 @@ export const ArticlePage = () => {
                     setIsOpen={setIsOpen}
                 /> : null
             }
-        </DefaultTemplade>
+        </DefaultTemplate>
     )
 }

@@ -1,6 +1,7 @@
+import { PiCopyrightLight } from "react-icons/pi"
+
 import IconLinkedin from "../../../assets/IconLinkedinYellow.svg"
 import IconGitHub from "../../../assets/IconGitHubYellow.svg"
-import IconC from "../../../assets/IconWaterMark.png"
 
 export const Footer = () => {
     return(
@@ -8,7 +9,10 @@ export const Footer = () => {
             <div>
                 <div>
                     <div>
-                        <img src={IconC} alt="Icon C" />
+                        <PiCopyrightLight
+                            size={22}
+                            color="black"
+                        />
                     </div>
                     <div>
                         <p>Jonas Alves de Souza 2024</p>
@@ -16,11 +20,21 @@ export const Footer = () => {
                 </div>
                 <div>
                     <div>
-                        <img src={IconLinkedin} alt="Icon Linkedin" />
+                        <a
+                            href="https://www.linkedin.com/in/jonas-alves-de-souza-61540b114/"
+                            target="_blank"
+                        >
+                            <img src={IconLinkedin} alt="Linkdin Icon" />
+                        </a>
                     </div>
                     <div>
-                        <img src={IconGitHub} alt="Icon GitHub" />
-                    </div>                    
+                        <a 
+                            href="https://github.com/Jonasalvesdesouza"
+                            target="_blank"
+                        >
+                            <img src={IconGitHub} alt="GitHub Icon" />
+                        </a>                                  
+                    </div>                   
                 </div>
             </div>
         </footer>

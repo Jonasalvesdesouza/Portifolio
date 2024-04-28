@@ -93,14 +93,6 @@ export const NavModal = ({ setIsOpen }) => {
 
             {
                 <div>
-                   <div>
-                        <a 
-                            href="https://github.com/Jonasalvesdesouza"
-                            target="_blank"
-                        >
-                            <img src={renderIconsGitHub} alt="GitHub Icon" />
-                        </a>                                  
-                    </div>
                     <div>
                         <a
                             href="https://www.linkedin.com/in/jonas-alves-de-souza-61540b114/"
@@ -108,6 +100,14 @@ export const NavModal = ({ setIsOpen }) => {
                         >
                             <img src={renderIconsLinkedin} alt="Linkdin Icon" />
                         </a>
+                    </div>
+                   <div>
+                        <a 
+                            href="https://github.com/Jonasalvesdesouza"
+                            target="_blank"
+                        >
+                            <img src={renderIconsGitHub} alt="GitHub Icon" />
+                        </a>                                  
                     </div>
                 </div>     
             }

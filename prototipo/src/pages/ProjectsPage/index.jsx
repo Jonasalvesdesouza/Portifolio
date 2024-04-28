@@ -1,13 +1,16 @@
 import { useState } from "react"
-import { DefaultTemplade } from "../../components"
-import { SectionProjects, SectionTitleProjects } from "../../components/sectionsPage/sectionsProjectsPage"
+import { DefaultTemplate } from "../../components/templade"
+import { 
+    SectionProjects, 
+    SectionTitleProjects 
+} from "../../components/sectionsPage/sectionsProjectsPage"
 import { NavModal } from "../../components/fragments"
 
 export const ProjectsPage = () => {
     const [ isOpen, setIsOpen ] = useState(false)
     
     return(
-        <DefaultTemplade setIsOpen={setIsOpen}>
+        <DefaultTemplate setIsOpen={setIsOpen}>
             <div>
                 <SectionTitleProjects />
                 <SectionProjects />
@@ -17,6 +20,6 @@ export const ProjectsPage = () => {
                     setIsOpen={setIsOpen}
                 /> : null
             }
-        </DefaultTemplade>
+        </DefaultTemplate>
     )
 }

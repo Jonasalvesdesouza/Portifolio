@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { Header, NavModal } from "../../components/fragments"
-import { SectionLeftCurriculum, SectionRightCurriculum } from "../../components/sectionsPage/sectionsCurriculumPage"
+import { 
+    SectionLeftCurriculum, 
+    SectionRightCurriculum 
+} from "../../components/sectionsPage/sectionsCurriculumPage"
 
 export const CurriculumPage = () => {
     const [ isOpen, setIsOpen ] = useState(false)

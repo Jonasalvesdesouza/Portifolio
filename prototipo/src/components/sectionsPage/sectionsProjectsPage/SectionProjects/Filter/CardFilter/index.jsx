@@ -8,7 +8,9 @@ export const CardFilter = ({category}) => {
     return(
         <li>
             <Button
-                onClick={()=> setCategorysProject(category)}
+                onClick={
+                    ()=> setCategorysProject(category)
+                }
             >
                 {category}
             </Button>

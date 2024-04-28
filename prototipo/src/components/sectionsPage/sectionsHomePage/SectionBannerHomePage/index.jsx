@@ -1,6 +1,36 @@
 import ImageJonas from "../../../../assets/JonasImage.svg"
 
+import { useContext, useEffect, useState } from "react"
+
+import { IoIosArrowDown } from "react-icons/io"
+import { Button } from "../../../fragments"
+import { AppBehaviorContext } from "../../../../providers"
+import { 
+
+    useGoToNextSection,
+    useScreenWidth, 
+    useScrollEventTriggered, 
+    useScrollToSection 
+
+} from "../../../../hooks"
+
+
 export const SectionBannerHomePage = () => {
+
+    const {
+
+        setSectionHomepage, 
+        screenWidth,
+
+    } = useContext(AppBehaviorContext)
+    
+    useScreenWidth()
+    
+    useScrollToSection()
+    useScrollEventTriggered()
+    useGoToNextSection("about", "")
+
+
     return(
         <div>
             <div>
@@ -17,6 +47,22 @@ export const SectionBannerHomePage = () => {
             <div>
                 <img src={ImageJonas} alt="Image Jonas" />
             </div>
+            {
+                screenWidth >= 700 ?
+                <Button
+                    id="button"
+                    onClick={
+                        ()=> {
+                        setSectionHomepage("about")                       
+                        }
+                    }
+                >
+                    <IoIosArrowDown 
+                        size={55} color="#1b1f24"
+                    />
+                </Button> :
+                null
+            }
         </div>
     )
 }

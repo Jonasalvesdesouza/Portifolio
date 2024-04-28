@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { DefaultTemplade } from "../../components"
+import { DefaultTemplate } from "../../components/templade"
 import { 
     SectionAticles, 
     SectionTopBlog 
@@ -12,7 +12,7 @@ export const BlogPage = () => {
 
 
     return(
-        <DefaultTemplade setIsOpen={setIsOpen}>
+        <DefaultTemplate setIsOpen={setIsOpen}>
             <div>
                 <SectionTopBlog />
                 <SectionAticles />
@@ -22,6 +22,6 @@ export const BlogPage = () => {
                     setIsOpen={setIsOpen}
                 /> : null
             }
-        </DefaultTemplade>
+        </DefaultTemplate>
     )
 }

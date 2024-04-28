@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { useLocation, useNavigate } from "react-router-dom"
 
@@ -15,7 +15,7 @@ export const UserAdmProvider = ({children}) =>{
     const [ user, setUser ] = useState([])
     const [ messageList, setMessageList ] = useState([])
     const [ projectsList, setProjectsList ] = useState([])
-    const [ articlesList, setArticlesList ] = useState([])
+     const [ articlesList, setArticlesList ] = useState([])
     
     const headers = { headers: { Authorization: `Bearer ${token}` } }
 
@@ -50,7 +50,15 @@ export const UserAdmProvider = ({children}) =>{
             }            
         }
     )
-    const userAdmLogin = async (payLoad, setLoading, reset) => {
+    
+    const userAdmLogin = async (
+
+        payLoad, 
+        setLoading, 
+        reset
+
+    ) => {
+
         try {
             setLoading(true)
 
@@ -65,6 +73,7 @@ export const UserAdmProvider = ({children}) =>{
             reset()
 
         } catch (error) {
+
             console.log(error)
             NotifyError("Invalid Wsername or Password")
             
@@ -92,7 +101,7 @@ export const UserAdmProvider = ({children}) =>{
             projectsList, 
             setProjectsList,
             articlesList, 
-            setArticlesList
+            setArticlesList,
         }
     }>
         {children}        

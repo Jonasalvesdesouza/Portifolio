@@ -1,11 +1,18 @@
-import { createContext, useEffect, useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { createContext, useState } from "react"
+import { useLocation } from "react-router-dom"
 
 export const AppBehaviorContext = createContext({})
 
 export const AppBehaviorProvider = ({children}) =>{
+    const [ screenWidth, setScreenWidth ] = useState(window.innerWidth)
+
+    const [ sectionHomepage, setSectionHomepage ] = useState("")
+    const [ scrollDirection, setScrollDirection ] = useState("")
+    const [ lastScrollPosition, setLastScrollPosition ] = useState(0)
+    const [ scrollEventTriggered, setScrollEventTriggered ] = useState(false)
+    
     const location = useLocation().pathname.toLocaleLowerCase()
-    const [ routeLocation, setRouteLocation ] = useState()
+    const [ routeLocation, setRouteLocation ] = useState("")
 
     const [ search, setSearch ] = useState("")
     const [ categorysProject, setCategorysProject ] = useState("")
@@ -18,6 +25,16 @@ export const AppBehaviorProvider = ({children}) =>{
     
     return(
         <AppBehaviorContext.Provider value={{
+            screenWidth, 
+            setScreenWidth,
+            sectionHomepage, 
+            setSectionHomepage,
+            scrollDirection, 
+            setScrollDirection,
+            lastScrollPosition, 
+            setLastScrollPosition,
+            scrollEventTriggered, 
+            setScrollEventTriggered,
             location,
             routeLocation, 
             setRouteLocation,

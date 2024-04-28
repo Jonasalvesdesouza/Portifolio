@@ -15,12 +15,26 @@ export const FormLoginPage = () => {
 
     const { userAdmLogin } = useContext(UserAdmContext)
 
-    const { register, handleSubmit, reset, formState: { errors }, } = useForm({
+    const {
+
+        register, 
+        handleSubmit, 
+        reset, 
+        formState: { errors },
+
+    } = useForm({
         resolver: zodResolver(loginFormSchema)
     })
 
     const onSubmit = (payLoad) => {
-        userAdmLogin(payLoad, setLoading(true), reset)
+
+        userAdmLogin(
+
+            payLoad, 
+            setLoading, 
+            reset
+
+    )
     }
  
     return(
@@ -29,19 +43,19 @@ export const FormLoginPage = () => {
             <div>
                 <Input
                     type="text"
-                    placeholder="USERNAME"
+                    placeholder="User Name"
                     error={errors.username}
                     {...register('username')}  
                 />
                 <InputPassword
-                    placeholder="PASSWORD"
+                    placeholder="Password"
                     error={errors.password}
                     {...register('password')}                      
                 />
 
                 <Button 
-                    className="button bigger pink typoButton center" 
                     type="submit">
+        
                         {loading ? "Loading..." : "Login"}
 
                         <SlArrowRight

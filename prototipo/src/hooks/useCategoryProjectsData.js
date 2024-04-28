@@ -6,6 +6,7 @@ export const useCategoryProjectsData = () => {
     
     const categorys = projectsList.map(project => project.category)    
     const data = [...new Set(categorys)]
+    
     return data
     
 }

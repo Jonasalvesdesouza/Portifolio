@@ -14,7 +14,9 @@ export const FilterProjects = () => {
           <ul>
             <li>
               <Button
-                onClick={()=> resetStadeCategorys()}>
+                onClick={
+                  ()=> resetStadeCategorys()
+                }>
                   All Projects
               </Button>
             </li>

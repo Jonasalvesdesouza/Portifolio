@@ -1,7 +1,11 @@
+import { useContext } from "react"
 import { SlArrowRight } from "react-icons/sl"
-import { Button } from "../../../fragments"
+import { Link } from "react-router-dom"
+import { AppBehaviorContext } from "../../../../../providers"
 
 export const SectionMyLatestProjectsHomePage = () => {
+    const { setSectionHomepage } = useContext(AppBehaviorContext)
+
     return(
         <div>
             <h3>
@@ -13,7 +17,12 @@ export const SectionMyLatestProjectsHomePage = () => {
                 completed during my learning journey as a 
                 full stack developer.
             </p>
-            <Button>
+            <Link
+                onClick={()=>{
+                    setSectionHomepage("")
+                }}
+                to={"/projects"}
+            >
                 <span>
                     SEE MY LATEST WORK
                 </span>
@@ -23,7 +32,7 @@ export const SectionMyLatestProjectsHomePage = () => {
                         color="#e8e9ea" 
                     />
                 </span>
-            </Button>
+            </Link>
         </div>
     )
 }

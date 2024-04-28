@@ -1,21 +1,11 @@
-import { Header } from "./Header"
-import { Footer } from "./Footer"
-import { NotifyError } from "./notyfys/NotifyError"
-import { NotifySucess } from "./notyfys/NotifySucesss/index."
-import { Button } from "./Button"
-import { Input } from "./InputDefault"
-import { InputPassword } from "./InputPassword"
-import { TextArea } from "./TextArea"
-import { NavModal } from "./modals/NavModal"
- 
-export {
-    Header,
-    Footer,
-    NotifyError,
-    NotifySucess,
-    Button,
-    Input,
-    InputPassword,
-    TextArea,
-    NavModal
-}
+export { Header } from "./Header"
+export { Footer } from "./Footer"
+export { NotifyError } from "./notyfys/NotifyError"
+export { NotifySucess } from "./notyfys/NotifySucesss/index."
+export { Button } from "./Button"
+export { Input } from "./InputDefault"
+export { InputPassword } from "./InputPassword"
+export { TextArea } from "./TextArea"
+export { NavModal } from "./modals/NavModal"
+export { NavHomePage } from "./NavHomePage"
+export { HeaderHomeMobile } from "./HeaderHomeMobile"

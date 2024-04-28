@@ -1,6 +1,10 @@
 import { useState } from "react"
 
 import { HeaderDashboard } from "../../components/fragments/HeaderDashboard"
+import { 
+    SectionRenderMiddleDashboard, 
+    SectionTopDashboard 
+} from "../../components/sectionsPage/sectionsDashboardPage"
 
 export const DashboardPage = () => {
     const [ isOpen, setIsOpen ] = useState()
@@ -8,9 +12,8 @@ export const DashboardPage = () => {
     return(
         <div>
             <HeaderDashboard />
-            <div>
-                
-            </div>
+            <SectionTopDashboard />
+            <SectionRenderMiddleDashboard/>
         </div>
     )
 }

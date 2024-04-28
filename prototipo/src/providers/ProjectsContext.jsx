@@ -64,6 +64,7 @@ export const ProjectsProvider = ({ children }) => {
 
     return(
         <ProjectsContext.Provider value={{
+                projectsList,
                 editProjects, 
                 setEditProjects,
                 projectsRegister,

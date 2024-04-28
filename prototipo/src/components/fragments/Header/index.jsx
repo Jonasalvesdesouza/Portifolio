@@ -11,14 +11,19 @@ import { AppBehaviorContext } from "../../../providers"
 
 export const Header = ({ setIsOpen }) => {
 
-    const { location, setRouteLocation } = useContext(AppBehaviorContext)
+    const { 
 
+        location, 
+        setRouteLocation, 
+        setSectionHomepage 
+
+    } = useContext(AppBehaviorContext)
 
     const compareRoutes = 
         location === "/projects" || 
         location === "/blog"  
 
-    const CompareRouteCurriculum = location === "/curriculum"
+    const CompareRouteCurriculum = location === "/curriculum" || "/"
 
     
     return(
@@ -30,7 +35,9 @@ export const Header = ({ setIsOpen }) => {
                             <Link to={"/"}>
                                 <img src={BlackLogo} alt="Black Logo" />
                             </Link> 
-                                :
+
+                            :
+
                             <Link to={"/"}>
                                 <img src={YellowLogo} alt="Yellow Logo" />
                             </Link>
@@ -42,6 +49,7 @@ export const Header = ({ setIsOpen }) => {
                             onClick={() => {
                                 setIsOpen(true)
                                 setRouteLocation(location)
+                                setSectionHomepage("")
                             }}
                         >   
                            {    

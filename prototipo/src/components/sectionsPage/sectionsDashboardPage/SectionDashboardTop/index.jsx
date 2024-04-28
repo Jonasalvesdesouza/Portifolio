@@ -1,4 +1,5 @@
 import { Button } from "../../../fragments"
+import { NavDashboard } from "./DashboardNav"
 
 export const SectionTopDashboard = () => {
     return(
