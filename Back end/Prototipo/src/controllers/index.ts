@@ -1,0 +1,5 @@
+export { UserControllers } from "./User.controllers"
+export { ProfileControllers } from "./Profile.controllers"
+export { ContactControllers } from "./Contact.controllers"
+export { AddressControllers } from "./Address.controllers"
+export { ImageControllers } from "./Image.controllers"

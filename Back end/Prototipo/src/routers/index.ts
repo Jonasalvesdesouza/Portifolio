@@ -1,0 +1,5 @@
+export { UserRouter } from "./User.routers"
+export { ProfileRouter } from "./Profile.routers"
+export { ContactRouter } from "./Contact.routers"
+export { AddressRouter } from "./Address.routers"
+export { ImageRouter } from "./Image.routers"
