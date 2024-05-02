@@ -1,4 +1,14 @@
-export { socialMediaSchema } from "./SocialMidia.schemas"
+export {
+    
+    socialMediaSchema,
+    SocialMediaSchema,
+    SocialMediaUpdateSchema,
+    typeExpectationSocialMedia,
+    typeSocialMedia,
+    typeUpdateSocialmediaExpct,
+    typeUpdateSocialMedia
+     
+} from "./SocialMidia.schemas"
 
 export { 
 
@@ -13,13 +23,87 @@ export {
     
 } from "./Image.schemas"
 
-export { hobiesSchema } from "./Hobbies.schemas"
-export { skillSchema } from "./Skill.schemas"
-export { jobExperienceSchema } from "./JobExperience.schemas"
-export { educationSchema } from "./Education.schemas"
-export { projectsSchema } from "./Projects.schemas"
-export { articlesSchema } from "./Articles.schemas"
-export { messageSchema } from "./Message.schemas"
+export {
+
+    hobbySchema,
+    HobbySchema,
+    HobbyUpdate,
+    typeExpectationHobby,
+    typeHobby,
+    typeExpectUpdateHobby,
+    typeUpdateHobby 
+
+} from "./Hobby.schemas"
+
+export {
+
+    skillSchema,
+    SkillSchema,
+    SkillUpdateSchema,
+    typeExpctationSkill,
+    typeSkill,
+    typeUpdateExpectSkill,
+    typeUpdateSkill 
+
+} from "./Skill.schemas"
+
+export { 
+
+    jobExperienceSchema,
+    JobExperienceSchema,
+    JobExperienceUpdateSchema,
+    typeExpectationJobExperience,
+    typeJobExperience,
+    typeUpdateExpectationJobExperience,
+    typeUpdateJobExperience 
+
+} from "./JobExperience.schemas"
+
+export {
+
+    educationSchema,
+    EducationSchema,
+    EducationUpdateSchema,
+    typeExpectationEducation,
+    typeEducation,
+    typeUpdateExpectationEducation,
+    typeUpdateEducation 
+
+} from "./Education.schemas"
+
+export { 
+    
+    projectsSchema,
+    ProjectsSchema,
+    ProjectsUpdateSchema,
+    typeExpectationProjects,
+    typeProjects,
+    typeUpdateExpectationProjects,
+    typeUpdateProjects 
+
+} from "./Projects.schemas"
+
+export {
+
+    articlesSchema,
+    ArticlesSchema,
+    ArticlesUpdateSchema,
+    typeExpectationArticles,
+    typeArticles,
+    typeUpdateExpectationArticles,
+    typeUpdateArticles 
+
+} from "./Articles.schemas"
+
+export {
+
+    messageSchema,
+    MessageSchema,
+    MessageUpdateSchema,
+    typeExpectationMessage,
+    typeMessage 
+
+} from "./Message.schemas"
 
 export {
 
@@ -35,17 +119,35 @@ export {
  } from "./Contact.schemas"
  
 export {
+    
+    addressProfileSchema, 
+    AddressProfileSchema,
+    AddressProfileReturnSchema,
+    AddressProfileUpdateSchema,
+    typeExpectationAddressProfile,
+    typeAddressProfile,
+    typeUpdateAddressProfile,
+    typeUpdateAddressExpectProfile,
+    
+    addressJobExperienceSchema,
+    AddressJobExperienceSchema,
+    AddressJobExperienceReturnSchema,
+    AddressJobExperienceUpdateSchema,
+    typeExpectationAddressJobExperience,
+    typeAddressJobExperience,
+    typeUpdateAddressJobExperience,
+    typeUpdateAddressExpectJobExperience,
 
-    addressSchema, 
-    AddressSchema,
-    AddressUpdateSchema,
-    AddressReturnSchema,
-    typeExpectationAddress,
-    typeAddress,
-    typeUpdateAddress,
-    typeUpdateAddressExpect 
+    addressEducationSchema,
+    AddressEducationSchema,
+    AddressEducationReturnSchema,
+    AddressEducationUpdateSchema,
+    typeExpectationAddressEducation,
+    typeAddressEducation,
+    typeUpdateAddressEducation,
+    typeUpdateAddressExpectEducation
 
-} from "./Address.schemas"
+} from "./Address"
 
 export { 
 

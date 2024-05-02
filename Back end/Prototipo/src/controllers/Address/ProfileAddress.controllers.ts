@@ -1,14 +1,14 @@
 import { inject, injectable } from "tsyringe"
-import { AddressServices } from "../services"
+import { ProfileAddressServices } from "../../services"
 import { Request, Response } from "express"
 
 @injectable()
-export class AddressControllers {
+export class ProfileAddressControllers {
     
     constructor(
 
-        @inject(AddressServices)
-        private addressServices: AddressServices
+        @inject(ProfileAddressServices)
+        private profileAddressServices: ProfileAddressServices
 
     ) {}
 
@@ -20,12 +20,24 @@ export class AddressControllers {
     ): Promise <Response> {
         const userId = res.locals.decode.id
 
-        const response = await this.addressServices.create(
+        const response = await this.profileAddressServices.create(
             req.body,
             Number(userId)
         )
 
         return res.status(201).json(response)
+    }
+
+    async findFirst(
+
+        req: Request,
+        res: Response
+
+    ): Promise<Response>{
+        
+        const response = await this.profileAddressServices.findFirst()
+
+        return res.status(200).json(response)
     }
 
     async update(
@@ -36,7 +48,7 @@ export class AddressControllers {
     ): Promise <Response> {
         const userId = res.locals.decode.id
 
-        const response = await this.addressServices.Update(
+        const response = await this.profileAddressServices.Update(
             req.body,
             Number(userId)
         )

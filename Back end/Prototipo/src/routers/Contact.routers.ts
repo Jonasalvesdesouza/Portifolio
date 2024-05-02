@@ -12,16 +12,22 @@ const contactControllers = container.resolve(ContactControllers)
 
 ContactRouter.post(
 
-    "/",
+    "/contact/",
     userAuth.VerifyToken,
     ValidateBody.execute(ContactSchema),
     (req, res) => contactControllers.create(req, res) 
 
 )
 
+ContactRouter.get(
+
+    "/contact/get",
+    (req, res) => contactControllers.findFirst(req, res) 
+)
+
 ContactRouter.patch(
 
-    "/update",
+    "/contact/update",
     userAuth.VerifyToken,
     ValidateBody.execute(ContactUpdateSchema),
     (req, res) => contactControllers.update(req, res) 

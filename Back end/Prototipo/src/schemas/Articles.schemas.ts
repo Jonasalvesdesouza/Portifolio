@@ -9,3 +9,17 @@ export const articlesSchema = z.object(
         imageId: z.number().positive().nullish()
     }
 )
+
+export const ArticlesSchema = articlesSchema.omit(
+    {
+        id: true
+    }
+)
+
+export const ArticlesUpdateSchema = ArticlesSchema.partial()
+
+export type typeExpectationArticles = z.infer<typeof ArticlesSchema>
+export type typeArticles = z.infer<typeof ArticlesSchema>
+
+export type typeUpdateExpectationArticles = Partial<typeExpectationArticles> 
+export type typeUpdateArticles = Partial<typeArticles>

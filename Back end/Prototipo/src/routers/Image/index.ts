@@ -1,0 +1,1 @@
+export { ImageProfileRouter } from "./Image.routers"

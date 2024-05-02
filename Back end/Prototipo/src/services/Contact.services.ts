@@ -33,6 +33,17 @@ export class ContactServices {
         if (!profile) {
             throw new AppError(404, "Profile does not match user");
         }
+
+        const contact = await prisma.contact.findFirst(
+            {
+                where:{profileId: profile.id}
+            }
+        )
+
+        if (contact) {
+            throw new AppError(404, "Not foud");
+        }
+
         
         const data = await prisma.contact.create(
             
@@ -47,6 +58,13 @@ export class ContactServices {
         
         return ContactReturnSchema.parse(data)   
     }
+
+    async findFirst() {
+        const data = await prisma.contact.findFirst()
+
+        return data 
+    }
+
 
     async Update(
 
@@ -63,6 +81,16 @@ export class ContactServices {
 
         if (!profile) {
             throw new AppError(404, "Profile does not match user");
+        }
+
+        const contact = await prisma.contact.findFirst(
+            {
+                where:{ profileId: profile.id }
+            }
+        )
+
+        if (!contact) {
+            throw new AppError(404, "Not foud")
         }
         
         const data = await prisma.contact.update(

@@ -12,11 +12,16 @@ import {
      
     UserRouter, 
     ProfileRouter,
-    ContactRouter, 
-    AddressRouter,
-    ImageRouter
+    SocialMidiaRouter,
+    HobbyRouter,
+    SkillRouter,
+    JobExperienceRouter,
+    EducationRouter,
+    ProjectsRouter,
+    ArticlesRouter
 
 } from "./routers"
+import { MessageRouter } from "./routers/Message.routers"
 
 export const app = express()
 
@@ -26,19 +31,13 @@ app.use(json())
 
 app.use("/users", UserRouter)
 app.use("/profile", ProfileRouter)
-app.use("/contact", ContactRouter)
-app.use("/address", AddressRouter)
-app.use("/image", ImageRouter)
+app.use("/socialMidia", SocialMidiaRouter)
+app.use("/hobby", HobbyRouter)
+app.use("/skill", SkillRouter)
+app.use("/jobexperience", JobExperienceRouter)
+app.use("/education", EducationRouter)
+app.use("/projects", ProjectsRouter)
+app.use("/articles", ArticlesRouter)
+app.use("message", MessageRouter)
 
 app.use(HandleErrors.execute)
-
-// app.use("/category")
-// app.use("/subCategory")
-// app.use("/socialMidia")
-// app.use("/hobbie")
-// app.use("/skill")
-// app.use("/jobExperience")
-// app.use("/Education")
-// app.use("/project")
-// app.use("/articles")
-// app.use("message")

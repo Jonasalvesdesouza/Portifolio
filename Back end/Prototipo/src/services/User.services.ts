@@ -143,7 +143,6 @@ export class UserServices {
 
     async getUser(id: number): Promise<typeUserReturnSchema> {
         
-        
         const user = await prisma.user.findFirst({ where: { id } })
 
         if (!user) {

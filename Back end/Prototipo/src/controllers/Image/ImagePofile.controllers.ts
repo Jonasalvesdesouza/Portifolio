@@ -1,14 +1,14 @@
 import { inject, injectable } from "tsyringe"
-import { ImageServices } from "../services"
+import { ImageProfileServices } from "../../services"
 import { Request, Response } from "express"
 
 @injectable()
-export class ImageControllers {
+export class ImageProfileControllers {
     
     constructor(
 
-        @inject(ImageServices)
-        private imageServices: ImageServices
+        @inject(ImageProfileServices)
+        private imageServices: ImageProfileServices
 
     ) {}
 
@@ -44,6 +44,32 @@ export class ImageControllers {
         )
 
         return res.status(200).json(response)
+    }
+
+    async findFirst(
+
+        req: Request,
+        res: Response
+
+    ): Promise<Response>{
+        
+        const response = await this.imageServices.findFirst()
+
+        return res.status(200).json(response)
+    }
+
+    async delete(
+
+        req: Request,
+        res: Response
+
+    ): Promise <Response>{
+        const userId = res.locals.decode.id
+
+        await this.imageServices.delete(Number(userId))
+
+        return res.status(204).json()
+
     }
 
 }

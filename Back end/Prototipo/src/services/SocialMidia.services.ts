@@ -3,21 +3,21 @@ import { AppError } from "../erros"
 
 import {
 
-    typeExpectationImage,
-    typeImage,
-    typeUpdateImage,
-    typeUpdateImageExpect
+    typeExpectationSocialMedia,
+    typeSocialMedia,
+    typeUpdateSocialmediaExpct,
+    typeUpdateSocialMedia
 
 } from "../schemas"
 
-export class ImageServices {
+export class SocialMidiaServices {
 
     async create(
 
-        body: typeImage,
+        body: typeSocialMedia,
         userId: number
 
-    ): Promise <typeExpectationImage> {
+    ): Promise <typeExpectationSocialMedia> {
 
         if (!userId) {
             throw new AppError(409, "User ID is required")
@@ -30,10 +30,23 @@ export class ImageServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
-        const data = await prisma.image.create(
+        const socialMidia = await prisma.socialMedia.findFirst(
+            {
+                where: { OR: [
+                    { name: body.name },
+                    { link: body.link }
+                  ]} 
+            }
+        )
+        
+        if (socialMidia) {
+            throw new AppError(404, "Social media already exists")
+        }
+
+        const data = await prisma.socialMedia.create(
             {
                 data: {
                     ...body,
@@ -45,12 +58,37 @@ export class ImageServices {
         return data   
     }
 
+    async getOne (id: number) {
+        if (!id) {
+            throw new AppError(404, "Id not found")
+        }
+
+        const data = await prisma.socialMedia.findFirst(
+            {
+                where:{id}
+            }
+        )
+
+        if (!data) {
+            throw new AppError(404, "Socail midia not found")
+        }
+
+        return data
+    }
+
+    async findMany() {
+        const data = await prisma.socialMedia.findMany()
+        
+        return data 
+    }
+
     async Update(
 
-        body: typeUpdateImage,
-        userId: number
+        body: typeUpdateSocialMedia,
+        userId: number,
+        id:number 
     
-    ): Promise <typeUpdateImageExpect>{
+    ): Promise <typeUpdateSocialmediaExpct>{
 
         const profile = await prisma.profile.findFirst(
             {
@@ -59,16 +97,40 @@ export class ImageServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
-        
-        const data = await prisma.image.update(
+
+        const socialMedia = await prisma.socialMedia.findFirst(
             {
-                where: { id: profile.id },
+                where: { id }
+            }
+        )
+
+        if (!socialMedia) {
+            throw new AppError(404, "Social Media not foud")
+        }
+
+        const data = await prisma.socialMedia.update(
+            {
+                where: { id },
                 data: body
             }
         )
 
         return data
+    }
+
+    async delete(id: number): Promise<void> {
+        const socialMedia = await prisma.socialMedia.findFirst(
+            {
+                where: { id }
+            }
+        )
+
+        if (!socialMedia) {
+            throw new AppError(404, "Social Media not foud")
+        }
+
+        await prisma.socialMedia.delete({ where: { id } })
     }
 }

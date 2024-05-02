@@ -23,7 +23,7 @@ export const imageSchema = z.object(
     id: z.number().positive(),
     name: z.string().min(1),
     data: z.custom((file) => {
-      if (!file || !file.path) return false; // Verifica se o arquivo foi enviado
+      if (!file || !file.path) return false; 
       const stats = fs.statSync(file.path);
       const fileSize = stats.size;
       const fileType = file.type;

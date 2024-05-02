@@ -9,3 +9,15 @@ export const messageSchema = z.object(
         description: z.string().min(1)
     }
 )
+
+
+export const MessageSchema = messageSchema.omit(
+    {
+        id: true
+    }
+)
+
+export const MessageUpdateSchema = MessageSchema.partial()
+
+export type typeExpectationMessage = z.infer<typeof MessageSchema>
+export type typeMessage = z.infer<typeof MessageSchema>

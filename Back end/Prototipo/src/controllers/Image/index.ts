@@ -1,0 +1,1 @@
+export { ImageProfileControllers } from "./ImagePofile.controllers"

@@ -3,7 +3,6 @@ import { prisma } from "../database/prisma"
 
 import {
 
-    ContactReturnSchema,
     typeCreateProfile, 
     typeProfileFull, 
     typeUpdateProfile 
@@ -20,6 +19,15 @@ export class ProfileServices {
         userId: number
 
     ) {
+        const profile = await prisma.profile.findFirst(
+            {
+                where:{ userId}
+            }
+        )
+
+        if (profile) {
+            throw new AppError(404, "Not foud")
+        }
         const data = await prisma.profile.create(
             {
                 data:{
@@ -43,7 +51,7 @@ export class ProfileServices {
                     image: true,
 
                     socialMedia: true,
-                    hobbies: true,
+                    hobby: true,
                     skill: true,
                     jobExperience: true,
                     education: true,
@@ -67,7 +75,6 @@ export class ProfileServices {
 
         const validatedContact = { ...contact, profileId: contact.profileId ?? null }
 
-        ContactReturnSchema.parse(validatedContact);
 
         return {
           ...rest,

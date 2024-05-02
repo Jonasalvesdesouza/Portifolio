@@ -28,6 +28,19 @@ export class ContactControllers {
         return res.status(201).json(response)
     }
 
+    async findFirst(
+
+        req: Request,
+        res: Response
+
+    ): Promise<Response>{
+        
+        const response = await this.contactService.findFirst()
+
+        return res.status(200).json(response)
+    }
+    
+
     async update(
 
         req: Request,

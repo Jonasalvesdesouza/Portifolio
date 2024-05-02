@@ -3,10 +3,10 @@ import {
 
     contactSchema,
     userSchema,
-    addressSchema,
+    addressProfileSchema,
     articlesSchema,
     educationSchema,
-    hobiesSchema, 
+    hobbySchema, 
     jobExperienceSchema, 
     messageSchema, 
     ImageSchema, 
@@ -32,7 +32,7 @@ export const profileSchema = z.object(
         imageId: z.number().positive().nullish(), 
         
         socialMedia: z.array(socialMediaSchema).nullish(),
-        hobbies: z.array(hobiesSchema).nullish(),
+        hobbies: z.array(hobbySchema).nullish(),
         skill: z.array(skillSchema).nullish(),
         jobExperience: z.array(jobExperienceSchema).nullish(),
         education: z.array(educationSchema).nullish(),
@@ -62,20 +62,21 @@ export const ProfileFullSchema = profileSchema.omit(
     }
 ).extend(
     {   
+
         user: userSchema.nullish(),
         contact: contactSchema.nullish(), 
-        address: addressSchema.nullish(),
+        addressProfile: addressProfileSchema.nullish(),
         image: ImageSchema.nullish(),
         
         socialMedia: z.array(socialMediaSchema).nullish(),
-        hobbies: z.array(hobiesSchema).nullish(),
+        hobbies: z.array(hobbySchema).nullish(),
         skill: z.array(skillSchema).nullish(),
         jobExperience: z.array(jobExperienceSchema).nullish(),
         education: z.array(educationSchema).nullish(),
         projects: z.array(projectsSchema).nullish(),
         articles: z.array(articlesSchema).nullish(),
         message: z.array(messageSchema).nullish()
-        
+    
     }
 )
 

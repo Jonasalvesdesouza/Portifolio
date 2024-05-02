@@ -7,6 +7,8 @@ export const SectionJobExperienceCurriculum = () => {
 
     const jobExperience = user.job_experience
 
+    console.log(jobExperience)
+
     return(
         <div>
             <div>

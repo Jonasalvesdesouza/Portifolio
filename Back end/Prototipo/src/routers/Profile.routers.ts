@@ -4,6 +4,9 @@ import { ProfileServices } from "../services"
 import { ProfileControllers } from "../controllers"
 import { ValidateBody, userAuth } from "../middlewares"
 import { ProfileSchema, ProfileFullSchema } from "../schemas"
+import { ProfileAddressRouter } from "./Address"
+import { ContactRouter } from "./Contact.routers"
+import { ImageProfileRouter } from "./Image"
 
 export const ProfileRouter = Router()
 
@@ -29,3 +32,7 @@ ProfileRouter.patch(
     ValidateBody.execute(ProfileFullSchema),
     (req, res) => profileControllers.update(req, res)
 )
+
+ProfileRouter.use("/", ContactRouter)
+ProfileRouter.use("/", ProfileAddressRouter)
+ProfileRouter.use("/", ImageProfileRouter)

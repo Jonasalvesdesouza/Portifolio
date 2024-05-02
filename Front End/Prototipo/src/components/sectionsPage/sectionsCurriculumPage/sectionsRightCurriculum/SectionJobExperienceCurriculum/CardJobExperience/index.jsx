@@ -7,6 +7,7 @@ import {
 } from "../../../../../../hooks"
 
 export const CardJobExperience = ({job}) => {
+
     const initialMonth = useCaptureMonth(job.initial_date)
     const initialYear = useCaptureYear(job.initial_date)
 
@@ -30,7 +31,8 @@ export const CardJobExperience = ({job}) => {
                     </div>
                     <div>
                        <span>
-                        {   endMonth == "" ? (initialMonth + " - " + initialYear + " / " + "Present"):
+                        {   endMonth == "" ? 
+                            (initialMonth + " - " + initialYear + " / " + "Present"):
                             (initialMonth + " - " + initialYear + " / ") + (endMonth + " - " + endYear)
                         }
                        </span>
