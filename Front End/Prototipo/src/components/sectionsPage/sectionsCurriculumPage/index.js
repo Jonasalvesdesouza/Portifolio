@@ -1,7 +1,2 @@
-import { SectionLeftCurriculum } from "./sectionsLeftCurriculum"
-import { SectionRightCurriculum } from "./sectionsRightCurriculum"
-
-export { 
-    SectionLeftCurriculum,
-    SectionRightCurriculum
-}
+export { SectionLeftCurriculum } from "./sectionsLeftCurriculum"
+export { SectionRightCurriculum } from "./sectionsRightCurriculum"

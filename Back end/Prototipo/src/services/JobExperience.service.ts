@@ -33,18 +33,6 @@ export class JobExperienceServices {
             throw new AppError(404, "Profile does not match user")
         }
 
-        const jobExperience = await prisma.jobExperience.findFirst(
-            {
-                where: { 
-                    title: body.title
-                } 
-            }
-        )
-        
-        if (jobExperience) {
-            throw new AppError(404, "job Experience already exists");
-        }
-
         const data = await prisma.jobExperience.create(
             {   
         

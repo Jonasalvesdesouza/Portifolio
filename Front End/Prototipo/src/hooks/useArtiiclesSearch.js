@@ -8,7 +8,7 @@ export const useArticlesSearch = (articles, search) => {
 
         const searchFilter = search === "" ? true : 
             article.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
-            article.text.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+            article.description.toLocaleLowerCase().includes(search.toLocaleLowerCase())
 
         const categoryFilter = categorysArticles === "" ? true : article.category === categorysArticles
 

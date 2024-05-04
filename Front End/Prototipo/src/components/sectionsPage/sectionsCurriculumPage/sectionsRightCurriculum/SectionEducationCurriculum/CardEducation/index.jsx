@@ -1,25 +1,22 @@
-import { 
-    useCaptureCity, 
-    useCaptureCountry, 
-    useCaptureMonth, 
-    useCaptureState, 
-    useCaptureYear 
-} from "../../../../../../hooks"
+import { useDateFormatEduIsJobExp } from "../../../../../../hooks"
 
 export const CardEducation = ({school}) => {
-    const initialMonth = useCaptureMonth(school.initial_date)
-    const initialYear = useCaptureYear(school.initial_date)
 
-    const endMonth = useCaptureMonth(school.end_date)
-    const endYear = useCaptureYear(school.end_date)
+    const initialDate = useDateFormatEduIsJobExp(school.initialDate)
+    const endDate = useDateFormatEduIsJobExp(school.endDate)
 
-    const city = useCaptureCity(school.location)
-    const state = useCaptureState(school.location)
-    const country = useCaptureCountry(school.location) 
+    const test  = school.title
+
+    const country = school.address.country
+    const state = school.address.state
+    const city = school.address.city
+
+    const description = school.description
+
+    
 
     const title = school.title
-    const course = school.course
-    const description = school.description
+    const course = school.couser
 
 
     return(
@@ -31,9 +28,7 @@ export const CardEducation = ({school}) => {
                     </div>
                     <div>
                        <span>
-                        {   endMonth == "" ? (initialMonth + " - " + initialYear + " / " + "Present"):
-                            (initialMonth + " - " + initialYear + " / ") + (endMonth + " - " + endYear)
-                        }
+                        {   (initialDate + " - ") + (endDate === "" ? "current" : endDate) }
                        </span>
                     </div>
                 </div>

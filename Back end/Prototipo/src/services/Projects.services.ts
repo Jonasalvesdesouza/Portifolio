@@ -65,7 +65,10 @@ export class ProjectsServices {
 
         const data = await prisma.project.findFirst(
             {
-                where:{id}
+                where:{id},
+                include: {
+                    image: true
+                }
             }
         )
 
@@ -77,7 +80,13 @@ export class ProjectsServices {
     }
 
     async findMany() {
-        const data = await prisma.project.findMany()
+        const data = await prisma.project.findMany(
+            {
+                include: {
+                    image: true
+                }
+            }
+        )
     
         return data 
     }

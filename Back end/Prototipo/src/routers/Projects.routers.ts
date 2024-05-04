@@ -9,6 +9,7 @@ import {
     ProjectsUpdateSchema 
 
 } from "../schemas"
+import { ImageProjectRouter } from "./Image"
 
 export const ProjectsRouter = Router()
 
@@ -52,5 +53,12 @@ ProjectsRouter.delete(
     "/:id",
     userAuth.VerifyToken,
     (req, res) => Controllers.delete(req, res) 
+
+)
+
+ProjectsRouter.use(
+
+    "/",
+    ImageProjectRouter
 
 )

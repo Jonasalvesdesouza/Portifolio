@@ -6,6 +6,7 @@ export const CardSkillCurriculum = ({skill}) => {
 
     const iconObj = IconsSkills.find(icon => icon.name === skill.name)
     const iconComponent = iconObj ? iconObj.icon : null
+   
 
     return(
         <li>

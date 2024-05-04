@@ -3,12 +3,17 @@ import { UserAdmContext } from "../../../../../providers"
 import { CardHobbiesCurriculum } from "./CardHobbiesCurriculum"
 
 export const SectionHobbiesCurriculum = () => {
-    const { user } = useContext(UserAdmContext)
+    const { profile } = useContext(UserAdmContext)
 
-    const hobbies = user.hobbies 
+    const hobbies = profile.hobby 
   
     return(
         <div>
+             <div>
+                <h4>
+                    Hobbys
+                </h4>
+            </div>
             <ul>
                 {
                     hobbies?.map((hobbie)=>{

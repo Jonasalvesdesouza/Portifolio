@@ -6,7 +6,10 @@ import { BsMailboxFlag } from "react-icons/bs"
 import { UserAdmContext } from "../../../../../providers"
 
 export const SectionContactCurriculum = () => {
-    const { user } = useContext(UserAdmContext)
+    const { profile } = useContext(UserAdmContext)
+
+    const cel = profile.contact?.cel
+    const email = profile.contact?.email
    
     return(
         <div>
@@ -17,7 +20,7 @@ export const SectionContactCurriculum = () => {
                     color="#848484" 
                 />
                 <p>
-                    {user.phone}
+                    {cel}
                 </p>
             </div>
             <div>
@@ -26,7 +29,7 @@ export const SectionContactCurriculum = () => {
                     color="#848484" 
                 />
                 <p>
-                    {user.email}
+                    {email}
                 </p>
 
             </div>

@@ -8,10 +8,10 @@ export const addressJobExperienceSchema = z.object(
         city: z.string().min(1),
         state: z.string().min(1),
 
-        zipCode: z.string().min(1),
-        road: z.string().min(1),
-        neighborhood: z.string().min(1),
-        number: z.number(),
+        zipCode: z.string(),
+        road: z.string(),
+        neighborhood: z.string(),
+        number: z.number().nullish(),
 
         jobExperienceId: z.number().positive().nullish()
     }

@@ -20,6 +20,7 @@ import {
 export const profileSchema = z.object(
     {
         id: z.number().positive(),
+        profession: z.string().min(1),
         presentation: z.string().min(1),
         about: z.string().min(1),
         bio: z.string().min(1),
@@ -43,7 +44,8 @@ export const profileSchema = z.object(
 )
 
 export const ProfileSchema = profileSchema.pick(
-    {
+    {   
+        profession: true,
         presentation: true,
         about: true,
         bio: true,
@@ -67,16 +69,7 @@ export const ProfileFullSchema = profileSchema.omit(
         contact: contactSchema.nullish(), 
         addressProfile: addressProfileSchema.nullish(),
         image: ImageSchema.nullish(),
-        
-        socialMedia: z.array(socialMediaSchema).nullish(),
-        hobbies: z.array(hobbySchema).nullish(),
-        skill: z.array(skillSchema).nullish(),
-        jobExperience: z.array(jobExperienceSchema).nullish(),
-        education: z.array(educationSchema).nullish(),
-        projects: z.array(projectsSchema).nullish(),
-        articles: z.array(articlesSchema).nullish(),
-        message: z.array(messageSchema).nullish()
-    
+            
     }
 )
 

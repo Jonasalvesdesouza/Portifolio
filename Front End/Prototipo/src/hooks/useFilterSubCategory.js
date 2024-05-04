@@ -1,5 +1,5 @@
 export const useFilterSubCategory = (array, criterion) => {
-    const filter = array.filter(object => object.subcategory === criterion)
+    const filter = array.filter(object => object.subCategory === criterion)
 
     return filter
 }

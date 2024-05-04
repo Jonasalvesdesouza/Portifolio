@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react"
 
 import { IoIosArrowDown } from "react-icons/io"
 import { Button } from "../../../fragments"
-import { AppBehaviorContext } from "../../../../providers"
+import { AppBehaviorContext, UserAdmContext } from "../../../../providers"
 import { 
 
     useGoToNextSection,
@@ -23,13 +23,14 @@ export const SectionBannerHomePage = () => {
         screenWidth,
 
     } = useContext(AppBehaviorContext)
+
+    const { profile } = useContext(UserAdmContext)
     
     useScreenWidth()
     
     useScrollToSection()
     useScrollEventTriggered()
     useGoToNextSection("about", "")
-
 
     return(
         <div>
@@ -41,7 +42,7 @@ export const SectionBannerHomePage = () => {
                     <span>.</span>
                 </h1>
                 <p>
-                    During my professional journey, I realized my aptitude in programming. On yet another ordinary day in front of an Excel spreadsheet, I noticed that I was performing repetitive processes. I asked myself if it was possible \to eliminate the tedious tasks, and voilà, I started programming.
+                    {profile.presentation}
                 </p>
             </div>
             <div>

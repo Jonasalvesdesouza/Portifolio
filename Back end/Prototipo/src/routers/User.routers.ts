@@ -43,7 +43,7 @@ UserRouter.patch(
 
 UserRouter.get(
     
-    "/get", 
+    "/:id", 
     userAuth.VerifyToken,
     (req, res) => userControllers.getUser(req, res)
 

@@ -1,19 +1,24 @@
 import { SlArrowRight } from "react-icons/sl"
+import { useLinkProject } from "../../../../../../hooks"
 
-export const ProjectCard = ({project}) => {
-  
+export const ProjectCard = ({project}) => {    
+ 
     return(
         <li>
             <div>
                 <div>
-                    <img src={`${project.image}`} alt={`${project.name}`} />
+                    <img src={`${project.image}`} alt={`${project.title}`} />
                 </div>
                 <div>
-                    <h3>{`${project.name}`}</h3>
+                    <h3>{`${project.title}`}</h3>
                     <p>{`${project.description}`}</p>
                 </div>
                 <div>
-                    <a href={`${project.link}`} target="_blank" >
+                    <a 
+                        href={`https://${useLinkProject(project)}`} 
+                        target="_blank"
+                        rel="noopener noreferrer" 
+                    >
                         VIEW
                         <SlArrowRight
                             seize={20}

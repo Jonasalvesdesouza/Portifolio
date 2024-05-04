@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { SlArrowRight } from "react-icons/sl"
 
 import { UserAdmContext } from "../../../../providers"
-import { loginFormSchema } from "../../../schema"
+import { loginFormSchema } from "../../../../schema"
 import { Input } from "../../InputDefault"
 import { InputPassword } from "../../InputPassword"
 import { Button } from "../../Button"
@@ -34,7 +34,7 @@ export const FormLoginPage = () => {
             setLoading, 
             reset
 
-    )
+        )
     }
  
     return(
@@ -43,9 +43,9 @@ export const FormLoginPage = () => {
             <div>
                 <Input
                     type="text"
-                    placeholder="User Name"
-                    error={errors.username}
-                    {...register('username')}  
+                    placeholder="E-mail"
+                    error={errors.email}
+                    {...register('email')}  
                 />
                 <InputPassword
                     placeholder="Password"

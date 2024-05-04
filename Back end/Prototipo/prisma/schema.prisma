@@ -20,9 +20,11 @@ model User{
 model Profile{
   id Int @id @default(autoincrement())
 
+  profession String
   presentation String
   about String
   bio String
+  userName String
   userId Int @unique
 
   contact Contact?
@@ -35,9 +37,9 @@ model Profile{
   jobExperience JobExperience[] //ok -- ok -- addres: ok -- getOne: ok
   education Education[] //ok -- ok -- address: ok -- getOne: ok
 
-  projects Project[] // 
-  articles Article[] //
-  message Message[] //
+  projects Project[] // ok
+  articles Article[] // ok
+  message Message[] // ok
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -152,7 +154,7 @@ model AddressJobExperience{
   neighborhood String?
   number Int?
 
-  jobExperienceId Int @unique 
+  jobExperienceId Int? @unique 
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -163,7 +165,7 @@ model AddressJobExperience{
 model Education{
   id Int @id @default(autoincrement())
   title String
-  couser String
+  course String
   description String
   address AddressEducation?
   initialDate String
@@ -198,6 +200,8 @@ model Project{
   id Int @id @default(autoincrement())
   title String
   description String
+  webSite String
+  gitHub String
   category String
   subCategory String
   image ImageProject?

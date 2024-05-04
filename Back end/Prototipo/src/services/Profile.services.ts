@@ -19,6 +19,18 @@ export class ProfileServices {
         userId: number
 
     ) {
+        const user = await prisma.user.findFirst(
+            {
+                where:{
+                    id: userId
+                }
+            }
+        )
+
+        if (!user) {
+            throw new AppError(404, "Not foud")
+        }
+
         const profile = await prisma.profile.findFirst(
             {
                 where:{ userId}
@@ -32,7 +44,8 @@ export class ProfileServices {
             {
                 data:{
                     ...body,
-                    userId
+                    userId,
+                    userName: user.name
                 }
             }
         )
@@ -49,15 +62,9 @@ export class ProfileServices {
                     contact: true,
                     address: true,
                     image: true,
-
                     socialMedia: true,
                     hobby: true,
                     skill: true,
-                    jobExperience: true,
-                    education: true,
-                    projects: true,
-                    articles: true,
-                    message: true
                     
                 }
             }
@@ -87,7 +94,7 @@ export class ProfileServices {
         id: number,
         body: typeUpdateProfile
         
-    ): Promise <typeCreateProfile> {
+    ): Promise <typeUpdateProfile> {
 
         const data = await prisma.profile.update(
             {

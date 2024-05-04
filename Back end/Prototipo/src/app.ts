@@ -18,10 +18,10 @@ import {
     JobExperienceRouter,
     EducationRouter,
     ProjectsRouter,
-    ArticlesRouter
+    ArticlesRouter,
+    MessageRouter
 
 } from "./routers"
-import { MessageRouter } from "./routers/Message.routers"
 
 export const app = express()
 
@@ -29,15 +29,15 @@ app.use(helmet())
 app.use(cors())
 app.use(json())
 
-app.use("/users", UserRouter)
+app.use("/user", UserRouter)
 app.use("/profile", ProfileRouter)
-app.use("/socialMidia", SocialMidiaRouter)
+app.use("/socialMedia", SocialMidiaRouter)
 app.use("/hobby", HobbyRouter)
 app.use("/skill", SkillRouter)
 app.use("/jobexperience", JobExperienceRouter)
 app.use("/education", EducationRouter)
 app.use("/projects", ProjectsRouter)
 app.use("/articles", ArticlesRouter)
-app.use("message", MessageRouter)
+app.use("/message", MessageRouter)
 
 app.use(HandleErrors.execute)

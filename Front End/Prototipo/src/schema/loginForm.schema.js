@@ -1,13 +1,13 @@
 import { z } from "zod"
 
 export const loginFormSchema = z.object({
-    username: z
+    email: z
         .string()
-        .min(1, "Este campo é obrigatório.")
+        .min(1, "This field is required.")
         ,
 
     password: z
         .string()
-        .min(1, "Este campo é obrigatório.")        
+        .min(1, "This field is required.")        
         ,
 })

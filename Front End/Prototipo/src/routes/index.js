@@ -1,5 +1,4 @@
-import { RouterMain } from "./RouterMain/index"
-import { PrivateRoute } from "./PrivateRoute/index"
-import { PublicRoute } from "./PublicRoute/index"
-
-export { RouterMain, PrivateRoute, PublicRoute } 
+export { RouterMain } from "./RouterMain/index"
+export { PrivateRoute } from "./PrivateRoute/index"
+export { PublicRoute } from "./PublicRoute/index"
+ 

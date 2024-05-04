@@ -1,4 +1,2 @@
-import { SectionTopBlog } from "./SectionTopBlog"
-import { SectionAticles } from "./SectionArticles"
-
-export { SectionTopBlog, SectionAticles }
+export { SectionTopBlog } from "./SectionTopBlog"
+export { SectionAticles } from "./SectionArticles"

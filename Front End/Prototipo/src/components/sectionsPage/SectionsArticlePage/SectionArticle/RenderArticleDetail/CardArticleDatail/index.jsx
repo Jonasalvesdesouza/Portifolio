@@ -1,8 +1,10 @@
 import { useLimitedDescription } from "../../../../../../hooks"
 
 export const CardArticleDatail = ({object}) => {
+  
     const maxLength = 50
-    const LimitedDescription = useLimitedDescription(object.text, maxLength)
+    
+    const LimitedDescription = useLimitedDescription(object?.description, maxLength)
 
     return(
         <li>
@@ -23,7 +25,7 @@ export const CardArticleDatail = ({object}) => {
                 </div>
                 <div>
                     <p>
-                        {object.text}
+                        {object.description}
                     </p>
                 </div>
             </div>

@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { SlArrowRight } from "react-icons/sl"
 
 import { Button, Input, TextArea } from "../.."
-import { sendMeEmailFormSchema } from "../../../schema"
+import { sendMeEmailFormSchema } from "../../../../schema"
 import { MessageMeContext } from "../../../../providers/MessageMeContext"
 
 export const FormSendMeEmail = () => {

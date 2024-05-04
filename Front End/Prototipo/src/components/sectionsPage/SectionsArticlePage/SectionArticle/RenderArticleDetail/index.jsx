@@ -1,14 +1,12 @@
-import { useContext } from "react"
-
-import { ArticlesContext } from "../../../../../providers"
+import { useFilterArticleById } from "../../../../../hooks"
 import { CardArticleDatail } from "./CardArticleDatail"
 
 export const RenderArticleDetail = () => {
-    const { data } = useContext(ArticlesContext)
+    const articleId = localStorage.getItem("@IDARTICLE")
+    
+    const article = [useFilterArticleById(articleId)]
 
-    const article = [data]
-
-    return(
+     return(
         <div>    
             <ul>
                 {

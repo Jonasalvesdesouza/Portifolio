@@ -43,8 +43,6 @@ export class ImageProfileServices {
           if (existingImage) {
             throw new AppError(409, "Image already exists for this profile");
           }
-      
-      
 
         const data = await prisma.imageProfile.create(
             {

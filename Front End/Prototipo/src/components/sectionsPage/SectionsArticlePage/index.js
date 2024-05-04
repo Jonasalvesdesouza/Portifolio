@@ -1,4 +1,2 @@
-import { SectionTopArticle } from "./SectionTopArticle"
-import { SectionArticle } from "./SectionArticle"
-
-export { SectionTopArticle, SectionArticle }
+export { SectionTopArticle } from "./SectionTopArticle"
+export { SectionArticle } from "./SectionArticle"

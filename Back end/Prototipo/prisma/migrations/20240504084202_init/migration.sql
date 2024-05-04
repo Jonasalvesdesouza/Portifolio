@@ -13,9 +13,11 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Profile" (
     "id" SERIAL NOT NULL,
+    "profession" TEXT NOT NULL,
     "presentation" TEXT NOT NULL,
     "about" TEXT NOT NULL,
     "bio" TEXT NOT NULL,
+    "userName" TEXT NOT NULL,
     "userId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -168,6 +170,8 @@ CREATE TABLE "Project" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
+    "webSite" TEXT NOT NULL,
+    "gitHub" TEXT NOT NULL,
     "category" TEXT NOT NULL,
     "subCategory" TEXT NOT NULL,
     "profileId" INTEGER NOT NULL,

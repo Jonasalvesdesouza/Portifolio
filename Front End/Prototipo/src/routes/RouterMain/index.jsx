@@ -3,13 +3,15 @@ import { Routes, Route } from "react-router-dom"
 import { PublicRoute } from "../PublicRoute"
 import { PrivateRoute } from "../PrivateRoute"
 
-import { 
+import {
+    
     NotFoudPage, 
     HomePage,
     ProjectsPage, 
     BlogPage,
     CurriculumPage,
     ArticlePage
+    
 } from "../../pages"
 import { LoginPage } from "../../pages/LoginPage"
 import { DashboardPage } from "../../pages/DashboardPage"
@@ -29,6 +31,7 @@ export const  RouterMain = () => {
                 <Route path="/articlepage" element={ <ArticlePage /> } />
                 <Route path="/login" element={ <LoginPage /> } />
             </Route>
+
 
             <Route element={ <PrivateRoute /> }>
                 <Route path="/dashboard" element={ <DashboardPage /> } />

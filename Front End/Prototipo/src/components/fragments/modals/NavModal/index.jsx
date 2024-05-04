@@ -6,18 +6,18 @@ import IconLinkedinBalck from "../../../../assets/IconLinkedinBlack.svg"
 import IconGitHubYellow from "../../../../assets/IconGitHubYellow.svg"
 import IconGitHubBlack from "../../../../assets/IconGithubBlack.svg"
 
-import { 
-    ListNavHomePage, 
-    ListNavDefault, 
-    ListNavProjectsPage,
-    ListNavBlogPage,
-    ListNavCurriculumPage 
-} from "./lists"
-
 import { Button } from "../../Button"
 import { useContext } from "react"
 import { AppBehaviorContext } from "../../../../providers"
-import { useKeydown, useOutclick } from "../../../../hooks"
+import {
+
+    useKeydown, 
+    useOutclick, 
+    useRemoveStringFromArray 
+
+} from "../../../../hooks"
+import { listPage } from "./listPages"
+import { CardListPage } from "./cardListPage"
 
 export const NavModal = ({ setIsOpen }) => {
 
@@ -30,40 +30,9 @@ export const NavModal = ({ setIsOpen }) => {
      const closeModalKeyDownEsque = useKeydown(()=>{
         setIsOpen(false)
      })
-      
+         
 
-    const compareRoutesDefault = routeLocation === 
-        "/" || 
-        "/projects" || 
-        "/blog" || 
-        "/articles" || 
-        "/curriculum" || 
-        "/login"
-
-    const compareRouteHomePage = routeLocation === "/"
-    const compareRouteProjectsPage = routeLocation === "/projects"
-    const compareRouteBlogPage = routeLocation === "/blog"
-    const compareRouteAticlesPage = routeLocation === "/articlepage"
-    const compareRouteCurriculumPage = routeLocation === "/curriculum"
-    const compareRouteLoginPage = routeLocation === "/login"
-
-    const colorIconClose = 
-    compareRouteHomePage ||
-    compareRouteAticlesPage ||
-    compareRouteLoginPage  ? 
-    "#e8e9ea" : "#1b1f24"
-    
-    const renderIconsGitHub =  
-        compareRouteHomePage || 
-        compareRouteAticlesPage || 
-        compareRouteLoginPage ? 
-        IconGitHubYellow : IconGitHubBlack
-
-    const renderIconsLinkedin =  
-    compareRouteHomePage || 
-    compareRouteAticlesPage || 
-    compareRouteLoginPage ? 
-    IconLinkedinYellow : IconLinkedinBalck
+    const ListPage = useRemoveStringFromArray(listPage, routeLocation)
 
     return(
         <div
@@ -76,19 +45,23 @@ export const NavModal = ({ setIsOpen }) => {
                     }}>
                     <IoCloseOutline
                         size={28}
-                        color={colorIconClose}
+                        color="#1b1f24"
                     />                    
                 </Button>
             </div>
             <div>
-                {   
-                    !compareRoutesDefault ? <ListNavDefault /> :
-                    compareRouteHomePage ? <ListNavHomePage /> : 
-                    compareRouteProjectsPage ? <ListNavProjectsPage /> : 
-                    compareRouteBlogPage ? <ListNavBlogPage /> : 
-                    compareRouteCurriculumPage ? <ListNavCurriculumPage /> :  
-                    compareRoutesDefault ? <ListNavDefault /> : null
-                }
+                <ul>
+                    {
+                        ListPage.map((page)=>{
+                            return(
+                                <CardListPage
+                                    key={page.id}
+                                    page={page} 
+                                />
+                            )
+                        })
+                    }
+                </ul>
             </div>
 
             {
@@ -98,7 +71,7 @@ export const NavModal = ({ setIsOpen }) => {
                             href="https://www.linkedin.com/in/jonas-alves-de-souza-61540b114/"
                             target="_blank"
                         >
-                            <img src={renderIconsLinkedin} alt="Linkdin Icon" />
+                            <img src={IconGitHubBlack} alt="Linkdin Icon" />
                         </a>
                     </div>
                    <div>
@@ -106,7 +79,7 @@ export const NavModal = ({ setIsOpen }) => {
                             href="https://github.com/Jonasalvesdesouza"
                             target="_blank"
                         >
-                            <img src={renderIconsGitHub} alt="GitHub Icon" />
+                            <img src={IconLinkedinBalck} alt="GitHub Icon" />
                         </a>                                  
                     </div>
                 </div>     

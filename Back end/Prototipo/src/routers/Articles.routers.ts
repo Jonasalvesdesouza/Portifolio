@@ -9,6 +9,7 @@ import {
     ArticlesUpdateSchema 
 
 } from "../schemas"
+import { ImageArticleRouter } from "./Image"
 
 export const ArticlesRouter = Router()
 
@@ -53,4 +54,10 @@ ArticlesRouter.delete(
     userAuth.VerifyToken,
     (req, res) => Controllers.delete(req, res) 
 
+)
+
+ArticlesRouter.use(
+
+    "/",
+    ImageArticleRouter
 )

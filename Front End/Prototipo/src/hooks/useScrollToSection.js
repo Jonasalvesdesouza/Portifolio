@@ -3,9 +3,8 @@ import { AppBehaviorContext } from "../providers/ApplicationBehavior"
 
 export const useScrollToSection = () => {
     const { 
-
-        lastScrollPosition, 
-        setScrollDirection 
+ 
+      setScrollDirection 
 
     } = useContext(AppBehaviorContext)
 
@@ -13,6 +12,7 @@ export const useScrollToSection = () => {
 
         const handleWheel = (event) => {
             const deltaY = event.deltaY
+            /* console.log(deltaY) */
             if (deltaY > 0) {
               setScrollDirection("down")
             } else if (deltaY < 0) {
@@ -26,9 +26,11 @@ export const useScrollToSection = () => {
           const handleTouchMove = (event) => {
             const touchY = event.touches[0].clientY
             const prevTouchY = event.touches[0].clientY - event.touches[0].clientY
-            if (touchY > prevTouchY) {
+
+            console.log(touchY)
+            if (touchY < prevTouchY) {
               setScrollDirection("down")
-            } else if (touchY < prevTouchY) {
+            } else if (touchY > prevTouchY) {
               setScrollDirection("up")
             }
             setTimeout(() => {
@@ -43,7 +45,7 @@ export const useScrollToSection = () => {
             window.removeEventListener("wheel", handleWheel)
             window.removeEventListener("touchmove", handleTouchMove)
         }
-    }, [lastScrollPosition])
+    }, [])
     
 
     

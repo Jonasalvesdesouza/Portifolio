@@ -8,9 +8,10 @@ export const AppBehaviorProvider = ({children}) =>{
 
     const [ sectionHomepage, setSectionHomepage ] = useState("")
     const [ scrollDirection, setScrollDirection ] = useState("")
-    const [ lastScrollPosition, setLastScrollPosition ] = useState(0)
     const [ scrollEventTriggered, setScrollEventTriggered ] = useState(false)
-    
+
+    /* console.log(scrollDirection) */
+
     const location = useLocation().pathname.toLocaleLowerCase()
     const [ routeLocation, setRouteLocation ] = useState("")
 
@@ -31,8 +32,6 @@ export const AppBehaviorProvider = ({children}) =>{
             setSectionHomepage,
             scrollDirection, 
             setScrollDirection,
-            lastScrollPosition, 
-            setLastScrollPosition,
             scrollEventTriggered, 
             setScrollEventTriggered,
             location,

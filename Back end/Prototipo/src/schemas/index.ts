@@ -169,6 +169,7 @@ export {
 
     profileSchema,
     ProfileSchema,
+    ProfileUpdateSchema,
     ProfileFullSchema,
     typeCreateProfile,
     typeUpdateProfile,

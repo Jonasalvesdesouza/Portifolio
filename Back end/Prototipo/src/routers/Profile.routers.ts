@@ -3,7 +3,7 @@ import { container } from "tsyringe"
 import { ProfileServices } from "../services"
 import { ProfileControllers } from "../controllers"
 import { ValidateBody, userAuth } from "../middlewares"
-import { ProfileSchema, ProfileFullSchema } from "../schemas"
+import { ProfileSchema, ProfileUpdateSchema } from "../schemas"
 import { ProfileAddressRouter } from "./Address"
 import { ContactRouter } from "./Contact.routers"
 import { ImageProfileRouter } from "./Image"
@@ -22,14 +22,14 @@ ProfileRouter.post(
 )
 
 ProfileRouter.get(
-    "/get",
+    "/",
     (req, res) => profileControllers.findFirst(req, res)
 )
 
 ProfileRouter.patch(
-    "/update",
+    "/update/:id",
     userAuth.VerifyToken,
-    ValidateBody.execute(ProfileFullSchema),
+    ValidateBody.execute(ProfileUpdateSchema),
     (req, res) => profileControllers.update(req, res)
 )
 

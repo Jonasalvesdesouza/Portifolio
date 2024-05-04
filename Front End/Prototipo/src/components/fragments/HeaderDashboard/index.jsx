@@ -6,7 +6,7 @@ import { Button } from "../Button"
 import { UserAdmContext } from "../../../providers"
 
 export const HeaderDashboard = () =>{
-    const { userLogout, user } = useContext(UserAdmContext)
+    const { userLogout } = useContext(UserAdmContext)
      
     return(
         <header>

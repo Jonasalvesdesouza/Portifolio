@@ -10,7 +10,14 @@ export {
 
 } from "./Address"
 
-export { ImageProfileServices } from "./Image"
+export { 
+
+    ImageProfileServices, 
+    ImageProjectServices,
+    ImageArticleServices
+
+} from "./Image"
+
 export { SocialMidiaServices } from "./SocialMidia.services"
 export { HobbyServices } from "./Hobby.services"
 export { SkillServices } from "./Skill.services"

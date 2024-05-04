@@ -10,7 +10,14 @@ export {
 
 } from "./Address"
 
-export { ImageProfileControllers } from "./Image"
+export { 
+
+    ImageProfileControllers,
+    ImageProjectControllers,
+    ImageArticleControllers
+
+} from "./Image"
+
 export { SocialMediaControllers } from "./SocialMidia.controllers"
 export { HobbyControllers } from "./Hobby.controllers"
 export { SkillControllers } from "./Skill.controllers"

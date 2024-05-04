@@ -4,24 +4,31 @@ import { CardSkillCurriculum } from "./CardSkillCurriculum"
 
 
 export const SectionSkillCurriculum = () => {
-    const { user } = useContext(UserAdmContext)
+    const { profile } = useContext(UserAdmContext)
 
-    const skills = user.skills
+    const skills = profile.skill
       
     return(
         <div>
-            <ul>
-                {
-                    skills?.map((skill)=>{
-                        return(
-                            <CardSkillCurriculum
-                                key={skill.id}
-                                skill={skill}
-                            />
-                        )
-                    })
-                }
-            </ul>
+            <div>
+                <h4>
+                    Skills
+                </h4>
+            </div>
+            <div>
+                <ul>
+                    {
+                        skills?.map((skill)=>{
+                            return(
+                                <CardSkillCurriculum
+                                    key={skill.id}
+                                    skill={skill}
+                                />
+                            )
+                        })
+                    }
+                </ul>
+            </div>
         </div>
     )
 }

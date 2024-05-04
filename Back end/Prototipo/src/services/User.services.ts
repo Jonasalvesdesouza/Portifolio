@@ -56,7 +56,13 @@ export class UserServices {
 
     ): Promise <typeLoginReturn> {
         
-        const user = await prisma.user.findFirst({ where: { email } })
+        const user = await prisma.user.findFirst(
+            { 
+                where: { email }, 
+                include: { profile: true }
+            }
+        )
+
 
             if(!user){
             throw new AppError(404, "User not exists")
@@ -142,8 +148,17 @@ export class UserServices {
     }
 
     async getUser(id: number): Promise<typeUserReturnSchema> {
+
+        if (!id) {
+            throw new AppError(404, "User id required.")
+        }
         
-        const user = await prisma.user.findFirst({ where: { id } })
+        const user = await prisma.user.findFirst(
+            { 
+                where: { id },
+                include: { profile: true } 
+            }
+        )
 
         if (!user) {
             throw new AppError(404, "User not found");

@@ -52,9 +52,9 @@ export class UserControllers {
         res: Response
 
     ): Promise <Response> {
-        const id = res.locals.decode.id
+        const id = req.params.id
 
-        const response =  await this.userServices.getUser(id)
+        const response =  await this.userServices.getUser(Number(id))
 
         return res.status(200).json(response)
     }

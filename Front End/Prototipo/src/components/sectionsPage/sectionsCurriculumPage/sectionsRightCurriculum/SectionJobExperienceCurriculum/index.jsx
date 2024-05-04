@@ -3,11 +3,7 @@ import { UserAdmContext } from "../../../../../providers"
 import { CardJobExperience } from "./CardJobExperience"
 
 export const SectionJobExperienceCurriculum = () => {
-    const { user } = useContext(UserAdmContext)
-
-    const jobExperience = user.job_experience
-
-    console.log(jobExperience)
+    const { jobExperience } = useContext(UserAdmContext)
 
     return(
         <div>

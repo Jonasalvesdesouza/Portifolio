@@ -10,44 +10,100 @@ export const UserAdmContext = createContext({})
 export const UserAdmProvider = ({children}) =>{
 
     const localToken = localStorage.getItem("@KEYADM")
-    const idAdm = localStorage.getItem("@IDADM")
     const [ token, setToken ] = useState(localToken ? localToken: "")
-    const [ user, setUser ] = useState([])
-    const [ messageList, setMessageList ] = useState([])
-    const [ projectsList, setProjectsList ] = useState([])
-     const [ articlesList, setArticlesList ] = useState([])
-    
     const headers = { headers: { Authorization: `Bearer ${token}` } }
+    const idAdm = localStorage.getItem('@IDADM')
+    
+    const [ user, setUser ] = useState(null)
+
+    const [ profile, setProfile ] = useState([])
+    const [ jobExperience, setJobExperience ] = useState([])
+    const [ education, setEducation ] = useState([])
+    const [ projectsList, setProjectsList ] = useState([])
+    const [ articlesList, setArticlesList ] = useState([])
+    const [ message, setMessage ] = useState([])
+    
 
     const navigate = useNavigate()
     const { state } = useLocation()
     const pathName = window.location.pathname
 
-   /*  const { data } = useQuery(
+    const { data } = useQuery(
         {
-            queryKey: [ "adm" ],
+            queryKey: [ 'adm' ],
             queryFn: async () => {
-                const { data } = await api.get(`/users/${idAdm}`, { ...headers })
+                const { data } = await api.get(`/user/${idAdm}`, { ...headers })
                 setUser(data)
-                navigate(pathName)
+                navigate(pathName)                
+                return data
+            }
+        }
+    )
+
+    const { Profile } = useQuery(
+        {
+            queryKey: ['profile'],
+            queryFn: async () => {
+                const { data } = await api.get('/profile/')
+                setProfile(data)
+                return data
+            }
+        }
+    )
+
+    const { JobExperience } = useQuery(
+        {
+            queryKey: ['jobExperience'],
+            queryFn: async () => {
+                const { data } = await api.get('/jobExperience/get')
+                setJobExperience(data)
                 return data                
             }
         }
-    ) */
-    
-    const { data } = useQuery(
+    )
+
+    const { Education } = useQuery(
         {
-            queryKey: [ "adm" ],
-            queryFn: async () => {
-                const { data } = await api.get(`/user`)
-                const userData = data[0]
-                setUser(data[0])
-                setMessageList(userData?.message)
-                setProjectsList(userData?.projects)
-                setArticlesList(userData?.articles)
-                navigate(pathName)
-                return data                
-            }            
+            queryKey: ['education'],
+            queryFn: async () =>{
+                const { data } = await api.get('/education/get')
+                setEducation(data)
+                return data
+            }
+        }
+    )
+
+    const { Projects } = useQuery(
+        {
+            queryKey: ['projectsList'],
+            queryFn: async () =>{
+                const { data } = await api.get('/projects/get')
+                setProjectsList(data)
+                return data
+            }
+        }
+    )
+
+    const { Articles } = useQuery(
+        {
+            queryKey: ['articles'],
+            queryFn: async () =>{
+                const { data } = await api.get('/articles/get')
+                setArticlesList(data)
+                return data
+            }
+            
+        }
+    )
+
+    const { Message } = useQuery(
+        {
+            queryKey: ['message'],
+            queryFn: async () =>{
+                const { data } = await api.get('/message/get')
+                setMessage(data)
+                return data
+            }
         }
     )
     
@@ -62,14 +118,14 @@ export const UserAdmProvider = ({children}) =>{
         try {
             setLoading(true)
 
-            const { data } = await api.post("/login", payLoad)
+            const { data } = await api.post("/user/login", payLoad)
             localStorage.setItem("@KEYADM", data?.accessToken)
-            localStorage.setItem("@IDADM", data?.user.id)
+            localStorage.setItem('@IDADM', data?.user.id)
             setToken(data?.accessToken)
             setUser(data?.user)
-
+        
             NotifySucess("Login Successfull!")
-            navigate(state?.lastRoute ? state.lastRoute : "/dashgboard")
+            navigate(state?.lastRoute ? state.lastRoute : "/dashboard")
             reset()
 
         } catch (error) {
@@ -84,24 +140,37 @@ export const UserAdmProvider = ({children}) =>{
 
     const userLogout = () => {
         setUser(null)
-        localStorage.removeItem("@TOKEN")
+        localStorage.removeItem("@KEYADM")
+        localStorage.removeItem("@IDADM")
+        NotifyError("Logout successful!")
         navigate("/login")
     }
 
     return(
     <UserAdmContext.Provider value={
         {
-            data,
-            userAdmLogin,
-            user,
-            userLogout,
+            localToken,
+            token, 
+            setToken,
             headers,
-            messageList, 
-            setMessageList,
+            idAdm,
+            user, 
+            setUser,
+            data,
+            profile, 
+            setProfile,
+            jobExperience, 
+            setJobExperience,
+            education, 
+            setEducation,
             projectsList, 
             setProjectsList,
             articlesList, 
             setArticlesList,
+            message, 
+            setMessage,
+            userAdmLogin,
+            userLogout
         }
     }>
         {children}        

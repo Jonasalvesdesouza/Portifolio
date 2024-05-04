@@ -1,40 +1,28 @@
-import { 
-    useCaptureCity, 
-    useCaptureCountry, 
-    useCaptureMonth, 
-    useCaptureState, 
-    useCaptureYear 
-} from "../../../../../../hooks"
+import { useDateFormatEduIsJobExp} from "../../../../../../hooks"
 
 export const CardJobExperience = ({job}) => {
 
-    const initialMonth = useCaptureMonth(job.initial_date)
-    const initialYear = useCaptureYear(job.initial_date)
+    const initialDate = useDateFormatEduIsJobExp(job.initialDate)
+    const endDate = useDateFormatEduIsJobExp(job.endDate)
 
-    const endMonth = useCaptureMonth(job.end_date)
-    const endYear = useCaptureYear(job.end_date)
+    const office  = job.title
 
-    const title = job.title
-    const office = job.office
+    const country = job.address.country
+    const state = job.address.state
+    const city = job.address.city
+
     const description = job.description
-
-    const city = useCaptureCity(job.location)
-    const state = useCaptureState(job.location)
-    const country = useCaptureCountry(job.location) 
 
     return(
         <li>
             <div>
                 <div>
                     <div>
-                        <h4>{title}</h4>
+                        {<h4>{job.title}</h4>}
                     </div>
                     <div>
                        <span>
-                        {   endMonth == "" ? 
-                            (initialMonth + " - " + initialYear + " / " + "Present"):
-                            (initialMonth + " - " + initialYear + " / ") + (endMonth + " - " + endYear)
-                        }
+                        {   (initialDate + " - ") + (endDate === "" ? "current" : endDate) }
                        </span>
                     </div>
                 </div>
