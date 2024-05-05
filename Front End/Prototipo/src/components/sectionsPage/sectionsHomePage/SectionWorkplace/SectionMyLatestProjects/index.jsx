@@ -19,7 +19,7 @@ export const SectionMyLatestProjectsHomePage = () => {
             </p>
             <Link
                 onClick={()=>{
-                    setSectionHomepage("")
+                    setSectionHomepage(0)
                 }}
                 to={"/projects"}
             >

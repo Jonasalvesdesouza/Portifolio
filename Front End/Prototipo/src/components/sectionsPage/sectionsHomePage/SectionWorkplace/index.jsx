@@ -7,17 +7,13 @@ import { AppBehaviorContext } from "../../../../providers"
 
 import { SectionMyLatestProjectsHomePage } from "./SectionMyLatestProjects"
 import { SectionReadMyBlogHomePage } from "./SectionReadMyBlog"
-import { useGoToNextSection, useScreenWidth, useScrollToSection, useScrollEventTriggered } from "../../../../hooks"
+import { useScreenWidth } from "../../../../hooks"
 
 export const SectionWorkplace = () => {
     const { setSectionHomepage, screenWidth } = useContext(AppBehaviorContext)
 
     useScreenWidth()
     
-    useScrollToSection()
-    useScrollEventTriggered()
-    useGoToNextSection("contact", "about")
-
     return(
         <div>
             <SectionMyLatestProjectsHomePage />
@@ -29,7 +25,7 @@ export const SectionWorkplace = () => {
                     id="button"
                     onClick={
                         ()=> {
-                            setSectionHomepage("contact")
+                            setSectionHomepage(3)
                         }
                     }
                 >

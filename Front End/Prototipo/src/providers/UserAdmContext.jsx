@@ -21,7 +21,7 @@ export const UserAdmProvider = ({children}) =>{
     const [ education, setEducation ] = useState([])
     const [ projectsList, setProjectsList ] = useState([])
     const [ articlesList, setArticlesList ] = useState([])
-    const [ message, setMessage ] = useState([])
+    const [ messageList, setMessageList ] = useState([])
     
 
     const navigate = useNavigate()
@@ -101,7 +101,7 @@ export const UserAdmProvider = ({children}) =>{
             queryKey: ['message'],
             queryFn: async () =>{
                 const { data } = await api.get('/message/get')
-                setMessage(data)
+                setMessageList(data)
                 return data
             }
         }
@@ -167,8 +167,8 @@ export const UserAdmProvider = ({children}) =>{
             setProjectsList,
             articlesList, 
             setArticlesList,
-            message, 
-            setMessage,
+            messageList, 
+            setMessageList,
             userAdmLogin,
             userLogout
         }

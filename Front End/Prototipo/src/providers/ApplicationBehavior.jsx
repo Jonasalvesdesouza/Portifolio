@@ -6,11 +6,8 @@ export const AppBehaviorContext = createContext({})
 export const AppBehaviorProvider = ({children}) =>{
     const [ screenWidth, setScreenWidth ] = useState(window.innerWidth)
 
-    const [ sectionHomepage, setSectionHomepage ] = useState("")
-    const [ scrollDirection, setScrollDirection ] = useState("")
-    const [ scrollEventTriggered, setScrollEventTriggered ] = useState(false)
-
-    /* console.log(scrollDirection) */
+    const [ sectionHomepage, setSectionHomepage ] = useState(0)
+    const [ currentCard, setCurrentCard ] = useState(0)
 
     const location = useLocation().pathname.toLocaleLowerCase()
     const [ routeLocation, setRouteLocation ] = useState("")
@@ -19,32 +16,38 @@ export const AppBehaviorProvider = ({children}) =>{
     const [ categorysProject, setCategorysProject ] = useState("")
     const [ categorysArticles, setCategorysArticles ] = useState("")
 
+    const [ navDashboard, setNavDashboard ] = useState()
+
     const resetStadeCategorys = () =>{
         setCategorysArticles("")
         setCategorysProject("")
     }
     
     return(
-        <AppBehaviorContext.Provider value={{
-            screenWidth, 
-            setScreenWidth,
-            sectionHomepage, 
-            setSectionHomepage,
-            scrollDirection, 
-            setScrollDirection,
-            scrollEventTriggered, 
-            setScrollEventTriggered,
-            location,
-            routeLocation, 
-            setRouteLocation,
-            search, 
-            setSearch,
-            categorysProject, 
-            setCategorysProject,
-            categorysArticles, 
-            setCategorysArticles,
-            resetStadeCategorys 
-        }}>
+        <AppBehaviorContext.Provider value={
+            {
+
+                screenWidth, 
+                setScreenWidth,
+                sectionHomepage, 
+                setSectionHomepage,
+                currentCard, 
+                setCurrentCard,
+                location,
+                routeLocation, 
+                setRouteLocation,
+                search, 
+                setSearch,
+                categorysProject, 
+                setCategorysProject,
+                categorysArticles, 
+                setCategorysArticles,
+                resetStadeCategorys,
+                navDashboard, 
+                setNavDashboard
+                
+            }
+        }>
             {children}
         </AppBehaviorContext.Provider>
     )

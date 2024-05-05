@@ -9,8 +9,7 @@ export const TemplateDefault = ({children, setIsOpen}) => {
         <div>
             <Header setIsOpen={setIsOpen}/>
         <div>
-            <div>
-                               
+            <div>             
                 <NavHomePage />
                 
                 <Footer />

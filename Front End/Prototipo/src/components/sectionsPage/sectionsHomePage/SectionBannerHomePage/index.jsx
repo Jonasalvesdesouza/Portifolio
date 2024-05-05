@@ -5,14 +5,7 @@ import { useContext, useEffect, useState } from "react"
 import { IoIosArrowDown } from "react-icons/io"
 import { Button } from "../../../fragments"
 import { AppBehaviorContext, UserAdmContext } from "../../../../providers"
-import { 
-
-    useGoToNextSection,
-    useScreenWidth, 
-    useScrollEventTriggered, 
-    useScrollToSection 
-
-} from "../../../../hooks"
+import { useScreenWidth } from "../../../../hooks"
 
 
 export const SectionBannerHomePage = () => {
@@ -28,10 +21,6 @@ export const SectionBannerHomePage = () => {
     
     useScreenWidth()
     
-    useScrollToSection()
-    useScrollEventTriggered()
-    useGoToNextSection("about", "")
-
     return(
         <div>
             <div>
@@ -54,7 +43,7 @@ export const SectionBannerHomePage = () => {
                     id="button"
                     onClick={
                         ()=> {
-                        setSectionHomepage("about")                       
+                            setSectionHomepage(1)                       
                         }
                     }
                 >

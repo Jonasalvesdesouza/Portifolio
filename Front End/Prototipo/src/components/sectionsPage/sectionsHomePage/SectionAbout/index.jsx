@@ -3,14 +3,7 @@ import { Button } from "../../../fragments"
 import { useContext } from "react"
 import { AppBehaviorContext, UserAdmContext } from "../../../../providers"
 import { Link } from "react-router-dom"
-import {
-
-    useGoToNextSection, 
-    useScreenWidth, 
-    useScrollToSection, 
-    useScrollEventTriggered 
-
-} from "../../../../hooks"
+import {  useScreenWidth } from "../../../../hooks"
 
 export const SectionAboutHomePage = () => {
     const {
@@ -23,10 +16,6 @@ export const SectionAboutHomePage = () => {
     const { profile } = useContext(UserAdmContext)
 
     useScreenWidth()
-
-    useScrollToSection()
-    useScrollEventTriggered()
-    useGoToNextSection("workplace", "")    
 
     return(
         <div>
@@ -44,7 +33,7 @@ export const SectionAboutHomePage = () => {
                 <div>
                     <Link
                         onClick={()=>{
-                            setSectionHomepage("")
+                            setSectionHomepage(0)
                         }}
                         to={"/curriculum"}
                     >
@@ -60,7 +49,7 @@ export const SectionAboutHomePage = () => {
                         id="button"
                         onClick={
                             ()=> {
-                                setSectionHomepage("workplace")           
+                                setSectionHomepage(2)           
                             }
                         }
                     >

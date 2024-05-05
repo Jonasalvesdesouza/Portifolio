@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { UserAdmContext } from "../../../../../providers"
 import { ProjectCard } from "./ProjectCard"
 
-export const SectionDashboardProjects = ({}) => {
+export const SectionDashboardProjects = () => {
 
     const { projectsList } = useContext(UserAdmContext)
        

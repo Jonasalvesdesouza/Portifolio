@@ -13,6 +13,7 @@ export const TemplateHomePage = ({children, setIsOpen}) => {
         
         <div>
             {
+
                 screenWidth < 850 ? 
                 <TemplateMobile setIsOpen={setIsOpen} children={children} /> : 
                 <TemplateDefault setIsOpen={setIsOpen} children={children} />

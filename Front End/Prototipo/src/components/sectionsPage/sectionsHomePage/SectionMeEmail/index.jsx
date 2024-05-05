@@ -7,15 +7,12 @@ import { AppBehaviorContext } from "../../../../providers"
 
 
 import { FormSendMeEmail } from "../../../fragments/forms"
-import { useGoToNextSection, useScreenWidth, useScrollToSection, useScrollEventTriggered } from "../../../../hooks"
+import { useScreenWidth } from "../../../../hooks"
 
 export const SectionMeEmail = () => {
     const { setSectionHomepage, screenWidth  } = useContext(AppBehaviorContext)
 
     useScreenWidth()
-    useScrollToSection()
-    useScrollEventTriggered()
-    useGoToNextSection("contact", "workplace")
 
     return(
         <div>
@@ -38,7 +35,7 @@ export const SectionMeEmail = () => {
                     id="button"
                     onClick={
                         ()=> {
-                            setSectionHomepage("")
+                            setSectionHomepage(0)
                         }
                     }
                 >

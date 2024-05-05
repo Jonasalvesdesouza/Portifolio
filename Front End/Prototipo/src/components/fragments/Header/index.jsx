@@ -49,7 +49,7 @@ export const Header = ({ setIsOpen }) => {
                             onClick={() => {
                                 setIsOpen(true)
                                 setRouteLocation(location)
-                                setSectionHomepage("")
+                                setSectionHomepage(0)
                             }}
                         >   
                            {    

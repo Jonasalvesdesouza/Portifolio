@@ -13,7 +13,7 @@ export const NavHomePage = () => {
                         <Button
                             onClick={
                                 ()=> {
-                                    setSectionHomepage("")
+                                    setSectionHomepage(0)
                                 }
                             } 
                         >
@@ -25,7 +25,7 @@ export const NavHomePage = () => {
                         <Button
                             onClick={
                                 ()=> {
-                                    setSectionHomepage("about")
+                                    setSectionHomepage(1)
                                 }
                             } 
                         >
@@ -36,7 +36,7 @@ export const NavHomePage = () => {
                     <li>
                         <Button
                             onClick={
-                                ()=> {setSectionHomepage("workplace")}
+                                ()=> {setSectionHomepage(2)}
                             } 
                         >
                             Workplace
@@ -46,7 +46,7 @@ export const NavHomePage = () => {
                     <li>
                         <Button
                             onClick={
-                                ()=> {setSectionHomepage("contact")}
+                                ()=> {setSectionHomepage(3)}
                             } 
                         >
                             Contact
