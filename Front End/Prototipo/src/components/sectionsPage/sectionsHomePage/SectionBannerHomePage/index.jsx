@@ -6,13 +6,13 @@ import { IoIosArrowDown } from "react-icons/io"
 import { Button } from "../../../fragments"
 import { AppBehaviorContext, UserAdmContext } from "../../../../providers"
 import { useScreenWidth } from "../../../../hooks"
-
+import { smallResolution } from "../../../../config"
 
 export const SectionBannerHomePage = () => {
 
     const {
 
-        setSectionHomepage, 
+        setCurrentCard, 
         screenWidth,
 
     } = useContext(AppBehaviorContext)
@@ -20,6 +20,10 @@ export const SectionBannerHomePage = () => {
     const { profile } = useContext(UserAdmContext)
     
     useScreenWidth()
+   
+    const handleClick = () => {
+        setCurrentCard(1)
+    }
     
     return(
         <div>
@@ -38,14 +42,10 @@ export const SectionBannerHomePage = () => {
                 <img src={ImageJonas} alt="Image Jonas" />
             </div>
             {
-                screenWidth >= 700 ?
+                screenWidth >= smallResolution ?
                 <Button
                     id="button"
-                    onClick={
-                        ()=> {
-                            setSectionHomepage(1)                       
-                        }
-                    }
+                    onClick={handleClick}
                 >
                     <IoIosArrowDown 
                         size={55} color="#1b1f24"

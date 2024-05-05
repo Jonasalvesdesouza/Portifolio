@@ -15,7 +15,7 @@ export const Header = ({ setIsOpen }) => {
 
         location, 
         setRouteLocation, 
-        setSectionHomepage 
+        setCurrentCard 
 
     } = useContext(AppBehaviorContext)
 
@@ -49,7 +49,7 @@ export const Header = ({ setIsOpen }) => {
                             onClick={() => {
                                 setIsOpen(true)
                                 setRouteLocation(location)
-                                setSectionHomepage(0)
+                                setCurrentCard(0)
                             }}
                         >   
                            {    

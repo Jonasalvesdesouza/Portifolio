@@ -1,4 +1,9 @@
-import { useContext, useState, useRef, useEffect} from "react"
+import {
+
+    useContext, 
+    useState,
+
+} from "react"
 
 import { DefaultTemplate, TemplateHomePage } from "../../components/templade"
 import { 
@@ -12,8 +17,14 @@ import {
 
 import { NavModal } from "../../components/fragments"
 import { AppBehaviorContext } from "../../providers"
-import { useScreenWidth, useCardSwipe, useSwitchingsections } from "../../hooks"
 
+import {
+
+    useScreenWidth, 
+    useCardSwipe, 
+
+ } from "../../hooks"
+import { smallResolution } from "../../config"
 
 export const HomePage = () =>{
     const {
@@ -42,16 +53,12 @@ export const HomePage = () =>{
 
     } = useCardSwipe(cards)
 
-
     useScreenWidth()
-
-    
-   useSwitchingsections(cards)
     
     return(
         <>
             {
-                screenWidth < 1  ?
+                screenWidth < smallResolution  ?
                  <DefaultTemplate setIsOpen={setIsOpen}>
                     <div>
                         
@@ -69,7 +76,7 @@ export const HomePage = () =>{
                         onTouchEnd={handleTouchEnd}    
                     >
 
-                       {cards[currentCard]}
+                       { cards[ currentCard ] }
 
                     </div>
                 </TemplateHomePage>

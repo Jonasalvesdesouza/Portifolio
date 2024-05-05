@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { AppBehaviorContext } from "../../../../../providers"
 
 export const SectionReadMyBlogHomePage = () => {
-    const { setSectionHomepage } = useContext(AppBehaviorContext)
+    const { setCurrentCard } = useContext(AppBehaviorContext)
 
     return(
         <div>
@@ -19,7 +19,7 @@ export const SectionReadMyBlogHomePage = () => {
             </p>
             <Link
                 onClick={()=>{
-                    setSectionHomepage(0)
+                    setCurrentCard(0)
                 }}
                 to={"/blog"}
             >

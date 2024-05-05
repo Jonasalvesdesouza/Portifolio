@@ -2,75 +2,44 @@ import { useContext, useEffect, useState } from 'react'
 import { AppBehaviorContext } from '../providers'
 
 export const useCardSwipe = (cards) => {
-  const { currentCard, setCurrentCard  } = useContext(AppBehaviorContext)
-     
-  const [ startY, setStartY ] = useState(null)
-  const [ scrollDirection, setScrollDirection ] = useState(null)
+  const { currentCard, setCurrentCard } = useContext(AppBehaviorContext)
+  const [startY, setStartY] = useState(null)
 
-  
   const handleScroll = (e) => {
-    if (e.deltaY > 0) {
-      setScrollDirection('up');
-    } else if (e.deltaY < 0) {
-      setScrollDirection('down');
-    }
-  };
+    const direction = e.deltaY > 0 ? 'up' : 'down'
+    setCurrentCard((prevCard) => {
+      if (direction === 'down' && prevCard > 0) {
+        return prevCard - 1
+      }
+      if (direction === 'up' && prevCard < cards.length - 1) {
+        return prevCard + 1
+      }
+      return prevCard
+    })
+  }
 
   useEffect(() => {
-    if (scrollDirection === 'down') {
-      handleSwipeDownMouse();
-    } else if (scrollDirection === 'up') {
-      handleSwipeUpMouse();
-    }
-    setScrollDirection(null);
-  }, [scrollDirection]);
-
-  const handleSwipeUpMouse = () => {
-    if (currentCard < cards.length - 1) {
-      setCurrentCard(currentCard + 1);
-    }
-  };
-
-  const handleSwipeDownMouse = () => {
-    if (currentCard > 0) {
-      setCurrentCard(currentCard - 1);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('wheel', handleScroll);
+    window.addEventListener('wheel', handleScroll)
     return () => {
-      window.removeEventListener('wheel', handleScroll);
-    };
-  }, []);
-  
+      window.removeEventListener('wheel', handleScroll)
+    }
+  }, [cards.length])
+
   const handleTouchStart = (e) => {
     setStartY(e.touches[0].clientY)
   }
 
   const handleTouchMove = (e) => {
     const deltaY = e.touches[0].clientY - startY
-    if (deltaY > 50) {
-      handleSwipeDown()
-    } else if (deltaY < -50) {
-      handleSwipeUp()
+    if (deltaY > 50 && currentCard > 0) {
+      setCurrentCard((prevCard) => prevCard - 1)
+    } else if (deltaY < -50 && currentCard < cards.length - 1) {
+      setCurrentCard((prevCard) => prevCard + 1)
     }
   }
 
   const handleTouchEnd = () => {
     setStartY(null)
-  }
-
-  const handleSwipeUp = () => {
-    if (currentCard < cards.length - 1) {
-      setCurrentCard(currentCard + 1)
-    }
-  }
-
-  const handleSwipeDown = () => {
-    if (currentCard > 0) {
-      setCurrentCard(currentCard - 1)
-    }
   }
 
   return {
@@ -79,5 +48,3 @@ export const useCardSwipe = (cards) => {
     handleTouchEnd,
   }
 }
-
-

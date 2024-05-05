@@ -6,7 +6,6 @@ export const AppBehaviorContext = createContext({})
 export const AppBehaviorProvider = ({children}) =>{
     const [ screenWidth, setScreenWidth ] = useState(window.innerWidth)
 
-    const [ sectionHomepage, setSectionHomepage ] = useState(0)
     const [ currentCard, setCurrentCard ] = useState(0)
 
     const location = useLocation().pathname.toLocaleLowerCase()
@@ -29,8 +28,6 @@ export const AppBehaviorProvider = ({children}) =>{
 
                 screenWidth, 
                 setScreenWidth,
-                sectionHomepage, 
-                setSectionHomepage,
                 currentCard, 
                 setCurrentCard,
                 location,

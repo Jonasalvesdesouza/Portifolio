@@ -4,11 +4,12 @@ import { useContext } from "react"
 import { AppBehaviorContext, UserAdmContext } from "../../../../providers"
 import { Link } from "react-router-dom"
 import {  useScreenWidth } from "../../../../hooks"
+import { smallResolution } from "../../../../config"
 
 export const SectionAboutHomePage = () => {
     const {
 
-        setSectionHomepage, 
+        setCurrentCard, 
         screenWidth,
 
     } = useContext(AppBehaviorContext)
@@ -16,6 +17,10 @@ export const SectionAboutHomePage = () => {
     const { profile } = useContext(UserAdmContext)
 
     useScreenWidth()
+    
+    const handleClick = () => {
+        setCurrentCard(2)
+    }
 
     return(
         <div>
@@ -32,9 +37,7 @@ export const SectionAboutHomePage = () => {
 
                 <div>
                     <Link
-                        onClick={()=>{
-                            setSectionHomepage(0)
-                        }}
+                        onClick={handleClick}
                         to={"/curriculum"}
                     >
                         Curriculum
@@ -44,14 +47,10 @@ export const SectionAboutHomePage = () => {
             </div>
             <div>
                 {
-                    screenWidth >= 700 ?
+                    screenWidth >= smallResolution ?
                     <Button
                         id="button"
-                        onClick={
-                            ()=> {
-                                setSectionHomepage(2)           
-                            }
-                        }
+                        onClick={ handleClick }
                     >
                         <IoIosArrowDown 
                             size={55} color="#1b1f24"

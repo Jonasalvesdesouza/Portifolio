@@ -1,5 +1,5 @@
 
-import { useContext } from "react"
+import { useContext, useState } from "react"
 
 import { IoIosArrowUp } from "react-icons/io"
 import { Button } from "../../../fragments"
@@ -8,11 +8,23 @@ import { AppBehaviorContext } from "../../../../providers"
 
 import { FormSendMeEmail } from "../../../fragments/forms"
 import { useScreenWidth } from "../../../../hooks"
+import { smallResolution } from "../../../../config"
 
 export const SectionMeEmail = () => {
-    const { setSectionHomepage, screenWidth  } = useContext(AppBehaviorContext)
+    const {
+
+        setCurrentCard, 
+        screenWidth,
+
+    } = useContext(AppBehaviorContext)
+
+    const [ test, setTest ] = useState("")
 
     useScreenWidth()
+
+    const handleClick = () => {
+        setCurrentCard(0)
+    }
 
     return(
         <div>
@@ -30,14 +42,10 @@ export const SectionMeEmail = () => {
             </div>
 
            { 
-                screenWidth >= 700 ?
+                screenWidth >= smallResolution ?
                 <Button
                     id="button"
-                    onClick={
-                        ()=> {
-                            setSectionHomepage(0)
-                        }
-                    }
+                    onClick={handleClick}
                 >
                     <IoIosArrowUp 
                         size={55} color="#1b1f24"

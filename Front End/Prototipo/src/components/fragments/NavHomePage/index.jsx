@@ -3,7 +3,7 @@ import { Button } from "../Button"
 import { AppBehaviorContext } from "../../../providers/ApplicationBehavior"
 
 export const NavHomePage = () => {
-    const { setSectionHomepage, sectionHomepage } = useContext(AppBehaviorContext)
+    const { setCurrentCard } = useContext(AppBehaviorContext)
     
     return(
         <div>
@@ -13,7 +13,7 @@ export const NavHomePage = () => {
                         <Button
                             onClick={
                                 ()=> {
-                                    setSectionHomepage(0)
+                                    setCurrentCard(0)
                                 }
                             } 
                         >
@@ -25,7 +25,7 @@ export const NavHomePage = () => {
                         <Button
                             onClick={
                                 ()=> {
-                                    setSectionHomepage(1)
+                                    setCurrentCard(1)
                                 }
                             } 
                         >
@@ -36,7 +36,7 @@ export const NavHomePage = () => {
                     <li>
                         <Button
                             onClick={
-                                ()=> {setSectionHomepage(2)}
+                                ()=> {setCurrentCard(2)}
                             } 
                         >
                             Workplace
@@ -46,7 +46,7 @@ export const NavHomePage = () => {
                     <li>
                         <Button
                             onClick={
-                                ()=> {setSectionHomepage(3)}
+                                ()=> {setCurrentCard(3)}
                             } 
                         >
                             Contact

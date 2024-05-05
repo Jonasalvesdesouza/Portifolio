@@ -8,11 +8,21 @@ import { AppBehaviorContext } from "../../../../providers"
 import { SectionMyLatestProjectsHomePage } from "./SectionMyLatestProjects"
 import { SectionReadMyBlogHomePage } from "./SectionReadMyBlog"
 import { useScreenWidth } from "../../../../hooks"
+import { smallResolution } from "../../../../config"
 
 export const SectionWorkplace = () => {
-    const { setSectionHomepage, screenWidth } = useContext(AppBehaviorContext)
+    const {
+
+        setCurrentCard, 
+        screenWidth
+
+    } = useContext(AppBehaviorContext)
 
     useScreenWidth()
+
+    const handleClick = () => {
+        setCurrentCard(3)
+    }
     
     return(
         <div>
@@ -20,14 +30,10 @@ export const SectionWorkplace = () => {
             <SectionReadMyBlogHomePage />
 
             {
-                screenWidth >= 700 ?
+                screenWidth >= smallResolution ?
                 <Button
                     id="button"
-                    onClick={
-                        ()=> {
-                            setSectionHomepage(3)
-                        }
-                    }
+                    onClick={handleClick}
                 >
                     <IoIosArrowDown 
                         size={55} color="#1b1f24"
