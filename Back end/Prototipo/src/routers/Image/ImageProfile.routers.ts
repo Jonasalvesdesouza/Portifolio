@@ -6,7 +6,6 @@ import { userAuth } from "../../middlewares"
 
 
 export const ImageProfileRouter = Router()
-
 container.registerSingleton("ImageProfileServices", ImageProfileServices)
 const imageControllers = container.resolve(ImageProfileControllers)
 

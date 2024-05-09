@@ -22,9 +22,11 @@ export const FormLoginPage = () => {
         reset, 
         formState: { errors },
 
-    } = useForm({
-        resolver: zodResolver(loginFormSchema)
-    })
+    } = useForm(
+        {
+            resolver: zodResolver(loginFormSchema)
+        }
+    )
 
     const onSubmit = (payLoad) => {
 
@@ -38,7 +40,7 @@ export const FormLoginPage = () => {
     }
  
     return(
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={ handleSubmit(onSubmit) }>
 
             <div>
                 <Input
@@ -54,14 +56,16 @@ export const FormLoginPage = () => {
                 />
 
                 <Button 
-                    type="submit">
+                    type="submit"
+                >
         
-                        {loading ? "Loading..." : "Login"}
+                    {loading ? "Loading..." : "Login"}
 
-                        <SlArrowRight
-                            size={20}
-                            color="#e8e9ea"
-                        />
+                    <SlArrowRight
+                        size={20}
+                        color="#e8e9ea"
+                    />
+
                 </Button>
             </div>
 

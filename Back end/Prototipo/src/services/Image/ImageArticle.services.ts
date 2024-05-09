@@ -16,8 +16,9 @@ export class ImageArticleServices {
 
     async create(
 
-        body: typeImage,
+        path: string,
         userId: number,
+        id: number
 
     ): Promise <typeExpectationImage> {
 
@@ -33,23 +34,14 @@ export class ImageArticleServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
-        }
-
-        const latestArticle = await prisma.article.findFirst({
-            where: { profileId: profile.id },
-            orderBy: { updatedAt: 'desc' }
-        })
-        
-        if (!latestArticle) {
-            throw new AppError(404, 'No Job Experience found for this profile')
+            throw new AppError(404, "Profile does not match user")
         }
 
         const data = await prisma.imageArticle.create(
             {
                 data: {
-                    ...body,
-                    articleId: latestArticle.id
+                    path,
+                    articleId: id
                 } 
             }
         )
@@ -79,7 +71,7 @@ export class ImageArticleServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
         
         
@@ -102,13 +94,13 @@ export class ImageArticleServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
         const image = await prisma.imageArticle.findFirst()
 
         if (!image) {
-            throw new AppError(404, "Image not Foud");
+            throw new AppError(404, "Image not Foud")
         }
 
         return await prisma.imageArticle.delete(

@@ -42,7 +42,7 @@ export class ArticleServices {
         )
         
         if (article) {
-            throw new AppError(404, "Article already exists");
+            throw new AppError(404, "Article already exists")
         }
 
         const data = await prisma.article.create(
@@ -106,7 +106,7 @@ export class ArticleServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
         const article = await prisma.article.findFirst(

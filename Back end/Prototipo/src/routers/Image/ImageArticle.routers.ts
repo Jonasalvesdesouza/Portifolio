@@ -1,3 +1,5 @@
+import multer from "multer"
+
 import { Router } from "express"
 import { container } from "tsyringe"
 import { ImageArticleServices } from "../../services"
@@ -7,12 +9,13 @@ import { userAuth } from "../../middlewares"
 
 export const ImageArticleRouter = Router()
 
+
 container.registerSingleton("ImageArticleServices", ImageArticleServices)
 const imageControllers = container.resolve(ImageArticleControllers)
 
 ImageArticleRouter.post(
 
-    "/image",
+    "/image/:id",
     userAuth.VerifyToken,
     (req, res) => imageControllers.create(req, res) 
 

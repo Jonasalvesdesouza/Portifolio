@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { Button } from "../Button"
-import { AppBehaviorContext } from "../../../providers/ApplicationBehavior"
+import { AppBehaviorContext } from "../../../providers/ApplicationBehaviorContext"
 
 export const NavHomePage = () => {
     const { setCurrentCard } = useContext(AppBehaviorContext)

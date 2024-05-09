@@ -45,8 +45,7 @@ CREATE TABLE "AddressProfile" (
 -- CreateTable
 CREATE TABLE "ImageProfile" (
     "id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
-    "data" BYTEA NOT NULL,
+    "path" TEXT NOT NULL,
     "profileId" INTEGER,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -137,7 +136,7 @@ CREATE TABLE "AddressJobExperience" (
 CREATE TABLE "Education" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
-    "couser" TEXT NOT NULL,
+    "course" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "initialDate" TEXT NOT NULL,
     "endDate" TEXT NOT NULL,
@@ -184,8 +183,7 @@ CREATE TABLE "Project" (
 -- CreateTable
 CREATE TABLE "ImageProject" (
     "id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
-    "data" BYTEA NOT NULL,
+    "path" TEXT NOT NULL,
     "projectId" INTEGER,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -209,8 +207,7 @@ CREATE TABLE "Article" (
 -- CreateTable
 CREATE TABLE "ImageArticle" (
     "id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
-    "data" BYTEA NOT NULL,
+    "path" TEXT NOT NULL,
     "articleId" INTEGER,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -223,7 +220,7 @@ CREATE TABLE "Message" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "title" TEXT NOT NULL,
+    "title" TEXT,
     "description" TEXT NOT NULL,
     "profileId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,

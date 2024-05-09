@@ -4,8 +4,8 @@ import { ProjectCard } from "../ProjectCard"
 export const ResultProjects = () => {
     const projectsList = useFilterProjects()
 
-    const independentProjects = useFilterSubCategory(projectsList, "Independent Projects")
-    const studyProjects = useFilterSubCategory(projectsList, "Study Projects")
+    const independentProjects = useFilterSubCategory(projectsList, "Independent")
+    const studyProjects = useFilterSubCategory(projectsList, "Study")
 
     return(
         <div>  

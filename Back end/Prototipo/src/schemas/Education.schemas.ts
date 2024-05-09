@@ -4,7 +4,7 @@ export const educationSchema = z.object(
     {
         id: z.number().positive(),
         title: z.string().min(1),
-        couser: z.string().min(1),
+        course: z.string().min(1),
         description: z.string().min(1),
         initialDate: z.string(),
         endDate: z.string(),

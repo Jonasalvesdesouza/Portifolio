@@ -43,7 +43,7 @@ export class HobbyServices {
         )
 
         if (hobby) {
-            throw new AppError(404, "Hobby already exists");
+            throw new AppError(404, "Hobby already exists")
         }
 
         const data = await prisma.hobby.create(
@@ -97,7 +97,7 @@ export class HobbyServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
         const hobby = await prisma.hobby.findFirst(

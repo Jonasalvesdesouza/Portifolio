@@ -16,7 +16,7 @@ export class ImageProfileServices {
 
     async create(
 
-        body: typeImage,
+        path: string,
         userId: number,
 
     ): Promise <typeExpectationImage> {
@@ -33,27 +33,27 @@ export class ImageProfileServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
         const existingImage = await prisma.imageProfile.findFirst({
             where: { profileId: profile.id },
-          });
+          })
 
           if (existingImage) {
-            throw new AppError(409, "Image already exists for this profile");
+            throw new AppError(409, "Image already exists for this profile")
           }
 
         const data = await prisma.imageProfile.create(
             {
                 data: {
-                    ...body,
+                    path,
                     profileId: profile.id
                 } 
             }
         )
 
-        return ImageReturnSchema.parse(data)   
+        return data   
     }
 
     async findFirst() {
@@ -76,7 +76,7 @@ export class ImageProfileServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
         
         
@@ -87,7 +87,7 @@ export class ImageProfileServices {
             }
         )
 
-        return ImageReturnSchema.parse(data)   
+        return data
     }
 
     async delete(userId: number) {
@@ -99,13 +99,13 @@ export class ImageProfileServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
         const image = await prisma.imageProfile.findFirst()
 
         if (!image) {
-            throw new AppError(404, "Image not Foud");
+            throw new AppError(404, "Image not Foud")
         }
 
         return await prisma.imageProfile.delete(

@@ -1,13 +1,15 @@
 import { SlArrowRight } from "react-icons/sl"
-import { useLinkProject } from "../../../../../../hooks"
+import { useLinkProject, useRenderImage } from "../../../../../../hooks"
 
-export const ProjectCard = ({project}) => {    
- 
+export const ProjectCard = ({project}) => {
+
+const urlImage = useRenderImage(project)
+
     return(
         <li>
             <div>
                 <div>
-                    <img src={`${project.image}`} alt={`${project.title}`} />
+                    <img src={urlImage} alt={`${project.title}`} />
                 </div>
                 <div>
                     <h3>{`${project.title}`}</h3>

@@ -8,10 +8,10 @@ export const addressEducationSchema = z.object(
         city: z.string().min(1),
         state: z.string().min(1),
 
-        zipCode: z.string().min(1),
-        road: z.string().min(1),
-        neighborhood: z.string().min(1),
-        number: z.number(),
+        zipCode: z.string().min(1).nullish(),
+        road: z.string().min(1).nullish(),
+        neighborhood: z.string().min(1).nullish(),
+        number: z.number().nullish(),
 
         educationId: z.number().positive().nullish()
     }

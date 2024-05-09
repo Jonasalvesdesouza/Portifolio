@@ -11,7 +11,8 @@ export const Input = forwardRef(({ label, placeholder, error, ...rest }, ref) =>
                     {...rest} 
                     ref={ref}
                     placeholder={placeholder}
-                />
+                >
+                </input>
             </div>
 
             { error ? <p>{error.message}</p> : null }        

@@ -107,12 +107,12 @@ export class EducationAddressServices {
     async delete(id: number): Promise<void> {
         const address = await prisma.addressJobExperience.findUnique({
             where: { id }
-        });
+        })
     
         if (!address) {
-            throw new AppError(404, "Address not found");
+            throw new AppError(404, "Address not found")
         }
     
-        await prisma.addressJobExperience.delete({ where: { id } });
+        await prisma.addressJobExperience.delete({ where: { id } })
     }
 }

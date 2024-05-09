@@ -6,9 +6,9 @@ import { ProjectCard } from "../ProjectCard"
 export const AllProjects = () => {
     const { projectsList } = useContext(UserAdmContext)
 
-    const independentProjects = useFilterSubCategory(projectsList, "Independent Projects")
-    const studyProjects = useFilterSubCategory(projectsList, "Study Projects")
-
+    const independentProjects = useFilterSubCategory(projectsList, "Independent")
+    const studyProjects = useFilterSubCategory(projectsList, "Study")
+    
     return(
         <div>  
             <div>

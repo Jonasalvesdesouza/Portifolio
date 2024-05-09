@@ -10,7 +10,8 @@ import {
     ProjectsPage, 
     BlogPage,
     CurriculumPage,
-    ArticlePage
+    ArticlePage,
+    ProfilePage
     
 } from "../../pages"
 import { LoginPage } from "../../pages/LoginPage"
@@ -31,7 +32,6 @@ export const  RouterMain = () => {
                 <Route path="/articlepage" element={ <ArticlePage /> } />
                 <Route path="/login" element={ <LoginPage /> } />
             </Route>
-
 
             <Route element={ <PrivateRoute /> }>
                 <Route path="/dashboard" element={ <DashboardPage /> } />

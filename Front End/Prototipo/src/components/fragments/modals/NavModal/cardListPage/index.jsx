@@ -5,16 +5,19 @@ import { AppBehaviorContext } from "../../../../../providers"
 export const CardListPage = ({page}) => {
     const { resetStadeCategorys } = useContext(AppBehaviorContext)
 
+    const handleClick = () => {
+        return resetStadeCategorys()
+    }
+
     return(
-        <ul>
-            <li>
-                <Link
-                    onClick={()=>{ resetStadeCategorys()}} 
-                    to={page.router}
-                >
-                    {page.name}
-                </Link>
-            </li>
-        </ul>
+        <li>
+            <Link
+                onClick={handleClick} 
+                to={page.router}
+            >
+                {page.name}
+            </Link>
+        </li>
+
     )
 }

@@ -17,7 +17,6 @@ const Controllers = container.resolve(MessageControllers)
 MessageRouter.post(
 
     "/:id",
-    userAuth.VerifyToken,
     ValidateBody.execute(MessageSchema),
     (req, res) => Controllers.create(req, res) 
 

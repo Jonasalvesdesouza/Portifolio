@@ -18,13 +18,15 @@ export class ImageArticleControllers {
         res: Response
 
     ): Promise <Response> {
-        const userId = res.locals.decode.id
-
-        console.dir(req.body, { depth: true })
+        const userId = Number(res.locals.decode.id)
+        const articlesId = Number(req.params)
 
         const response = await this.imageServices.create(
+
             req.body,
-            Number(userId)
+            userId,
+            articlesId
+
         )
 
         return res.status(201).json(response)

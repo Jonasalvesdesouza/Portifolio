@@ -48,4 +48,15 @@ export class ProfileControllers {
         return res.status(200).json(response)
     }
 
+    async delete(
+
+        req: Request, 
+        res: Response
+
+    ): Promise<Response> {
+        await this.profileService.delete(Number(req.params.id))
+        
+        return res.status(204).json()
+    }
+
 }

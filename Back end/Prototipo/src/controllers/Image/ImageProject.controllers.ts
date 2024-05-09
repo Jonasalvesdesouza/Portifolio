@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe"
 import { ImageProjectServices } from "../../services"
 import { Request, Response } from "express"
+import { AppError } from "../../erros";
 
 @injectable()
 export class ImageProjectControllers {
@@ -18,16 +19,23 @@ export class ImageProjectControllers {
         res: Response
 
     ): Promise <Response> {
-        const userId = res.locals.decode.id
+      
+        const userId = Number(res.locals.decode.id)
+        const projectIdId = Number(req.params.id)
+        const path = req.file ? req.file.path : undefined
 
-        console.dir(req.body, { depth: true })
+        if (!path) {
+            return res.status(400).json({ error: 'Nenhum arquivo foi enviado na requisição.' });
+        }
 
         const response = await this.imageServices.create(
-            req.body,
-            Number(userId)
+            userId, 
+            projectIdId, 
+            path
         )
 
         return res.status(201).json(response)
+         
     }
 
     async update(
@@ -36,11 +44,18 @@ export class ImageProjectControllers {
         res: Response
 
     ): Promise <Response> {
-        const userId = res.locals.decode.id
+        const userId = Number(res.locals.decode.id)
+        const imageId = Number(req.params.id)
+        const path = req.file ? req.file.path : undefined
+
+        if (!path) {
+            return res.status(400).json({ error: 'Nenhum arquivo foi enviado na requisição.' });
+        }
 
         const response = await this.imageServices.Update(
-            req.body,
-            Number(userId)
+            path,
+            userId,
+            imageId
         )
 
         return res.status(200).json(response)

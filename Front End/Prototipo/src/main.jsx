@@ -1,18 +1,23 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import {
+
+  QueryClient, 
+  QueryClientProvider
+
+} from "@tanstack/react-query"
+
 import { BrowserRouter } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 
 
 import { App } from "./App.jsx"
 import { 
+
   AppBehaviorProvider, 
-  ArticlesProvider, 
-  MessageMeProvider, 
-  ProjectsProvider, 
-  UserAdmProvider 
+  UserAdmProvider, 
+
 } from "./providers/index.js"
 
 const queryClient = new QueryClient()
@@ -25,15 +30,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
         <UserAdmProvider>
           <AppBehaviorProvider>
-            <MessageMeProvider>
-            
-              <ProjectsProvider>
-                <ArticlesProvider>
-                  <App />
-                </ArticlesProvider>
-              </ProjectsProvider>
 
-            </MessageMeProvider>
+            <App />
+                  
           </AppBehaviorProvider>
         </UserAdmProvider>
         

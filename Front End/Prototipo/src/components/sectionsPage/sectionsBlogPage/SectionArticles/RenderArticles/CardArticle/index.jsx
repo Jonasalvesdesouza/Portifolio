@@ -1,4 +1,3 @@
-import { useContext } from "react"
 import { Link } from "react-router-dom"
 
 import { 
@@ -6,15 +5,11 @@ import {
     useCalculateReadingTime, 
     useFormtDate, 
     useLimitedDescription, 
-    useSaveArticlePageRender 
-
 } from "../../../../../../hooks"
 
-import { ArticlesContext, UserAdmContext } from "../../../../../../providers"
 
 export const CardArticle = ({article}) => {
-    const { setData, setIdArticle } = useContext(ArticlesContext)
-
+   
     const dateArticle = useFormtDate(article)
     
     const maxLength = 250
@@ -22,7 +17,10 @@ export const CardArticle = ({article}) => {
 
     const timeText = useCalculateReadingTime(article.description)
     
-
+    const handleClick = () => {
+        localStorage.setItem("@IDARTICLE", article.id)
+    }
+    
     return(
         <li>
             <div>
@@ -33,9 +31,7 @@ export const CardArticle = ({article}) => {
                     <div>
                         <Link
                             to={"/articlepage"}
-                            onClick={()=>{
-                                localStorage.setItem("@IDARTICLE", article.id)
-                            }}
+                            onClick={handleClick}
                         >
                             <h2>
                                 {article.title}
@@ -48,9 +44,7 @@ export const CardArticle = ({article}) => {
                     <div>
                         <Link
                             to={"/articlepage"}
-                            onClick={()=>{
-                                useSaveArticlePageRender(article, setData)
-                            }}
+                            onClick={handleClick}
                         >
                             <img src={article.image} alt={article.title} />
                         </Link>

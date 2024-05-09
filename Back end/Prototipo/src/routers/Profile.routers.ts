@@ -16,8 +16,8 @@ const profileControllers = container.resolve(ProfileControllers)
 
 ProfileRouter.post(
     "/",
-    userAuth.VerifyToken,
     ValidateBody.execute(ProfileSchema),
+    userAuth.VerifyToken,
     (req, res) => profileControllers.create(req, res)
 )
 
@@ -27,10 +27,18 @@ ProfileRouter.get(
 )
 
 ProfileRouter.patch(
-    "/update/:id",
+    "/update",
     userAuth.VerifyToken,
     ValidateBody.execute(ProfileUpdateSchema),
     (req, res) => profileControllers.update(req, res)
+)
+
+ProfileRouter.delete(
+
+    "/:id",
+    userAuth.VerifyToken,
+    (req, res) => profileControllers.delete(req, res) 
+
 )
 
 ProfileRouter.use("/", ContactRouter)

@@ -42,7 +42,7 @@ export class SkillServices {
         )
         
         if (skill) {
-            throw new AppError(404, "Skill already exists");
+            throw new AppError(404, "Skill already exists")
         }
 
         const data = await prisma.skill.create(
@@ -88,7 +88,7 @@ export class SkillServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
         const skill = await prisma.skill.findFirst(

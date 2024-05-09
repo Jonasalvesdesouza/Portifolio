@@ -54,14 +54,14 @@ export const HomePage = () =>{
     } = useCardSwipe(cards)
 
     useScreenWidth()
-    
+
     return(
         <>
             {
                 screenWidth < smallResolution  ?
                  <DefaultTemplate setIsOpen={setIsOpen}>
                     <div>
-                        
+
                         <SectionBannerHomePage />  
                         <SectionAboutHomePage /> 
                         <SectionWorkplace />
@@ -83,9 +83,13 @@ export const HomePage = () =>{
 
             }
                 {
-                    isOpen ? <NavModal 
+                    isOpen ? 
+
+                    <NavModal 
                         setIsOpen={setIsOpen}
-                    /> : null
+                    /> : 
+                    
+                    null
                 }
         </>
     )

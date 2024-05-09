@@ -18,13 +18,19 @@ export class ImageProfileControllers {
         res: Response
 
     ): Promise <Response> {
-        const userId = res.locals.decode.id
+        const userId = Number(res.locals.decode.id)
+        const requestImages = req.files as Express.Multer.File[]
 
-        console.dir(req.body, { depth: true })
+        const images = requestImages.map((image) => {
+            return {
+              path: image.filename,
+            };
+          });
+      
 
-        const response = await this.imageServices.create(
-            req.body,
-            Number(userId)
+          const response = await this.imageServices.create(
+              images[0].path,
+              userId,
         )
 
         return res.status(201).json(response)

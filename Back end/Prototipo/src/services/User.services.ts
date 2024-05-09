@@ -41,9 +41,9 @@ export class UserServices {
                 ...body,
                 password: hashedPassword,
             },
-        });
+        })
 
-        return UserReturnSchema.parse(newUser);
+        return UserReturnSchema.parse(newUser)
     }
 
     async login(
@@ -161,7 +161,7 @@ export class UserServices {
         )
 
         if (!user) {
-            throw new AppError(404, "User not found");
+            throw new AppError(404, "User not found")
         }
 
         return UserReturnSchema.parse(user)

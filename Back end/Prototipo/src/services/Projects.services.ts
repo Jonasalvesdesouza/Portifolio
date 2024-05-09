@@ -42,7 +42,7 @@ export class ProjectsServices {
         )
         
         if (project) {
-            throw new AppError(404, "Project already exists");
+            throw new AppError(404, "Project already exists")
         }
 
         const data = await prisma.project.create(
@@ -106,7 +106,7 @@ export class ProjectsServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
         const project = await prisma.project.findFirst(

@@ -18,8 +18,6 @@ export const SectionMeEmail = () => {
 
     } = useContext(AppBehaviorContext)
 
-    const [ test, setTest ] = useState("")
-
     useScreenWidth()
 
     const handleClick = () => {

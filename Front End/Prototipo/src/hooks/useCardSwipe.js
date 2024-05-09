@@ -43,8 +43,10 @@ export const useCardSwipe = (cards) => {
   }
 
   return {
+
     handleTouchStart,
     handleTouchMove,
     handleTouchEnd,
+    
   }
 }

@@ -4,3 +4,5 @@ export {
     middleResolution 
     
 } from "./ConfigResolution"
+
+export { ConfigServerUrl } from "./ConfigServerUrl"

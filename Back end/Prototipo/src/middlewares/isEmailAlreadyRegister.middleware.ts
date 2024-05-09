@@ -18,7 +18,7 @@ export class isEmailAlreadyRegister{
 
     ){
         if (!req.body.email || typeof req.body.email !== "string") {
-            throw new AppError(400, "Invalid email provided");
+            throw new AppError(400, "Invalid email provided")
         }
 
         const user = await prisma.user.findFirst({ where: { email: req.body.email }})

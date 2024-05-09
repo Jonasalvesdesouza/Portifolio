@@ -6,10 +6,10 @@ import { SlArrowRight } from "react-icons/sl"
 
 import { Button, Input, TextArea } from "../.."
 import { sendMeEmailFormSchema } from "../../../../schema"
-import { MessageMeContext } from "../../../../providers/MessageMeContext"
+import { UserAdmContext } from "../../../../providers"
 
 export const FormSendMeEmail = () => {
-    const { messageMeRegister } = useContext(MessageMeContext)
+    const { messageMeRegister } = useContext(UserAdmContext)
     const [ loading, setLoading ] = useState(false)
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
@@ -28,7 +28,7 @@ export const FormSendMeEmail = () => {
                     label="You Name."
                     placeholder="Enter your name"
                     type="text"
-                    error={errors.name}
+                    error={errors.title}
                     {...register("name")} 
                 />
                 <Input
@@ -45,7 +45,7 @@ export const FormSendMeEmail = () => {
                         cols={30}
                         row={5}
                         error={errors.message}
-                        {...register("message")}
+                        {...register("description")}
                     />
                 </div>
                 <div>

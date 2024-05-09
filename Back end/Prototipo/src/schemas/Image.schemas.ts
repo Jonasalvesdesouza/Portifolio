@@ -21,19 +21,7 @@ export const imageSchema = z.object(
   {
 
     id: z.number().positive(),
-    name: z.string().min(1),
-    data: z.custom((file) => {
-      if (!file || !file.path) return false; 
-      const stats = fs.statSync(file.path);
-      const fileSize = stats.size;
-      const fileType = file.type;
-      return fileSize <= MaxFileSize && AcceptedImageTypes.includes(fileType);
-    }, {
-      message: "Invalid image file."
-    }).refine(isBuffer, { 
-      message: "Data must be a Buffer.",
-      path: ["data"]
-    })
+    path: z.string().min(1)
   }
 
 )
@@ -49,8 +37,7 @@ export const ImageReturnSchema = imageSchema.pick(
 
   {
     id:true,
-    name: true,
-    data: true
+    path: true
   }
   
 )

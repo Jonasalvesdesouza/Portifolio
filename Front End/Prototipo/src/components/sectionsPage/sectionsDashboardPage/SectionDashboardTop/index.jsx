@@ -1,18 +1,31 @@
+import { useContext } from "react"
 import { Button } from "../../../fragments"
-import { NavDashboard } from "./DashboardNav"
+import { DashboardNav } from "./DashboardNav"
+import { AppBehaviorContext } from "../../../../providers"
 
 export const SectionTopDashboard = () => {
+    const { setIsOpenDashboard } = useContext(AppBehaviorContext)
+
+    const handleClick = () => {
+        setIsOpenDashboard(true)
+    }
+    
+    const sectionDashboard = localStorage.getItem("@SECTIONDASHBOARD") 
+
     return(
         <div>
             <div>
-                <NavDashboard />
+                <DashboardNav />
                 <div>
-                    <Button
-                        onClick={()=>{
-                        }}
-                    >
-                        ADD
-                    </Button>
+                    {
+                        sectionDashboard == 7 ? null:
+                        <Button
+                            onClick={ handleClick }
+                        >
+                            ADD
+                        </Button>
+
+                    }
                 </div>               
             </div>
         </div>

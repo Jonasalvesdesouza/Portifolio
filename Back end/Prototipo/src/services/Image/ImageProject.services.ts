@@ -1,4 +1,3 @@
-import { Request } from "express"
 import { prisma } from "../../database/prisma"
 import { AppError } from "../../erros"
 
@@ -16,11 +15,11 @@ export class ImageProjectServices {
 
     async create(
 
-        body: typeImage,
         userId: number,
+        projectIdId: number,
+        path: string
 
     ): Promise <typeExpectationImage> {
-
 
         if (!userId) {
             throw new AppError(409, "User ID is required")
@@ -33,28 +32,24 @@ export class ImageProjectServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
-        const latestProject = await prisma.project.findFirst({
-            where: { profileId: profile.id },
-            orderBy: { updatedAt: 'desc' }
-        })
-        
-        if (!latestProject) {
-            throw new AppError(404, 'No Job Experience found for this profile')
-        }
+        if (!projectIdId) {
+            throw new AppError(404, "Id not foud")
 
+        }
+     
         const data = await prisma.imageProject.create(
             {
-                data: {
-                    ...body,
-                    projectId: latestProject.id
-                } 
+                data: { 
+                    path: path,
+                    projectId: projectIdId 
+                }
             }
         )
 
-        return ImageReturnSchema.parse(data)   
+        return data   
     }
 
     async getOne(id: number) {
@@ -67,8 +62,9 @@ export class ImageProjectServices {
 
     async Update(
 
-        body: typeUpdateImage,
-        userId: number
+        path: string,
+        userId: number,
+        imageId: number
     
     ): Promise <typeUpdateImageExpect>{
 
@@ -79,18 +75,19 @@ export class ImageProjectServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
         
+        const object = {path}
         
         const data = await prisma.imageProject.update(
             {
-                where: { id: profile.id },
-                data: body
+                where: { id: imageId },
+                data: object
             }
         )
 
-        return ImageReturnSchema.parse(data)   
+        return data   
     }
 
     async delete(userId: number) {
@@ -102,13 +99,13 @@ export class ImageProjectServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
         const image = await prisma.imageProject.findFirst()
 
         if (!image) {
-            throw new AppError(404, "Image not Foud");
+            throw new AppError(404, "Image not Foud")
         }
 
         return await prisma.imageProject.delete(
@@ -118,4 +115,5 @@ export class ImageProjectServices {
         )
 
     }
+    
 }

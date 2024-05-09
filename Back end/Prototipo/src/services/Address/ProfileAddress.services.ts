@@ -30,7 +30,7 @@ export class ProfileAddressServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
         const address = await prisma.addressProfile.findFirst(

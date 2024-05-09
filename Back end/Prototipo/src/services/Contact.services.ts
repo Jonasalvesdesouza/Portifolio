@@ -1,5 +1,5 @@
 import { prisma } from "../database/prisma"
-import { AppError } from "../erros";
+import { AppError } from "../erros"
 import {
 
     ContactReturnSchema,
@@ -31,7 +31,7 @@ export class ContactServices {
         
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
         const contact = await prisma.contact.findFirst(
@@ -41,7 +41,7 @@ export class ContactServices {
         )
 
         if (contact) {
-            throw new AppError(404, "Not foud");
+            throw new AppError(404, "Not foud")
         }
 
         
@@ -80,7 +80,7 @@ export class ContactServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
         const contact = await prisma.contact.findFirst(
@@ -90,12 +90,12 @@ export class ContactServices {
         )
 
         if (!contact) {
-            throw new AppError(404, "Not foud")
+            throw new AppError(404, "Contact not foud")
         }
         
         const data = await prisma.contact.update(
             {
-                where: { id: profile.id },
+                where: { id: contact.id },
                 data: body
             }
         )

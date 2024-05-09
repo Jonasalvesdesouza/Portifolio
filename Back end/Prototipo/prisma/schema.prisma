@@ -67,8 +67,7 @@ model AddressProfile{
 
 model ImageProfile{
   id Int @id @default(autoincrement())
-  name String
-  data Bytes
+  path String
 
   profileId Int? @unique
 
@@ -215,8 +214,7 @@ model Project{
 
 model ImageProject{
   id Int @id @default(autoincrement())
-  name String
-  data Bytes
+  path String
 
   projectId Int? @unique
 
@@ -243,8 +241,7 @@ model Article{
 
 model ImageArticle{
   id Int @id @default(autoincrement())
-  name String
-  data Bytes
+  path String
 
   articleId Int? @unique
 
@@ -259,7 +256,7 @@ model Message{
   id Int @id @default(autoincrement())
   name String
   email String
-  title String
+  title String?
   description String
   profileId Int
 

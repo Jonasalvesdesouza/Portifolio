@@ -91,7 +91,7 @@ export class JobExperienceServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
         const jobExperience = await prisma.jobExperience.findFirst(

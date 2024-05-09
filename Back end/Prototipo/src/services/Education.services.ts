@@ -42,7 +42,7 @@ export class EducationServices {
         )
         
         if (education) {
-            throw new AppError(404, "Education already exists");
+            throw new AppError(404, "Education already exists")
         }
 
         const data = await prisma.education.create(
@@ -103,7 +103,7 @@ export class EducationServices {
         )
 
         if (!profile) {
-            throw new AppError(404, "Profile does not match user");
+            throw new AppError(404, "Profile does not match user")
         }
 
         const education = await prisma.education.findFirst(

@@ -1,6 +1,7 @@
 import axios from "axios"
+import { ConfigServerUrl } from "../config"
 
 export const api = axios.create({
-    baseURL: "http://localhost:3500/",
+    baseURL: ConfigServerUrl,
     timeout: 5 * 1000 
 })

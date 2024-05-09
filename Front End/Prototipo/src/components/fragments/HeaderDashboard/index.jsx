@@ -5,16 +5,32 @@ import YellowLogo from "../../../assets/YellowLogo.svg"
 import { Button } from "../Button"
 import { UserAdmContext } from "../../../providers"
 
-export const HeaderDashboard = () =>{
-    const { userLogout } = useContext(UserAdmContext)
+export const HeaderDashboard = ({ setIsOpen }) =>{
+    const {
+
+        userLogout, 
+        profile, 
+        setEditProfile,
+        setEditContactProfile
+
+    } = useContext(UserAdmContext)
+
+    const handleClick = () => {
+        setIsOpen(true)
+		setEditProfile(profile)
+        setEditContactProfile(profile.contact)
+    }
      
     return(
         <header>
+
             <div>
                 <img src={YellowLogo} alt="Logo Jonas" />
             </div>
             <div>
-               <Button >
+               <Button
+                    onClick={handleClick}
+                >
                     Edit Profile
                </Button>
 
@@ -22,6 +38,7 @@ export const HeaderDashboard = () =>{
                     Logout
                </Button>
             </div>
+            
         </header>
     )
 }

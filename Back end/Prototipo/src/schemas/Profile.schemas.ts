@@ -30,7 +30,6 @@ export const profileSchema = z.object(
 
         contactId: z.number().positive().nullable(),
         anddressId: z.number().positive().nullish(),
-        imageId: z.number().positive().nullish(), 
         
         socialMedia: z.array(socialMediaSchema).nullish(),
         hobbies: z.array(hobbySchema).nullish(),
@@ -48,8 +47,7 @@ export const ProfileSchema = profileSchema.pick(
         profession: true,
         presentation: true,
         about: true,
-        bio: true,
-        userId: true
+        bio: true,  
     }
 )
 
@@ -60,7 +58,6 @@ export const ProfileFullSchema = profileSchema.omit(
         userId: true,
         contactId: true,
         anddressId: true,
-        imageId: true,
     }
 ).extend(
     {   
