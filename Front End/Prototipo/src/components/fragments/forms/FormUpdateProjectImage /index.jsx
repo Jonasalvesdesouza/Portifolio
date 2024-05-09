@@ -14,7 +14,7 @@ import {
 
 } from "../../index"
 
-export const FormUpdateProjectImage = () => {
+export const FormUpdateProjectImage = ({setIsopenUpdateImage}) => {
     const  [ loading, setLoading ]  = useState(false)
 
     const { projectImageUpdate } = useContext(UserAdmContext)
@@ -38,7 +38,8 @@ export const FormUpdateProjectImage = () => {
 
             formData, 
             setLoading, 
-            reset
+            reset,
+            setIsopenUpdateImage
 
         )
     }
@@ -54,7 +55,6 @@ export const FormUpdateProjectImage = () => {
                     accept=".png, .svg, .jpeg, .jpg"
                     error={errors.path}
                     {...register("path")}
-                      /* onChange={(e) => console.log(e.target.files)} */
                 />
                
                

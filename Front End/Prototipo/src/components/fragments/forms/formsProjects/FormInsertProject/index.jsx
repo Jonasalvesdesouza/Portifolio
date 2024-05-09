@@ -48,6 +48,7 @@ export const FormInsertProject = ({ setIsOpenDashboard }) => {
             payLoad, 
             setLoading, 
             reset,
+            setIsOpenDashboard
         )
     }
 

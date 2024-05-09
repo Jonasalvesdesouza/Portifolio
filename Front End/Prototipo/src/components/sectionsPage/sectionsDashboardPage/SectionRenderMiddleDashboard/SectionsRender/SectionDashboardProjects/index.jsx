@@ -40,7 +40,7 @@ export const SectionDashboardProjects = () => {
             {
                 isOpenDashboard === true ? 
                 <InsertProjectModal 
-                    setIsOpenDashboard={setIsOpenDashboard}
+                setIsOpenDashboard={setIsOpenDashboard}
                 /> :
                 null
             }

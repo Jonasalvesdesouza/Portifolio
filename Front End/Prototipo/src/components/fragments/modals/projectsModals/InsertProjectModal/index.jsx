@@ -2,8 +2,6 @@ import { IoCloseOutline } from "react-icons/io5"
 
 import { useKeydown, useOutclick } from "../../../../../hooks"
 import { Button } from "../../../Button"
-import { useContext } from "react"
-import { AppBehaviorContext } from "../../../../../providers"
 import { FormInsertProject } from "../../../forms"
 
 export const InsertProjectModal = ({ setIsOpenDashboard }) => {

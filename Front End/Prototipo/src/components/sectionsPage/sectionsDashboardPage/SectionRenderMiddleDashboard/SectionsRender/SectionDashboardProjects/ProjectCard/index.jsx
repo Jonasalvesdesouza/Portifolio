@@ -12,11 +12,10 @@ import {
 
 } from "../../../../../../fragments"
 
-import { AppBehaviorContext, UserAdmContext } from "../../../../../../../providers"
+import { UserAdmContext } from "../../../../../../../providers"
 import { useStateImage } from "../../../../../../../hooks"
 
 export const ProjectCard = ( { project } ) => {
-
     const {
 
         setEditProjects, 
@@ -25,36 +24,13 @@ export const ProjectCard = ( { project } ) => {
 
     } = useContext(UserAdmContext)
 
-    const { imageStade } = useContext(AppBehaviorContext)
-
     const [ loading, setLoading ] = useState(false)
     const [ isOpen, setIsOpen ] = useState(false)
 
     const [ isOpenInsertImage, setIsOpenInsertImage ] = useState(false)
     const [ isOpenUpdateImage, setIsopenUpdateImage ] = useState(false)
 
-    const test = useStateImage(project)
-    
-    const hancleCkickEditProjects = () => {
-        setIsOpen(true)
-        setEditProjects(project)
-    }
-
-    const hancleCkickInsertImage = () => {
-        setIsOpenInsertImage(true)
-        setProject(project)
-    }
-
-    const hancleCkickUpdateImage = () => {
-        setIsopenUpdateImage(true)
-        setProject(project)
-    }
-    
-    const hancleCkickProjectDelete = () => {
-        projectDelete(project.id, setLoading)
-    }
-    
-    console.log(project.image)
+    const imageExists = useStateImage(project)
 
     return(
         <>
@@ -69,7 +45,12 @@ export const ProjectCard = ( { project } ) => {
                         </p>
 
                         <Button
-                            onClick={hancleCkickEditProjects}
+                            onClick={
+                                ()=>{
+                                    setIsOpen(true)
+                                    setEditProjects(project)
+                                }
+                            }
                         >
                             <BiPencil
                                 size={18}
@@ -80,9 +61,14 @@ export const ProjectCard = ( { project } ) => {
                         
 
                         {
-                           test == false ?
+                           imageExists == false ?
                             <Button
-                                onClick={hancleCkickInsertImage}
+                                onClick={
+                                    ()=>{
+                                        setIsOpenInsertImage(true)
+                                        setProject(project)
+                                    }
+                                }
                             >
                                 <BiImageAdd 
                                     size={18}
@@ -90,7 +76,12 @@ export const ProjectCard = ( { project } ) => {
                                 />
                             </Button> :
                             <Button
-                                onClick={hancleCkickUpdateImage}
+                                onClick={
+                                    () => {
+                                        setIsopenUpdateImage(true)
+                                        setProject(project)
+                                    }
+                                }
                             >
                             <BiImage 
                                 size={18}
@@ -101,7 +92,11 @@ export const ProjectCard = ( { project } ) => {
                         }
 
                         <Button
-                            onClick={hancleCkickProjectDelete}
+                            onClick={
+                                ()=>{
+                                    projectDelete(project.id, setLoading)
+                                }
+                            }
                         >
                             {
                                 loading? "Loading...":
@@ -133,7 +128,8 @@ export const ProjectCard = ( { project } ) => {
             {
                 isOpenUpdateImage === true ?
                 <ImageUpdateProjectModal
-                    setIsopenUpdateImage={setIsopenUpdateImage} 
+                    setIsopenUpdateImage={setIsopenUpdateImage}
+                    project={project} 
                 /> :
                 null
             }

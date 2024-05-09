@@ -5,7 +5,6 @@ import {
 
 } from "react"
 import { useForm } from "react-hook-form"
-import { BiImageAdd  } from "react-icons/bi"
 
 import { SlArrowRight } from "react-icons/sl"
 
@@ -21,7 +20,7 @@ export const FormProjectImage = ({ setIsOpenInsertImage }) => {
     const  [ loading, setLoading ]  = useState(false)
 
     const { projectImageRegister } = useContext(UserAdmContext)
-    const { setImageStade } = useContext(AppBehaviorContext)
+    const { setStateImage } = useContext(AppBehaviorContext)
 
     const {
 
@@ -32,9 +31,6 @@ export const FormProjectImage = ({ setIsOpenInsertImage }) => {
 
      } = useForm()
 
-    const handleClick = () =>{
-        setImageStade(true)
-    }
 
     const onSubmit = (payLoad) => {
         const formData = new FormData();
@@ -50,27 +46,50 @@ export const FormProjectImage = ({ setIsOpenInsertImage }) => {
 
         )
     }
-    
+    const [previewUrl, setPreviewUrl] = useState('');
+
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                setPreviewUrl(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+        console.log('previewUrl:', previewUrl);
+    }
 
     return(
         <form onSubmit={ handleSubmit(onSubmit) }>
 
             <div>
                 
-                <Input
+                <input
                     label="Insert Image"
+                    onChangeCapture={handleImageChange}
                     type="file"
                     accept=".png, .svg, .jpeg, .jpg"
                     error={errors.path}
                     {...register("path")}
                 />
-         
-
-                               
-
+              
+                {previewUrl && (
+                    <img 
+                        src={previewUrl} 
+                        alt="Preview" 
+                        style={{ maxWidth: '100%', marginTop: '10px' }} 
+                    />
+                )}
+                
+               
                 <Button 
                     type="submit"
-                    onClick={handleClick}
+                    onClick={
+                        ()=>{
+                            setStateImage(true)
+                        }
+                    }
                 >
         
                     {loading ? "Loading..." : "To send"}

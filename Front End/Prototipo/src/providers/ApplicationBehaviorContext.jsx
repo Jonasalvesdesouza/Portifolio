@@ -15,11 +15,10 @@ export const AppBehaviorProvider = ({children}) =>{
     const [ categorysProject, setCategorysProject ] = useState("")
     const [ categorysArticles, setCategorysArticles ] = useState("")
 
-    const [ imageStade, setImageStade ] = useState(false)
-
     const [ navDashboard, setNavDashboard ] = useState(null)
 
     const [ isOpenDashboard, setIsOpenDashboard ] = useState(false)
+    const [ stateImage, setStateImage ] = useState(false)
 
     const resetStadeCategorys = () =>{
         setCategorysArticles("")
@@ -44,12 +43,12 @@ export const AppBehaviorProvider = ({children}) =>{
                 categorysArticles, 
                 setCategorysArticles,
                 resetStadeCategorys,
-                imageStade, 
-                setImageStade,
                 navDashboard, 
                 setNavDashboard,
                 isOpenDashboard, 
-                setIsOpenDashboard
+                setIsOpenDashboard,
+                stateImage, 
+                setStateImage
             
             }
         }>

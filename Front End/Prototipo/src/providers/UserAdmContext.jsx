@@ -187,6 +187,7 @@ export const UserAdmProvider = ({children}) =>{
         payload, 
         setLoading,
         reset,
+        projectsRegister
         
         
      ) =>{
@@ -204,6 +205,7 @@ export const UserAdmProvider = ({children}) =>{
             NotifySucess("Project registered successfully")
 
             reset()
+            projectsRegister(false)
         } catch (error) {
 
             console.log(error)
@@ -233,8 +235,8 @@ export const UserAdmProvider = ({children}) =>{
             )
 
             NotifySucess("Project registered successfully")
-
             reset()
+            projectImageRegister(false)
         } catch (error) {
 
             console.log(error)
@@ -242,7 +244,7 @@ export const UserAdmProvider = ({children}) =>{
             
         }finally{
             setLoading(false)
-            projectImageRegister(false)
+           
         }
     }
 
@@ -250,7 +252,9 @@ export const UserAdmProvider = ({children}) =>{
     const projectImageUpdate = async (
 
         payload, 
-        setLoading
+        setLoading,
+        reset,
+        projectImageUpdate
         
     ) =>{
         try {
@@ -278,6 +282,8 @@ export const UserAdmProvider = ({children}) =>{
             
             setProjectsList(newProjectsList)
             NotifySucess("Project edited successfully")
+            projectImageUpdate(false)
+            reset()
         } catch (error) {
             console.log(error)
             NotifyError("Unfortunately something went wrong")            

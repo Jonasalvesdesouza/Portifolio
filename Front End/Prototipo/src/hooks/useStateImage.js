@@ -1,17 +1,26 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AppBehaviorContext } from "../providers"
 
 export const useStateImage = (project) => {
-    const { imageStade } = useContext(AppBehaviorContext)
-    const imageIsopen = () =>{
-        if (project.image == null && imageStade == false) {
-            return false
-        }if (project.image && imageStade == true) {
-            return true
-        }else{
-            return true
+    const [hasImage, setHasImage] = useState(false)
+    const { stateImage } = useContext(AppBehaviorContext)
+    
+    useEffect(() => {
+        if (project && project.image) {
+            setHasImage(true)
+        } else {
+            setHasImage(false)
         }
+    }, [])
+
+    if (hasImage == false && stateImage == true) {
+        return true
+    }if (hasImage == true && stateImage == false) {
+        return true
+    }if ( hasImage == true && stateImage == true ) {
+        return true
+    }else{
+        return false
     }
 
-    return imageIsopen()
 }

@@ -1,10 +1,17 @@
 import { IoCloseOutline } from "react-icons/io5"
 
-import { useKeydown, useOutclick } from "../../../../../hooks"
+import { 
+
+    useKeydown, 
+    useOutclick, 
+    useRenderImage 
+
+} from "../../../../../hooks"
+
 import { Button } from "../../../Button"
 import { FormUpdateProjectImage } from "../../../forms"
 
-export const ImageUpdateProjectModal  = ({setIsopenUpdateImage}) => {
+export const ImageUpdateProjectModal  = ({setIsopenUpdateImage, project}) => {
     const closeModalOutClick = useOutclick(()=> {
         setIsopenUpdateImage(false)      
     })
@@ -12,11 +19,10 @@ export const ImageUpdateProjectModal  = ({setIsopenUpdateImage}) => {
      const closeModalKeyDownEsque = useKeydown(()=>{
         setIsopenUpdateImage(false)
     })
-	
-	const handleClick = () => {
-		return setIsopenUpdateImage(false)
-    }
-    
+	    
+    const urlImage = useRenderImage(project)
+
+
     return(
         <div
 
@@ -25,7 +31,11 @@ export const ImageUpdateProjectModal  = ({setIsopenUpdateImage}) => {
 
 		>
 			<div>
-                <Button onClick={ handleClick }>
+                <Button onClick={
+                    () => {
+                        setIsopenUpdateImage(false)
+                    }
+                }>
 
                     <IoCloseOutline
                         size={28}
@@ -33,6 +43,9 @@ export const ImageUpdateProjectModal  = ({setIsopenUpdateImage}) => {
                     />
 
                 </Button>
+            </div>
+            <div>
+                <img src={urlImage} alt={`${project.title}`} />
             </div>
             <div>
                 <FormUpdateProjectImage 
