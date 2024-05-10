@@ -7,9 +7,7 @@ import { UserAdmContext } from "../../../../../providers"
 import { CardSocialMedia } from "./cardSocialMedia"
 
 export const SectionSocialMidiaCurriculum = () =>{
-    const { profile } = useContext(UserAdmContext)
-
-    const socialMedia = profile.socialMedia
+    const { socialMediaList } = useContext(UserAdmContext)
 
     return(
         <div>
@@ -19,7 +17,7 @@ export const SectionSocialMidiaCurriculum = () =>{
             <div>
                 <ul>
                     {
-                        socialMedia?.map((object)=>{
+                        socialMediaList?.map((object)=>{
                             return <CardSocialMedia
                                 key={object.id}
                                 object={object} 

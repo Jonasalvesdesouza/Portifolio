@@ -6,7 +6,7 @@ import {
 } from "react"
 import { useForm } from "react-hook-form"
 import { SlArrowRight } from "react-icons/sl"
-import { UserAdmContext } from "../../../../providers"
+import { AppBehaviorContext, UserAdmContext } from "../../../../providers"
 import {
 
     Input, 
@@ -18,6 +18,7 @@ export const FormUpdateProjectImage = ({setIsopenUpdateImage}) => {
     const  [ loading, setLoading ]  = useState(false)
 
     const { projectImageUpdate } = useContext(UserAdmContext)
+    const { setProjectImage, projectImage } = useContext(AppBehaviorContext)
 
     const {
 
@@ -26,8 +27,7 @@ export const FormUpdateProjectImage = ({setIsopenUpdateImage}) => {
         reset,
         formState: { errors }, 
 
-     } = useForm(
-    )
+     } = useForm()
 
     const onSubmit = (payLoad) => {
         const formData = new FormData();
@@ -43,6 +43,17 @@ export const FormUpdateProjectImage = ({setIsopenUpdateImage}) => {
 
         )
     }
+
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                setProjectImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
     
 
     return(
@@ -51,13 +62,13 @@ export const FormUpdateProjectImage = ({setIsopenUpdateImage}) => {
             <div>
                 
                 <Input
+                    label="Update Image"
+                    onChangeCapture={handleImageChange}
                     type="file"
                     accept=".png, .svg, .jpeg, .jpg"
                     error={errors.path}
                     {...register("path")}
-                />
-               
-               
+                />   
 
                 <Button 
                     type="submit"

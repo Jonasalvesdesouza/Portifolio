@@ -4,9 +4,7 @@ import { CardSkillCurriculum } from "./CardSkillCurriculum"
 
 
 export const SectionSkillCurriculum = () => {
-    const { profile } = useContext(UserAdmContext)
-
-    const skills = profile.skill
+    const { skillList } = useContext(UserAdmContext)
       
     return(
         <div>
@@ -18,7 +16,7 @@ export const SectionSkillCurriculum = () => {
             <div>
                 <ul>
                     {
-                        skills?.map((skill)=>{
+                        skillList?.map((skill)=>{
                             return(
                                 <CardSkillCurriculum
                                     key={skill.id}

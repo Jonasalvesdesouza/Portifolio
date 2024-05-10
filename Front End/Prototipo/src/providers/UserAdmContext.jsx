@@ -18,19 +18,21 @@ export const UserAdmProvider = ({children}) =>{
     const [ profile, setProfile ] = useState([])
     const [ editProfile, setEditProfile ] = useState([])
     const [ editContactProfile, setEditContactProfile ] = useState([])
+    const [ editProjects, setEditProjects ] = useState([])
 
     const [ socialMediaList, setSocialMediaList ] = useState([])
-
-    const [ jobExperience, setJobExperience ] = useState([])
-    const [ education, setEducation ] = useState([])
-
+    const [ hobbyList, setHobbyList ] = useState([])
+    const [ skillList, setSkillList ] = useState([])
+    const [ jobExperienceList, setJobExperienceList ] = useState([])
+    const [ educationList, setEducationList ] = useState([])
     const [ projectsList, setProjectsList ] = useState([])
-    const [ editProjects, setEditProjects ] = useState([])
-    const [ project, setProject] = useState({})
-    
     const [ articlesList, setArticlesList ] = useState([])
     const [ messageList, setMessageList ] = useState([])
-    
+
+    const [ project, setProject] = useState({})
+    const [ article, setArticle ] = useState({})
+    const [ jobExperience, setJobExperience ] = useState([])
+    const [ education, setEducation ] = useState([])
 
     const navigate = useNavigate()
     const { state } = useLocation()
@@ -54,6 +56,14 @@ export const UserAdmProvider = ({children}) =>{
             queryFn: async () => {
                 const { data } = await api.get("/profile/")
                 setProfile(data)
+                setSocialMediaList(data.socialMedia)
+                setHobbyList(data.hobby)
+                setSkillList(data.skill)
+                setJobExperienceList(data.jobExperience)
+                setEducationList(data.education)
+                setProjectsList(data.projects)
+                setArticlesList(data.articles)
+                setMessageList(data.message)
                 return data
             }
         }
@@ -149,39 +159,6 @@ export const UserAdmProvider = ({children}) =>{
         }
     }
 
-    const { JobExperience } = useQuery(
-        {
-            queryKey: ['jobExperience'],
-            queryFn: async () => {
-                const { data } = await api.get('/jobExperience/get')
-                setJobExperience(data)
-                return data                
-            }
-        }
-    )
-
-    const { Education } = useQuery(
-        {
-            queryKey: ['education'],
-            queryFn: async () =>{
-                const { data } = await api.get('/education/get')
-                setEducation(data)
-                return data
-            }
-        }
-    )
-
-    const { Projects } = useQuery(
-        {
-            queryKey: ['projectsList'],
-            queryFn: async () =>{
-                const { data } = await api.get('/projects/get')
-                setProjectsList(data)
-                return data
-            }
-        }
-    )
-
     const projectsRegister = async ( 
 
         payload, 
@@ -203,7 +180,6 @@ export const UserAdmProvider = ({children}) =>{
             setProjectsList( [ ...projectsList, data ] )
 
             NotifySucess("Project registered successfully")
-
             reset()
             projectsRegister(false)
         } catch (error) {
@@ -234,6 +210,14 @@ export const UserAdmProvider = ({children}) =>{
                 headers
             )
 
+            setProjectsList(projectsList.map(project => {
+                if (project.id === data.projectId) {
+                    return { ...project, image: data }
+                } else {
+                    return project;
+                }
+            }))
+            
             NotifySucess("Project registered successfully")
             reset()
             projectImageRegister(false)
@@ -243,8 +227,7 @@ export const UserAdmProvider = ({children}) =>{
             NotifyError("Unfortunately something went wrong")
             
         }finally{
-            setLoading(false)
-           
+            setLoading(false)         
         }
     }
 
@@ -259,7 +242,6 @@ export const UserAdmProvider = ({children}) =>{
     ) =>{
         try {
 
-            console.log(project.image.id)
             setLoading(true)
             
             const { data } = await api.patch(
@@ -270,17 +252,14 @@ export const UserAdmProvider = ({children}) =>{
 
             )
 
-            const newProjectsList = projectsList.map(
-                project =>{
-                    if(project.id === editProjects.id){
-                        return data
-                    }else{
-                        return project
-                    }
+            setProjectsList(projectsList.map(project => {
+                if (project.id === data.projectId) {
+                    return { ...project, image: data }
+                } else {
+                    return project;
                 }
-            )
-            
-            setProjectsList(newProjectsList)
+            }))
+
             NotifySucess("Project edited successfully")
             projectImageUpdate(false)
             reset()
@@ -349,28 +328,6 @@ export const UserAdmProvider = ({children}) =>{
         }
     }
 
-    const { Articles } = useQuery(
-        {
-            queryKey: ['articles'],
-            queryFn: async () =>{
-                const { data } = await api.get('/articles/get')
-                setArticlesList(data)
-                return data
-            }
-            
-        }
-    )
-
-    const { Message } = useQuery(
-        {
-            queryKey: ['message'],
-            queryFn: async () =>{
-                const { data } = await api.get('/message/get')
-                setMessageList(data)
-                return data
-            }
-        }
-    )
 
     const messageMeRegister = async (payLoad, setLoading, reset) =>{
         try {
@@ -442,53 +399,55 @@ export const UserAdmProvider = ({children}) =>{
     <UserAdmContext.Provider 
         value={
             {
-                localToken,
-                token, 
-                setToken,
-                headers,
-                idAdm,
                 user, 
-                setUser,
-                data,
-
-                profile,
-                setProfile,
+                setUser, 
+                profile, 
+                setProfile, 
                 editProfile, 
-                setEditProfile,
+                setEditProfile, 
                 editContactProfile, 
-                setEditContactProfile,
-                Profile,
-                profileUpdate,
-                contactUpdate,
-
-                jobExperience, 
-                setJobExperience,
-
-                education, 
-                setEducation,
-
-                projectsList, 
-                setProjectsList,
+                setEditContactProfile, 
                 editProjects, 
                 setEditProjects,
+                socialMediaList, setSocialMediaList,
+                hobbyList,
+                setHobbyList,
+                skillList,
+                setSkillList,
+                jobExperienceList,
+                setJobExperienceList,
+                educationList,
+                setEducationList,
+                projectsList,
+                setProjectsList,
+                articlesList,
+                setArticlesList,
+                messageList,
+                setMessageList,
                 project, 
                 setProject,
+                article, 
+                setArticle,
+                jobExperience, 
+                setJobExperience,
+                education, 
+                setEducation,
+                profileUpdate,
+                contactUpdate,
+                socialMediaRegister,
                 projectsRegister,
                 projectImageRegister,
                 projectImageUpdate,
                 projectUpdate,
                 projectDelete,
-
-                articlesList, 
-                setArticlesList,
-
-                messageList, 
-                setMessageList,
                 messageMeRegister,
                 messageMeDelete,
-
                 userAdmLogin,
-                userLogout
+                setProject,
+                setArticle,
+                setJobExperience,
+                setEducation,
+                userLogout 
             }
     }>
         {children}        

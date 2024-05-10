@@ -3,7 +3,7 @@ import { UserAdmContext } from "../../../../../providers"
 import { CardJobExperience } from "./CardJobExperience"
 
 export const SectionJobExperienceCurriculum = () => {
-    const { jobExperience } = useContext(UserAdmContext)
+    const { jobExperienceList } = useContext(UserAdmContext)
 
     return(
         <div>
@@ -15,7 +15,7 @@ export const SectionJobExperienceCurriculum = () => {
             <div>
                 <ul>
                     {
-                        jobExperience?.map((job)=>{
+                        jobExperienceList?.map((job)=>{
                             return(
                                 <CardJobExperience
                                     key={job.id}

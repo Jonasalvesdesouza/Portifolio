@@ -3,7 +3,7 @@ import { UserAdmContext } from "../../../../../providers"
 import { CardEducation } from "./CardEducation"
 
 export const SectionEducationCurriculum = () => {
-    const { education } = useContext(UserAdmContext)
+    const { educationList } = useContext(UserAdmContext)
 
     return(
         <div>
@@ -15,7 +15,7 @@ export const SectionEducationCurriculum = () => {
             <div>
                 <ul>
                     {
-                        education?.map((school)=>{
+                        educationList?.map((school)=>{
                             return(
                                 <CardEducation
                                     key={school.id}

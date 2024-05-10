@@ -67,6 +67,27 @@ export class ProfileServices {
                     socialMedia: true,
                     hobby: true,
                     skill: true,
+                    jobExperience: {
+                        include:{
+                            address: true
+                        }
+                    },
+                    education: {
+                        include:{
+                            address:true
+                        }
+                    },
+                    projects: {
+                        include:{
+                            image: true
+                        }
+                    },
+                    articles: {
+                        include:{
+                            image: true
+                        }
+                    },
+                    message: true,
                     
                 }
             }

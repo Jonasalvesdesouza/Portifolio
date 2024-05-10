@@ -58,6 +58,14 @@ export const ProfileFullSchema = profileSchema.omit(
         userId: true,
         contactId: true,
         anddressId: true,
+        socialMedia: true,
+        hobbies: true,
+        skill: true,
+        jobExperience: true,
+        education: true,
+        projects: true,
+        articles: true,
+        message: true,
     }
 ).extend(
     {   

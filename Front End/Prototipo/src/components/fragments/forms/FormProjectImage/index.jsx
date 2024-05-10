@@ -46,7 +46,8 @@ export const FormProjectImage = ({ setIsOpenInsertImage }) => {
 
         )
     }
-    const [previewUrl, setPreviewUrl] = useState('');
+
+    const [previewUrl, setPreviewUrl] = useState('')
 
     const handleImageChange = (event) => {
         const file = event.target.files[0];
@@ -57,7 +58,6 @@ export const FormProjectImage = ({ setIsOpenInsertImage }) => {
             };
             reader.readAsDataURL(file);
         }
-        console.log('previewUrl:', previewUrl);
     }
 
     return(
@@ -65,7 +65,7 @@ export const FormProjectImage = ({ setIsOpenInsertImage }) => {
 
             <div>
                 
-                <input
+                <Input
                     label="Insert Image"
                     onChangeCapture={handleImageChange}
                     type="file"
