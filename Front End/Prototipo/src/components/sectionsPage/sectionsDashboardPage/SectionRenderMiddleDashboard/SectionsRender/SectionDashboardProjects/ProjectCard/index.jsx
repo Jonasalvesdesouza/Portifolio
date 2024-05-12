@@ -1,8 +1,7 @@
-import { useContext, useState } from "react"
+import ImageDefault from "../../../../../../../assets/DefaultImage.ai.svg"
 
+import { useContext, useEffect, useState } from "react"
 import { BiPencil, BiTrash } from 'react-icons/bi'
-import { BiImageAdd, BiImage  } from "react-icons/bi"
-
 import {
 
     Button, 
@@ -12,10 +11,22 @@ import {
 
 } from "../../../../../../fragments"
 
-import { UserAdmContext } from "../../../../../../../providers"
-import { useStateImage } from "../../../../../../../hooks"
+import {
 
-export const ProjectCard = ( { project } ) => {
+    useRenderImage, 
+    useStateImage 
+
+} from "../../../../../../../hooks"
+
+import { UserAdmContext } from "../../../../../../../providers"
+import { TopCard } from "./TopCard"
+import { ConfigServerUrl } from "../../../../../../../config"
+
+export const ProjectCard = ({ project }) => {
+    const [ projectImage, setProjectImage ] = useState("")
+   /*  console.log("Este ta dentro ProjectCard")
+    console.log(project)
+ */
     const {
 
         setEditProjects, 
@@ -30,20 +41,46 @@ export const ProjectCard = ( { project } ) => {
     const [ isOpenInsertImage, setIsOpenInsertImage ] = useState(false)
     const [ isOpenUpdateImage, setIsopenUpdateImage ] = useState(false)
 
-    const imageExists = useStateImage(project)
+    useEffect(() => {
+        const imageRender = () => {
+            if (!project.image) {
+                return ImageDefault
+            } else {
+                const imagePath = project.image.path;
+                const imageName = imagePath?.substring(imagePath.lastIndexOf('/') + 1);
+                const serverUrl = ConfigServerUrl;
+                return `${serverUrl}/uploads/${imageName?.replace(/\s/g, '%20')}`;
+            }
+        };
+
+        const imageUrl = imageRender();
+        setProjectImage(imageUrl);
+    }, [project]); // Apenas executado quando project mudar
+
 
     return(
         <>
             <li>
                 <div>
-                    <h2>
-                        {project.title}
-                    </h2>
                     <div>
-                        <p>
-                            {project.category}
-                        </p>
+                    {
 
+                        <TopCard
+                            project={project}
+                            setIsOpenInsertImage={setIsOpenInsertImage}
+                            setIsopenUpdateImage={setIsopenUpdateImage} 
+                            setProject={setProject} 
+                            projectImage={projectImage}
+                        />
+
+                    }
+                    </div>
+                    <div>
+                        <h3>{project.title}</h3>
+                        <p>{project.category}</p>
+                        <p>{project.description}</p>
+                    </div>
+                    <div>
                         <Button
                             onClick={
                                 ()=>{
@@ -54,43 +91,11 @@ export const ProjectCard = ( { project } ) => {
                         >
                             <BiPencil
                                 size={18}
-                                color="black"
-                                /* color="#e8e9ea" */ 
+                                color="black" 
                             />
                         </Button>
-                        
-
-                        {
-                           imageExists == false ?
-                            <Button
-                                onClick={
-                                    ()=>{
-                                        setIsOpenInsertImage(true)
-                                        setProject(project)
-                                    }
-                                }
-                            >
-                                <BiImageAdd 
-                                    size={18}
-                                    color="black"
-                                />
-                            </Button> :
-                            <Button
-                                onClick={
-                                    () => {
-                                        setIsopenUpdateImage(true)
-                                        setProject(project)
-                                    }
-                                }
-                            >
-                            <BiImage 
-                                size={18}
-                                color="black"
-                            />
-                            </Button> 
-
-                        }
-
+                    </div>
+                    <div>
                         <Button
                             onClick={
                                 ()=>{
@@ -110,6 +115,8 @@ export const ProjectCard = ( { project } ) => {
                     </div>
                 </div>
             </li>
+
+    
             {
                 isOpen === true ?
                 <EditProjectModal
@@ -121,6 +128,7 @@ export const ProjectCard = ( { project } ) => {
                 isOpenInsertImage === true ?
                 <ImageProjectModal
                     setIsOpenInsertImage={setIsOpenInsertImage} 
+                    project={project} 
                 /> :
                 null
             }
@@ -136,3 +144,4 @@ export const ProjectCard = ( { project } ) => {
         </>
     )
 }
+

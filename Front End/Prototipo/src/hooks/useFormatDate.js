@@ -1,5 +1,9 @@
 export const useFormtDate = (dateString) => {
-    const options = { month: "short", day: "numeric", year: "numeric" }
-    const date = new Date(dateString)
-    return date.toLocaleDateString("en-US", options) 
-}
+    if (!dateString) return ''; // Retorna uma string vazia se a data for nula ou indefinida
+
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) return ''; // Retorna uma string vazia se a data for inválida
+
+    const options = { month: "short", day: "numeric", year: "numeric" };
+    return date.toLocaleDateString("en-US", options)
+};

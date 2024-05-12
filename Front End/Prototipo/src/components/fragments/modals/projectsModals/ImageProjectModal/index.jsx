@@ -1,11 +1,16 @@
 import { IoCloseOutline } from "react-icons/io5"
 import { BiPencil, BiTrash } from 'react-icons/bi'
 
-import { useKeydown, useOutclick } from "../../../../../hooks"
+import { useKeydown, useOutclick, useRenderImage } from "../../../../../hooks"
 import { Button } from "../../../Button"
 import { FormProjectImage } from "../../../forms"
+import { useContext, useEffect, useState } from "react"
+import { AppBehaviorContext } from "../../../../../providers"
 
-export const ImageProjectModal = ({setIsOpenInsertImage}) => {
+export const ImageProjectModal = ({project, setIsOpenInsertImage}) => {
+    const { imageProject } = useContext(AppBehaviorContext)
+    const  [projectImage, setProjectImage]  = useState("")
+
     const closeModalOutClick = useOutclick(()=> {
         setIsOpenInsertImage(false)      
     })
@@ -15,9 +20,19 @@ export const ImageProjectModal = ({setIsOpenInsertImage}) => {
     })
 	
 	const handleClick = () => {
-		return setIsOpenInsertImage(false)
+		setIsOpenInsertImage(false)
+        setProjectImage("")
     }
-    
+
+    useEffect(() => {
+        if (imageProject) {
+            setProjectImage(imageProject);
+        } else {
+            const urlImage = useRenderImage(project);
+            setProjectImage(urlImage);
+        }
+    }, [project, imageProject]);
+
     return(
         <div
 
@@ -35,11 +50,17 @@ export const ImageProjectModal = ({setIsOpenInsertImage}) => {
 
                 </Button>
             </div>
+            <div> 
+                <img 
+                    src={projectImage} 
+                    alt="Preview" 
+                    style={{ maxWidth: '50%', marginTop: '10px' }} 
+                />
+            </div>
             <div>
                 <FormProjectImage
                     setIsOpenInsertImage={setIsOpenInsertImage}
-                >
-                </FormProjectImage>
+                />
             </div>
 
         </div>

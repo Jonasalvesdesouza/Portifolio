@@ -16,9 +16,11 @@ export const UserAdmProvider = ({children}) =>{
     
     const [ user, setUser ] = useState(null)
     const [ profile, setProfile ] = useState([])
+
     const [ editProfile, setEditProfile ] = useState([])
     const [ editContactProfile, setEditContactProfile ] = useState([])
     const [ editProjects, setEditProjects ] = useState([])
+    const [ editArticles, setEditArticles ] = useState([])
 
     const [ socialMediaList, setSocialMediaList ] = useState([])
     const [ hobbyList, setHobbyList ] = useState([])
@@ -164,9 +166,8 @@ export const UserAdmProvider = ({children}) =>{
         payload, 
         setLoading,
         reset,
-        projectsRegister
-        
-        
+        setIsOpenDashboard
+     
      ) =>{
 
         try {
@@ -181,7 +182,8 @@ export const UserAdmProvider = ({children}) =>{
 
             NotifySucess("Project registered successfully")
             reset()
-            projectsRegister(false)
+            setIsOpenDashboard(false)
+
         } catch (error) {
 
             console.log(error)
@@ -197,11 +199,10 @@ export const UserAdmProvider = ({children}) =>{
         payload, 
         setLoading,
         reset,
-        projectImageRegister
+        setIsOpenInsertImage
         
      ) =>{
         
-         
          try {
             setLoading(true)
             const { data } = await api.post(
@@ -217,10 +218,10 @@ export const UserAdmProvider = ({children}) =>{
                     return project;
                 }
             }))
-            
+
             NotifySucess("Project registered successfully")
             reset()
-            projectImageRegister(false)
+            setIsOpenInsertImage(false)
         } catch (error) {
 
             console.log(error)
@@ -237,9 +238,11 @@ export const UserAdmProvider = ({children}) =>{
         payload, 
         setLoading,
         reset,
-        projectImageUpdate
+        setIsopenUpdateImage
         
     ) =>{
+
+        console.log(project)
         try {
 
             setLoading(true)
@@ -256,12 +259,12 @@ export const UserAdmProvider = ({children}) =>{
                 if (project.id === data.projectId) {
                     return { ...project, image: data }
                 } else {
-                    return project;
+                    return project
                 }
             }))
 
             NotifySucess("Project edited successfully")
-            projectImageUpdate(false)
+            setIsopenUpdateImage(false)
             reset()
         } catch (error) {
             console.log(error)
@@ -275,7 +278,9 @@ export const UserAdmProvider = ({children}) =>{
     const projectUpdate = async (
 
         payload, 
-        setLoading
+        setLoading,
+        reset,
+        setIsOpen
         
     ) =>{
         try {
@@ -301,6 +306,8 @@ export const UserAdmProvider = ({children}) =>{
             
             setProjectsList(newProjectsList)
             NotifySucess("Project edited successfully")
+            reset()
+            setIsOpen(false)
         } catch (error) {
             console.log(error)
             NotifyError("Unfortunately something went wrong")            
@@ -318,7 +325,9 @@ export const UserAdmProvider = ({children}) =>{
             setLoading(true)
 
             await api.delete(`/projects/${projectId}`, headers)
-            const newProjectsList = projectsList.filter((project) => project.id !== projectId)
+            const newProjectsList = projectsList.filter(
+                (project) => project.id !== projectId
+            )
             setProjectsList(newProjectsList)
             NotifySucess("Project deleted successfully")
         } catch (error) {
@@ -328,6 +337,178 @@ export const UserAdmProvider = ({children}) =>{
         }
     }
 
+    const articleRegister = async ( 
+
+        payload, 
+        setLoading,
+        reset,
+        setIsOpenDashboard      
+        
+     ) =>{
+
+        try {
+            setLoading(true)
+            const { data } = await api.post(
+                `/articles/`, 
+                payload, 
+                headers
+            )
+            
+            setArticlesList( [ ...articlesList, data ] )
+
+            NotifySucess("Article registered successfully")
+            reset()
+            setIsOpenDashboard(false)
+        } catch (error) {
+
+            console.log(error)
+            NotifyError("Unfortunately something went wrong")
+            
+        }finally{
+            setLoading(false)
+        }
+    }
+
+    const articleImageRegister = async ( 
+
+        payload, 
+        setLoading,
+        reset,
+        setIsOpenInsertImage
+        
+     ) =>{
+        
+         try {
+            setLoading(true)
+            const { data } = await api.post(
+                `/articles/image/${article.id}`, 
+                payload, 
+                headers
+            )
+
+            setArticlesList(articlesList.map(article => {
+                if (article.id === data.articleId) {
+                    return { ...article, image: data }
+                } else {
+                    return article
+                }
+            }))            
+            
+            NotifySucess("Image registered successfully")
+            reset()
+            setIsOpenInsertImage(false)
+        } catch (error) {
+
+            console.log(error)
+            NotifyError("Unfortunately something went wrong")
+            
+        }finally{
+            setLoading(false)         
+        }
+    }
+
+    const articleImageUpdate = async (
+
+        payLoad,
+        setLoading,
+        reset,
+        setIsopenUpdateImage
+        
+    ) =>{
+
+        try {
+
+            setLoading(true)
+                        
+            const { data } = await api.patch(
+
+                `/articles/image/update/${article.image.id}`, 
+                payLoad,
+                headers
+
+            )
+
+            setArticlesList(articlesList.map(article => {
+                if (article.id === data.articleId) {
+                    return { ...article, image: data }
+                } else {
+                    return article;
+                }
+            }))
+
+            NotifySucess("Article edited successfully")
+            setIsopenUpdateImage(false)
+            reset()
+        } catch (error) {
+            console.log(error)
+            NotifyError("Unfortunately something went wrong")            
+        }finally{
+            setLoading(false)
+        }
+    }
+
+    const articleUpdate = async (
+
+        payload, 
+        setLoading,
+        reset,
+        setIsOpen
+        
+    ) =>{
+        try {
+            setLoading(true)
+            
+            const { data } = await api.patch(
+
+                `/articles/update/${editArticles.id}`, 
+                payload,
+                headers
+
+            )
+
+            const newArticlesList = articlesList.map(
+                article =>{
+                    if(article.id === editArticles.id){
+                        return data
+                    }else{
+                        return article
+                    }
+                }
+            )
+            
+            setArticlesList(newArticlesList)
+            NotifySucess("Article edited successfully")
+            setIsOpen(false)
+            reset()
+        } catch (error) {
+            console.log(error)
+            NotifyError("Unfortunately something went wrong")            
+        }finally{
+            setLoading(false)
+        }
+    }
+
+
+    const articleDelete = async (
+
+        articleId,
+        setLoading
+
+    ) =>{
+        try {
+            setLoading(true)
+
+            await api.delete(`/articles/${articleId}`, headers)
+            const newArdicleList = articlesList.filter((artcile) => artcile.id !== articleId)
+            setArticlesList(newArdicleList)
+            NotifySucess("Arcile deleted successfully")
+
+        } catch (error) {
+            NotifyError("Unfortunately something went wrong")            
+        }finally{
+            setLoading(false)
+        }
+    }
 
     const messageMeRegister = async (payLoad, setLoading, reset) =>{
         try {
@@ -399,30 +580,33 @@ export const UserAdmProvider = ({children}) =>{
     <UserAdmContext.Provider 
         value={
             {
-                user, 
-                setUser, 
-                profile, 
-                setProfile, 
-                editProfile, 
-                setEditProfile, 
-                editContactProfile, 
-                setEditContactProfile, 
-                editProjects, 
+                user,
+                setUser,
+                profile,
+                setProfile,
+                editProfile,
+                setEditProfile,
+                editContactProfile,
+                setEditContactProfile,
+                editProjects,
                 setEditProjects,
-                socialMediaList, setSocialMediaList,
-                hobbyList,
+                editArticles, 
+                setEditArticles,
+                socialMediaList, 
+                setSocialMediaList,
+                hobbyList, 
                 setHobbyList,
-                skillList,
+                skillList, 
                 setSkillList,
-                jobExperienceList,
+                jobExperienceList, 
                 setJobExperienceList,
-                educationList,
+                educationList, 
                 setEducationList,
-                projectsList,
+                projectsList, 
                 setProjectsList,
-                articlesList,
+                articlesList, 
                 setArticlesList,
-                messageList,
+                messageList, 
                 setMessageList,
                 project, 
                 setProject,
@@ -439,15 +623,16 @@ export const UserAdmProvider = ({children}) =>{
                 projectImageRegister,
                 projectImageUpdate,
                 projectUpdate,
+                articleImageRegister,
+                articleUpdate,
+                articleImageUpdate,
                 projectDelete,
+                articleRegister,
+                articleDelete,
                 messageMeRegister,
                 messageMeDelete,
                 userAdmLogin,
-                setProject,
-                setArticle,
-                setJobExperience,
-                setEducation,
-                userLogout 
+                userLogout
             }
     }>
         {children}        

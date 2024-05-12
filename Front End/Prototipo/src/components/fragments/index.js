@@ -9,11 +9,18 @@ export { Select } from "./Select"
 export { TextArea } from "./TextArea"
 
 export { NavModal } from "./modals/NavModal"
+
 export { EditProfileModal } from "./modals/EditProfileModal"
-export { EditProjectModal } from "./modals/projectsModals/EditProjectModal"
+
 export { InsertProjectModal } from "./modals/projectsModals/InsertProjectModal"
+export { EditProjectModal } from "./modals/projectsModals/EditProjectModal"
 export { ImageProjectModal } from "./modals/projectsModals/ImageProjectModal"
 export { ImageUpdateProjectModal } from "./modals/projectsModals/ImageUpdateProjectModal "
+
+export { InsertArticleModal } from "./modals/articlesModals/InsertArticleModal"
+export { EditArticleModal } from "./modals/articlesModals/EditArticleModal"
+export { ImageArtilceModal } from "./modals/articlesModals/ImageArticleModal"
+export { ImageUpdateArticleModal } from "./modals/articlesModals/ImageUpdateArticleModal "
 
 export { NavHomePage } from "./NavHomePage"
 export { HeaderHomeMobile } from "./HeaderHomeMobile"

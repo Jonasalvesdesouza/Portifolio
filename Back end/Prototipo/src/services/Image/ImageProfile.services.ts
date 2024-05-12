@@ -64,8 +64,9 @@ export class ImageProfileServices {
 
     async Update(
 
-        body: typeUpdateImage,
-        userId: number
+        path: string,
+        userId: number,
+        imageId: number
     
     ): Promise <typeUpdateImageExpect>{
 
@@ -79,11 +80,12 @@ export class ImageProfileServices {
             throw new AppError(404, "Profile does not match user")
         }
         
+        const object = {path}
         
         const data = await prisma.imageProfile.update(
             {
-                where: { id: profile.id },
-                data: body
+                where: { id: imageId },
+                data: object
             }
         )
 

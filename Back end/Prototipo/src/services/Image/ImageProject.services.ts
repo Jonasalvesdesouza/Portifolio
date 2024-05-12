@@ -3,10 +3,7 @@ import { AppError } from "../../erros"
 
 import {
 
-    ImageReturnSchema,
     typeExpectationImage,
-    typeImage,
-    typeUpdateImage,
     typeUpdateImageExpect
 
 } from "../../schemas"

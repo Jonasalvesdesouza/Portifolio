@@ -13,8 +13,15 @@ import { FormUpdateProjectImage } from "../../../forms"
 import { useContext, useEffect, useState } from "react"
 import { AppBehaviorContext } from "../../../../../providers"
 
-export const ImageUpdateProjectModal  = ({setIsopenUpdateImage, project}) => {
-    const { projectImage, setProjectImage } = useContext(AppBehaviorContext)
+export const ImageUpdateProjectModal  = (
+    {
+        setIsopenUpdateImage, 
+        project
+    }
+) => {
+    const { imageProject } = useContext(AppBehaviorContext)
+    const [ projectImage, setProjectImage ] = useState("")
+
 
     const closeModalOutClick = useOutclick(()=> {
         setIsopenUpdateImage(false)      
@@ -23,12 +30,15 @@ export const ImageUpdateProjectModal  = ({setIsopenUpdateImage, project}) => {
      const closeModalKeyDownEsque = useKeydown(()=>{
         setIsopenUpdateImage(false)
     })
-
-
+    
     useEffect(() => {
-        const urlImage = useRenderImage(project)
-        setProjectImage(urlImage)
-    }, [project])
+        if (imageProject) {
+            setProjectImage(imageProject);
+        } else {
+            const urlImage = useRenderImage(project);
+            setProjectImage(urlImage);
+        }
+    }, [project, imageProject]);
 
     return(
         <div
@@ -52,7 +62,11 @@ export const ImageUpdateProjectModal  = ({setIsopenUpdateImage, project}) => {
                 </Button>
             </div>
             <div>
-                <img src={projectImage} alt={`${project.title}`} />
+                <img 
+                    src={projectImage} 
+                    alt="Preview" 
+                    style={{ maxWidth: '100%', marginTop: '10px' }} 
+                />
             </div>
             <div>
                 <FormUpdateProjectImage

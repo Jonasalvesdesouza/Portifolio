@@ -1,4 +1,3 @@
-import { Request } from "express"
 import { prisma } from "../../database/prisma"
 import { AppError } from "../../erros"
 
@@ -6,8 +5,6 @@ import {
 
     ImageReturnSchema,
     typeExpectationImage,
-    typeImage,
-    typeUpdateImage,
     typeUpdateImageExpect
 
 } from "../../schemas"
@@ -16,9 +13,9 @@ export class ImageArticleServices {
 
     async create(
 
-        path: string,
         userId: number,
-        id: number
+        articleId: number,
+        path: string,
 
     ): Promise <typeExpectationImage> {
 
@@ -41,7 +38,7 @@ export class ImageArticleServices {
             {
                 data: {
                     path,
-                    articleId: id
+                    articleId
                 } 
             }
         )
@@ -59,8 +56,9 @@ export class ImageArticleServices {
 
     async Update(
 
-        body: typeUpdateImage,
-        userId: number
+        path: string,
+        userId: number,
+        imageId: number
     
     ): Promise <typeUpdateImageExpect>{
 
@@ -74,11 +72,12 @@ export class ImageArticleServices {
             throw new AppError(404, "Profile does not match user")
         }
         
+        const object = {path}
         
         const data = await prisma.imageArticle.update(
             {
-                where: { id: profile.id },
-                data: body
+                where: { id: imageId },
+                data: object
             }
         )
 

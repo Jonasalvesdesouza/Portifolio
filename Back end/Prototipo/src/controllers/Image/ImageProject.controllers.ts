@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe"
 import { ImageProjectServices } from "../../services"
 import { Request, Response } from "express"
-import { AppError } from "../../erros";
 
 @injectable()
 export class ImageProjectControllers {
@@ -53,9 +52,11 @@ export class ImageProjectControllers {
         }
 
         const response = await this.imageServices.Update(
+
             path,
             userId,
             imageId
+            
         )
 
         return res.status(200).json(response)

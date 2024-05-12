@@ -3,8 +3,9 @@ import ImageDefault from "../assets/DefaultImage.ai.svg"
 import { ConfigServerUrl } from "../config"
 
 export const useRenderImage = (object) => {
-
-    if (!object.image) {
+    /* console.log(object) */
+    
+     if (!object.image) {
         const imageUrl = ImageDefault
 
         return imageUrl

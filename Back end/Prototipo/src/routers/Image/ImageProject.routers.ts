@@ -1,27 +1,27 @@
+import multer from 'multer'
+import path from 'path'
 import express, { Router } from "express"
 import { container } from "tsyringe"
+
 import { ImageProjectServices } from "../../services"
 import { ImageProjectControllers } from "../../controllers"
 import { userAuth } from "../../middlewares"
-import multer from 'multer'
 import uploadsConfig from "../../configs/multer.config"
-import path from 'path';
 
-const uploadDirectory = path.join(__dirname, '../../../');
+const uploadDirectory = path.join(__dirname, '../../../')
 
 export const ImageProjectRouter = Router()
-const upload = multer(uploadsConfig);
+const upload = multer(uploadsConfig)
 
 container.registerSingleton("ImageProjectServices", ImageProjectServices)
 const imageControllers = container.resolve(ImageProjectControllers)
 
-ImageProjectRouter.use('/uploads', express.static(uploadDirectory));
+ImageProjectRouter.use('/uploads', express.static(uploadDirectory))
 
 ImageProjectRouter.get('/uploads/:imageName', (req, res) => {
-    const imageName = req.params.imageName;
-    res.sendFile(path.join(uploadDirectory, imageName));
-});
-
+    const imageName = req.params.imageName
+    res.sendFile(path.join(uploadDirectory, imageName))
+})
 
 ImageProjectRouter.post(
 

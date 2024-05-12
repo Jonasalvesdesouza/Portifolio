@@ -18,7 +18,7 @@ export const SectionTopDashboard = () => {
                 <DashboardNav />
                 <div>
                     {
-                        sectionDashboard == 7 ? null:
+                        sectionDashboard == 7 || sectionDashboard == null ? null:
                         <Button
                             onClick={ handleClick }
                         >

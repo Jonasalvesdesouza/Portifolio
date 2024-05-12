@@ -5,20 +5,22 @@ import {
 
 } from "react"
 import { useForm } from "react-hook-form"
+
 import { SlArrowRight } from "react-icons/sl"
-import { AppBehaviorContext, UserAdmContext } from "../../../../providers"
+
+import { AppBehaviorContext, UserAdmContext } from "../../../../../providers"
 import {
 
     Input, 
     Button
 
-} from "../../index"
+} from "../../../index"
 
-export const FormUpdateProjectImage = ({setIsopenUpdateImage}) => {
-    const  [ loading, setLoading ]  = useState(false)
+export const FormProjectImage = ({ setIsOpenInsertImage }) => {
+    const  [ loading, setLoading ] = useState(false)
 
-    const { projectImageUpdate } = useContext(UserAdmContext)
-    const { setProjectImage, projectImage } = useContext(AppBehaviorContext)
+    const { projectImageRegister } = useContext(UserAdmContext)
+    const { setStateImage, setImageProject } = useContext(AppBehaviorContext)
 
     const {
 
@@ -29,17 +31,17 @@ export const FormUpdateProjectImage = ({setIsopenUpdateImage}) => {
 
      } = useForm()
 
+
     const onSubmit = (payLoad) => {
         const formData = new FormData();
         formData.append("path", payLoad.path[0])
 
-        
-        projectImageUpdate(
+        projectImageRegister(
 
             formData, 
             setLoading, 
             reset,
-            setIsopenUpdateImage
+            setIsOpenInsertImage
 
         )
     }
@@ -49,29 +51,32 @@ export const FormUpdateProjectImage = ({setIsopenUpdateImage}) => {
         if (file) {
             const reader = new FileReader();
             reader.onload = () => {
-                setProjectImage(reader.result);
+                setImageProject(reader.result);
             };
             reader.readAsDataURL(file);
         }
     }
-    
 
     return(
         <form onSubmit={ handleSubmit(onSubmit) }>
-
             <div>
                 
                 <Input
-                    label="Update Image"
+                    label="Insert Image"
                     onChangeCapture={handleImageChange}
                     type="file"
                     accept=".png, .svg, .jpeg, .jpg"
                     error={errors.path}
                     {...register("path")}
-                />   
-
+                />               
+               
                 <Button 
                     type="submit"
+                    onClick={
+                        ()=>{
+                            setStateImage(true)
+                        }
+                    }
                 >
         
                     {loading ? "Loading..." : "To send"}

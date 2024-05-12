@@ -24,8 +24,8 @@ export const Select = forwardRef(
                         options.map((option) => {
 
                             return  <option
-                                        key={option.id} 
-                                        value={option.name}            
+                                key={option.id} 
+                                value={option.name}            
                             >
 
                             {option.name}

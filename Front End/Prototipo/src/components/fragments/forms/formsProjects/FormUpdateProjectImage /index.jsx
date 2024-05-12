@@ -5,22 +5,20 @@ import {
 
 } from "react"
 import { useForm } from "react-hook-form"
-
 import { SlArrowRight } from "react-icons/sl"
-
-import { AppBehaviorContext, UserAdmContext } from "../../../../providers"
+import { AppBehaviorContext, UserAdmContext } from "../../../../../providers"
 import {
 
     Input, 
     Button
 
-} from "../../index"
+} from "../../../index"
 
-export const FormProjectImage = ({ setIsOpenInsertImage }) => {
+export const FormUpdateProjectImage = ({setIsopenUpdateImage}) => {
     const  [ loading, setLoading ]  = useState(false)
 
-    const { projectImageRegister } = useContext(UserAdmContext)
-    const { setStateImage } = useContext(AppBehaviorContext)
+    const { projectImageUpdate } = useContext(UserAdmContext)
+    const { setImageProject } = useContext(AppBehaviorContext)
 
     const {
 
@@ -31,34 +29,31 @@ export const FormProjectImage = ({ setIsOpenInsertImage }) => {
 
      } = useForm()
 
-
     const onSubmit = (payLoad) => {
-        const formData = new FormData();
+        const formData = new FormData()
         formData.append("path", payLoad.path[0])
-
         
-        projectImageRegister(
+        projectImageUpdate(
 
             formData, 
             setLoading, 
             reset,
-            setIsOpenInsertImage
+            setIsopenUpdateImage
 
         )
     }
-
-    const [previewUrl, setPreviewUrl] = useState('')
 
     const handleImageChange = (event) => {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = () => {
-                setPreviewUrl(reader.result);
+                setImageProject(reader.result);
             };
             reader.readAsDataURL(file);
         }
     }
+    
 
     return(
         <form onSubmit={ handleSubmit(onSubmit) }>
@@ -66,30 +61,16 @@ export const FormProjectImage = ({ setIsOpenInsertImage }) => {
             <div>
                 
                 <Input
-                    label="Insert Image"
+                    label="Update Image"
                     onChangeCapture={handleImageChange}
                     type="file"
                     accept=".png, .svg, .jpeg, .jpg"
                     error={errors.path}
                     {...register("path")}
-                />
-              
-                {previewUrl && (
-                    <img 
-                        src={previewUrl} 
-                        alt="Preview" 
-                        style={{ maxWidth: '100%', marginTop: '10px' }} 
-                    />
-                )}
-                
-               
+                />   
+
                 <Button 
                     type="submit"
-                    onClick={
-                        ()=>{
-                            setStateImage(true)
-                        }
-                    }
                 >
         
                     {loading ? "Loading..." : "To send"}

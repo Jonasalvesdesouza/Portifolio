@@ -10,7 +10,7 @@ import {
 
 export const CardArticle = ({article}) => {
    
-    const dateArticle = useFormtDate(article)
+    const dateArticle = useFormtDate(article.updatedAt)
     
     const maxLength = 250
     const LimitedDescription = useLimitedDescription(article.description, maxLength)

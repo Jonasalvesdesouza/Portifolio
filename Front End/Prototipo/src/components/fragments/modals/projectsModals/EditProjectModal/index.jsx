@@ -35,7 +35,9 @@ export const EditProjectModal = ({setIsOpen}) => {
                 </Button>
             </div>
             <div>
-                <FormEditProject />
+                <FormEditProject
+                    setIsOpen={setIsOpen}
+                />
             </div>
 
         </div>

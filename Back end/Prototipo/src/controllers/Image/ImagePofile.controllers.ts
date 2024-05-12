@@ -18,19 +18,17 @@ export class ImageProfileControllers {
         res: Response
 
     ): Promise <Response> {
+
         const userId = Number(res.locals.decode.id)
-        const requestImages = req.files as Express.Multer.File[]
+        const path = req.file ? req.file.path : undefined
 
-        const images = requestImages.map((image) => {
-            return {
-              path: image.filename,
-            };
-          });
-      
+        if (!path) {
+            return res.status(400).json({ error: 'Nenhum arquivo foi enviado na requisição.' });
+        }
 
-          const response = await this.imageServices.create(
-              images[0].path,
-              userId,
+        const response = await this.imageServices.create(
+            path,
+            userId,
         )
 
         return res.status(201).json(response)
@@ -42,11 +40,18 @@ export class ImageProfileControllers {
         res: Response
 
     ): Promise <Response> {
-        const userId = res.locals.decode.id
+        const userId = Number(res.locals.decode.id)
+        const imageId = Number(req.params.id)
+        const path = req.file ? req.file.path : undefined
+
+        if (!path) {
+            return res.status(400).json({ error: 'Nenhum arquivo foi enviado na requisição.' });
+        }
 
         const response = await this.imageServices.Update(
-            req.body,
-            Number(userId)
+            path,
+            userId,
+            imageId
         )
 
         return res.status(200).json(response)

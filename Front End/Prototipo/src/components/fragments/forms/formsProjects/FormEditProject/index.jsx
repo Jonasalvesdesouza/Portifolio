@@ -23,7 +23,7 @@ import {
 
 import { Category, SubCategory } from "./options"
 
-export const FormEditProject = () => {
+export const FormEditProject = ({setIsOpen}) => {
     const  [ loading, setLoading ]  = useState(false)
 
     const { projectUpdate, editProjects} = useContext(UserAdmContext)
@@ -56,7 +56,8 @@ export const FormEditProject = () => {
 
             payLoad, 
             setLoading, 
-            reset
+            reset,
+            setIsOpen
 
         )
     }

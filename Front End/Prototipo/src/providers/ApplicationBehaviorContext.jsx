@@ -19,7 +19,10 @@ export const AppBehaviorProvider = ({children}) =>{
 
     const [ isOpenDashboard, setIsOpenDashboard ] = useState(false)
     const [ stateImage, setStateImage ] = useState(false)
-    const [ projectImage, setProjectImage ] = useState("")
+
+    const [ imageProject, setImageProject ] = useState("")
+    const [ imageArticle, setImageArticle ] = useState("")
+
 
 
     const resetStadeCategorys = () =>{
@@ -51,9 +54,10 @@ export const AppBehaviorProvider = ({children}) =>{
                 setIsOpenDashboard,
                 stateImage, 
                 setStateImage,
-                projectImage, 
-                setProjectImage
-            
+                imageProject, 
+                setImageProject,
+                imageArticle, 
+                setImageArticle,            
             }
         }>
             {children}

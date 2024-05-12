@@ -60,13 +60,13 @@ export class ArticlesControllers {
         res: Response
 
     ): Promise <Response> {
-        const userId = res.locals.decode.id
-        const id = req.params.id
+        const userId = Number(res.locals.decode.id)
+        const id = Number(req.params.id)
 
         const response = await this.service.Update(
             req.body,
-            Number(userId),
-            Number(id)
+            userId,
+            id
         )
 
         return res.status(200).json(response)
