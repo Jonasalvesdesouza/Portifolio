@@ -1,10 +1,12 @@
-import { useLimitedDescription } from "../../../../../../hooks"
+import { useLimitedDescription, useRenderImage } from "../../../../../../hooks"
 
 export const CardArticleDatail = ({object}) => {
   
     const maxLength = 50
     
     const LimitedDescription = useLimitedDescription(object?.description, maxLength)
+
+    const urlImage = useRenderImage(object)
 
     return(
         <li>
@@ -16,17 +18,14 @@ export const CardArticleDatail = ({object}) => {
                     <h2>
                         {object.title}
                     </h2>
-                    <p>
-                        {LimitedDescription}
-                    </p>                  
+                    <p dangerouslySetInnerHTML={{ __html: LimitedDescription }} />
+                
                 </div>
                 <div>
-                    <img src={object.image} alt={object.name} />
+                    <img src={urlImage} alt={object.name} />
                 </div>
                 <div>
-                    <p>
-                        {object.description}
-                    </p>
+                    <p dangerouslySetInnerHTML={{ __html: object?.description }} />
                 </div>
             </div>
         </li>

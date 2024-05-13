@@ -1,11 +1,11 @@
 import ImageJonas from "../../../../assets/JonasImage.svg"
 
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 
 import { IoIosArrowDown } from "react-icons/io"
 import { Button } from "../../../fragments"
 import { AppBehaviorContext, UserAdmContext } from "../../../../providers"
-import { useScreenWidth } from "../../../../hooks"
+import { useRenderImage, useScreenWidth } from "../../../../hooks"
 import { smallResolution } from "../../../../config"
 
 export const SectionBannerHomePage = () => {
@@ -24,6 +24,8 @@ export const SectionBannerHomePage = () => {
     const handleClick = () => {
         setCurrentCard(1)
     }
+
+    const urlImage = useRenderImage(profile)
     
     return(
         <div>
@@ -39,7 +41,7 @@ export const SectionBannerHomePage = () => {
                 </p>
             </div>
             <div>
-                <img src={ImageJonas} alt="Image Jonas" />
+                <img src={urlImage} alt="Image Jonas" />
             </div>
             {
                 screenWidth >= smallResolution ?

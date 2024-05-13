@@ -3,11 +3,12 @@ import { IoCloseOutline } from "react-icons/io5"
 import { useKeydown, useOutclick, useRenderImage } from "../../../../../hooks"
 import { Button } from "../../../Button"
 import { FormArticleImage } from "../../../forms"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AppBehaviorContext } from "../../../../../providers"
 
 export const ImageArtilceModal = ({article, setIsOpenInsertImage}) => {
-    const { articleImage, setArticleImage } = useContext(AppBehaviorContext)
+    const { imageArticle } = useContext(AppBehaviorContext)
+    const [ articleImage, setArticleImage ] = useState("")
 
     const closeModalOutClick = useOutclick(()=> {
         setIsOpenInsertImage(false)      
@@ -23,9 +24,13 @@ export const ImageArtilceModal = ({article, setIsOpenInsertImage}) => {
     }
 
     useEffect(() => {
-        const urlImage = useRenderImage(article)
-        setArticleImage(urlImage)
-    }, [article])
+        if (imageArticle) {
+            setArticleImage(imageArticle)
+        } else {
+            const urlImage = useRenderImage(article)
+            setArticleImage(urlImage)
+        }
+    }, [article, imageArticle])
     
     return(
         <div
@@ -34,6 +39,7 @@ export const ImageArtilceModal = ({article, setIsOpenInsertImage}) => {
 			ref={closeModalOutClick}
 
 		>
+            <h4>Inserir umagem</h4>
 			<div>
                 <Button onClick={ handleClick }>
 

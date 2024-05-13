@@ -1,4 +1,5 @@
 import { z } from "zod"
+import { ImageSchema } from "./Image.schemas"
 
 export const articlesSchema = z.object(
     {
@@ -15,6 +16,17 @@ export const ArticlesSchema = articlesSchema.omit(
         id: true
     }
 )
+
+export const  ArticleReturnSchema = articlesSchema.omit(
+    {
+        imageId: true
+    }
+).extend(
+    {
+        image: ImageSchema.nullish(),
+    }
+)
+
 
 export const ArticlesUpdateSchema = ArticlesSchema.partial()
 

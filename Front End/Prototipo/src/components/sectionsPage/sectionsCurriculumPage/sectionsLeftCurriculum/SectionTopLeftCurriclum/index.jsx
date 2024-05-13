@@ -1,12 +1,14 @@
 import { useContext } from "react"
-import  ImageJonas  from "../../../../../assets/JonasImage.svg"
 import { UserAdmContext } from "../../../../../providers"
+import { useRenderImage } from "../../../../../hooks"
 
 export const SectionTopLeftCurriclum = () => {
     const { profile } = useContext(UserAdmContext)
 
     const name = profile.userName?.toUpperCase()
     const profession = profile?.profession
+
+    const urlImage = useRenderImage(profile)
 
     return(
         <div>
@@ -15,7 +17,7 @@ export const SectionTopLeftCurriclum = () => {
                 <p>{profession}</p> 
             </div>
             <div>
-                <img src={ImageJonas} alt="Image Jonas" />
+                <img src={urlImage} alt="Image Jonas" />
             </div>
         </div>
     )

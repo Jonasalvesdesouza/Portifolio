@@ -41,7 +41,7 @@ ImageProfileRouter.get(
 
 ImageProfileRouter.patch(
 
-    "/image/update:id",
+    "/image/update/:id",
     userAuth.VerifyToken,
     upload.single("path"),
     (req, res) => imageControllers.update(req, res) 

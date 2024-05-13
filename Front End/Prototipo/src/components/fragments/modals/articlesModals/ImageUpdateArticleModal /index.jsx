@@ -4,7 +4,6 @@ import {
 
     useKeydown, 
     useOutclick, 
-    useRenderImage 
 
 } from "../../../../../hooks"
 
@@ -14,7 +13,9 @@ import { useContext, useEffect } from "react"
 import { AppBehaviorContext } from "../../../../../providers"
 
 export const ImageUpdateArticleModal  = ({setIsopenUpdateImage, article}) => {
-    const { articleImage } = useContext(AppBehaviorContext)
+    const { imageArticle } = useContext(AppBehaviorContext)
+
+    console.log(imageArticle)
 
     const closeModalOutClick = useOutclick(()=> {
         setIsopenUpdateImage(false)      
@@ -32,22 +33,27 @@ export const ImageUpdateArticleModal  = ({setIsopenUpdateImage, article}) => {
 
 		>
 			<div>
-                <Button onClick={
-                    () => {
-                        setIsopenUpdateImage(false)
-                    }
-                }>
+                <div>
+                    <Button onClick={
+                        () => {
+                            setIsopenUpdateImage(false)
+                        }
+                    }>
 
-                    <IoCloseOutline
-                        size={28}
-                        color="#1b1f24"
-                    />
+                        <IoCloseOutline
+                            size={28}
+                            color="#1b1f24"
+                            />
 
-                </Button>
+                    </Button>
+                </div>
+                <div>
+                    <h4>Update Image</h4>
+                </div>
             </div>
             <div>
                 <img 
-                    src={articleImage} 
+                    src={imageArticle} 
                     alt="Preview" 
                     style={{ maxWidth: '100%', marginTop: '10px' }} 
                 />

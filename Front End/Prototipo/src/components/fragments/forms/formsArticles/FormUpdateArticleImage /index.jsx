@@ -18,7 +18,7 @@ export const FormUpdateArticleImage = ({setIsopenUpdateImage, article}) => {
     const  [ loading, setLoading ]  = useState(false)
 
     const { articleImageUpdate } = useContext(UserAdmContext)
-    const { setArticleImage } = useContext(AppBehaviorContext)
+    const { setImageArticle } = useContext(AppBehaviorContext)
 
     const {
 
@@ -49,7 +49,7 @@ export const FormUpdateArticleImage = ({setIsopenUpdateImage, article}) => {
         if (file) {
             const reader = new FileReader();
             reader.onload = () => {
-                setArticleImage(reader.result);
+                setImageArticle(reader.result);
             };
             reader.readAsDataURL(file);
         }

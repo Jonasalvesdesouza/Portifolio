@@ -9,7 +9,7 @@ import { AppBehaviorContext } from "../../../../../providers"
 
 export const ImageProjectModal = ({project, setIsOpenInsertImage}) => {
     const { imageProject } = useContext(AppBehaviorContext)
-    const  [projectImage, setProjectImage]  = useState("")
+    const [ projectImage, setProjectImage ] = useState("")
 
     const closeModalOutClick = useOutclick(()=> {
         setIsOpenInsertImage(false)      
@@ -26,12 +26,12 @@ export const ImageProjectModal = ({project, setIsOpenInsertImage}) => {
 
     useEffect(() => {
         if (imageProject) {
-            setProjectImage(imageProject);
+            setProjectImage(imageProject)
         } else {
-            const urlImage = useRenderImage(project);
-            setProjectImage(urlImage);
+            const urlImage = useRenderImage(project)
+            setProjectImage(urlImage)
         }
-    }, [project, imageProject]);
+    }, [project, imageProject])
 
     return(
         <div

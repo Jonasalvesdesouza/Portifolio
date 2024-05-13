@@ -43,7 +43,7 @@ export class ImageArticleServices {
             }
         )
 
-        return ImageReturnSchema.parse(data)   
+        return data
     }
 
     async getOne(id: number) {
@@ -81,7 +81,7 @@ export class ImageArticleServices {
             }
         )
 
-        return ImageReturnSchema.parse(data)   
+        return data
     }
 
     async delete(userId: number) {

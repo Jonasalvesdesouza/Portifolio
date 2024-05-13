@@ -103,6 +103,80 @@ export const UserAdmProvider = ({children}) =>{
         }
     }
 
+    const profileImageRegister = async ( 
+
+        payload, 
+        setLoading,
+        reset,
+        
+     ) =>{
+        
+         try {
+            setLoading(true)
+            const { data } = await api.post(
+                `/profile/image`, 
+                payload, 
+                headers
+            )
+
+            setProfile(
+                {
+                    ...profile, 
+                    image:data
+                }
+            )
+
+            NotifySucess("Image registered successfully")
+            reset()
+        } catch (error) {
+
+            console.log(error)
+            NotifyError("Unfortunately something went wrong")
+            
+        }finally{
+            setLoading(false)         
+        }
+    }
+
+    const profileImageUpdate = async (
+
+        payload, 
+        setLoading,
+        reset,
+        
+    ) =>{
+
+        try {
+
+            setLoading(true)
+            
+            const { data } = await api.patch(
+
+                `/profile/image/update/${profile.image.id}`, 
+                payload,
+                headers
+
+            )
+
+            setProfile(
+                {
+                    ...profile, 
+                    image:data
+                }
+            )
+
+            NotifySucess("Image edited successfully")
+            reset()
+        } catch (error) {
+            console.log(error)
+            NotifyError("Unfortunately something went wrong")            
+        }finally{
+            setLoading(false)
+        }
+    }
+
+
+
     const contactUpdate = async (
 
         payload,
@@ -242,7 +316,6 @@ export const UserAdmProvider = ({children}) =>{
         
     ) =>{
 
-        console.log(project)
         try {
 
             setLoading(true)
@@ -346,6 +419,8 @@ export const UserAdmProvider = ({children}) =>{
         
      ) =>{
 
+        console.log(payload)
+
         try {
             setLoading(true)
             const { data } = await api.post(
@@ -388,11 +463,12 @@ export const UserAdmProvider = ({children}) =>{
 
             setArticlesList(articlesList.map(article => {
                 if (article.id === data.articleId) {
-                    return { ...article, image: data }
+                    const newArticle = { ...article, image: data } 
+                    return newArticle
                 } else {
                     return article
                 }
-            }))            
+            }))
             
             NotifySucess("Image registered successfully")
             reset()
@@ -617,6 +693,8 @@ export const UserAdmProvider = ({children}) =>{
                 education, 
                 setEducation,
                 profileUpdate,
+                profileImageRegister,
+                profileImageUpdate,
                 contactUpdate,
                 socialMediaRegister,
                 projectsRegister,

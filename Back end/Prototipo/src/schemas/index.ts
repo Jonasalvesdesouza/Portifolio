@@ -88,6 +88,7 @@ export {
     articlesSchema,
     ArticlesSchema,
     ArticlesUpdateSchema,
+    ArticleReturnSchema,
     typeExpectationArticles,
     typeArticles,
     typeUpdateExpectationArticles,

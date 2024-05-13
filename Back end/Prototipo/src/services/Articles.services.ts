@@ -3,6 +3,7 @@ import { AppError } from "../erros"
 
 import {
 
+    ArticleReturnSchema,
     typeArticles,
     typeExpectationArticles,
     typeUpdateArticles,
@@ -50,12 +51,13 @@ export class ArticleServices {
         
                 data: {
                     ...body,
-                    profileId: profile.id
+                    profileId: profile.id,
+                    image:{}
                 } 
             }
         )
 
-        return data   
+        return ArticleReturnSchema.parse(data)   
     }
 
     async getOne(id:number) {

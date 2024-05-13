@@ -11,22 +11,13 @@ import {
 
 } from "../../../../../../fragments"
 
-import {
-
-    useRenderImage, 
-    useStateImage 
-
-} from "../../../../../../../hooks"
-
 import { UserAdmContext } from "../../../../../../../providers"
-import { TopCard } from "./TopCard"
+import { InsertImage } from "./InsertImage"
 import { ConfigServerUrl } from "../../../../../../../config"
 
 export const ProjectCard = ({ project }) => {
     const [ projectImage, setProjectImage ] = useState("")
-   /*  console.log("Este ta dentro ProjectCard")
-    console.log(project)
- */
+
     const {
 
         setEditProjects, 
@@ -47,15 +38,15 @@ export const ProjectCard = ({ project }) => {
                 return ImageDefault
             } else {
                 const imagePath = project.image.path;
-                const imageName = imagePath?.substring(imagePath.lastIndexOf('/') + 1);
+                const imageName = imagePath?.substring(imagePath.lastIndexOf('/') + 1)
                 const serverUrl = ConfigServerUrl;
-                return `${serverUrl}/uploads/${imageName?.replace(/\s/g, '%20')}`;
+                return `${serverUrl}/uploads/${imageName?.replace(/\s/g, '%20')}`
             }
-        };
+        }
 
         const imageUrl = imageRender();
         setProjectImage(imageUrl);
-    }, [project]); // Apenas executado quando project mudar
+    }, [project])
 
 
     return(
@@ -65,7 +56,7 @@ export const ProjectCard = ({ project }) => {
                     <div>
                     {
 
-                        <TopCard
+                        <InsertImage
                             project={project}
                             setIsOpenInsertImage={setIsOpenInsertImage}
                             setIsopenUpdateImage={setIsopenUpdateImage} 

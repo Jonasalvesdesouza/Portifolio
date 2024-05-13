@@ -1,22 +1,26 @@
-import multer, { Options } from "multer"
-import path from "path"
+import multer, { Options } from "multer";
+import path from "path";
 
-export default {
+const storageOptions: Options = {
   storage: multer.diskStorage({
     destination: path.join(__dirname, "..", "..", "uploads"),
     filename(req, file, callback) {
-      callback(null, `${Date.now()}-${file.originalname}`)
+      callback(null, `${Date.now()}-${file.originalname}`);
     },
   }),
   limits: {
-    fileSize: 15 * 1024 * 1024, 
+    fileSize: 15 * 1024 * 1024,
   },
   fileFilter: (req, file, cb) => {
-    const mimeType = ["image/png", "image/jpeg", "image/gif", "image/jpg"]
+    const allowedExtensions = ["png", "jpeg", "jpg", "gif", "svg"];
+    const fileExtension = path.extname(file.originalname).toLowerCase().slice(1);
 
-    if (!mimeType.includes(file.mimetype)) {
-      return cb(null, false)
+    if (!allowedExtensions.includes(fileExtension)) {
+      return cb(null, false);
     }
-    cb(null, true)
+
+    cb(null, true);
   },
-} as Options
+};
+
+export default storageOptions;

@@ -6,11 +6,11 @@ import { FormInsertArticle } from "../../../forms"
 
 export const InsertArticleModal = ({ setIsOpenDashboard }) => {
     
-    const closeModalOutClick = useOutclick(
+    /* const closeModalOutClick = useOutclick(
         ()=> {
             setIsOpenDashboard(false)      
         }
-    )
+    ) */
    
      const closeModalKeyDownEsque = useKeydown(
         ()=>{
@@ -26,7 +26,7 @@ export const InsertArticleModal = ({ setIsOpenDashboard }) => {
         <div
 
 			role="dialog"
-			ref={closeModalOutClick}
+			/* ref={closeModalOutClick} */
 
 		>
 			<div>

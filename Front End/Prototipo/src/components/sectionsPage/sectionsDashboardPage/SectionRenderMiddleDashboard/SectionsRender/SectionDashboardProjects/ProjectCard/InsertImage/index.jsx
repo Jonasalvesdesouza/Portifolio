@@ -3,7 +3,7 @@ import { LuImagePlus } from "react-icons/lu"
 
 import { Button } from "../../../../../../../fragments"
 
-export const TopCard = (
+export const InsertImage = (
     {   
         project,
         setIsopenUpdateImage,
@@ -25,16 +25,15 @@ export const TopCard = (
     return(
         <div>
             <div>
-                {
-                    projectImage != "/src/assets/DefaultImage.ai.svg" ? 
-                    "Update Image" : 
-                    projectImage === "/src/assets/DefaultImage.ai.svg" ? 
-                    "Insert Image" : null
-                }
+                <img 
+                    src={projectImage} 
+                    alt={`${project.title}`}
+                />
             </div>
             <div>
                 <Button onClick={
-                    projectImage != "/src/assets/DefaultImage.ai.svg" ? handleUpdateImage : 
+                    projectImage != "/src/assets/DefaultImage.ai.svg" ? 
+                    handleUpdateImage : 
                     projectImage === "/src/assets/DefaultImage.ai.svg" ? 
                     handleInsertImage : null
                 }
@@ -44,21 +43,15 @@ export const TopCard = (
                         <CiImageOn
                             size={28}
                             color="black" 
-                        /> : <LuImagePlus 
+                        /> : 
+                        <LuImagePlus 
                             size={28}
                             color="black"
                         />
                     }
 
                 </Button>
-            </div>
-            <div>
-                <img 
-                    src={projectImage} 
-                    alt={`${project.title}`}
-                />
-            </div>
-            
+            </div>            
         </div>
     )
 }

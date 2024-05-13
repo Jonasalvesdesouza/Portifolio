@@ -9,15 +9,15 @@ import { zodResolver } from "@hookform/resolvers/zod"
 
 import { SlArrowRight } from "react-icons/sl"
 
-import { UserAdmContext } from "../../../../providers"
-import { profileFormSchema } from "../../../../schema"
+import { UserAdmContext } from "../../../../../providers"
+import { profileFormSchema } from "../../../../../schema"
 import {
 
     TextArea, 
     Input, 
     Button
 
-} from "../../index"
+} from "../../../index"
 
 export const FormProfile = () => {
     const  [ loading, setLoading ]  = useState(false)

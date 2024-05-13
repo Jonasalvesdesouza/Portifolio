@@ -4,7 +4,8 @@ import {
 
     useCalculateReadingTime, 
     useFormtDate, 
-    useLimitedDescription, 
+    useLimitedDescription,
+    useRenderImage, 
 } from "../../../../../../hooks"
 
 
@@ -20,6 +21,8 @@ export const CardArticle = ({article}) => {
     const handleClick = () => {
         localStorage.setItem("@IDARTICLE", article.id)
     }
+
+    const urlImage = useRenderImage(article)
     
     return(
         <li>
@@ -37,16 +40,14 @@ export const CardArticle = ({article}) => {
                                 {article.title}
                             </h2>
                         </Link>
-                        <p>
-                            {LimitedDescription}
-                        </p>
+                        <p dangerouslySetInnerHTML={{ __html: LimitedDescription }} />
                     </div>
                     <div>
                         <Link
                             to={"/articlepage"}
                             onClick={handleClick}
                         >
-                            <img src={article.image} alt={article.title} />
+                            <img src={urlImage} alt={article.title} />
                         </Link>
                     </div>
                 </div>

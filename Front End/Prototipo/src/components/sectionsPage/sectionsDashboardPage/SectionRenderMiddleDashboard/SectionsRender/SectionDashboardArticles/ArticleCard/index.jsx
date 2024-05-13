@@ -1,3 +1,5 @@
+import ImageDefault from "../../../../../../../assets/DefaultImage.ai.svg"
+
 import { useContext, useEffect, useState } from "react"
 import { BiPencil, BiTrash } from 'react-icons/bi'
 
@@ -15,17 +17,16 @@ import {
     useCalculateReadingTime, 
     useFormtDate, 
     useLimitedDescription,
-    useRenderImage,
-    useStateImage, 
 
 } from "../../../../../../../hooks"
 
 import { AppBehaviorContext, UserAdmContext } from "../../../../../../../providers"
 import { InsertImage } from "./InsertImage"
+import { ConfigServerUrl } from "../../../../../../../config"
 
 export const ArticleCard = ({ article }) => {
+    const { setImageArticle } = useContext(AppBehaviorContext)
     const [ articleImage, setArticleImage ] = useState("")
-         
     const {
 
         setEditArticles, 
@@ -34,7 +35,6 @@ export const ArticleCard = ({ article }) => {
 
     } = useContext(UserAdmContext)
 
-   
     const dateArticle = useFormtDate(article.updatedAt)
     const maxLength = 250
     const LimitedDescription = useLimitedDescription(article.description, maxLength)
@@ -47,13 +47,21 @@ export const ArticleCard = ({ article }) => {
     const [ isOpenUpdateImage, setIsopenUpdateImage ] = useState(false)
 
     useEffect(() => {
-        
-        const urlImage = useRenderImage(article)
-        setArticleImage(urlImage)
-        
-    }, [])
-    
-    const imageExists = useStateImage(article)
+        const imageRender = () => {
+            if (!article.image) {
+                return ImageDefault
+            } else {
+                const imagePath = article.image.path;
+                const imageName = imagePath?.substring(imagePath.lastIndexOf('/') + 1)
+                const serverUrl = ConfigServerUrl;
+                return `${serverUrl}/uploads/${imageName?.replace(/\s/g, '%20')}`
+            }
+        }
+
+        const imageUrl = imageRender()
+        setArticleImage(imageUrl)
+    }, [article])
+
     
     return(
         <>
@@ -67,19 +75,17 @@ export const ArticleCard = ({ article }) => {
                             <h2>
                                 {article.title}
                             </h2>
-                            <p>
-                                {LimitedDescription}
-                            </p>
+                            <p dangerouslySetInnerHTML={{ __html: LimitedDescription }} />
                         </div>
                         <div>
                         
                             <InsertImage
                                 article={article}
-                                imageExists={imageExists} 
                                 setIsOpenInsertImage={setIsOpenInsertImage}
                                 setIsopenUpdateImage={setIsopenUpdateImage} 
                                 setArticle={setArticle} 
                                 articleImage={articleImage}
+                                setImageArticle={setImageArticle}
                             />
                         </div>
                     </div>

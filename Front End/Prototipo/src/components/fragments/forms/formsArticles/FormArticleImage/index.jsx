@@ -20,7 +20,7 @@ export const FormArticleImage = ({ setIsOpenInsertImage }) => {
     const  [ loading, setLoading ] = useState(false)
 
     const { articleImageRegister } = useContext(UserAdmContext)
-    const { setStateImage, setArticleImage } = useContext(AppBehaviorContext)
+    const { setStateImage, setImageArticle } = useContext(AppBehaviorContext)
 
     const {
 
@@ -35,7 +35,7 @@ export const FormArticleImage = ({ setIsOpenInsertImage }) => {
     const onSubmit = (payLoad) => {
         const formData = new FormData();
         formData.append("path", payLoad.path[0])
-
+        
         articleImageRegister(
 
             formData, 
@@ -51,7 +51,7 @@ export const FormArticleImage = ({ setIsOpenInsertImage }) => {
         if (file) {
             const reader = new FileReader();
             reader.onload = () => {
-                setArticleImage(reader.result);
+                setImageArticle(reader.result);
             };
             reader.readAsDataURL(file);
         }
