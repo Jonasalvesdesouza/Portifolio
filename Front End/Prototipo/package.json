@@ -10,11 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^41.3.1",
+    "@ckeditor/ckeditor5-code-block": "^41.3.1",
+    "@ckeditor/ckeditor5-core": "^41.3.1",
+    "@ckeditor/ckeditor5-react": "^6.3.0",
     "@hookform/resolvers": "^3.3.4",
     "@tanstack/react-query": "^5.28.6",
+    "@tinymce/tinymce-react": "^5.0.1",
     "axios": "^1.6.8",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
+    "react-ace": "^11.0.1",
+    "react-codemirror2": "^8.0.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.1",
     "react-icons": "^5.0.1",
