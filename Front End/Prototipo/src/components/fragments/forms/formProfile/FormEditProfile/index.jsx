@@ -49,8 +49,7 @@ export const FormProfile = () => {
 
             payLoad, 
             setLoading, 
-            reset
-
+            reset,
         )
     }
 

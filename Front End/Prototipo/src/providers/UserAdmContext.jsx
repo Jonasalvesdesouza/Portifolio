@@ -75,7 +75,7 @@ export const UserAdmProvider = ({children}) =>{
 
         payload,
         setLoading,
-        reset
+        reset,
 
     ) => {
 
@@ -89,8 +89,7 @@ export const UserAdmProvider = ({children}) =>{
             )
 
             NotifySucess('User update successfully!')
-            reset()
-    
+            reset()   
         } catch (error) {
 
             console.log(error)
@@ -143,7 +142,6 @@ export const UserAdmProvider = ({children}) =>{
         payload, 
         setLoading,
         reset,
-        
     ) =>{
 
         try {

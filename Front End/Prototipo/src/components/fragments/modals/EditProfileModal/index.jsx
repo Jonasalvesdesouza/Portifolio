@@ -68,7 +68,7 @@ export const EditProfileModal = ({ setIsOpen }) => {
             </div>
 
 			<div>
-				<FormProfile />
+				<FormProfile/>
 			</div>
 
             <div>
