@@ -419,8 +419,6 @@ export const UserAdmProvider = ({children}) =>{
         
      ) =>{
 
-        console.log(payload)
-
         try {
             setLoading(true)
             const { data } = await api.post(

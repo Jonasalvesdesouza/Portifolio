@@ -27,41 +27,45 @@ export const CardArticle = ({article}) => {
     return(
         <li>
             <div>
-                <span>
-                    {dateArticle}
-                </span>
                 <div>
                     <div>
-                        <Link
-                            to={"/articlepage"}
-                            onClick={handleClick}
-                        >
-                            <h2>
-                                {article.title}
-                            </h2>
-                        </Link>
-                        <p dangerouslySetInnerHTML={{ __html: LimitedDescription }} />
+                        <span> {dateArticle} </span>
                     </div>
                     <div>
-                        <Link
-                            to={"/articlepage"}
-                            onClick={handleClick}
-                        >
-                            <img src={urlImage} alt={article.title} />
-                        </Link>
+                        <div>
+                            <Link
+                                to={"/articlepage"}
+                                onClick={handleClick}
+                            >
+                                <h2> {article.title} </h2>
+                            </Link>
+                        </div>
+                        <div>
+                            <p 
+                                dangerouslySetInnerHTML={{ __html: LimitedDescription }} 
+                            />
+                        </div>
                     </div>
-                </div>
+                    <div>
+                        <div>
+                            <span>
+                                {article.category}
+                            </span> 
+                        </div>
+                        <div>
+                            <span>
+                                {"Reading time " + timeText + " minute"}
+                            </span>
+                        </div>
+                    </div>
+                </div>              
                 <div>
-                    <div>
-                        <span>
-                            {article.category}
-                        </span> 
-                    </div>
-                    <div>
-                        <span>
-                            {"Reading time " + timeText + " minute"}
-                        </span>
-                    </div>
+                    <Link
+                        to={"/articlepage"}
+                        onClick={handleClick}
+                    >
+                        <img src={urlImage} alt={article.title} />
+                    </Link>
                 </div>
             </div>
         </li>

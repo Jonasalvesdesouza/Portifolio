@@ -1,7 +1,8 @@
 import ImageDefault from "../../../../../../../assets/DefaultImage.ai.svg"
+import Prism from 'prismjs'; // Importe o Prism.js
+import 'prismjs/themes/prism.css'; // Estilos do Prism.js
 
 import { useContext, useEffect, useState } from "react"
-import { BiPencil, BiTrash } from 'react-icons/bi'
 
 import {
 
@@ -23,6 +24,19 @@ import {
 import { AppBehaviorContext, UserAdmContext } from "../../../../../../../providers"
 import { InsertImage } from "./InsertImage"
 import { ConfigServerUrl } from "../../../../../../../config"
+import { ButtonsSection } from "./ButtonsSection";
+
+const renderDynamicCodeBlock = (codeBlock) => {
+    if (!codeBlock) return null; // Retorna null se não houver bloco de código
+  
+    const highlightedCode = Prism.highlight(codeBlock, Prism.languages.javascript, 'javascript');
+  
+    return (
+      <pre className="language-javascript">
+        <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+      </pre>
+    );
+  };
 
 export const ArticleCard = ({ article }) => {
     const { setImageArticle } = useContext(AppBehaviorContext)
@@ -67,18 +81,51 @@ export const ArticleCard = ({ article }) => {
         <>
             <li>
                 <div>
-                    <span>
-                        {dateArticle}
-                    </span>
+
                     <div>
+                        <div>
+                            <span>
+                                {dateArticle}
+                            </span>
+                        </div>
+
                         <div>
                             <h2>
                                 {article.title}
                             </h2>
-                            <p dangerouslySetInnerHTML={{ __html: LimitedDescription }} />
                         </div>
+
                         <div>
-                        
+                            <p 
+                                dangerouslySetInnerHTML={{ __html: LimitedDescription }} 
+                            />
+                        </div>
+
+                        <div>
+                            <div>
+                                <span>
+                                    {article.category}
+                                </span> 
+                            </div>
+                            <div>
+                                <span>
+                                    {"Reading time " + timeText + " minute"}
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <ButtonsSection
+                            article={article} 
+                            setIsOpen={setIsOpen} 
+                            setEditArticles={setEditArticles} 
+                            articleDelete={articleDelete} 
+                            loading={loading}
+                            setLoading={setLoading}
+                        />
+                        <div>
                             <InsertImage
                                 article={article}
                                 setIsOpenInsertImage={setIsOpenInsertImage}
@@ -89,53 +136,8 @@ export const ArticleCard = ({ article }) => {
                             />
                         </div>
                     </div>
-                    <div>
-                        <div>
-                            <span>
-                                {article.category}
-                            </span> 
-                        </div>
-                        <div>
-                            <span>
-                                {"Reading time " + timeText + " minute"}
-                            </span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <Button
-                            onClick={
-                                ()=>{
-                                    setIsOpen(true)
-                                    setEditArticles(article)
-                                }
-                            }
-                        >
-                            <BiPencil
-                                size={18}
-                                color="black" 
-                            />
-                        </Button>
-                    </div>
-                    <div>
-                        <Button
-                            onClick={
-                                ()=>{
-                                    articleDelete(article.id, setLoading)
-                                }
-                            }
-                        >
-                            {
-                                loading? "Loading...":
-                                <BiTrash
-                                    size={18}
-                                    color="black"
-                                    /* color="#e8e9ea" */ 
-                                />
-                            }
-                        </Button>
-                    </div>
-                </div>
+                    
+                </div>               
             </li>
 
             {

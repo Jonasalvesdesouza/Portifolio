@@ -1,3 +1,5 @@
+import 'react-quill/dist/quill.snow.css'
+
 import {
 
     useContext, 
@@ -22,8 +24,10 @@ import {
 } from "../../../index"
 
 import { Category } from "./options"
+import { TextEditor } from './TextEditor'
 
 export const FormInsertArticle = ({ setIsOpenDashboard }) => {
+    const [ editorContent, setEditorContent ] = useState('');
     const  [ loading, setLoading ]  = useState(false)
 
     const { articleRegister, } = useContext(UserAdmContext)
@@ -36,16 +40,17 @@ export const FormInsertArticle = ({ setIsOpenDashboard }) => {
         formState: { errors }, 
 
      } = useForm(
-        {
+        /* {
             resolver: zodResolver(insertArticleSchema),
-        }
+        } */
     )
 
-    const onSubmit = (payLoad) => {
+    const onSubmit = (payload) => {
+        payload.description = editorContent
 
         articleRegister(
 
-            payLoad, 
+            payload, 
             setLoading, 
             reset,
             setIsOpenDashboard
@@ -73,13 +78,9 @@ export const FormInsertArticle = ({ setIsOpenDashboard }) => {
                     {...register('category')} 
                 />
                
-                <TextArea
-                    type="text"
-                    label="Description"
-                    placeholder="Description"
-                    error={errors.description}
-                    {...register('description')}  
-                />
+              <TextEditor
+                    setEditorContent={setEditorContent} 
+              />
 
                 <Button 
                     type="submit"
