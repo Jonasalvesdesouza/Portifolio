@@ -21,14 +21,12 @@ import {
 
 } from "../../../index"
 
-import { Category } from "./options"
-import { TextEditor } from './TextEditor'
+import { Category, SubCategory } from "./options"
 
-export const FormEditArticle = ({setIsOpen}) => {
-    const [ editorContent, setEditorContent ] = useState('')
+export const FormEditProject = ({setIsOpen}) => {
     const  [ loading, setLoading ]  = useState(false)
 
-    const { articleUpdate, editArticles} = useContext(UserAdmContext)
+    const { projectUpdate, editProjects} = useContext(UserAdmContext)
 
     const {
 
@@ -39,20 +37,24 @@ export const FormEditArticle = ({setIsOpen}) => {
 
      } = useForm(
         {
+            resolver: zodResolver(insertProjectSchema),
             values:{
-                title: editArticles.title,
-                category: editArticles.category,
-                description: editArticles.description
+                title: editProjects.title,
+                webSite: editProjects.webSite,
+                gitHub: editProjects.gitHub,
+                category: editProjects.category,
+                SubCategory: editProjects.SubCategory,
+                description: editProjects.description
             }
         }
     )
 
-    const onSubmit = (payload) => {
-        payload.description = editorContent
+    const onSubmit = (payLoad) => {
+        console.log(handleSubmit)
 
-        articleUpdate(
+        projectUpdate(
 
-            payload, 
+            payLoad, 
             setLoading, 
             reset,
             setIsOpen
@@ -71,7 +73,20 @@ export const FormEditArticle = ({setIsOpen}) => {
                     error={errors.title}
                     {...register('title')}  
                 />
-              
+                <Input
+                    type="text"
+                    label="Web Site"
+                    placeholder="Web Site"
+                    error={errors.webSite}
+                    {...register('webSite')}  
+                />
+                <Input
+                    type="text"
+                    label="GitHub"
+                    placeholder="GitHub"
+                    error={errors.gitHub}
+                    {...register('gitHub')}  
+                />
                 
                 <Select
                     label={"Category"}
@@ -80,11 +95,21 @@ export const FormEditArticle = ({setIsOpen}) => {
                     {...register('category')} 
                 />
                  
+                 <Select
+                    label={"subCategory"}
+                    options={SubCategory}
+                    error={errors.subCategor}
+                    {...register('subCategory')} 
+                />
+
                
-                 <TextEditor
-                    setEditorContent={setEditorContent} 
-                    defaultValue={editArticles.description} 
-                 />
+                <TextArea
+                    type="text"
+                    label="Description"
+                    placeholder="Description"
+                    error={errors.description}
+                    {...register('description')}  
+                />
 
                 <Button 
                     type="submit"

@@ -24,19 +24,7 @@ import {
 import { AppBehaviorContext, UserAdmContext } from "../../../../../../../providers"
 import { InsertImage } from "./InsertImage"
 import { ConfigServerUrl } from "../../../../../../../config"
-import { ButtonsSection } from "./ButtonsSection";
-
-const renderDynamicCodeBlock = (codeBlock) => {
-    if (!codeBlock) return null; // Retorna null se não houver bloco de código
-  
-    const highlightedCode = Prism.highlight(codeBlock, Prism.languages.javascript, 'javascript');
-  
-    return (
-      <pre className="language-javascript">
-        <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
-      </pre>
-    );
-  };
+import { ButtonsArticleCard } from "./ButtonsArticleCard"
 
 export const ArticleCard = ({ article }) => {
     const { setImageArticle } = useContext(AppBehaviorContext)
@@ -81,7 +69,6 @@ export const ArticleCard = ({ article }) => {
         <>
             <li>
                 <div>
-
                     <div>
                         <div>
                             <span>
@@ -117,13 +104,15 @@ export const ArticleCard = ({ article }) => {
                     </div>
 
                     <div>
-                        <ButtonsSection
+                        <ButtonsArticleCard
+
                             article={article} 
                             setIsOpen={setIsOpen} 
                             setEditArticles={setEditArticles} 
                             articleDelete={articleDelete} 
                             loading={loading}
                             setLoading={setLoading}
+                            
                         />
                         <div>
                             <InsertImage

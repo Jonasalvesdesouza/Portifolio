@@ -1,5 +1,3 @@
-import 'react-quill/dist/quill.snow.css'
-
 import {
 
     useContext, 
@@ -7,26 +5,27 @@ import {
 
 } from "react"
 import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+
 import { SlArrowRight } from "react-icons/sl"
 
 import { UserAdmContext } from "../../../../../providers"
+import { insertSocialMediaSchema } from "../../../../../schema"
 
 import {
-
+ 
     Input, 
     Button,
     Select
 
 } from "../../../index"
 
-import { Category } from "./options"
-import { TextEditor } from './TextEditor'
+import { OptionsSocialMedia} from "./options"
 
-export const FormInsertArticle = ({ setIsOpenDashboard }) => {
-    const [ editorContent, setEditorContent ] = useState('')
+export const FormInsertSocialMedia = ({ setIsOpenDashboard }) => {
     const  [ loading, setLoading ]  = useState(false)
 
-    const { articleRegister, } = useContext(UserAdmContext)
+    const { socialMediaRegister, } = useContext(UserAdmContext)
 
     const {
 
@@ -35,14 +34,17 @@ export const FormInsertArticle = ({ setIsOpenDashboard }) => {
         reset,
         formState: { errors }, 
 
-     } = useForm()
+     } = useForm(
+        {
+            resolver: zodResolver(insertSocialMediaSchema),
+        }
+    )
 
-    const onSubmit = (payload) => {
-        payload.description = editorContent
+    const onSubmit = (payLoad) => {
 
-        articleRegister(
+        socialMediaRegister(
 
-            payload, 
+            payLoad, 
             setLoading, 
             reset,
             setIsOpenDashboard
@@ -53,30 +55,26 @@ export const FormInsertArticle = ({ setIsOpenDashboard }) => {
         <form onSubmit={ handleSubmit(onSubmit) }>
 
             <div>
+                <Select
+                    label={"Social Media"}
+                    options={OptionsSocialMedia}
+                    error={errors.category}
+                    {...register('name')} 
+                />
+
                 <Input
                     type="text"
-                    label="Title"
-                    placeholder="Title"
+                    label="Link"
+                    placeholder="Link"
                     error={errors.title}
-                    {...register('title')}  
+                    {...register('link')}  
                 />
-
-                <Select
-                    label={"Category"}
-                    options={Category}
-                    error={errors.category}
-                    {...register('category')} 
-                />
-
-                <TextEditor
-                    setEditorContent={setEditorContent} 
-                    {...register('description')} 
-                 />
+                 
 
                 <Button 
                     type="submit"
                 >
-
+        
                     {loading ? "Loading..." : "To send"}
 
                 <SlArrowRight

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
-export const TextEditor = ({ setEditorContent }) => {
+export const TextEditor = ({ setEditorContent, defaultValue }) => {
   const [text, setText] = useState('');
 
   const handleEditorChange = (content, editor) => {
@@ -12,7 +12,7 @@ export const TextEditor = ({ setEditorContent }) => {
   return (
     <Editor
       apiKey="wglqt5j1s1zt8d5f7mqju5hldqn3st3tu2r0m49dxvehcs01"
-      initialValue="<p>Type it...</p>"
+      initialValue={defaultValue}
       init={{
         height: 500,
         menubar: true,

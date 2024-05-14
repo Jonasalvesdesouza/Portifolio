@@ -8,3 +8,5 @@ export { insertProjectSchema } from "./projectSchema/insertProjectSchema"
 export { imageProjectchema } from "./projectSchema/imageProjectSchema"
 
 export { insertArticleSchema } from "./articleSchema/insertArticle"
+
+export { insertSocialMediaSchema } from "./socialMediaSchema/insertSocialMediaSchema"

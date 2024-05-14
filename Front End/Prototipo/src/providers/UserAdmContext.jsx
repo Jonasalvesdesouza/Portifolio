@@ -21,6 +21,7 @@ export const UserAdmProvider = ({children}) =>{
     const [ editContactProfile, setEditContactProfile ] = useState([])
     const [ editProjects, setEditProjects ] = useState([])
     const [ editArticles, setEditArticles ] = useState([])
+    console.log(editArticles)
 
     const [ socialMediaList, setSocialMediaList ] = useState([])
     const [ hobbyList, setHobbyList ] = useState([])
@@ -203,32 +204,6 @@ export const UserAdmProvider = ({children}) =>{
         }finally{
 
             setLoading(false)
-
-        }
-    }
-
-    const socialMediaRegister = async (
-        
-        payload,
-        setLoading,
-        reset
-
-    ) => {
-        try {
-            setLoading(true)
-
-            const { data } = await api.post(
-                "/socialmedia/",
-                payload,
-                headers
-            )
-
-            NotifySucess('User update successfully!')
-            reset()
-            
-        } catch (error) {
-            
-        }finally{
 
         }
     }
@@ -579,6 +554,36 @@ export const UserAdmProvider = ({children}) =>{
             NotifyError("Unfortunately something went wrong")            
         }finally{
             setLoading(false)
+        }
+    }
+
+
+    const socialMediaRegister = async (
+        
+        payload,
+        setLoading,
+        reset,
+        setIsOpenDashboard
+
+    ) => {
+        try {
+            setLoading(true)
+
+            const { data } = await api.post(
+                "/socialmedia/",
+                payload,
+                headers
+            )
+
+            setSocialMediaList( [ ...socialMediaList, data ] )
+            NotifySucess('User update successfully!')
+            reset()
+            setIsOpenDashboard(false)
+            
+        } catch (error) {
+            console.log(error)
+        }finally{
+
         }
     }
 

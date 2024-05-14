@@ -1,0 +1,30 @@
+export const ButtonsSocialMediaCard = () => {
+    return(
+        <div>
+             <div>
+                <Button
+                    onClick={()=>{
+                        setIsOpen(true)
+                        return
+                    }}
+                >
+                    <BiPencil
+                        size={18}
+                        color="#e8e9ea" 
+                    />
+                </Button>
+                
+                <Button
+                    onClick={()=>{
+                        return
+                    }}
+                >
+                    <BiTrash
+                        size={18}
+                        color="#e8e9ea" 
+                    />
+                </Button>
+                </div>
+        </div>
+    )
+}

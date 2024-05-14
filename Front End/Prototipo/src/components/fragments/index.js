@@ -22,6 +22,8 @@ export { EditArticleModal } from "./modals/articlesModals/EditArticleModal"
 export { ImageArtilceModal } from "./modals/articlesModals/ImageArticleModal"
 export { ImageUpdateArticleModal } from "./modals/articlesModals/ImageUpdateArticleModal "
 
+export { InsertSocialMediaModal } from "./modals/socialMediaModals/InsertSocialMediaModal"
+
 export { NavHomePage } from "./NavHomePage"
 export { HeaderHomeMobile } from "./HeaderHomeMobile"
 export { HeaderDashboard } from "./HeaderDashboard"

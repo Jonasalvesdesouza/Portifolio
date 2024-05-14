@@ -1,29 +1,49 @@
 import { useContext } from "react"
-import { UserAdmContext } from "../../../../../../providers"
+import {
+
+    AppBehaviorContext, 
+    UserAdmContext 
+
+} from "../../../../../../providers"
 import { SocialMediaCard } from "./SocialMediaCard"
+import { InsertSocialMediaModal } from "../../../../../fragments"
 
 export const SectionDashboardSocialMedia = () => {
+    const { 
 
-    const { profile } = useContext(UserAdmContext)
+        isOpenDashboard,
+        setIsOpenDashboard
 
-    const socialMedias = profile?.socialMedia
+    } = useContext(AppBehaviorContext)
     
+    const { projectsList } = useContext(UserAdmContext)
+
+    const { socialMediaList } = useContext(UserAdmContext)
        
     return(
-        <div>
-            <h2>SocialMedia.</h2>
-            <ul>
-                {
-                    socialMedias?.map((socialMedia)=>{
-                        return(
-                            <SocialMediaCard
-                                key={socialMedia.id}
-                                socialMedia={socialMedia} 
-                            />
-                        )
-                    })
-                }
-            </ul>
-        </div>
+        <>
+            <div>
+                <h2>SocialMedia.</h2>
+                <ul>
+                    {
+                        socialMediaList?.map((socialMedia)=>{
+                            return(
+                                <SocialMediaCard
+                                    key={socialMedia.id}
+                                    socialMedia={socialMedia} 
+                                />
+                            )
+                        })
+                    }
+                </ul>
+            </div>
+            {
+                isOpenDashboard === true ?
+                <InsertSocialMediaModal
+                    setIsOpenDashboard={setIsOpenDashboard}
+                />:
+                null
+            }
+        </>
     )
 }

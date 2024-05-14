@@ -16,3 +16,5 @@ export { FormInsertArticle } from "./formsArticles/FormInsertArticle"
 export { FormEditArticle } from "./formsArticles/FormEditArticle"
 export { FormArticleImage } from "./formsArticles/FormArticleImage"
 export { FormUpdateArticleImage } from "./formsArticles/FormUpdateArticleImage "
+
+export { FormInsertSocialMedia } from "./formsSocialMedia /FormInsertSocialMedia"

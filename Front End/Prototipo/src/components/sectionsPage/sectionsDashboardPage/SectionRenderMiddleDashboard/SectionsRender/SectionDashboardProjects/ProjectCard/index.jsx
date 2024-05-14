@@ -14,6 +14,7 @@ import {
 import { UserAdmContext } from "../../../../../../../providers"
 import { InsertImage } from "./InsertImage"
 import { ConfigServerUrl } from "../../../../../../../config"
+import { ProjectButtons } from "./ProjectButtons"
 
 export const ProjectCard = ({ project }) => {
     const [ projectImage, setProjectImage ] = useState("")
@@ -71,39 +72,16 @@ export const ProjectCard = ({ project }) => {
                         <p>{project.category}</p>
                         <p>{project.description}</p>
                     </div>
-                    <div>
-                        <Button
-                            onClick={
-                                ()=>{
-                                    setIsOpen(true)
-                                    setEditProjects(project)
-                                }
-                            }
-                        >
-                            <BiPencil
-                                size={18}
-                                color="black" 
-                            />
-                        </Button>
-                    </div>
-                    <div>
-                        <Button
-                            onClick={
-                                ()=>{
-                                    projectDelete(project.id, setLoading)
-                                }
-                            }
-                        >
-                            {
-                                loading? "Loading...":
-                                <BiTrash
-                                    size={18}
-                                    color="black"
-                                    /* color="#e8e9ea" */ 
-                                />
-                            }
-                        </Button>
-                    </div>
+                    <ProjectButtons
+
+                        project={project} 
+                        setIsOpen={setIsOpen} 
+                        setEditProjects={setEditProjects} 
+                        projectDelete={projectDelete} 
+                        setLoading={setLoading} 
+                        loading={loading}
+
+                    />
                 </div>
             </li>
 
