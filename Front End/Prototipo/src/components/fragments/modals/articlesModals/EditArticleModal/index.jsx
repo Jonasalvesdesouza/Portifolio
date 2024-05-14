@@ -5,10 +5,6 @@ import { Button } from "../../../Button"
 import { FormEditArticle } from "../../../forms"
 
 export const EditArticleModal = ( {setIsOpen} ) => {
-    const closeModalOutClick = useOutclick(()=> {
-        setIsOpen(false)      
-    })
-   
      const closeModalKeyDownEsque = useKeydown(()=>{
         setIsOpen(false)
     })
@@ -18,12 +14,7 @@ export const EditArticleModal = ( {setIsOpen} ) => {
     }
     
     return(
-        <div
-
-			role="dialog"
-			ref={closeModalOutClick}
-
-		>
+        <div role="dialog" >
 			<div>
                 <Button onClick={ handleClick }>
 
