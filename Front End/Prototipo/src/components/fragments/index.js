@@ -23,6 +23,7 @@ export { ImageArtilceModal } from "./modals/articlesModals/ImageArticleModal"
 export { ImageUpdateArticleModal } from "./modals/articlesModals/ImageUpdateArticleModal "
 
 export { InsertSocialMediaModal } from "./modals/socialMediaModals/InsertSocialMediaModal"
+export { EditSocialMediaModal } from "./modals/socialMediaModals/EditSocialMediaModal"
 
 export { NavHomePage } from "./NavHomePage"
 export { HeaderHomeMobile } from "./HeaderHomeMobile"

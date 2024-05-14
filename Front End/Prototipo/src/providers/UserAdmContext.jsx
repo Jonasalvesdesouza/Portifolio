@@ -21,7 +21,7 @@ export const UserAdmProvider = ({children}) =>{
     const [ editContactProfile, setEditContactProfile ] = useState([])
     const [ editProjects, setEditProjects ] = useState([])
     const [ editArticles, setEditArticles ] = useState([])
-    console.log(editArticles)
+    const [ editSocialMedia, setEditSocialMedia ] = useState([])
 
     const [ socialMediaList, setSocialMediaList ] = useState([])
     const [ hobbyList, setHobbyList ] = useState([])
@@ -587,6 +587,69 @@ export const UserAdmProvider = ({children}) =>{
         }
     }
 
+    const socialMediaUpdate = async (
+
+        payload, 
+        setLoading,
+        reset,
+        setIsOpen
+        
+    ) =>{
+        try {
+            setLoading(true)
+            
+            const { data } = await api.patch(
+
+                `/socialmedia/update/${editSocialMedia.id}`, 
+                payload,
+                headers
+
+            )
+
+            const newSocialMediaList = socialMediaList.map(
+                socialMedia =>{
+                    if(socialMedia.id === editSocialMedia.id){
+                        return data
+                    }else{
+                        return socialMedia
+                    }
+                }
+            )
+            
+            setSocialMediaList(newSocialMediaList)
+            NotifySucess("Project edited successfully")
+            reset()
+            setIsOpen(false)
+        } catch (error) {
+            console.log(error)
+            NotifyError("Unfortunately something went wrong")            
+        }finally{
+            setLoading(false)
+        }
+    }
+
+    const socialMediaDelete = async (
+
+        socialMediaId,
+        setLoading
+
+    ) =>{
+        try {
+            setLoading(true)
+
+            await api.delete(`/socialmedia/${socialMediaId}`, headers)
+            const newSocialMediaList = socialMediaList.filter(
+                    (socialMedia) => socialMedia.id !== socialMediaId
+            )
+            setSocialMediaList(newSocialMediaList)
+            NotifySucess("Project deleted successfully")
+        } catch (error) {
+            NotifyError("Unfortunately something went wrong")            
+        }finally{
+            setLoading(false)
+        }
+    }
+
     const messageMeRegister = async (payLoad, setLoading, reset) =>{
         try {
             setLoading(true)            
@@ -669,6 +732,8 @@ export const UserAdmProvider = ({children}) =>{
                 setEditProjects,
                 editArticles, 
                 setEditArticles,
+                editSocialMedia, 
+                setEditSocialMedia,
                 socialMediaList, 
                 setSocialMediaList,
                 hobbyList, 
@@ -698,6 +763,8 @@ export const UserAdmProvider = ({children}) =>{
                 profileImageUpdate,
                 contactUpdate,
                 socialMediaRegister,
+                socialMediaUpdate,
+                socialMediaDelete,
                 projectsRegister,
                 projectImageRegister,
                 projectImageUpdate,

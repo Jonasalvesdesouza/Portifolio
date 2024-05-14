@@ -10,23 +10,21 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { SlArrowRight } from "react-icons/sl"
 
 import { UserAdmContext } from "../../../../../providers"
-import { insertProjectSchema } from "../../../../../schema"
+import { insertSocialMediaSchema } from "../../../../../schema"
 
 import {
 
-    TextArea, 
     Input, 
     Button,
     Select
 
 } from "../../../index"
+import { OptionsSocialMedia } from "./options"
 
-import { Category, SubCategory } from "./options"
-
-export const FormEditProject = ({setIsOpen}) => {
+export const FormEditSocialMedia = ({setIsOpen}) => {
     const  [ loading, setLoading ]  = useState(false)
 
-    const { projectUpdate, editProjects} = useContext(UserAdmContext)
+    const { socialMediaUpdate, editSocialMedia} = useContext(UserAdmContext)
 
     const {
 
@@ -37,14 +35,10 @@ export const FormEditProject = ({setIsOpen}) => {
 
      } = useForm(
         {
-            resolver: zodResolver(insertProjectSchema),
+            resolver: zodResolver(insertSocialMediaSchema),
             values:{
-                title: editProjects.title,
-                webSite: editProjects.webSite,
-                gitHub: editProjects.gitHub,
-                category: editProjects.category,
-                SubCategory: editProjects.SubCategory,
-                description: editProjects.description
+                name: editSocialMedia.name,
+                link: editSocialMedia.link,
             }
         }
     )
@@ -52,7 +46,7 @@ export const FormEditProject = ({setIsOpen}) => {
     const onSubmit = (payLoad) => {
         console.log(handleSubmit)
 
-        projectUpdate(
+        socialMediaUpdate(
 
             payLoad, 
             setLoading, 
@@ -66,50 +60,21 @@ export const FormEditProject = ({setIsOpen}) => {
         <form onSubmit={ handleSubmit(onSubmit) }>
 
             <div>
-                <Input
-                    type="text"
-                    label="Title"
-                    placeholder="Title"
-                    error={errors.title}
-                    {...register('title')}  
-                />
-                <Input
-                    type="text"
-                    label="Web Site"
-                    placeholder="Web Site"
-                    error={errors.webSite}
-                    {...register('webSite')}  
-                />
-                <Input
-                    type="text"
-                    label="GitHub"
-                    placeholder="GitHub"
-                    error={errors.gitHub}
-                    {...register('gitHub')}  
-                />
-                
                 <Select
-                    label={"Category"}
-                    options={Category}
+                    label={"Social Media"}
+                    options={OptionsSocialMedia}
                     error={errors.category}
-                    {...register('category')} 
-                />
-                 
-                 <Select
-                    label={"subCategory"}
-                    options={SubCategory}
-                    error={errors.subCategor}
-                    {...register('subCategory')} 
+                    {...register('name')} 
                 />
 
-               
-                <TextArea
+                <Input
                     type="text"
-                    label="Description"
-                    placeholder="Description"
-                    error={errors.description}
-                    {...register('description')}  
+                    label="Link"
+                    placeholder="Link"
+                    error={errors.title}
+                    {...register('link')}  
                 />
+                 
 
                 <Button 
                     type="submit"

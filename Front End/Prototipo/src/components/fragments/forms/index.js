@@ -18,3 +18,4 @@ export { FormArticleImage } from "./formsArticles/FormArticleImage"
 export { FormUpdateArticleImage } from "./formsArticles/FormUpdateArticleImage "
 
 export { FormInsertSocialMedia } from "./formsSocialMedia /FormInsertSocialMedia"
+export { FormEditSocialMedia } from "./formsSocialMedia /FormEditSocialMedia"

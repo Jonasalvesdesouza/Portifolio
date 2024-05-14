@@ -1,44 +1,47 @@
-import { useState } from "react"
-
-import { BiPencil, BiTrash } from 'react-icons/bi'
-
-import { Button } from "../../../../../../fragments"
+import { useContext, useState } from "react"
+import { SocialMediaButtons } from "./SocialMediaButtons"
+import { UserAdmContext } from "../../../../../../../providers"
+import { EditSocialMediaModal } from "../../../../../../fragments"
 
 export const SocialMediaCard = ({socialMedia}) => {
+    const [ loading, setLoading ] = useState(false)
     const [ isOpen, setIsOpen ] = useState(false)
 
+    const {
+
+        setEditSocialMedia, 
+        socialMediaDelete, 
+
+    } = useContext(UserAdmContext)
+
     return(
-        <li>
-            <div>
-                <span>
-                    {socialMedia.name}
-                </span>
+        <>
+            <li>
                 <div>
+                    <span>
+                        {socialMedia.name}
+                    </span>
 
-                    <Button
-                        onClick={()=>{
-                            setIsOpen(true)
-                            return
-                        }}
-                    >
-                        <BiPencil
-                            size={18}
-                            color="#e8e9ea" 
-                        />
-                    </Button>
+                    <SocialMediaButtons
 
-                    <Button
-                        onClick={()=>{
-                            return
-                        }}
-                    >
-                        <BiTrash
-                            size={18}
-                            color="#e8e9ea" 
-                        />
-                    </Button>
+                        socialMedia={socialMedia} 
+                        setIsOpen={setIsOpen} 
+                        setEditSocialMedia={setEditSocialMedia} 
+                        socialMediaDelete={socialMediaDelete} 
+                        setLoading={setLoading}
+                        loading={loading} 
+
+                    />
+
                 </div>
-            </div>
-        </li>
+            </li>
+            {
+                isOpen === true ?
+                <EditSocialMediaModal
+                    setIsOpen={setIsOpen} 
+                />:
+                null
+            }
+        </>
     )
 }

@@ -1,25 +1,12 @@
-export const SubCategory = [
-
-    {
-        id:1,
-        name:"Study"
-    },
-    {
-        id:2,
-        name:"independent"
-    }
-
-]
-
-export const Category = [
+export const OptionsSocialMedia = [
 
     {
         id: 1,
-        name: "Front End"
+        name: "Linkedin"
     },
     {
         id: 2,
-        name: "Back End"
+        name: "GitHub"
     }
     
 ]

@@ -2,9 +2,9 @@ import { IoCloseOutline } from "react-icons/io5"
 
 import { useKeydown, useOutclick } from "../../../../../hooks"
 import { Button } from "../../../Button"
-import { FormEditProject } from "../../../forms"
+import { FormEditSocialMedia } from "../../../forms"
 
-export const EditProjectModal = ({setIsOpen}) => {
+export const EditSocialMediaModal = ({setIsOpen}) => {
     const closeModalOutClick = useOutclick(()=> {
         setIsOpen(false)      
     })
@@ -35,7 +35,7 @@ export const EditProjectModal = ({setIsOpen}) => {
                 </Button>
             </div>
             <div>
-                <FormEditProject
+                <FormEditSocialMedia
                     setIsOpen={setIsOpen}
                 />
             </div>
