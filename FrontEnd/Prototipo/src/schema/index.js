@@ -1,11 +1,10 @@
 export { sendMeEmailFormSchema } from './sendMeEmail.schema';
 export { loginFormSchema } from './loginForm.schema';
 
-export { profileFormSchema } from './profileSchema/profileForm.schema';
-export { contactProfileSchema } from './profileSchema/contactProfile.schema';
+export { profileFormSchema } from './profileForm.schema';
+export { contactProfileSchema } from './contactProfile.schema';
 
-export { insertProjectSchema } from './projectSchema/insertProjectSchema';
-export { imageProjectchema } from './projectSchema/imageProjectSchema';
+export { insertProjectSchema } from './insertProjectSchema';
 
 export { insertArticleSchema } from './insertArticle';
 export { insertSocialMediaSchema } from './insertSocialMediaSchema';

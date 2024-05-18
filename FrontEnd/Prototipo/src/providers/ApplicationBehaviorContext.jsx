@@ -9,11 +9,11 @@ export const AppBehaviorProvider = ({ children }) => {
   const [currentCard, setCurrentCard] = useState(0);
 
   const location = useLocation().pathname.toLocaleLowerCase();
-  const [routeLocation, setRouteLocation] = useState({});
+  const [routeLocation, setRouteLocation] = useState('');
 
-  const [search, setSearch] = useState({});
-  const [categorysProject, setCategorysProject] = useState({});
-  const [categorysArticles, setCategorysArticles] = useState({});
+  const [search, setSearch] = useState('');
+  const [categorysProject, setCategorysProject] = useState('');
+  const [categorysArticles, setCategorysArticles] = useState('');
 
   const [navDashboard, setNavDashboard] = useState(null);
 
