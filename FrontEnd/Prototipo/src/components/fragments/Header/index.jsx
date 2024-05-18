@@ -18,6 +18,12 @@ export const Header = ({ setIsOpen }) => {
 
   const CompareRouteCurriculum = location === '/curriculum' || '/';
 
+  const handleClick = () => {
+    setIsOpen(true);
+    setRouteLocation(location);
+    setCurrentCard(0);
+  };
+
   return (
     <header>
       <div className={`${styles.headerContainer} container`}>
@@ -34,13 +40,7 @@ export const Header = ({ setIsOpen }) => {
         </div>
         <div className="marginTop">
           {
-            <Button
-              onClick={() => {
-                setIsOpen(true);
-                setRouteLocation(location);
-                setCurrentCard(0);
-              }}
-            >
+            <Button onClick={handleClick}>
               {CompareRouteCurriculum ? (
                 <img src={BlackNavIcon} alt="Black NavIcon" />
               ) : compareRoutes ? (

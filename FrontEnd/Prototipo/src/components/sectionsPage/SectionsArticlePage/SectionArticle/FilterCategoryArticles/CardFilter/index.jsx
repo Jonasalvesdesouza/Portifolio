@@ -6,15 +6,14 @@ import { AppBehaviorContext } from '../../../../../../providers';
 export const CardFilter = ({ category }) => {
   const { setCategorysArticles, setSearch } = useContext(AppBehaviorContext);
 
+  const handleClick = () => {
+    setCategorysArticles(category);
+    setSearch('');
+  };
+
   return (
     <li>
-      <Link
-        to={'/blog'}
-        onClick={() => {
-          setCategorysArticles(category);
-          setSearch('');
-        }}
-      >
+      <Link to={'/blog'} onClick={handleClick}>
         {category}
       </Link>
     </li>

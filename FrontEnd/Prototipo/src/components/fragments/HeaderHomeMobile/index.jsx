@@ -10,6 +10,11 @@ import { NavHomePage } from '../NavHomePage';
 export const HeaderHomeMobile = ({ setIsOpen }) => {
   const { location, setRouteLocation } = useContext(AppBehaviorContext);
 
+  const handleClick = () => {
+    setIsOpen(true);
+    setRouteLocation(location);
+  };
+
   return (
     <header>
       <div>
@@ -23,12 +28,7 @@ export const HeaderHomeMobile = ({ setIsOpen }) => {
         </div>
         <div>
           {
-            <Button
-              onClick={() => {
-                setIsOpen(true);
-                setRouteLocation(location);
-              }}
-            >
+            <Button onClick={handleClick}>
               <img src={BlackNavIcon} alt="Black NavIcon" />
             </Button>
           }

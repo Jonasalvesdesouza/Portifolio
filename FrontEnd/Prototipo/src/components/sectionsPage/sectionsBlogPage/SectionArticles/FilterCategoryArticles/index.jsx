@@ -10,18 +10,16 @@ export const FilterCategoryArticles = () => {
   const { resetStadeCategorys, setSearch } = useContext(AppBehaviorContext);
   const categorysData = useCategoryArticlesData();
 
+  const handleClick = () => {
+    resetStadeCategorys();
+    setSearch('');
+  };
+
   return (
     <div>
       <ul>
         <li>
-          <Button
-            onClick={() => {
-              resetStadeCategorys();
-              setSearch('');
-            }}
-          >
-            All Articles
-          </Button>
+          <Button onClick={handleClick}>All Articles</Button>
         </li>
         {categorysData?.map((category) => {
           return <CardFilter key={category} category={category} />;

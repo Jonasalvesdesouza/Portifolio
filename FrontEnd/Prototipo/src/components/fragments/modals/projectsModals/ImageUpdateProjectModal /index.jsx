@@ -28,14 +28,14 @@ export const ImageUpdateProjectModal = ({ setIsopenUpdateImage, project }) => {
     }
   }, [project, imageProject]);
 
+  const handleClick = () => {
+    setIsopenUpdateImage(false);
+  };
+
   return (
     <div role="dialog" ref={closeModalOutClick}>
       <div>
-        <Button
-          onClick={() => {
-            setIsopenUpdateImage(false);
-          }}
-        >
+        <Button onClick={handleClick}>
           <IoCloseOutline size={28} color="#1b1f24" />
         </Button>
       </div>

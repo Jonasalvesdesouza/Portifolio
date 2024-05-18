@@ -28,14 +28,14 @@ export const NavModal = ({ setIsOpen }) => {
 
   const ListPage = useRemoveStringFromArray(listPage, routeLocation);
 
+  const handleClick = () => {
+    return setIsOpen(false);
+  };
+
   return (
     <div role="dialog" ref={closeModalOutClick}>
       <div>
-        <Button
-          onClick={() => {
-            return setIsOpen(false);
-          }}
-        >
+        <Button onClick={handleClick}>
           <IoCloseOutline size={28} color="#1b1f24" />
         </Button>
       </div>

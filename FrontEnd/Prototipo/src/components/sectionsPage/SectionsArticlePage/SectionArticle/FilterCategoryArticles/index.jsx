@@ -10,17 +10,16 @@ export const FilterCategoryArticles = () => {
   const { resetStadeCategorys, setSearch } = useContext(AppBehaviorContext);
   const categorysData = useCategoryArticlesData();
 
+  const handleClick = () => {
+    resetStadeCategorys();
+    setSearch('');
+  };
+
   return (
     <div>
       <ul>
         <li>
-          <Link
-            to={'/blog'}
-            onClick={() => {
-              resetStadeCategorys();
-              setSearch('');
-            }}
-          >
+          <Link to={'/blog'} onClick={handleClick}>
             All Articles
           </Link>
         </li>

@@ -1,5 +1,5 @@
-export { sendMeEmailFormSchema } from './sendMeEmailSchema/sendMeEmail.schema';
-export { loginFormSchema } from './loginSchema/loginForm.schema';
+export { sendMeEmailFormSchema } from './sendMeEmail.schema';
+export { loginFormSchema } from './loginForm.schema';
 
 export { profileFormSchema } from './profileSchema/profileForm.schema';
 export { contactProfileSchema } from './profileSchema/contactProfile.schema';
@@ -7,9 +7,9 @@ export { contactProfileSchema } from './profileSchema/contactProfile.schema';
 export { insertProjectSchema } from './projectSchema/insertProjectSchema';
 export { imageProjectchema } from './projectSchema/imageProjectSchema';
 
-export { insertArticleSchema } from './articleSchema/insertArticle';
-export { insertSocialMediaSchema } from './socialMediaSchema/insertSocialMediaSchema';
-export { insertHobbySchema } from './hobby/insertForm.schema';
-export { insertSkillSchema } from './Skill/insertForm.schema';
-export { insertEducationSchema } from './educationSchema/insertEducationSchema';
-export { insertJobexperienceSchema } from './jobExperienceSchema/insertJobexperienceSchema';
+export { insertArticleSchema } from './insertArticle';
+export { insertSocialMediaSchema } from './insertSocialMediaSchema';
+export { insertHobbySchema } from './insertForm.schema';
+export { insertSkillSchema } from './insertSkillSchema';
+export { insertEducationSchema } from './insertEducationSchema';
+export { insertJobexperienceSchema } from './insertJobexperienceSchema';

@@ -37,6 +37,10 @@ export const FormProjectImage = ({ setIsOpenInsertImage }) => {
     }
   };
 
+  const handleClick = () => {
+    setStateImage(true);
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
@@ -49,12 +53,7 @@ export const FormProjectImage = ({ setIsOpenInsertImage }) => {
           {...register('path')}
         />
 
-        <Button
-          type="submit"
-          onClick={() => {
-            setStateImage(true);
-          }}
-        >
+        <Button type="submit" onClick={handleClick}>
           {loading ? 'Loading...' : 'To send'}
 
           <SlArrowRight size={20} color="black" />

@@ -38,6 +38,10 @@ export const FormProfileImage = () => {
     }
   };
 
+  const handleClick = () => {
+    setStateImage(true);
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
@@ -50,12 +54,7 @@ export const FormProfileImage = () => {
           {...register('path')}
         />
 
-        <Button
-          type="submit"
-          onClick={() => {
-            setStateImage(true);
-          }}
-        >
+        <Button type="submit" onClick={handleClick}>
           {loading ? 'Loading...' : 'To send'}
 
           <SlArrowRight size={20} color="black" />
