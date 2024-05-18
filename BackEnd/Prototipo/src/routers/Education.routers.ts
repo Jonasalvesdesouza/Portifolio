@@ -17,12 +17,12 @@ EducationRouter.post(
   (req, res) => Controllers.create(req, res)
 );
 
-EducationRouter.get("/get/:id", (req, res) => Controllers.getOne(req, res));
+EducationRouter.get("/:id", (req, res) => Controllers.getOne(req, res));
 
-EducationRouter.get("/get", (req, res) => Controllers.findMany(req, res));
+EducationRouter.get("/", (req, res) => Controllers.findMany(req, res));
 
 EducationRouter.patch(
-  "/update/:id",
+  "/:id",
   userAuth.VerifyToken,
   ValidateBody.execute(EducationUpdateSchema),
   (req, res) => Controllers.update(req, res)

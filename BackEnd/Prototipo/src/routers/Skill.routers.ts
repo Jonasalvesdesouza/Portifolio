@@ -16,12 +16,12 @@ SkillRouter.post(
   ValidateBody.execute(SkillSchema),
   (req, res) => Controllers.create(req, res)
 );
-SkillRouter.get("/get/:id", (req, res) => Controllers.getOne(req, res));
+SkillRouter.get("/:id", (req, res) => Controllers.getOne(req, res));
 
-SkillRouter.get("/get", (req, res) => Controllers.findMany(req, res));
+SkillRouter.get("/", (req, res) => Controllers.findMany(req, res));
 
 SkillRouter.patch(
-  "/update/:id",
+  "/:id",
   userAuth.VerifyToken,
   ValidateBody.execute(SkillUpdateSchema),
   (req, res) => Controllers.update(req, res)

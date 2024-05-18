@@ -22,7 +22,7 @@ ProfileRouter.post(
 ProfileRouter.get("/", (req, res) => profileControllers.findFirst(req, res));
 
 ProfileRouter.patch(
-  "/update",
+  "/",
   userAuth.VerifyToken,
   ValidateBody.execute(ProfileUpdateSchema),
   (req, res) => profileControllers.update(req, res)

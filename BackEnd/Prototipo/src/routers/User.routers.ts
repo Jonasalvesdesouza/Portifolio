@@ -19,7 +19,7 @@ UserRouter.post("/login", ValidateBody.execute(LoginUserSchema), (req, res) =>
   userControllers.login(req, res)
 );
 
-UserRouter.patch("/update", userAuth.VerifyToken, (req, res) =>
+UserRouter.patch("/", userAuth.VerifyToken, (req, res) =>
   userControllers.update(req, res)
 );
 

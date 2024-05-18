@@ -14,9 +14,9 @@ MessageRouter.post("/:id", ValidateBody.execute(MessageSchema), (req, res) =>
   Controllers.create(req, res)
 );
 
-MessageRouter.get("/get/:id", (req, res) => Controllers.getOne(req, res));
+MessageRouter.get("/:id", (req, res) => Controllers.getOne(req, res));
 
-MessageRouter.get("/get", (req, res) => Controllers.findMany(req, res));
+MessageRouter.get("/", (req, res) => Controllers.findMany(req, res));
 
 MessageRouter.delete("/:id", userAuth.VerifyToken, (req, res) =>
   Controllers.delete(req, res)

@@ -16,12 +16,12 @@ HobbyRouter.post(
   ValidateBody.execute(HobbySchema),
   (req, res) => Controllers.create(req, res)
 );
-HobbyRouter.get("/get/:id", (req, res) => Controllers.getOne(req, res));
+HobbyRouter.get("/:id", (req, res) => Controllers.getOne(req, res));
 
-HobbyRouter.get("/get", (req, res) => Controllers.findMany(req, res));
+HobbyRouter.get("/", (req, res) => Controllers.findMany(req, res));
 
 HobbyRouter.patch(
-  "/update/:id",
+  "/:id",
   userAuth.VerifyToken,
   ValidateBody.execute(HobbyUpdate),
   (req, res) => Controllers.update(req, res)

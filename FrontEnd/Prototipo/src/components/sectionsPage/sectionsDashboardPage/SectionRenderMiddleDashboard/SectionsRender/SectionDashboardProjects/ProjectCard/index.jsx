@@ -1,9 +1,7 @@
 import ImageDefault from '../../../../../../../assets/DefaultImage.ai.svg';
 
 import { useContext, useEffect, useState } from 'react';
-import { BiPencil, BiTrash } from 'react-icons/bi';
 import {
-  Button,
   EditProjectModal,
   ImageProjectModal,
   ImageUpdateProjectModal,

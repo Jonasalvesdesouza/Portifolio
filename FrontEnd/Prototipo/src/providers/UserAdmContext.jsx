@@ -14,19 +14,19 @@ export const UserAdmProvider = ({ children }) => {
   const idAdm = localStorage.getItem('@IDADM');
 
   const [user, setUser] = useState(null);
-  const [profile, setProfile] = useState([]);
+  const [profile, setProfile] = useState({});
 
-  const [editProfile, setEditProfile] = useState([]);
-  const [editContactProfile, setEditContactProfile] = useState([]);
-  const [editProjects, setEditProjects] = useState([]);
-  const [editArticles, setEditArticles] = useState([]);
-  const [editSocialMedia, setEditSocialMedia] = useState([]);
-  const [editHobby, setEditHobby] = useState([]);
-  const [editSkill, setEditSkill] = useState([]);
-  const [editEducation, setEditEducation] = useState([]);
-  const [editJobExperience, setEditJobExperience] = useState([]);
+  const [editProfile, setEditProfile] = useState({});
+  const [editContactProfile, setEditContactProfile] = useState({});
+  const [editProjects, setEditProjects] = useState({});
+  const [editArticles, setEditArticles] = useState({});
+  const [editSocialMedia, setEditSocialMedia] = useState({});
+  const [editHobby, setEditHobby] = useState({});
+  const [editSkill, setEditSkill] = useState({});
+  const [editEducation, setEditEducation] = useState({});
+  const [editJobExperience, setEditJobExperience] = useState({});
 
-  const [viewMessage, setViewMessage] = useState([]);
+  const [viewMessage, setViewMessage] = useState({});
 
   const [projectsList, setProjectsList] = useState([]);
   const [articlesList, setArticlesList] = useState([]);
@@ -77,7 +77,7 @@ export const UserAdmProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      const { data } = await api.patch('/profile/update/', payload, headers);
+      const { data } = await api.patch('/profile/', payload, headers);
 
       NotifySucess('User update successfully!');
       reset();
@@ -114,7 +114,7 @@ export const UserAdmProvider = ({ children }) => {
       setLoading(true);
 
       const { data } = await api.patch(
-        `/profile/image/update/${profile.image.id}`,
+        `/profile/image/${profile.image.id}`,
         payload,
         headers,
       );
@@ -138,11 +138,7 @@ export const UserAdmProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      const { data } = await api.patch(
-        '/profile/contact/update/',
-        payload,
-        headers,
-      );
+      const { data } = await api.patch('/profile/contact/', payload, headers);
 
       NotifySucess('User update successfully!');
       reset();
@@ -222,7 +218,7 @@ export const UserAdmProvider = ({ children }) => {
       setLoading(true);
 
       const { data } = await api.patch(
-        `/projects/image/update/${project.image.id}`,
+        `/projects/image/${project.image.id}`,
         payload,
         headers,
       );
@@ -253,7 +249,7 @@ export const UserAdmProvider = ({ children }) => {
       setLoading(true);
 
       const { data } = await api.patch(
-        `/projects/update/${editProjects.id}`,
+        `/projects/${editProjects.id}`,
         payload,
         headers,
       );
@@ -364,7 +360,7 @@ export const UserAdmProvider = ({ children }) => {
       setLoading(true);
 
       const { data } = await api.patch(
-        `/articles/image/update/${article.image.id}`,
+        `/articles/image/${article.image.id}`,
         payLoad,
         headers,
       );
@@ -395,7 +391,7 @@ export const UserAdmProvider = ({ children }) => {
       setLoading(true);
 
       const { data } = await api.patch(
-        `/articles/update/${editArticles.id}`,
+        `/articles/${editArticles.id}`,
         payload,
         headers,
       );
@@ -446,7 +442,7 @@ export const UserAdmProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      const { data } = await api.post('/socialmedia/', payload, headers);
+      const { data } = await api.post('/social-medias/', payload, headers);
 
       setSocialMediaList([...socialMediaList, data]);
       NotifySucess('Social Media Register successfully!');
@@ -463,7 +459,7 @@ export const UserAdmProvider = ({ children }) => {
       setLoading(true);
 
       const { data } = await api.patch(
-        `/socialmedia/update/${editSocialMedia.id}`,
+        `/social-medias/${editSocialMedia.id}`,
         payload,
         headers,
       );
@@ -492,7 +488,7 @@ export const UserAdmProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      await api.delete(`/socialmedia/${socialMediaId}`, headers);
+      await api.delete(`/social-medias/${socialMediaId}`, headers);
       const newSocialMediaList = socialMediaList.filter(
         (socialMedia) => socialMedia.id !== socialMediaId,
       );
@@ -514,7 +510,7 @@ export const UserAdmProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      const { data } = await api.post('/hobby/', payload, headers);
+      const { data } = await api.post('/hobbys/', payload, headers);
 
       setHobbyList([...hobbyList, data]);
       NotifySucess('User update successfully!');
@@ -530,7 +526,7 @@ export const UserAdmProvider = ({ children }) => {
       setLoading(true);
 
       const { data } = await api.patch(
-        `/hobby/update/${editHobby.id}`,
+        `/hobbys/${editHobby.id}`,
         payload,
         headers,
       );
@@ -559,7 +555,7 @@ export const UserAdmProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      await api.delete(`/hobby/${hobbyId}`, headers);
+      await api.delete(`/hobbys/${hobbyId}`, headers);
       const newHobbyList = hobbyList.filter((hobby) => hobby.id !== hobbyId);
       setHobbyList(newHobbyList);
       NotifySucess('Hobby deleted successfully');
@@ -579,7 +575,7 @@ export const UserAdmProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      const { data } = await api.post('/skill/', payload, headers);
+      const { data } = await api.post('/skills/', payload, headers);
 
       setSkillList([...skillList, data]);
       NotifySucess('Skill update successfully!');
@@ -595,7 +591,7 @@ export const UserAdmProvider = ({ children }) => {
       setLoading(true);
 
       const { data } = await api.patch(
-        `/skill/update/${editSkill.id}`,
+        `/skills/${editSkill.id}`,
         payload,
         headers,
       );
@@ -624,7 +620,7 @@ export const UserAdmProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      await api.delete(`/skill/${skillId}`, headers);
+      await api.delete(`/skills/${skillId}`, headers);
       const newSkillList = skillList.filter((skill) => skill.id !== skillId);
       setSkillList(newSkillList);
       NotifySucess('Skill deleted successfully');
@@ -644,7 +640,7 @@ export const UserAdmProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      const { data } = await api.post('/education/', payload, headers);
+      const { data } = await api.post('/educations/', payload, headers);
 
       setEducationList([...educationList, data]);
       NotifySucess('Education Register successfully!');
@@ -662,7 +658,7 @@ export const UserAdmProvider = ({ children }) => {
       setLoading(true);
 
       const { data } = await api.patch(
-        `/education/update/${editEducation.id}`,
+        `/educations/${editEducation.id}`,
         payload,
         headers,
       );
@@ -689,7 +685,7 @@ export const UserAdmProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      await api.delete(`/education/${educationId}`, headers);
+      await api.delete(`/educations/${educationId}`, headers);
       const newEducationList = educationList.filter(
         (education) => education.id !== educationId,
       );
@@ -712,7 +708,7 @@ export const UserAdmProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      const { data } = await api.post('/jobExperience/', payload, headers);
+      const { data } = await api.post('/job-experiences/', payload, headers);
 
       setJobExperienceList([...jobExperienceList, data]);
       NotifySucess('Job Experience Register successfully!');
@@ -730,7 +726,7 @@ export const UserAdmProvider = ({ children }) => {
       setLoading(true);
 
       const { data } = await api.patch(
-        `/jobexperience/update/${editJobExperience.id}`,
+        `/job-experiences/${editJobExperience.id}`,
         payload,
         headers,
       );
@@ -757,7 +753,7 @@ export const UserAdmProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      await api.delete(`/jobexperience/${jobExperienceId}`, headers);
+      await api.delete(`/job-experiences/${jobExperienceId}`, headers);
       const newJobExperienceList = jobExperienceList.filter(
         (jobExperience) => jobExperience.id !== jobExperienceId,
       );
@@ -774,7 +770,7 @@ export const UserAdmProvider = ({ children }) => {
   const messageMeRegister = async (payLoad, setLoading, reset) => {
     try {
       setLoading(true);
-      const { data } = await api.post(`/message/${profile.id}`, payLoad);
+      const { data } = await api.post(`/messages/${profile.id}`, payLoad);
       setMessageList([...messageList, data]);
 
       NotifySucess('Message sent successfully');
@@ -790,7 +786,7 @@ export const UserAdmProvider = ({ children }) => {
   const messageMeDelete = async (messageId, setLoading) => {
     console.log(messageId);
     try {
-      await api.delete(`/message/${messageId}`, headers);
+      await api.delete(`/messages/${messageId}`, headers);
       const newMessageList = messageList.filter(
         (message) => message.id !== messageId,
       );

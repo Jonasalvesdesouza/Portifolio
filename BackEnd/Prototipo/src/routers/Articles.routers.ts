@@ -18,12 +18,12 @@ ArticlesRouter.post(
   (req, res) => Controllers.create(req, res)
 );
 
-ArticlesRouter.get("/get/:id", (req, res) => Controllers.getOne(req, res));
+ArticlesRouter.get("/:id", (req, res) => Controllers.getOne(req, res));
 
-ArticlesRouter.get("/get", (req, res) => Controllers.findMany(req, res));
+ArticlesRouter.get("/", (req, res) => Controllers.findMany(req, res));
 
 ArticlesRouter.patch(
-  "/update/:id",
+  "/:id",
   userAuth.VerifyToken,
   ValidateBody.execute(ArticlesUpdateSchema),
   (req, res) => Controllers.update(req, res)

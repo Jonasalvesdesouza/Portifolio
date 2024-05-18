@@ -17,12 +17,12 @@ JobExperienceRouter.post(
   (req, res) => Controllers.create(req, res)
 );
 
-JobExperienceRouter.get("/get/:id", (req, res) => Controllers.getOne(req, res));
+JobExperienceRouter.get("/:id", (req, res) => Controllers.getOne(req, res));
 
-JobExperienceRouter.get("/get", (req, res) => Controllers.findMany(req, res));
+JobExperienceRouter.get("/", (req, res) => Controllers.findMany(req, res));
 
 JobExperienceRouter.patch(
-  "/update/:id",
+  "/:id",
   userAuth.VerifyToken,
   ValidateBody.execute(JobExperienceUpdateSchema),
   (req, res) => Controllers.update(req, res)

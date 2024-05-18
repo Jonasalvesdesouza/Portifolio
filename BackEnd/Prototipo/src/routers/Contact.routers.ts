@@ -17,12 +17,12 @@ ContactRouter.post(
   (req, res) => contactControllers.create(req, res)
 );
 
-ContactRouter.get("/contact/get", (req, res) =>
+ContactRouter.get("/contact/", (req, res) =>
   contactControllers.findFirst(req, res)
 );
 
 ContactRouter.patch(
-  "/contact/update",
+  "/contact/",
   userAuth.VerifyToken,
   ValidateBody.execute(ContactUpdateSchema),
   (req, res) => contactControllers.update(req, res)

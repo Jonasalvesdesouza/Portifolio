@@ -30,17 +30,17 @@ ImageArticleRouter.post(
   (req, res) => imageControllers.create(req, res)
 );
 
-ImageArticleRouter.get("/image/get/:id", (req, res) =>
+ImageArticleRouter.get("/image/:id", (req, res) =>
   imageControllers.getOne(req, res)
 );
 
 ImageArticleRouter.patch(
-  "/image/update/:id",
+  "/image/:id",
   userAuth.VerifyToken,
   upload.single("path"),
   (req, res) => imageControllers.update(req, res)
 );
 
-ImageArticleRouter.delete("/image/delete", userAuth.VerifyToken, (req, res) =>
+ImageArticleRouter.delete("/image/:id", userAuth.VerifyToken, (req, res) =>
   imageControllers.delete(req, res)
 );

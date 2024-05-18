@@ -17,12 +17,12 @@ SocialMidiaRouter.post(
   (req, res) => Controllers.create(req, res)
 );
 
-SocialMidiaRouter.get("/get/:id", (req, res) => Controllers.getOne(req, res));
+SocialMidiaRouter.get("/:id", (req, res) => Controllers.getOne(req, res));
 
-SocialMidiaRouter.get("/get", (req, res) => Controllers.findMany(req, res));
+SocialMidiaRouter.get("/", (req, res) => Controllers.findMany(req, res));
 
 SocialMidiaRouter.patch(
-  "/update/:id",
+  "/:id",
   userAuth.VerifyToken,
   ValidateBody.execute(SocialMediaUpdateSchema),
   (req, res) => Controllers.update(req, res)

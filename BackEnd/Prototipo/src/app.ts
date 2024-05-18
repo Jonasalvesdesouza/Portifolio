@@ -45,13 +45,13 @@ app.use(json());
 
 app.use("/user", UserRouter);
 app.use("/profile", ProfileRouter);
-app.use("/socialMedia", SocialMidiaRouter);
-app.use("/hobby", HobbyRouter);
-app.use("/skill", SkillRouter);
-app.use("/jobexperience", JobExperienceRouter);
-app.use("/education", EducationRouter);
+app.use("/social-medias", SocialMidiaRouter);
+app.use("/hobbys", HobbyRouter);
+app.use("/skills", SkillRouter);
+app.use("/job-experiences", JobExperienceRouter);
+app.use("/educations", EducationRouter);
 app.use("/projects", ProjectsRouter);
 app.use("/articles", ArticlesRouter);
-app.use("/message", MessageRouter);
+app.use("/messages", MessageRouter);
 
 app.use(HandleErrors.execute);

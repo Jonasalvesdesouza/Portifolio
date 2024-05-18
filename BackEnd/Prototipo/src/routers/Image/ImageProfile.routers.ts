@@ -35,12 +35,12 @@ ImageProfileRouter.get("/image/get", (req, res) =>
 );
 
 ImageProfileRouter.patch(
-  "/image/update/:id",
+  "/image/:id",
   userAuth.VerifyToken,
   upload.single("path"),
   (req, res) => imageControllers.update(req, res)
 );
 
-ImageProfileRouter.delete("/image/delete", userAuth.VerifyToken, (req, res) =>
+ImageProfileRouter.delete("/image/:id", userAuth.VerifyToken, (req, res) =>
   imageControllers.delete(req, res)
 );

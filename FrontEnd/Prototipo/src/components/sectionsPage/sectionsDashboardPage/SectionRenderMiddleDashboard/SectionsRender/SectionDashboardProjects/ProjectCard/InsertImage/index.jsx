@@ -20,6 +20,7 @@ export const InsertImage = ({
   const handleUpdateImage = () => {
     setIsopenUpdateImage(true);
     setProject(project);
+    setImageProject(projectImage);
   };
 
   return (
