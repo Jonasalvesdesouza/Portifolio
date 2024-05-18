@@ -1,0 +1,16 @@
+.workplaceContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-left: 3.125rem;
+
+    div{
+        margin-top: 1.5625rem;
+    }
+
+    button{
+        margin-top: 15.625rem;
+        margin-right: 3.125rem;
+    }
+}

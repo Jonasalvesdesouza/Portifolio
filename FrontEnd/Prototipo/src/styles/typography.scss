@@ -1,0 +1,51 @@
+%title{
+    font-family: var(--font-primary);
+    width: 700;
+}
+
+.title1{
+    @extend %title;
+    font-size: clamp(2.5625rem, 5vw, 3.1875rem);
+    width: 500;
+
+    &.yellow{
+        color: var(--color-yellow2)
+    }
+}
+
+.title2{
+    @extend %title;
+    font-size: 1rem;
+}
+
+%text{
+    font-family: var(--font-secundary);
+    font-weight: 400;
+    color: var(--color-black);
+
+    &.white{
+        color: var(--color-white)
+    }
+}
+
+.parapraph{
+    @extend %text;
+    font-size: 22px;
+
+    &.home{
+        color: var(--color-gray1);
+        line-height: 2;
+    }
+}
+
+.text{
+    @extend %text;
+    font-size: 11px
+}
+
+.label{
+    @extend %text;
+
+    font-size: 0.875rem;
+
+}

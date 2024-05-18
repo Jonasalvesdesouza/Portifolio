@@ -1,0 +1,35 @@
+.bannerHomeContainer{
+    display: flex;
+    flex-direction: column;
+    
+    button{
+        margin-top: 250px;
+    }
+}
+
+.flexBox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-left: 3.125rem;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        
+        h1{
+            margin-bottom: 3.125rem;
+            line-height: 1.2;
+        }
+        
+        img{
+            width: 129%;
+        }
+    }
+}
+
+.apresentationContainer{
+    width: 50%;
+    margin-right: 9.375rem;
+}
