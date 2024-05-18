@@ -1,11 +1,11 @@
-import { HeaderDashboard } from "../../components/fragments"
+import { HeaderDashboard } from '../../components/fragments';
 
 export const ProfilePage = () => {
-    return(
-        <>
-            <div>
-                <HeaderDashboard />
-            </div>
-        </>
-    )
-}
+  return (
+    <>
+      <div>
+        <HeaderDashboard />
+      </div>
+    </>
+  );
+};

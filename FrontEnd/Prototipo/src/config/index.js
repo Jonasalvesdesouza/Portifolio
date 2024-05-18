@@ -1,8 +1,3 @@
-export {
+export { smallResolution, middleResolution } from './ConfigResolution';
 
-    smallResolution,
-    middleResolution 
-    
-} from "./ConfigResolution"
-
-export { ConfigServerUrl } from "./ConfigServerUrl"
+export { ConfigServerUrl } from './ConfigServerUrl';

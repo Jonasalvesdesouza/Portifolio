@@ -1,12 +1,14 @@
-import { useContext } from "react"
-import { UserAdmContext } from "../providers"
+import { useContext } from 'react';
+import { UserAdmContext } from '../providers';
 
-export const useFilterArticleById = (id) =>{
-    const { articlesList } = useContext(UserAdmContext)
+export const useFilterArticleById = (id) => {
+  const { articlesList } = useContext(UserAdmContext);
 
-    const filteredArticle = articlesList.find(article => article.id === Number(id))
+  const filteredArticle = articlesList.find(
+    (article) => article.id === Number(id),
+  );
 
-    const article = { ...filteredArticle, id: crypto.randomUUID() }
+  const article = { ...filteredArticle, id: crypto.randomUUID() };
 
-    return article
-}
+  return article;
+};

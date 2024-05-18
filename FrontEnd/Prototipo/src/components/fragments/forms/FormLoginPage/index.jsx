@@ -1,74 +1,54 @@
-import { useContext, useState } from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import { SlArrowRight } from "react-icons/sl"
+import { SlArrowRight } from 'react-icons/sl';
 
-import { UserAdmContext } from "../../../../providers"
-import { loginFormSchema } from "../../../../schema"
-import { Input } from "../../InputDefault"
-import { InputPassword } from "../../InputPassword"
-import { Button } from "../../Button"
+import { UserAdmContext } from '../../../../providers';
+import { loginFormSchema } from '../../../../schema';
+import { Input } from '../../InputDefault';
+import { InputPassword } from '../../InputPassword';
+import { Button } from '../../Button';
 
 export const FormLoginPage = () => {
-    const [ loading, setLoading ] = useState(false)
+  const [loading, setLoading] = useState(false);
 
-    const { userAdmLogin } = useContext(UserAdmContext)
+  const { userAdmLogin } = useContext(UserAdmContext);
 
-    const {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(loginFormSchema),
+  });
 
-        register, 
-        handleSubmit, 
-        reset, 
-        formState: { errors },
+  const onSubmit = (payLoad) => {
+    userAdmLogin(payLoad, setLoading, reset);
+  };
 
-    } = useForm(
-        {
-            resolver: zodResolver(loginFormSchema)
-        }
-    )
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <Input
+          type="text"
+          placeholder="E-mail"
+          error={errors.email}
+          {...register('email')}
+        />
+        <InputPassword
+          placeholder="Password"
+          error={errors.password}
+          {...register('password')}
+        />
 
-    const onSubmit = (payLoad) => {
+        <Button type="submit">
+          {loading ? 'Loading...' : 'Login'}
 
-        userAdmLogin(
-
-            payLoad, 
-            setLoading, 
-            reset
-
-        )
-    }
- 
-    return(
-        <form onSubmit={ handleSubmit(onSubmit) }>
-
-            <div>
-                <Input
-                    type="text"
-                    placeholder="E-mail"
-                    error={errors.email}
-                    {...register('email')}  
-                />
-                <InputPassword
-                    placeholder="Password"
-                    error={errors.password}
-                    {...register('password')}                      
-                />
-
-                <Button 
-                    type="submit"
-                >
-        
-                    {loading ? "Loading..." : "Login"}
-
-                    <SlArrowRight
-                        size={20}
-                        color="#e8e9ea"
-                    />
-
-                </Button>
-            </div>
-
-        </form>
-    )
-}
+          <SlArrowRight size={20} color="#e8e9ea" />
+        </Button>
+      </div>
+    </form>
+  );
+};

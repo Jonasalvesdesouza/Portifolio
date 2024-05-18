@@ -1,114 +1,113 @@
-.btn{
-    font-family: var(--font-primary);
-    font-size: 1rem;
-    color: var(--color-white);
+.btn {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  color: var(--color-white);
 
-    padding: 0 0.9375rem;
-    height: 3.1875rem;
+  padding: 0 0.9375rem;
+  height: 3.1875rem;
 
-    transform: 0.4s;
+  transform: 0.4s;
 
-    &:hover{
-        color: var(--color-yellow);
-    }
+  &:hover {
+    color: var(--color-yellow);
+  }
 }
 
 %bntDefault {
-    font-family: var(--font-primary);
-    font-weight: 300;
-    font-size: 1.5625rem;
-    color: var(--color-black);
+  font-family: var(--font-primary);
+  font-weight: 300;
+  font-size: 1.5625rem;
+  color: var(--color-black);
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 25rem;
+  height: 4.375rem;
+  border: solid 1px var(--color-black);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  a {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
 
-    width: 25rem;
-    height: 4.375rem;
-    border: solid 1px var(--color-black);
+    div {
+      margin-right: 1.25rem;
+    }
+    span {
+      margin-left: 7.5rem;
+    }
+  }
+
+  a span {
     position: relative;
-    overflow: hidden;
-    cursor: pointer;
+    z-index: 2;
+  }
 
-    a {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+  a:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--color-gray2);
+    transition: all 0.35s;
+    z-index: 1;
+  }
 
-        div {
-            margin-right: 1.25rem;
-        }
-        span {
-            margin-left: 7.5rem;
-        }
-    }
+  a:hover {
+    color: var(--color-white);
+  }
 
-    a span {
-        position: relative;
-        z-index: 2;
-    }
+  a:hover:after {
+    width: 100%;
+  }
 
-    a:after {
-        position: absolute;
-        content: "";
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 100%;
-        background: var(--color-gray2);
-        transition: all .35s;
-        z-index: 1; 
-    }
+  a:hover .icon {
+    color: var(--color-white);
+  }
 
-    a:hover {
-        color: var(--color-white);
-    }
-
-    a:hover:after {
-        width: 100%;
-    }
-
-    a:hover .icon {
-        color: var(--color-white);
-    }
-
-    .icon {
-        color: var(--color-black);
-        transition: color .35s ease;
-        z-index: 3; 
-    }
-};
-
-.bntAboutHome{
-    @extend %bntDefault
-};
-
-.bntWorplace{
-    @extend %bntDefault;
-    width: 28.125rem;
-
-    a {
-        span {
-            margin-left: 4.6875rem;
-        }
-    }
-
-    .icon{
-        margin-right: 1.25rem;
-    }
-}
-.bntWorplace2{
-    @extend %bntDefault;
-    width: 28.125rem;
-
-    a {
-        span {
-            margin-left: 5.75rem;
-        }
-    }
-
-    .icon{
-        margin-right: 1.25rem;
-    }
+  .icon {
+    color: var(--color-black);
+    transition: color 0.35s ease;
+    z-index: 3;
+  }
 }
 
+.bntAboutHome {
+  @extend %bntDefault;
+}
+
+.bntWorplace {
+  @extend %bntDefault;
+  width: 28.125rem;
+
+  a {
+    span {
+      margin-left: 4.6875rem;
+    }
+  }
+
+  .icon {
+    margin-right: 1.25rem;
+  }
+}
+.bntWorplace2 {
+  @extend %bntDefault;
+  width: 28.125rem;
+
+  a {
+    span {
+      margin-left: 5.75rem;
+    }
+  }
+
+  .icon {
+    margin-right: 1.25rem;
+  }
+}

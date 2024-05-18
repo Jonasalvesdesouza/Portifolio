@@ -1,132 +1,97 @@
-import {
+import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-    useContext, 
-    useState
+import { SlArrowRight } from 'react-icons/sl';
 
-} from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { UserAdmContext } from '../../../../../providers';
+import { insertProjectSchema } from '../../../../../schema';
 
-import { SlArrowRight } from "react-icons/sl"
+import { TextArea, Input, Button, Select } from '../../../index';
 
-import { UserAdmContext } from "../../../../../providers"
-import { insertProjectSchema } from "../../../../../schema"
+import { Category, SubCategory } from './options';
 
-import {
+export const FormEditProject = ({ setIsOpen }) => {
+  const [loading, setLoading] = useState(false);
 
-    TextArea, 
-    Input, 
-    Button,
-    Select
+  const { projectUpdate, editProjects } = useContext(UserAdmContext);
 
-} from "../../../index"
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(insertProjectSchema),
+    values: {
+      title: editProjects.title,
+      webSite: editProjects.webSite,
+      gitHub: editProjects.gitHub,
+      category: editProjects.category,
+      SubCategory: editProjects.SubCategory,
+      description: editProjects.description,
+    },
+  });
 
-import { Category, SubCategory } from "./options"
+  const onSubmit = (payLoad) => {
+    console.log(handleSubmit);
 
-export const FormEditProject = ({setIsOpen}) => {
-    const  [ loading, setLoading ]  = useState(false)
+    projectUpdate(payLoad, setLoading, reset, setIsOpen);
+  };
 
-    const { projectUpdate, editProjects} = useContext(UserAdmContext)
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <Input
+          type="text"
+          label="Title"
+          placeholder="Title"
+          error={errors.title}
+          {...register('title')}
+        />
+        <Input
+          type="text"
+          label="Web Site"
+          placeholder="Web Site"
+          error={errors.webSite}
+          {...register('webSite')}
+        />
+        <Input
+          type="text"
+          label="GitHub"
+          placeholder="GitHub"
+          error={errors.gitHub}
+          {...register('gitHub')}
+        />
 
-    const {
+        <Select
+          label={'Category'}
+          options={Category}
+          error={errors.category}
+          {...register('category')}
+        />
 
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors }, 
+        <Select
+          label={'subCategory'}
+          options={SubCategory}
+          error={errors.subCategor}
+          {...register('subCategory')}
+        />
 
-     } = useForm(
-        {
-            resolver: zodResolver(insertProjectSchema),
-            values:{
-                title: editProjects.title,
-                webSite: editProjects.webSite,
-                gitHub: editProjects.gitHub,
-                category: editProjects.category,
-                SubCategory: editProjects.SubCategory,
-                description: editProjects.description
-            }
-        }
-    )
+        <TextArea
+          type="text"
+          label="Description"
+          placeholder="Description"
+          error={errors.description}
+          {...register('description')}
+        />
 
-    const onSubmit = (payLoad) => {
-        console.log(handleSubmit)
+        <Button type="submit">
+          {loading ? 'Loading...' : 'To send'}
 
-        projectUpdate(
-
-            payLoad, 
-            setLoading, 
-            reset,
-            setIsOpen
-
-        )
-    }
-
-    return(
-        <form onSubmit={ handleSubmit(onSubmit) }>
-
-            <div>
-                <Input
-                    type="text"
-                    label="Title"
-                    placeholder="Title"
-                    error={errors.title}
-                    {...register('title')}  
-                />
-                <Input
-                    type="text"
-                    label="Web Site"
-                    placeholder="Web Site"
-                    error={errors.webSite}
-                    {...register('webSite')}  
-                />
-                <Input
-                    type="text"
-                    label="GitHub"
-                    placeholder="GitHub"
-                    error={errors.gitHub}
-                    {...register('gitHub')}  
-                />
-                
-                <Select
-                    label={"Category"}
-                    options={Category}
-                    error={errors.category}
-                    {...register('category')} 
-                />
-                 
-                 <Select
-                    label={"subCategory"}
-                    options={SubCategory}
-                    error={errors.subCategor}
-                    {...register('subCategory')} 
-                />
-
-               
-                <TextArea
-                    type="text"
-                    label="Description"
-                    placeholder="Description"
-                    error={errors.description}
-                    {...register('description')}  
-                />
-
-                <Button 
-                    type="submit"
-                >
-        
-                    {loading ? "Loading..." : "To send"}
-
-                <SlArrowRight
-                    size={20}
-                    color="#e8e9ea"
-                />
-
-                </Button>
-            </div>
-
-        </form>
-    )
-    
-}
-
+          <SlArrowRight size={20} color="#e8e9ea" />
+        </Button>
+      </div>
+    </form>
+  );
+};

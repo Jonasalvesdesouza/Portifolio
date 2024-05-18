@@ -1,17 +1,15 @@
 import React from 'react';
-import { BiPencil, BiTrash } from 'react-icons/bi'; 
+import { BiPencil, BiTrash } from 'react-icons/bi';
 import { Button } from '../../../../../../../fragments';
 
-export const ButtonsArticleCard = (
-    { 
-        article, 
-        setIsOpen, 
-        setEditArticles, 
-        articleDelete, 
-        loading,
-        setLoading 
-    }
-) => {
+export const ButtonsArticleCard = ({
+  article,
+  setIsOpen,
+  setEditArticles,
+  articleDelete,
+  loading,
+  setLoading,
+}) => {
   const buttons = [
     {
       type: 'edit',
@@ -23,7 +21,11 @@ export const ButtonsArticleCard = (
     },
     {
       type: 'delete',
-      icon: loading ? "Loading..." : <BiTrash size={18} color="black" /* color="#e8e9ea" */ />,
+      icon: loading ? (
+        'Loading...'
+      ) : (
+        <BiTrash size={18} color="black" /* color="#e8e9ea" */ />
+      ),
       action: () => articleDelete(article.id, setLoading),
     },
   ];

@@ -1,47 +1,31 @@
-import { useContext, useState } from "react"
-import { SkillButtons } from "./SkillButtons"
-import { UserAdmContext } from "../../../../../../../providers"
-import { EditSkillModal } from "../../../../../../fragments"
+import { useContext, useState } from 'react';
+import { SkillButtons } from './SkillButtons';
+import { UserAdmContext } from '../../../../../../../providers';
+import { EditSkillModal } from '../../../../../../fragments';
 
-export const SkillCard = ({skill}) => {
-    const [ loading, setLoading ] = useState(false)
-    const [ isOpen, setIsOpen ] = useState(false)
+export const SkillCard = ({ skill }) => {
+  const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    const {
+  const { setEditSkill, skillDelete } = useContext(UserAdmContext);
 
-        setEditSkill, 
-        skillDelete, 
+  return (
+    <>
+      <li>
+        <div>
+          <span>{skill.name}</span>
 
-    } = useContext(UserAdmContext)
-
-    return(
-        <>
-            <li>
-                <div>
-                    <span>
-                        {skill.name}
-                    </span>
-
-                    <SkillButtons
-
-                        skill={skill} 
-                        setIsOpen={setIsOpen} 
-                        setEditSkill={setEditSkill} 
-                        skillDelete={skillDelete} 
-                        setLoading={setLoading}
-                        loading={loading} 
-
-                    />
-
-                </div>
-            </li>
-            {
-                isOpen === true ?
-                <EditSkillModal
-                    setIsOpen={setIsOpen} 
-                />:
-                null
-            }
-        </>
-    )
-}
+          <SkillButtons
+            skill={skill}
+            setIsOpen={setIsOpen}
+            setEditSkill={setEditSkill}
+            skillDelete={skillDelete}
+            setLoading={setLoading}
+            loading={loading}
+          />
+        </div>
+      </li>
+      {isOpen === true ? <EditSkillModal setIsOpen={setIsOpen} /> : null}
+    </>
+  );
+};

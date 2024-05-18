@@ -1,93 +1,60 @@
-import {
+import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-    useContext, 
-    useState
+import { SlArrowRight } from 'react-icons/sl';
 
-} from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { UserAdmContext } from '../../../../../providers';
+import { insertSkillSchema } from '../../../../../schema';
+import { OptionsSkill, OptionsCategorySkill } from '../options';
 
-import { SlArrowRight } from "react-icons/sl"
+import { Button, Select } from '../../../index';
 
-import { UserAdmContext } from "../../../../../providers"
-import { insertSkillSchema } from "../../../../../schema"
-import { OptionsSkill, OptionsCategorySkill } from "../options"
+export const FormEditSkill = ({ setIsOpen }) => {
+  const [loading, setLoading] = useState(false);
 
-import {
+  const { skillUpdate, editSkill } = useContext(UserAdmContext);
 
-    Button,
-    Select
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(insertSkillSchema),
+    values: {
+      name: editSkill.name,
+      category: editSkill.name,
+    },
+  });
 
-} from "../../../index"
+  const onSubmit = (payLoad) => {
+    skillUpdate(payLoad, setLoading, reset, setIsOpen);
+  };
 
-export const FormEditSkill = ({setIsOpen}) => {
-    const  [ loading, setLoading ]  = useState(false)
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <Select
+          label={'Skill'}
+          options={OptionsSkill}
+          error={errors.skill}
+          {...register('name')}
+        />
 
-    const { skillUpdate, editSkill } = useContext(UserAdmContext)
+        <Select
+          label={'Caregory'}
+          options={OptionsCategorySkill}
+          error={errors.category}
+          {...register('category')}
+        />
 
-    const {
+        <Button type="submit">
+          {loading ? 'Loading...' : 'To send'}
 
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors }, 
-
-     } = useForm(
-        {
-            resolver: zodResolver(insertSkillSchema),
-            values:{
-                name: editSkill.name,
-                category: editSkill.name,
-            }
-        }
-    )
-
-    const onSubmit = (payLoad) => {
-        
-        skillUpdate(
-
-            payLoad, 
-            setLoading, 
-            reset,
-            setIsOpen
-
-        )
-    }
-
-    return(
-        <form onSubmit={ handleSubmit(onSubmit) }>
-
-            <div>
-                <Select
-                    label={"Skill"}
-                    options={OptionsSkill}
-                    error={errors.skill}
-                    {...register('name')} 
-                />
-
-                <Select
-                    label={"Caregory"}
-                    options={OptionsCategorySkill}
-                    error={errors.category}
-                    {...register('category')} 
-                />
-
-                <Button 
-                    type="submit"
-                >
-        
-                    {loading ? "Loading..." : "To send"}
-
-                <SlArrowRight
-                    size={20}
-                    color="#e8e9ea"
-                />
-
-                </Button>
-            </div>
-
-        </form>
-    )
-    
-}
-
+          <SlArrowRight size={20} color="#e8e9ea" />
+        </Button>
+      </div>
+    </form>
+  );
+};

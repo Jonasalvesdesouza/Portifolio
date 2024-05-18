@@ -1,41 +1,28 @@
-import { useContext } from "react"
-import { AppBehaviorContext, UserAdmContext } from "../../../../../../providers"
-import { EducationCard } from "./EducationCard"
-import { InsertEducationModal } from "../../../../../fragments"
+import { useContext } from 'react';
+import {
+  AppBehaviorContext,
+  UserAdmContext,
+} from '../../../../../../providers';
+import { EducationCard } from './EducationCard';
+import { InsertEducationModal } from '../../../../../fragments';
 
 export const SectionDashboardEducation = () => {
-    const { 
+  const { isOpenDashboard, setIsOpenDashboard } =
+    useContext(AppBehaviorContext);
 
-        isOpenDashboard,
-        setIsOpenDashboard
+  const { educationList } = useContext(UserAdmContext);
 
-    } = useContext(AppBehaviorContext)
-    
-
-    const { educationList } = useContext(UserAdmContext)
-       
-    return(
-        <div>
-            <h2>Education.</h2>
-            <ul>
-                {
-                    educationList?.map((education)=>{
-                        return(
-                            <EducationCard
-                                key={education.id}
-                                education={education} 
-                            />
-                        )
-                    })
-                }
-            </ul>
-            {
-                isOpenDashboard === true ?
-                <InsertEducationModal
-                    setIsOpenDashboard={setIsOpenDashboard}
-                />:
-                null
-            }
-        </div>
-    )
-}
+  return (
+    <div>
+      <h2>Education.</h2>
+      <ul>
+        {educationList?.map((education) => {
+          return <EducationCard key={education.id} education={education} />;
+        })}
+      </ul>
+      {isOpenDashboard === true ? (
+        <InsertEducationModal setIsOpenDashboard={setIsOpenDashboard} />
+      ) : null}
+    </div>
+  );
+};

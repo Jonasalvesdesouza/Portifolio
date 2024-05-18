@@ -1,17 +1,15 @@
 import React from 'react';
-import { BiPencil, BiTrash } from 'react-icons/bi'; 
+import { BiPencil, BiTrash } from 'react-icons/bi';
 import { Button } from '../../../../../../../fragments';
 
-export const SocialMediaButtons = (
-    { 
-        socialMedia, 
-        setIsOpen, 
-        setEditSocialMedia, 
-        socialMediaDelete, 
-        setLoading,
-        loading 
-    }
-) => {
+export const SocialMediaButtons = ({
+  socialMedia,
+  setIsOpen,
+  setEditSocialMedia,
+  socialMediaDelete,
+  setLoading,
+  loading,
+}) => {
   const buttons = [
     {
       type: 'edit',
@@ -23,7 +21,11 @@ export const SocialMediaButtons = (
     },
     {
       type: 'delete',
-      icon: loading ? "Loading..." : <BiTrash size={18} color="black" /* color="#e8e9ea" */ />,
+      icon: loading ? (
+        'Loading...'
+      ) : (
+        <BiTrash size={18} color="black" /* color="#e8e9ea" */ />
+      ),
       action: () => socialMediaDelete(socialMedia.id, setLoading),
     },
   ];

@@ -1,88 +1,54 @@
-import {
+import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-    useContext, 
-    useState
+import { SlArrowRight } from 'react-icons/sl';
 
-} from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { UserAdmContext } from '../../../../../providers';
+import { insertHobbySchema } from '../../../../../schema';
 
-import { SlArrowRight } from "react-icons/sl"
+import { Input, Button, Select } from '../../../index';
 
-import { UserAdmContext } from "../../../../../providers"
-import { insertHobbySchema } from "../../../../../schema"
+export const FormEditHobby = ({ setIsOpen }) => {
+  const [loading, setLoading] = useState(false);
 
-import {
+  const { hobbyUpdate, editHobby } = useContext(UserAdmContext);
 
-    Input, 
-    Button,
-    Select
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(insertHobbySchema),
+    values: {
+      name: editHobby.name,
+    },
+  });
 
-} from "../../../index"
+  const onSubmit = (payLoad) => {
+    console.log(handleSubmit);
 
-export const FormEditHobby = ({setIsOpen}) => {
-    const  [ loading, setLoading ]  = useState(false)
+    hobbyUpdate(payLoad, setLoading, reset, setIsOpen);
+  };
 
-    const { hobbyUpdate, editHobby} = useContext(UserAdmContext)
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <Input
+          type="text"
+          label="Name"
+          placeholder="Name"
+          error={errors.name}
+          {...register('name')}
+        />
 
-    const {
+        <Button type="submit">
+          {loading ? 'Loading...' : 'To send'}
 
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors }, 
-
-     } = useForm(
-        {
-            resolver: zodResolver(insertHobbySchema),
-            values:{
-                name: editHobby.name,
-            }
-        }
-    )
-
-    const onSubmit = (payLoad) => {
-        console.log(handleSubmit)
-
-        hobbyUpdate(
-
-            payLoad, 
-            setLoading, 
-            reset,
-            setIsOpen
-
-        )
-    }
-
-    return(
-        <form onSubmit={ handleSubmit(onSubmit) }>
-
-            <div>
-                <Input
-                    type="text"
-                    label="Name"
-                    placeholder="Name"
-                    error={errors.name}
-                    {...register('name')}  
-                />
-                 
-
-                <Button 
-                    type="submit"
-                >
-        
-                    {loading ? "Loading..." : "To send"}
-
-                <SlArrowRight
-                    size={20}
-                    color="#e8e9ea"
-                />
-
-                </Button>
-            </div>
-
-        </form>
-    )
-    
-}
-
+          <SlArrowRight size={20} color="#e8e9ea" />
+        </Button>
+      </div>
+    </form>
+  );
+};

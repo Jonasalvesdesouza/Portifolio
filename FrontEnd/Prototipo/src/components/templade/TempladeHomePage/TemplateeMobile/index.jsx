@@ -1,15 +1,13 @@
-import { Footer, HeaderHomeMobile } from "../../../fragments"
+import { Footer, HeaderHomeMobile } from '../../../fragments';
 
-export const TemplateMobile = ({children, setIsOpen}) => {
-    return(
-        <div>
-            <HeaderHomeMobile setIsOpen={setIsOpen}/> 
-              
-            <main>
-                {children}                
-            </main>
-            
-            <Footer />
-        </div>
-    )
-}
+export const TemplateMobile = ({ children, setIsOpen }) => {
+  return (
+    <div>
+      <HeaderHomeMobile setIsOpen={setIsOpen} />
+
+      <main>{children}</main>
+
+      <Footer />
+    </div>
+  );
+};

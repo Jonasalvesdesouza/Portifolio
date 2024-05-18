@@ -1,20 +1,18 @@
-import React from "react";
-import { BiPencil, BiTrash } from "react-icons/bi"
-import { Button } from "../../../../../../../fragments"
+import React from 'react';
+import { BiPencil, BiTrash } from 'react-icons/bi';
+import { Button } from '../../../../../../../fragments';
 
-export const JobExperienceButtons = (
-    { 
-        jobExperience, 
-        setIsOpen, 
-        setEditJobExperience, 
-        jobExperienceDelete, 
-        setLoading,
-        loading 
-    }
-) => {
+export const JobExperienceButtons = ({
+  jobExperience,
+  setIsOpen,
+  setEditJobExperience,
+  jobExperienceDelete,
+  setLoading,
+  loading,
+}) => {
   const buttons = [
     {
-      type: "edit",
+      type: 'edit',
       icon: <BiPencil size={18} color="black" />,
       action: () => {
         setIsOpen(true);
@@ -22,8 +20,12 @@ export const JobExperienceButtons = (
       },
     },
     {
-      type: "delete",
-      icon: loading ? "Loading..." : <BiTrash size={18} color="black" /* color="#e8e9ea" */ />,
+      type: 'delete',
+      icon: loading ? (
+        'Loading...'
+      ) : (
+        <BiTrash size={18} color="black" /* color="#e8e9ea" */ />
+      ),
       action: () => jobExperienceDelete(jobExperience.id, setLoading),
     },
   ];

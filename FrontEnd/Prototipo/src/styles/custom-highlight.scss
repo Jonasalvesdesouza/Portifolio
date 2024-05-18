@@ -1,59 +1,59 @@
 /* Estilos gerais */
 .ql-snow .ql-editor pre.ql-syntax {
-    background-color: rgb(24, 24, 24);
-    color: #e7ebff;
-    overflow: visible;
-    border-radius: 15px;
-    padding: 30px;
-    width: 60%;
-    font-family: "Source Code", monospace;
-    font-optical-sizing: auto;
-    font-weight: 200;
-    font-style: normal;
-    font-size: 14px;
-    line-height: 1.5;
+  background-color: rgb(24, 24, 24);
+  color: #e7ebff;
+  overflow: visible;
+  border-radius: 15px;
+  padding: 30px;
+  width: 60%;
+  font-family: 'Source Code', monospace;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 /* Estilos específicos de linguagem */
 .ql-syntax .hljs-comment {
-    color: rgb(152, 157, 179);
-    font-style: italic;
+  color: rgb(152, 157, 179);
+  font-style: italic;
 }
 
 .ql-syntax .hljs-keyword {
-    color: rgb(60, 2, 219);
+  color: rgb(60, 2, 219);
 }
 
 .ql-syntax .hljs-string {
-    color: rgb(246, 121, 76);
+  color: rgb(246, 121, 76);
 }
 
 .ql-syntax .hljs-number {
-    color: #7ff508;
+  color: #7ff508;
 }
 
 .ql-syntax .hljs-function {
-    color: rgb(226, 230, 246);
+  color: rgb(226, 230, 246);
 }
 
 .ql-syntax .hljs-title {
-    color: rgb(63, 127, 192);
+  color: rgb(63, 127, 192);
 }
 
 .ql-syntax .hljs-params {
-    color: rgb(170, 174, 192);
+  color: rgb(170, 174, 192);
 }
 
 .ql-syntax .hljs-variable {
-    color: #c8572e;
+  color: #c8572e;
 }
 
 .ql-syntax .hljs-tag {
-    color: #ddf1ff;
+  color: #ddf1ff;
 }
 
 .ql-syntax .hljs-html {
-    color: #dfe5e9;
+  color: #dfe5e9;
 }
 
 /* Outros estilos conforme necessário */

@@ -1,11 +1,11 @@
-import { FilterProjects } from "./Filter"
-import { RenderProjects } from "./RenderProjects"
+import { FilterProjects } from './Filter';
+import { RenderProjects } from './RenderProjects';
 
 export const SectionProjects = () => {
-    return(
-        <div>
-            <FilterProjects/>
-            <RenderProjects/>
-        </div>
-    )
-}
+  return (
+    <div>
+      <FilterProjects />
+      <RenderProjects />
+    </div>
+  );
+};

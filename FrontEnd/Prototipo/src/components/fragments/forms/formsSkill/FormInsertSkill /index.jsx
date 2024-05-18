@@ -1,90 +1,58 @@
-import {
+import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-    useContext, 
-    useState
+import { SlArrowRight } from 'react-icons/sl';
 
-} from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { UserAdmContext } from '../../../../../providers';
+import { insertSkillSchema } from '../../../../../schema';
+import { OptionsSkill, OptionsCategorySkill } from '../options/';
 
-import { SlArrowRight } from "react-icons/sl"
+import { Button, Select } from '../../../index';
 
-import { UserAdmContext } from "../../../../../providers"
-import { insertSkillSchema } from "../../../../../schema"
-import { OptionsSkill, OptionsCategorySkill } from "../options/"
+export const FormInsertSkill = ({ setIsOpenDashboard }) => {
+  const [loading, setLoading] = useState(false);
 
-import {
+  const { skillRegister } = useContext(UserAdmContext);
 
-    Button,
-    Select
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(insertSkillSchema),
+  });
 
-} from "../../../index"
+  const onSubmit = (payLoad) => {
+    console.log(handleSubmit);
 
-export const FormInsertSkill = ({setIsOpenDashboard}) => {
-    const  [ loading, setLoading ]  = useState(false)
+    skillRegister(payLoad, setLoading, reset, setIsOpenDashboard);
+  };
 
-    const { skillRegister } = useContext(UserAdmContext)
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <Select
+          label={'Skill'}
+          options={OptionsSkill}
+          error={errors.skill}
+          {...register('name')}
+        />
 
-    const {
+        <Select
+          label={'Caregory'}
+          options={OptionsCategorySkill}
+          error={errors.category}
+          {...register('category')}
+        />
 
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors }, 
+        <Button type="submit">
+          {loading ? 'Loading...' : 'To send'}
 
-     } = useForm(
-        {
-            resolver: zodResolver(insertSkillSchema),
-        }
-    )
-
-    const onSubmit = (payLoad) => {
-        console.log(handleSubmit)
-
-        skillRegister(
-
-            payLoad, 
-            setLoading, 
-            reset,
-            setIsOpenDashboard
-
-        )
-    }
-
-    return(
-        <form onSubmit={ handleSubmit(onSubmit) }>
-
-            <div>
-                <Select
-                    label={"Skill"}
-                    options={OptionsSkill}
-                    error={errors.skill}
-                    {...register('name')} 
-                />
-
-                <Select
-                    label={"Caregory"}
-                    options={OptionsCategorySkill}
-                    error={errors.category}
-                    {...register('category')} 
-                />
-
-                <Button 
-                    type="submit"
-                >
-        
-                    {loading ? "Loading..." : "To send"}
-
-                <SlArrowRight
-                    size={20}
-                    color="#e8e9ea"
-                />
-
-                </Button>
-            </div>
-
-        </form>
-    )
-    
-}
-
+          <SlArrowRight size={20} color="#e8e9ea" />
+        </Button>
+      </div>
+    </form>
+  );
+};

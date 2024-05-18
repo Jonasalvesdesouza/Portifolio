@@ -1,32 +1,20 @@
-import { useContext } from "react"
-import { Button } from "../../../../../fragments"
-import { AppBehaviorContext } from "../../../../../../providers"
+import { useContext } from 'react';
+import { Button } from '../../../../../fragments';
+import { AppBehaviorContext } from '../../../../../../providers';
 
 export const CardNav = ({ section }) => {
-    const {
+  const { setNavDashboard, setIsOpenDashboard } =
+    useContext(AppBehaviorContext);
 
-        setNavDashboard, 
-        setIsOpenDashboard,
+  const handleClick = () => {
+    setNavDashboard(section.router);
+    setIsOpenDashboard(false);
+    localStorage.setItem('@SECTIONDASHBOARD', section.router);
+  };
 
-    } = useContext(AppBehaviorContext)
-
-    
-    
-    const handleClick = () => {
-        setNavDashboard(section.router)
-        setIsOpenDashboard(false)
-        localStorage.setItem("@SECTIONDASHBOARD", section.router)
-
-    }
-
-    return(
-        <li>
-            <Button
-                onClick={handleClick}
-            >
-                { section.name }
-
-            </Button>
-        </li>
-    )
-}
+  return (
+    <li>
+      <Button onClick={handleClick}>{section.name}</Button>
+    </li>
+  );
+};

@@ -1,13 +1,13 @@
-import { useContext } from "react"
-import { UserAdmContext } from "../../../../../providers"
+import { useContext } from 'react';
+import { UserAdmContext } from '../../../../../providers';
 
 export const SectionAboutCurriculum = () => {
-    const { profile } = useContext(UserAdmContext)
+  const { profile } = useContext(UserAdmContext);
 
-    return(
-        <div>
-            <h2>About.</h2>
-            <p>{profile.about}</p>
-        </div>
-    )
-}
+  return (
+    <div>
+      <h2>About.</h2>
+      <p>{profile.about}</p>
+    </div>
+  );
+};

@@ -1,122 +1,87 @@
-import {
+import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-    useContext, 
-    useState
+import { SlArrowRight } from 'react-icons/sl';
 
-} from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { UserAdmContext } from '../../../../../providers';
+import { insertProjectSchema } from '../../../../../schema';
 
-import { SlArrowRight } from "react-icons/sl"
+import { TextArea, Input, Button, Select } from '../../../index';
 
-import { UserAdmContext } from "../../../../../providers"
-import { insertProjectSchema } from "../../../../../schema"
-
-import {
-
-    TextArea, 
-    Input, 
-    Button,
-    Select
-
-} from "../../../index"
-
-import { Category, SubCategory } from "./options"
+import { Category, SubCategory } from './options';
 
 export const FormInsertProject = ({ setIsOpenDashboard }) => {
-    const  [ loading, setLoading ]  = useState(false)
+  const [loading, setLoading] = useState(false);
 
-    const { projectsRegister, } = useContext(UserAdmContext)
+  const { projectsRegister } = useContext(UserAdmContext);
 
-    const {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(insertProjectSchema),
+  });
 
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors }, 
+  const onSubmit = (payLoad) => {
+    projectsRegister(payLoad, setLoading, reset, setIsOpenDashboard);
+  };
 
-     } = useForm(
-        {
-            resolver: zodResolver(insertProjectSchema),
-        }
-    )
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <Input
+          type="text"
+          label="Title"
+          placeholder="Title"
+          error={errors.title}
+          {...register('title')}
+        />
+        <Input
+          type="text"
+          label="Web Site"
+          placeholder="Web Site"
+          error={errors.webSite}
+          {...register('webSite')}
+        />
+        <Input
+          type="text"
+          label="GitHub"
+          placeholder="GitHub"
+          error={errors.gitHub}
+          {...register('gitHub')}
+        />
 
-    const onSubmit = (payLoad) => {
+        <Select
+          label={'Category'}
+          options={Category}
+          error={errors.category}
+          {...register('category')}
+        />
 
-        projectsRegister(
+        <Select
+          label={'subCategory'}
+          options={SubCategory}
+          error={errors.subCategor}
+          {...register('subCategory')}
+        />
 
-            payLoad, 
-            setLoading, 
-            reset,
-            setIsOpenDashboard
-        )
-    }
+        <TextArea
+          type="text"
+          label="Description"
+          placeholder="Description"
+          error={errors.description}
+          {...register('description')}
+        />
 
-    return(
-        <form onSubmit={ handleSubmit(onSubmit) }>
+        <Button type="submit">
+          {loading ? 'Loading...' : 'To send'}
 
-            <div>
-                <Input
-                    type="text"
-                    label="Title"
-                    placeholder="Title"
-                    error={errors.title}
-                    {...register('title')}  
-                />
-                <Input
-                    type="text"
-                    label="Web Site"
-                    placeholder="Web Site"
-                    error={errors.webSite}
-                    {...register('webSite')}  
-                />
-                <Input
-                    type="text"
-                    label="GitHub"
-                    placeholder="GitHub"
-                    error={errors.gitHub}
-                    {...register('gitHub')}  
-                />
-                
-                <Select
-                    label={"Category"}
-                    options={Category}
-                    error={errors.category}
-                    {...register('category')} 
-                />
-                 
-                 <Select
-                    label={"subCategory"}
-                    options={SubCategory}
-                    error={errors.subCategor}
-                    {...register('subCategory')} 
-                />
-
-               
-                <TextArea
-                    type="text"
-                    label="Description"
-                    placeholder="Description"
-                    error={errors.description}
-                    {...register('description')}  
-                />
-
-                <Button 
-                    type="submit"
-                >
-        
-                    {loading ? "Loading..." : "To send"}
-
-                <SlArrowRight
-                    size={20}
-                    color="#e8e9ea"
-                />
-
-                </Button>
-            </div>
-
-        </form>
-    )
-    
-}
-
+          <SlArrowRight size={20} color="#e8e9ea" />
+        </Button>
+      </div>
+    </form>
+  );
+};

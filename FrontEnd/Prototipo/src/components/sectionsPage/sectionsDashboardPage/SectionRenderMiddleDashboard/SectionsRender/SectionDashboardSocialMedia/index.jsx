@@ -1,47 +1,32 @@
-import { useContext } from "react"
+import { useContext } from 'react';
 import {
-
-    AppBehaviorContext, 
-    UserAdmContext 
-
-} from "../../../../../../providers"
-import { SocialMediaCard } from "./SocialMediaCard"
-import { InsertSocialMediaModal } from "../../../../../fragments"
+  AppBehaviorContext,
+  UserAdmContext,
+} from '../../../../../../providers';
+import { SocialMediaCard } from './SocialMediaCard';
+import { InsertSocialMediaModal } from '../../../../../fragments';
 
 export const SectionDashboardSocialMedia = () => {
-    const { 
+  const { isOpenDashboard, setIsOpenDashboard } =
+    useContext(AppBehaviorContext);
 
-        isOpenDashboard,
-        setIsOpenDashboard
+  const { socialMediaList } = useContext(UserAdmContext);
 
-    } = useContext(AppBehaviorContext)
-    
-    const { socialMediaList } = useContext(UserAdmContext)
-       
-    return(
-        <>
-            <div>
-                <h2>SocialMedia.</h2>
-                <ul>
-                    {
-                        socialMediaList?.map((socialMedia)=>{
-                            return(
-                                <SocialMediaCard
-                                    key={socialMedia.id}
-                                    socialMedia={socialMedia} 
-                                />
-                            )
-                        })
-                    }
-                </ul>
-            </div>
-            {
-                isOpenDashboard === true ?
-                <InsertSocialMediaModal
-                    setIsOpenDashboard={setIsOpenDashboard}
-                />:
-                null
-            }
-        </>
-    )
-}
+  return (
+    <>
+      <div>
+        <h2>SocialMedia.</h2>
+        <ul>
+          {socialMediaList?.map((socialMedia) => {
+            return (
+              <SocialMediaCard key={socialMedia.id} socialMedia={socialMedia} />
+            );
+          })}
+        </ul>
+      </div>
+      {isOpenDashboard === true ? (
+        <InsertSocialMediaModal setIsOpenDashboard={setIsOpenDashboard} />
+      ) : null}
+    </>
+  );
+};

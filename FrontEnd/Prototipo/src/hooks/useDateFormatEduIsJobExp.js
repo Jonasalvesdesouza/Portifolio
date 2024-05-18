@@ -5,8 +5,18 @@ export const useDateFormatEduIsJobExp = (date) => {
       const [year, month] = isoParts;
 
       const monthNames = [
-        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
       ];
       const abbreviatedMonth = monthNames[Number(month) - 1];
 
@@ -14,7 +24,7 @@ export const useDateFormatEduIsJobExp = (date) => {
     } else {
       return 'Formato de data inválido';
     }
-  }
+  };
 
   return formatDate(date);
-}
+};

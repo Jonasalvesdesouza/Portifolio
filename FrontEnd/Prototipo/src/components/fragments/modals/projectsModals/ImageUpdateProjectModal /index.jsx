@@ -1,79 +1,54 @@
-import { IoCloseOutline } from "react-icons/io5"
+import { IoCloseOutline } from 'react-icons/io5';
 
-import { 
+import { useKeydown, useOutclick, useRenderImage } from '../../../../../hooks';
 
-    useKeydown, 
-    useOutclick, 
-    useRenderImage 
+import { Button } from '../../../Button';
+import { FormUpdateProjectImage } from '../../../forms';
+import { useContext, useEffect, useState } from 'react';
+import { AppBehaviorContext } from '../../../../../providers';
 
-} from "../../../../../hooks"
+export const ImageUpdateProjectModal = ({ setIsopenUpdateImage, project }) => {
+  const { imageProject } = useContext(AppBehaviorContext);
+  const [projectImage, setProjectImage] = useState('');
 
-import { Button } from "../../../Button"
-import { FormUpdateProjectImage } from "../../../forms"
-import { useContext, useEffect, useState } from "react"
-import { AppBehaviorContext } from "../../../../../providers"
+  const closeModalOutClick = useOutclick(() => {
+    setIsopenUpdateImage(false);
+  });
 
-export const ImageUpdateProjectModal  = (
-    {
-        setIsopenUpdateImage, 
-        project
+  const closeModalKeyDownEsque = useKeydown(() => {
+    setIsopenUpdateImage(false);
+  });
+
+  useEffect(() => {
+    if (imageProject) {
+      setProjectImage(imageProject);
+    } else {
+      const urlImage = useRenderImage(project);
+      setProjectImage(urlImage);
     }
-) => {
-    const { imageProject } = useContext(AppBehaviorContext)
-    const [ projectImage, setProjectImage ] = useState("")
+  }, [project, imageProject]);
 
-
-    const closeModalOutClick = useOutclick(()=> {
-        setIsopenUpdateImage(false)      
-    })
-   
-     const closeModalKeyDownEsque = useKeydown(()=>{
-        setIsopenUpdateImage(false)
-    })
-    
-    useEffect(() => {
-        if (imageProject) {
-            setProjectImage(imageProject);
-        } else {
-            const urlImage = useRenderImage(project);
-            setProjectImage(urlImage);
-        }
-    }, [project, imageProject]);
-
-    return(
-        <div
-
-			role="dialog"
-			ref={closeModalOutClick}
-
-		>
-			<div>
-                <Button onClick={
-                    () => {
-                        setIsopenUpdateImage(false)
-                    }
-                }>
-
-                    <IoCloseOutline
-                        size={28}
-                        color="#1b1f24"
-                    />
-
-                </Button>
-            </div>
-            <div>
-                <img 
-                    src={projectImage} 
-                    alt="Preview" 
-                    style={{ maxWidth: '100%', marginTop: '10px' }} 
-                />
-            </div>
-            <div>
-                <FormUpdateProjectImage
-                    setIsopenUpdateImage={setIsopenUpdateImage}
-                />
-            </div>
-
-        </div>
-    )
-}
+  return (
+    <div role="dialog" ref={closeModalOutClick}>
+      <div>
+        <Button
+          onClick={() => {
+            setIsopenUpdateImage(false);
+          }}
+        >
+          <IoCloseOutline size={28} color="#1b1f24" />
+        </Button>
+      </div>
+      <div>
+        <img
+          src={projectImage}
+          alt="Preview"
+          style={{ maxWidth: '100%', marginTop: '10px' }}
+        />
+      </div>
+      <div>
+        <FormUpdateProjectImage setIsopenUpdateImage={setIsopenUpdateImage} />
+      </div>
+    </div>
+  );
+};

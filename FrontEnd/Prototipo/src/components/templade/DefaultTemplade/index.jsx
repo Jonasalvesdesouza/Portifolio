@@ -1,16 +1,13 @@
-import { Footer, Header } from "../../fragments"
+import { Footer, Header } from '../../fragments';
 
-export const DefaultTemplate = ({children, setIsOpen}) => {
+export const DefaultTemplate = ({ children, setIsOpen }) => {
+  return (
+    <div>
+      <Header setIsOpen={setIsOpen} />
 
-    return(
-        <div>
-            <Header setIsOpen={setIsOpen}/>
-            
-            <main>
-                {children}
-            </main>
+      <main>{children}</main>
 
-            <Footer />
-        </div>
-    )
-}
+      <Footer />
+    </div>
+  );
+};

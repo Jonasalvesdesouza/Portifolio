@@ -1,2 +1,2 @@
-export { IconsSkills } from "./IconsSkill"
-export { IconsHobbies } from "./IconsHobbies"
+export { IconsSkills } from './IconsSkill';
+export { IconsHobbies } from './IconsHobbies';

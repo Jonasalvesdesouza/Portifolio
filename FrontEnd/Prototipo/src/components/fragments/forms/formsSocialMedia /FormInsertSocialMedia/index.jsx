@@ -1,92 +1,58 @@
-import {
+import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-    useContext, 
-    useState
+import { SlArrowRight } from 'react-icons/sl';
 
-} from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { UserAdmContext } from '../../../../../providers';
+import { insertSocialMediaSchema } from '../../../../../schema';
 
-import { SlArrowRight } from "react-icons/sl"
+import { Input, Button, Select } from '../../../index';
 
-import { UserAdmContext } from "../../../../../providers"
-import { insertSocialMediaSchema } from "../../../../../schema"
-
-import {
- 
-    Input, 
-    Button,
-    Select
-
-} from "../../../index"
-
-import { OptionsSocialMedia} from "./options"
+import { OptionsSocialMedia } from './options';
 
 export const FormInsertSocialMedia = ({ setIsOpenDashboard }) => {
-    const  [ loading, setLoading ]  = useState(false)
+  const [loading, setLoading] = useState(false);
 
-    const { socialMediaRegister, } = useContext(UserAdmContext)
+  const { socialMediaRegister } = useContext(UserAdmContext);
 
-    const {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(insertSocialMediaSchema),
+  });
 
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors }, 
+  const onSubmit = (payLoad) => {
+    socialMediaRegister(payLoad, setLoading, reset, setIsOpenDashboard);
+  };
 
-     } = useForm(
-        {
-            resolver: zodResolver(insertSocialMediaSchema),
-        }
-    )
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <Select
+          label={'Social Media'}
+          options={OptionsSocialMedia}
+          error={errors.name}
+          {...register('name')}
+        />
 
-    const onSubmit = (payLoad) => {
+        <Input
+          type="text"
+          label="Link"
+          placeholder="Link"
+          error={errors.link}
+          {...register('link')}
+        />
 
-        socialMediaRegister(
+        <Button type="submit">
+          {loading ? 'Loading...' : 'To send'}
 
-            payLoad, 
-            setLoading, 
-            reset,
-            setIsOpenDashboard
-        )
-    }
-
-    return(
-        <form onSubmit={ handleSubmit(onSubmit) }>
-
-            <div>
-                <Select
-                    label={"Social Media"}
-                    options={OptionsSocialMedia}
-                    error={errors.name}
-                    {...register('name')} 
-                />
-
-                <Input
-                    type="text"
-                    label="Link"
-                    placeholder="Link"
-                    error={errors.link}
-                    {...register('link')}  
-                />
-                 
-
-                <Button 
-                    type="submit"
-                >
-        
-                    {loading ? "Loading..." : "To send"}
-
-                <SlArrowRight
-                    size={20}
-                    color="#e8e9ea"
-                />
-
-                </Button>
-            </div>
-
-        </form>
-    )
-    
-}
-
+          <SlArrowRight size={20} color="#e8e9ea" />
+        </Button>
+      </div>
+    </form>
+  );
+};

@@ -1,92 +1,59 @@
-import {
+import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-    useContext, 
-    useState
+import { SlArrowRight } from 'react-icons/sl';
 
-} from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-
-import { SlArrowRight } from "react-icons/sl"
-
-import { UserAdmContext } from "../../../../providers"
-import { contactProfileSchema } from "../../../../schema"
-import {
-
-    Input, 
-    Button
-
-} from "../../index"
+import { UserAdmContext } from '../../../../providers';
+import { contactProfileSchema } from '../../../../schema';
+import { Input, Button } from '../../index';
 
 export const FormProfileContact = () => {
-    const  [ loading, setLoading ]  = useState(false)
+  const [loading, setLoading] = useState(false);
 
-    const { editContactProfile, contactUpdate, } = useContext(UserAdmContext)
+  const { editContactProfile, contactUpdate } = useContext(UserAdmContext);
 
-    const {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(contactProfileSchema),
+    values: {
+      email: editContactProfile.email,
+      cel: editContactProfile.cel,
+    },
+  });
 
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors }, 
+  const onSubmit = (payLoad) => {
+    contactUpdate(payLoad, setLoading, reset);
+  };
 
-     } = useForm(
-        {
-            resolver: zodResolver(contactProfileSchema),
-            values: {
-                email: editContactProfile.email,
-                cel: editContactProfile.cel
-            }
-        }
-    )
-    
-    const onSubmit = (payLoad) => {
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <Input
+          type="email"
+          label="Email"
+          placeholder="Email"
+          error={errors.profession}
+          {...register('email')}
+        />
+        <Input
+          type="text"
+          label="Cel"
+          placeholder="Cel"
+          error={errors.profession}
+          {...register('cel')}
+        />
 
-        contactUpdate(
+        <Button type="submit">
+          {loading ? 'Loading...' : 'To send'}
 
-            payLoad, 
-            setLoading, 
-            reset
-
-        )
-    }
-
-    return(
-        <form onSubmit={ handleSubmit(onSubmit) }>
-
-            <div>
-                <Input
-                    type="email"
-                    label="Email"
-                    placeholder="Email"
-                    error={errors.profession}
-                    {...register('email')}  
-                />
-                <Input
-                    type="text"
-                    label="Cel"
-                    placeholder="Cel"
-                    error={errors.profession}
-                    {...register('cel')}  
-                />
-               
-
-                <Button 
-                    type="submit"
-                >
-        
-                    {loading ? "Loading..." : "To send"}
-
-                <SlArrowRight
-                    size={20}
-                    color="#e8e9ea"
-                />
-
-                </Button>
-            </div>
-
-        </form>
-    )
-    
-}
-
+          <SlArrowRight size={20} color="#e8e9ea" />
+        </Button>
+      </div>
+    </form>
+  );
+};

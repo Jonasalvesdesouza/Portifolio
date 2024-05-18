@@ -1,17 +1,15 @@
 import React from 'react';
-import { BiPencil, BiTrash } from 'react-icons/bi'; 
+import { BiPencil, BiTrash } from 'react-icons/bi';
 import { Button } from '../../../../../../../fragments';
 
-export const ProjectButtons = (
-    { 
-        project, 
-        setIsOpen, 
-        setEditProjects, 
-        projectDelete, 
-        setLoading,
-        loading 
-    }
-) => {
+export const ProjectButtons = ({
+  project,
+  setIsOpen,
+  setEditProjects,
+  projectDelete,
+  setLoading,
+  loading,
+}) => {
   const buttons = [
     {
       type: 'edit',
@@ -23,7 +21,11 @@ export const ProjectButtons = (
     },
     {
       type: 'delete',
-      icon: loading ? "Loading..." : <BiTrash size={18} color="black" /* color="#e8e9ea" */ />,
+      icon: loading ? (
+        'Loading...'
+      ) : (
+        <BiTrash size={18} color="black" /* color="#e8e9ea" */ />
+      ),
       action: () => projectDelete(project.id, setLoading),
     },
   ];

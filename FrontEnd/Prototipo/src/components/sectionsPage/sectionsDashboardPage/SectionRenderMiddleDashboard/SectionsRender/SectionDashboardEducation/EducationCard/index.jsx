@@ -1,79 +1,62 @@
-import { useContext, useState } from "react"
-import { EducationButtons } from "./EducationButtons"
-import { UserAdmContext } from "../../../../../../../providers"
-import { EditEducationModal } from "../../../../../../fragments"
-import { useDateFormatEduIsJobExp } from "../../../../../../../hooks"
+import { useContext, useState } from 'react';
+import { EducationButtons } from './EducationButtons';
+import { UserAdmContext } from '../../../../../../../providers';
+import { EditEducationModal } from '../../../../../../fragments';
+import { useDateFormatEduIsJobExp } from '../../../../../../../hooks';
 
-export const EducationCard = ({education}) => {
-    const [ loading, setLoading ] = useState(false)
-    const [ isOpen, setIsOpen ] = useState(false)
+export const EducationCard = ({ education }) => {
+  const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    const {
+  const { setEditEducation, educationDelete } = useContext(UserAdmContext);
 
-        setEditEducation, 
-        educationDelete, 
+  const initialDate = useDateFormatEduIsJobExp(education.initialDate);
+  const endDate = useDateFormatEduIsJobExp(education.endDate);
 
-    } = useContext(UserAdmContext)
+  const test = education.title;
 
-    const initialDate = useDateFormatEduIsJobExp(education.initialDate)
-    const endDate = useDateFormatEduIsJobExp(education.endDate)
+  const country = education.country;
+  const state = education.state;
+  const city = education.city;
 
-    const test  = education.title
+  const description = education.description;
 
-    const country = education.country
-    const state = education.state
-    const city = education.city
+  const title = education.course;
+  const Institute = education.title;
 
-    const description = education.description
-
-    const title = education.course
-    const Institute = education.title
-
-    return(
-        <>
-            <li>
-                <div>
-                <EducationButtons
-
-                    education={education} 
-                    setIsOpen={setIsOpen} 
-                    setEditEducation={setEditEducation} 
-                    educationDelete={educationDelete} 
-                    setLoading={setLoading}
-                    loading={loading} 
-
-                />
-                    <div>
-                        <div>
-                            <h4>{title}</h4>
-                        </div>
-                        <div>
-                           <span>
-                            {   (initialDate + " - ") + (endDate === "" ? "current" : endDate) }
-                           </span>
-                        </div>
-                    </div>
-                    <div>
-                        <span>
-                            {
-                                (Institute + " / " + city + " - " + state + " / " + country)     
-                            }
-                        </span>
-                    </div>
-                    <div>
-                        <span>
-                            {description}
-                        </span>
-                    </div>
-                </div>                 
-            </li>
-            {
-                isOpen === true ?
-                <EditEducationModal
-                    setIsOpen={setIsOpen} 
-                />:
-                null
-            }
-        </>
-    )
-}
+  return (
+    <>
+      <li>
+        <div>
+          <EducationButtons
+            education={education}
+            setIsOpen={setIsOpen}
+            setEditEducation={setEditEducation}
+            educationDelete={educationDelete}
+            setLoading={setLoading}
+            loading={loading}
+          />
+          <div>
+            <div>
+              <h4>{title}</h4>
+            </div>
+            <div>
+              <span>
+                {initialDate + ' - ' + (endDate === '' ? 'current' : endDate)}
+              </span>
+            </div>
+          </div>
+          <div>
+            <span>
+              {Institute + ' / ' + city + ' - ' + state + ' / ' + country}
+            </span>
+          </div>
+          <div>
+            <span>{description}</span>
+          </div>
+        </div>
+      </li>
+      {isOpen === true ? <EditEducationModal setIsOpen={setIsOpen} /> : null}
+    </>
+  );
+};

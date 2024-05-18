@@ -1,50 +1,32 @@
-import { useContext } from "react"
+import { useContext } from 'react';
 import {
+  AppBehaviorContext,
+  UserAdmContext,
+} from '../../../../../../providers';
 
-    AppBehaviorContext, 
-    UserAdmContext
+import { ArticleCard } from './ArticleCard';
+import { InsertArticleModal } from '../../../../../fragments';
 
-} from "../../../../../../providers"
+export const SectionDashboardArticles = () => {
+  const { isOpenDashboard, setIsOpenDashboard } =
+    useContext(AppBehaviorContext);
 
-import { ArticleCard } from "./ArticleCard" 
-import { InsertArticleModal } from "../../../../../fragments"
+  const { articlesList } = useContext(UserAdmContext);
 
-export const SectionDashboardArticles = () =>{
-    const { 
+  return (
+    <>
+      <div>
+        <h2>Article.</h2>
+        <ul>
+          {articlesList?.map((article) => {
+            return <ArticleCard key={article.id} article={article} />;
+          })}
+        </ul>
+      </div>
 
-        isOpenDashboard,
-        setIsOpenDashboard
-
-    } = useContext(AppBehaviorContext)
-
-    const { articlesList } = useContext(UserAdmContext)
-
-    return(
-        <>
-            <div>
-                <h2>Article.</h2>
-                <ul>
-                    {
-                        articlesList?.map((article)=>{
-                            return(
-                                <ArticleCard
-                                    key={article.id}
-                                    article={article} 
-                                />
-                            )
-                        })
-                    }
-                </ul>
-            </div>
-
-            {
-                isOpenDashboard === true ? 
-                <InsertArticleModal 
-                setIsOpenDashboard={setIsOpenDashboard}
-                /> :
-                null
-            }
-        
-        </>
-    )
-}
+      {isOpenDashboard === true ? (
+        <InsertArticleModal setIsOpenDashboard={setIsOpenDashboard} />
+      ) : null}
+    </>
+  );
+};

@@ -1,101 +1,66 @@
-import {
+import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-    useContext, 
-    useState
+import { SlArrowRight } from 'react-icons/sl';
 
-} from "react"
-import { useForm } from "react-hook-form"
+import { AppBehaviorContext, UserAdmContext } from '../../../../../providers';
 
-import { SlArrowRight } from "react-icons/sl"
-
-import { 
-
-    AppBehaviorContext, 
-    UserAdmContext 
-
-} from "../../../../../providers"
-
-import {
-
-    Input, 
-    Button
-
-} from "../../../index"
+import { Input, Button } from '../../../index';
 
 export const FormProfileImage = () => {
-    const  [ loading, setLoading ] = useState(false)
+  const [loading, setLoading] = useState(false);
 
-    const { profileImageRegister } = useContext(UserAdmContext)
-    const { setStateImage, setImageProfile } = useContext(AppBehaviorContext)
+  const { profileImageRegister } = useContext(UserAdmContext);
+  const { setStateImage, setImageProfile } = useContext(AppBehaviorContext);
 
-    const {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors }, 
+  const onSubmit = (payLoad) => {
+    const formData = new FormData();
+    formData.append('path', payLoad.path[0]);
 
-     } = useForm()
+    profileImageRegister(formData, setLoading, reset);
+  };
 
-
-    const onSubmit = (payLoad) => {
-        const formData = new FormData();
-        formData.append("path", payLoad.path[0])
-
-        profileImageRegister(
-
-            formData, 
-            setLoading, 
-            reset,
-        )
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImageProfile(reader.result);
+      };
+      reader.readAsDataURL(file);
     }
+  };
 
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                setImageProfile(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
-    }
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <Input
+          label="Insert Image"
+          onChangeCapture={handleImageChange}
+          type="file"
+          accept=".png, .svg, .jpeg, .jpg"
+          error={errors.path}
+          {...register('path')}
+        />
 
-    return(
-        <form onSubmit={ handleSubmit(onSubmit) }>
-            <div>
-                
-                <Input
-                    label="Insert Image"
-                    onChangeCapture={handleImageChange}
-                    type="file"
-                    accept=".png, .svg, .jpeg, .jpg"
-                    error={errors.path}
-                    {...register("path")}
-                />               
-               
-                <Button 
-                    type="submit"
-                    onClick={
-                        ()=>{
-                            setStateImage(true)
-                        }
-                    }
-                >
-        
-                    {loading ? "Loading..." : "To send"}
+        <Button
+          type="submit"
+          onClick={() => {
+            setStateImage(true);
+          }}
+        >
+          {loading ? 'Loading...' : 'To send'}
 
-                <SlArrowRight
-                    size={20}
-                    color="black"
-                />
-
-                </Button>
-            </div>
-
-        </form>
-    )
-    
-}
-
-
+          <SlArrowRight size={20} color="black" />
+        </Button>
+      </div>
+    </form>
+  );
+};

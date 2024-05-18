@@ -1,2 +1,2 @@
-export { DefaultTemplate } from "./DefaultTemplade" 
-export { TemplateHomePage } from "./TempladeHomePage"
+export { DefaultTemplate } from './DefaultTemplade';
+export { TemplateHomePage } from './TempladeHomePage';

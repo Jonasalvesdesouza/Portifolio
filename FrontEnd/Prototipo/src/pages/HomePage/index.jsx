@@ -1,96 +1,59 @@
+import { useContext, useState } from 'react';
+
+import { DefaultTemplate, TemplateHomePage } from '../../components/templade';
 import {
+  SectionBannerHomePage,
+  SectionAboutHomePage,
+  SectionMeEmail,
+  SectionWorkplace,
+} from '../../components/sectionsPage/sectionsHomePage';
 
-    useContext, 
-    useState,
+import { NavModal } from '../../components/fragments';
+import { AppBehaviorContext } from '../../providers';
 
-} from "react"
+import { useScreenWidth, useCardSwipe } from '../../hooks';
+import { smallResolution } from '../../config';
 
-import { DefaultTemplate, TemplateHomePage } from "../../components/templade"
-import { 
+export const HomePage = () => {
+  const { screenWidth, currentCard } = useContext(AppBehaviorContext);
 
-    SectionBannerHomePage,
-    SectionAboutHomePage,
-    SectionMeEmail,
-    SectionWorkplace,
+  const [isOpen, setIsOpen] = useState(false);
 
- } from "../../components/sectionsPage/sectionsHomePage"
+  const cards = [
+    <SectionBannerHomePage />,
+    <SectionAboutHomePage />,
+    <SectionWorkplace />,
+    <SectionMeEmail />,
+  ];
 
-import { NavModal } from "../../components/fragments"
-import { AppBehaviorContext } from "../../providers"
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } =
+    useCardSwipe(cards);
 
-import {
+  useScreenWidth();
 
-    useScreenWidth, 
-    useCardSwipe, 
-
- } from "../../hooks"
-import { smallResolution } from "../../config"
-
-export const HomePage = () =>{
-    const {
-
-        screenWidth, 
-        currentCard, 
-
-    } = useContext(AppBehaviorContext)
-
-    const [ isOpen, setIsOpen] = useState(false) 
-
-    const cards = [
-
-        <SectionBannerHomePage />,
-        <SectionAboutHomePage />,
-        <SectionWorkplace />,
-        <SectionMeEmail />
-
-    ]
-
-    const {
-
-        handleTouchStart, 
-        handleTouchMove,
-        handleTouchEnd 
-
-    } = useCardSwipe(cards)
-
-    useScreenWidth()
-
-    return(
-        <>
-            {
-                screenWidth < smallResolution  ?
-                 <DefaultTemplate setIsOpen={setIsOpen}>
-                    <div>
-
-                        <SectionBannerHomePage />  
-                        <SectionAboutHomePage /> 
-                        <SectionWorkplace />
-                        <SectionMeEmail /> 
-
-                    </div>                   
-                </DefaultTemplate> :
-                <TemplateHomePage setIsOpen={setIsOpen}>                      
-                    <div
-                        onTouchStart={handleTouchStart}
-                        onTouchMove={handleTouchMove}
-                        onTouchEnd={handleTouchEnd}    
-                    >
-
-                       { cards[ currentCard ] }
-
-                    </div>
-                </TemplateHomePage>
-
-            }
-                {
-                    isOpen ? 
-
-                    <NavModal 
-                        setIsOpen={setIsOpen}
-                    /> : 
-                    
-                    null
-                }
-        </>
-    )
-}
+  return (
+    <>
+      {screenWidth < smallResolution ? (
+        <DefaultTemplate setIsOpen={setIsOpen}>
+          <div>
+            <SectionBannerHomePage />
+            <SectionAboutHomePage />
+            <SectionWorkplace />
+            <SectionMeEmail />
+          </div>
+        </DefaultTemplate>
+      ) : (
+        <TemplateHomePage setIsOpen={setIsOpen}>
+          <div
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            {cards[currentCard]}
+          </div>
+        </TemplateHomePage>
+      )}
+      {isOpen ? <NavModal setIsOpen={setIsOpen} /> : null}
+    </>
+  );
+};

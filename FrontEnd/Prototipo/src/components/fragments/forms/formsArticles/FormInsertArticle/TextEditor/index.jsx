@@ -1,20 +1,20 @@
-import React, { useState, useEffect, forwardRef } from "react"
-import ReactQuill from "react-quill"
-import "react-quill/dist/quill.snow.css"
+import React, { useState, useEffect, forwardRef } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 export const TextEditor = forwardRef(({ setEditorContent }, ref) => {
-  const [text, setText] = useState("")
+  const [text, setText] = useState('');
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.focus()
+      ref.current.focus();
     }
-  }, [ref])
+  }, [ref]);
 
   const handleEditorChange = (content) => {
-    setText(content)
-    setEditorContent(content)
-  }
+    setText(content);
+    setEditorContent(content);
+  };
 
   return (
     <ReactQuill
@@ -25,11 +25,11 @@ export const TextEditor = forwardRef(({ setEditorContent }, ref) => {
       modules={{
         toolbar: [
           [{ header: [1, 2, 3, false] }],
-          ["bold", "italic", "underline", "strike"],
-          [{ list: "ordered" }, { list: "bullet" }],
-          ["link"],
-          ["code-block"],
-          ["clean"],
+          ['bold', 'italic', 'underline', 'strike'],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          ['link'],
+          ['code-block'],
+          ['clean'],
         ],
         history: {
           delay: 2000,
@@ -38,16 +38,16 @@ export const TextEditor = forwardRef(({ setEditorContent }, ref) => {
         },
       }}
       formats={[
-        "header",
-        "bold",
-        "italic",
-        "underline",
-        "strike",
-        "list",
-        "bullet",
-        "link",
-        "code-block",
+        'header',
+        'bold',
+        'italic',
+        'underline',
+        'strike',
+        'list',
+        'bullet',
+        'link',
+        'code-block',
       ]}
     />
-  )
-})
+  );
+});

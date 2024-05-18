@@ -1,52 +1,26 @@
-import { IoCloseOutline } from "react-icons/io5"
+import { IoCloseOutline } from 'react-icons/io5';
 
-import { useKeydown, useOutclick } from "../../../../../hooks"
-import { Button } from "../../../Button"
-import { FormInsertArticle } from "../../../forms"
+import { useKeydown, useOutclick } from '../../../../../hooks';
+import { Button } from '../../../Button';
+import { FormInsertArticle } from '../../../forms';
 
 export const InsertArticleModal = ({ setIsOpenDashboard }) => {
-    
-    /* const closeModalOutClick = useOutclick(
-        ()=> {
-            setIsOpenDashboard(false)      
-        }
-    ) */
-   
-     const closeModalKeyDownEsque = useKeydown(
-        ()=>{
-            setIsOpenDashboard(false)
-        }
-    )
-	
-	const handleClick = () => {
-		return setIsOpenDashboard(false)
-    }
-    
-    return(
-        <div
+  const closeModalKeyDownEsque = useKeydown(() => {
+    setIsOpenDashboard(false);
+  });
 
-			role="dialog"
-			/* ref={closeModalOutClick} */
+  const handleClick = () => {
+    return setIsOpenDashboard(false);
+  };
 
-		>
-			<div>
-                <Button onClick={ handleClick }>
-
-                    <IoCloseOutline
-                        size={28}
-                        color="#1b1f24"
-                    />
-
-                </Button>
-            </div>
-            <div>
-                {
-                    <FormInsertArticle 
-                        setIsOpenDashboard = { setIsOpenDashboard }
-                    /> 
-                }
-            </div>
-
-        </div>
-    )
-}
+  return (
+    <div role="dialog">
+      <div>
+        <Button onClick={handleClick}>
+          <IoCloseOutline size={28} color="#1b1f24" />
+        </Button>
+      </div>
+      <div>{<FormInsertArticle setIsOpenDashboard={setIsOpenDashboard} />}</div>
+    </div>
+  );
+};

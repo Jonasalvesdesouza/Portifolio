@@ -1,38 +1,25 @@
-import { useState } from "react"
+import { useState } from 'react';
 
-import { HeaderDashboard } from "../../components/fragments"
+import { HeaderDashboard } from '../../components/fragments';
 
-import { 
+import {
+  SectionRenderMiddleDashboard,
+  SectionTopDashboard,
+} from '../../components/sectionsPage/sectionsDashboardPage';
 
-    SectionRenderMiddleDashboard, 
-    SectionTopDashboard 
-
-} from "../../components/sectionsPage/sectionsDashboardPage"
-
-import { EditProfileModal } from "../../components/fragments"
+import { EditProfileModal } from '../../components/fragments';
 
 export const DashboardPage = () => {
-    const [ IsOpen, setIsOpen ] = useState(false)
-    
-    return(
-        <>
-            <div>
+  const [IsOpen, setIsOpen] = useState(false);
 
-                <HeaderDashboard
-                    setIsOpen={setIsOpen} 
-                />
-                <SectionTopDashboard />
-                <SectionRenderMiddleDashboard/>
-
-            </div>
-            {
-                IsOpen ? 
-
-                <EditProfileModal
-                    setIsOpen={setIsOpen} 
-                /> : 
-                null
-            }
-        </>        
-    )
-}
+  return (
+    <>
+      <div>
+        <HeaderDashboard setIsOpen={setIsOpen} />
+        <SectionTopDashboard />
+        <SectionRenderMiddleDashboard />
+      </div>
+      {IsOpen ? <EditProfileModal setIsOpen={setIsOpen} /> : null}
+    </>
+  );
+};
