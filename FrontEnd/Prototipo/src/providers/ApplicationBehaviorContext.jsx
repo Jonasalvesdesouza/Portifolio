@@ -9,24 +9,24 @@ export const AppBehaviorProvider = ({ children }) => {
   const [currentCard, setCurrentCard] = useState(0);
 
   const location = useLocation().pathname.toLocaleLowerCase();
-  const [routeLocation, setRouteLocation] = useState('');
+  const [routeLocation, setRouteLocation] = useState({});
 
-  const [search, setSearch] = useState('');
-  const [categorysProject, setCategorysProject] = useState('');
-  const [categorysArticles, setCategorysArticles] = useState('');
+  const [search, setSearch] = useState({});
+  const [categorysProject, setCategorysProject] = useState({});
+  const [categorysArticles, setCategorysArticles] = useState({});
 
   const [navDashboard, setNavDashboard] = useState(null);
 
   const [isOpenDashboard, setIsOpenDashboard] = useState(false);
   const [stateImage, setStateImage] = useState(false);
 
-  const [imageProfile, setImageProfile] = useState('');
-  const [imageProject, setImageProject] = useState('');
-  const [imageArticle, setImageArticle] = useState('');
+  const [imageProfile, setImageProfile] = useState({});
+  const [imageProject, setImageProject] = useState({});
+  const [imageArticle, setImageArticle] = useState({});
 
   const resetStadeCategorys = () => {
-    setCategorysArticles('');
-    setCategorysProject('');
+    setCategorysArticles({});
+    setCategorysProject({});
   };
 
   return (

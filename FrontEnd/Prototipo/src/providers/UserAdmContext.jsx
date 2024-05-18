@@ -28,19 +28,19 @@ export const UserAdmProvider = ({ children }) => {
 
   const [viewMessage, setViewMessage] = useState([]);
 
+  const [projectsList, setProjectsList] = useState([]);
+  const [articlesList, setArticlesList] = useState([]);
   const [socialMediaList, setSocialMediaList] = useState([]);
   const [hobbyList, setHobbyList] = useState([]);
   const [skillList, setSkillList] = useState([]);
   const [jobExperienceList, setJobExperienceList] = useState([]);
   const [educationList, setEducationList] = useState([]);
-  const [projectsList, setProjectsList] = useState([]);
-  const [articlesList, setArticlesList] = useState([]);
   const [messageList, setMessageList] = useState([]);
 
   const [project, setProject] = useState({});
   const [article, setArticle] = useState({});
-  const [jobExperience, setJobExperience] = useState([]);
-  const [education, setEducation] = useState([]);
+  const [jobExperience, setJobExperience] = useState({});
+  const [education, setEducation] = useState({});
 
   const navigate = useNavigate();
   const { state } = useLocation();
