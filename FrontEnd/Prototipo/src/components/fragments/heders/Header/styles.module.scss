@@ -1,0 +1,22 @@
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 0vw 10vw 1.5vw 10vw;
+
+  div {
+    margin-top: 3vh;
+  }
+}
+
+.logo {
+  width: 2.2vw;
+  @media (max-width: 1050px) {
+    width: 3vw;
+  }
+}
+
+.icon {
+  width: 4vw;
+}

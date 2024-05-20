@@ -1,16 +1,21 @@
-.workplaceContainer {
+.workplaceContainerHorizontal {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+}
 
-  margin-left: 3.125rem;
+.workplaceContainerHorizontal:before {
+  content: '';
+  position: absolute;
+  top: -10vh;
+  left: 33vw;
+  width: 1px;
+  height: 65vh;
+  background-color: var(--color-gray1);
+}
 
-  div {
-    margin-top: 1.5625rem;
-  }
-
-  button {
-    margin-top: 15.625rem;
-    margin-right: 3.125rem;
-  }
+.buttonHorizontal {
+  position: absolute;
+  top: 65vh;
+  left: 30vw;
+  width: auto;
 }

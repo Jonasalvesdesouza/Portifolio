@@ -7,6 +7,7 @@ import { SlArrowRight } from 'react-icons/sl';
 import { Button, Input, TextArea } from '../..';
 import { sendMeEmailFormSchema } from '../../../../schema';
 import { UserAdmContext } from '../../../../providers';
+import styles from './styles.module.scss';
 
 export const FormSendMeEmail = () => {
   const { messageMeRegister } = useContext(UserAdmContext);
@@ -28,36 +29,50 @@ export const FormSendMeEmail = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <Input
-          label="You Name."
-          placeholder="Enter your name"
-          type="text"
-          error={errors.title}
-          {...register('name')}
-        />
-        <Input
-          label="Email Anddress."
-          placeholder="Enter your email address"
-          type="email"
-          error={errors.email}
-          {...register('email')}
-        />
+      <div className={`${styles.container}`}>
+        <div className={`${styles.formContainer}`}>
+          <div>
+            <div className={`${styles.inputContainer}`}>
+              <span className={`${styles.labelSendMeEmail}`}>You Name.</span>
+              <Input
+                className="input-medium parapraph home"
+                placeholder="Enter your name"
+                type="text"
+                error={errors.title}
+                {...register('name')}
+              />
+            </div>
 
-        <TextArea
-          label="Your Message"
-          placeholder="Come on, don't be shy, send a message..."
-          cols={30}
-          row={5}
-          error={errors.message}
-          {...register('description')}
-        />
+            <div className={`${styles.inputContainer}`}>
+              <span className={`${styles.labelSendMeEmail}`}>
+                Email Anddress.
+              </span>
+              <Input
+                className="input-medium parapraph home"
+                placeholder="Enter your email address"
+                type="email"
+                error={errors.email}
+                {...register('email')}
+              />
+            </div>
+          </div>
 
-        <div>
+          <div className={`${styles.textAreaContainer}`}>
+            <span className={`${styles.labelSendMeEmail}`}>Your Message.</span>
+            <TextArea
+              className="textArea-medium parapraph home"
+              placeholder="Come on, don't be shy, send a message..."
+              cols={30}
+              row={5}
+              error={errors.message}
+              {...register('description')}
+            />
+          </div>
+        </div>
+        <div className="bntSendMeEmail">
           <Button type="submit">
-            {!loading ? <span> TO SEND </span> : <span>SENDING...</span>}
-
-            <SlArrowRight size={20} color="#1b1f24" />
+            {!loading ? <span>TO SEND</span> : <span>SENDING...</span>}
+            <SlArrowRight className="icon" />
           </Button>
         </div>
       </div>

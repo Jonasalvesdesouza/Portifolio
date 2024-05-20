@@ -1,14 +1,20 @@
-.workplaceProjectContainer {
-  display: flex;
-  flex-direction: column;
+.workplaceProjectContainerHorizontal {
+  position: absolute;
+  top: -5vh;
+  left: 3vw;
+  width: 100%;
 
-  width: 50%;
-
-  border-right: 1px solid var(--color-black);
-
-  div {
-    p {
-      margin-top: 5%;
-    }
+  p {
+    position: absolute;
+    top: 16vh;
+    left: 0vw;
+    width: 25%;
   }
+}
+
+.btnContainer {
+  position: absolute;
+  top: 30vh;
+  left: 0vw;
+  width: 25%;
 }

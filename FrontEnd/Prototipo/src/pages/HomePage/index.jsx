@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 
-import { DefaultTemplate, TemplateHomePage } from '../../components/templade';
+import { DefaultTemplate, TempladeDesktop } from '../../components/templade';
 import {
   SectionBannerHomePage,
   SectionAboutHomePage,
@@ -11,11 +11,11 @@ import {
 import { NavModal } from '../../components/fragments';
 import { AppBehaviorContext } from '../../providers';
 
-import { useScreenWidth, useCardSwipe } from '../../hooks';
-import { smallResolution } from '../../config';
+import { useScreenWidth, useCardSwipe, useScreenHeight } from '../../hooks';
 
 export const HomePage = () => {
-  const { screenWidth, currentCard } = useContext(AppBehaviorContext);
+  const { screenWidth, screenHeight, currentCard } =
+    useContext(AppBehaviorContext);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -30,10 +30,13 @@ export const HomePage = () => {
     useCardSwipe(cards);
 
   useScreenWidth();
+  useScreenHeight();
+
+  const isHeightHigh = screenWidth * 0.6 <= screenHeight;
 
   return (
     <>
-      {screenWidth < smallResolution ? (
+      {isHeightHigh ? (
         <DefaultTemplate setIsOpen={setIsOpen}>
           <div>
             <SectionBannerHomePage />
@@ -43,7 +46,7 @@ export const HomePage = () => {
           </div>
         </DefaultTemplate>
       ) : (
-        <TemplateHomePage setIsOpen={setIsOpen}>
+        <TempladeDesktop setIsOpen={setIsOpen}>
           <div
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
@@ -51,7 +54,7 @@ export const HomePage = () => {
           >
             {cards[currentCard]}
           </div>
-        </TemplateHomePage>
+        </TempladeDesktop>
       )}
       {isOpen ? <NavModal setIsOpen={setIsOpen} /> : null}
     </>

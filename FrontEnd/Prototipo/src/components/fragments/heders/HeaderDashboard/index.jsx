@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 
-import YellowLogo from '../../../assets/YellowLogo.svg';
+import YellowLogo from '../../../../assets/YellowLogo.svg';
 
-import { Button } from '../Button';
-import { UserAdmContext } from '../../../providers';
+import { Button } from '../../Button';
+import { UserAdmContext } from '../../../../providers';
 
 export const HeaderDashboard = ({ setIsOpen }) => {
   const { userLogout, profile, setEditProfile, setEditContactProfile } =

@@ -1,2 +1,2 @@
 export const smallResolution = 540;
-export const middleResolution = 850;
+export const middleResolution = 1000;

@@ -5,13 +5,18 @@ import { AppBehaviorContext } from '../../../../../providers';
 import styles from './styles.module.scss';
 
 export const SectionReadMyBlogHomePage = () => {
-  const { setCurrentCard } = useContext(AppBehaviorContext);
+  const { setCurrentCard, screenWidth, screenHeight } =
+    useContext(AppBehaviorContext);
+  const isHeightHigh = screenWidth * 0.6 <= screenHeight;
+
   const handleClick = () => {
     setCurrentCard(0);
   };
 
   return (
-    <div className={`${styles.workplaceBlogContainer}`}>
+    <div
+      className={`${isHeightHigh ? '' : styles.workplaceBlogContainerHorizontal}`}
+    >
       <div>
         <h3 className="title1">
           Let"s read <br />
@@ -23,7 +28,7 @@ export const SectionReadMyBlogHomePage = () => {
         </p>
       </div>
 
-      <div className="marginTop bntWorplace2">
+      <div className={`${styles.btnContainer} bntWorplace2`}>
         <Link onClick={handleClick} to={'/blog'}>
           <span>READ MY ARTICLES</span>
           <span>

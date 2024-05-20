@@ -12,7 +12,8 @@ import { smallResolution } from '../../../../config';
 import styles from './styles.module.scss';
 
 export const SectionAboutHomePage = () => {
-  const { setCurrentCard, screenWidth } = useContext(AppBehaviorContext);
+  const { setCurrentCard, screenWidth, screenHeight } =
+    useContext(AppBehaviorContext);
 
   const { profile } = useContext(UserAdmContext);
 
@@ -22,18 +23,24 @@ export const SectionAboutHomePage = () => {
     setCurrentCard(2);
   };
 
+  const isHeightHigh = screenWidth * 0.6 <= screenHeight;
+
   return (
-    <div className={`${styles.aboutHomeContainer} container`}>
-      <div className={`${styles.flexBox}`}>
+    <div
+      className={`${isHeightHigh ? '' : styles.aboutHomeContainerHorizontal}`}
+    >
+      <div>
         <div>
-          <h2 className="title1">
+          <h1 className="title1">
             Hello <span className="title1 yellow">!</span> <br />
             My name is Jonas
-          </h2>
-          <p className="parapraph home">{profile.bio}</p>
+          </h1>
+          <p className="parapraph about">{profile.bio}</p>
         </div>
 
-        <div className="marginTop bntAboutHome">
+        <div
+          className={`${isHeightHigh ? '' : styles.buttonRouterHorizontal} bntAboutHome`}
+        >
           <Link onClick={handleClick} to={'/curriculum'}>
             <span>CURRICULUM</span>
             <div>
@@ -43,9 +50,13 @@ export const SectionAboutHomePage = () => {
         </div>
       </div>
       <div>
-        {screenWidth >= smallResolution ? (
-          <Button id="button" onClick={handleClick}>
-            <IoIosArrowDown size={120} color="#1b1f24" />
+        {!isHeightHigh ? (
+          <Button
+            className={`${styles.buttonHorizontal}`}
+            id="button"
+            onClick={handleClick}
+          >
+            <IoIosArrowDown className="arrowIcon" />
           </Button>
         ) : null}
       </div>

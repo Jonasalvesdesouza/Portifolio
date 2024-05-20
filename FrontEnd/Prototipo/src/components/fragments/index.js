@@ -1,4 +1,7 @@
-export { Header } from './Header';
+export { Header } from './heders/Header';
+export { HeaderHomeMobile } from './heders/HeaderHomeMobile';
+export { HeaderDashboard } from './heders/HeaderDashboard';
+
 export { Footer } from './Footer';
 export { NotifyError } from './notyfys/NotifyError';
 export { NotifySucess } from './notyfys/NotifySucesss/index.';
@@ -40,5 +43,3 @@ export { EditJobExperienceModal } from './modals/jobExperienceModals/EditJobExpe
 export { ViewMessageModal } from './modals/MessageModal /ViewMessageModal';
 
 export { NavHomePage } from './NavHomePage';
-export { HeaderHomeMobile } from './HeaderHomeMobile';
-export { HeaderDashboard } from './HeaderDashboard';

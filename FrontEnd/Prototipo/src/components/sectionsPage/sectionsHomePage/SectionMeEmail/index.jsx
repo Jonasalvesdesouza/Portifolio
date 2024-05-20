@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { IoIosArrowUp } from 'react-icons/io';
+import { IoIosArrowUp, IoIosArrowDown } from 'react-icons/io';
 import { Button } from '../../../fragments';
 import { AppBehaviorContext } from '../../../../providers';
 
@@ -11,7 +11,9 @@ import { smallResolution } from '../../../../config';
 import styles from './styles.module.scss';
 
 export const SectionMeEmail = () => {
-  const { setCurrentCard, screenWidth } = useContext(AppBehaviorContext);
+  const { setCurrentCard, screenWidth, screenHeight } =
+    useContext(AppBehaviorContext);
+  const isHeightHigh = screenWidth * 0.6 <= screenHeight;
 
   useScreenWidth();
 
@@ -20,9 +22,11 @@ export const SectionMeEmail = () => {
   };
 
   return (
-    <div className={`${styles.meEmailContainer}`}>
+    <div className={`${isHeightHigh ? '' : styles.meEmailContainerHorizontal}`}>
       <div>
-        <div>
+        <div
+          className={`${isHeightHigh ? '' : styles.descriptionSectionHorizontal}`}
+        >
           <h4 className="title1">
             Send <span className="title1 yellow">me </span>a email
             <span className="title1 yellow">.</span>
@@ -36,9 +40,13 @@ export const SectionMeEmail = () => {
         </div>
       </div>
 
-      {screenWidth >= smallResolution ? (
-        <Button id="button" onClick={handleClick}>
-          <IoIosArrowUp size={55} color="#1b1f24" />
+      {!isHeightHigh ? (
+        <Button
+          className={`${isHeightHigh ? '' : styles.btnDirectsToTheHomeHorizontal}`}
+          id="button"
+          onClick={handleClick}
+        >
+          <IoIosArrowDown lassName="arrowIcon" />
         </Button>
       ) : null}
     </div>

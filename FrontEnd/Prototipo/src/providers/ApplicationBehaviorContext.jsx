@@ -5,6 +5,7 @@ export const AppBehaviorContext = createContext({});
 
 export const AppBehaviorProvider = ({ children }) => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
 
   const [currentCard, setCurrentCard] = useState(0);
 
@@ -34,6 +35,8 @@ export const AppBehaviorProvider = ({ children }) => {
       value={{
         screenWidth,
         setScreenWidth,
+        screenHeight,
+        setScreenHeight,
         currentCard,
         setCurrentCard,
         location,

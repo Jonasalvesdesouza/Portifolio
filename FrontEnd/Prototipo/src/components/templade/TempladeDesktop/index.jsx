@@ -1,13 +1,13 @@
-import { Footer, Header, NavHomePage } from '../../../fragments';
+import { Footer, Header, NavHomePage } from '../../fragments';
 
 import styles from './styles.module.scss';
 
-export const TemplateDefault = ({ children, setIsOpen }) => {
+export const TempladeDesktop = ({ children, setIsOpen }) => {
   return (
     <div className={`${styles.templateDefaultContainer}`}>
       <Header setIsOpen={setIsOpen} />
 
-      <div className={`${styles.flexBox} container`}>
+      <div className={`${styles.mainContainer}`}>
         <div className={`${styles.leftSideContainer}`}>
           <NavHomePage />
           <Footer />

@@ -1,11 +1,8 @@
-.btn {
+.btnNavHome {
   font-family: var(--font-primary);
   font-size: 1rem;
+  line-height: 3.5;
   color: var(--color-white);
-
-  padding: 0 0.9375rem;
-  height: 3.1875rem;
-
   transform: 0.4s;
 
   &:hover {
@@ -16,15 +13,15 @@
 %bntDefault {
   font-family: var(--font-primary);
   font-weight: 300;
-  font-size: 1.5625rem;
+  font-size: 1.8vw;
   color: var(--color-black);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  width: 25rem;
-  height: 4.375rem;
+  width: 26vw;
+  height: 5vw;
   border: solid 1px var(--color-black);
   position: relative;
   overflow: hidden;
@@ -36,16 +33,16 @@
     justify-content: space-between;
 
     div {
-      margin-right: 1.25rem;
+      margin-right: 0.9vw;
     }
     span {
-      margin-left: 7.5rem;
+      margin-left: 7.5vw;
     }
   }
 
   a span {
     position: relative;
-    z-index: 2;
+    z-index: 4;
   }
 
   a:after {
@@ -75,7 +72,8 @@
   .icon {
     color: var(--color-black);
     transition: color 0.35s ease;
-    z-index: 3;
+    position: relative;
+    z-index: 5;
   }
 }
 
@@ -85,29 +83,94 @@
 
 .bntWorplace {
   @extend %bntDefault;
-  width: 28.125rem;
+  width: 27vw;
 
   a {
     span {
-      margin-left: 4.6875rem;
+      margin-left: 2.94vw;
     }
   }
 
   .icon {
-    margin-right: 1.25rem;
+    margin-right: 1vw;
   }
 }
 .bntWorplace2 {
   @extend %bntDefault;
-  width: 28.125rem;
+  width: 27vw;
 
   a {
     span {
-      margin-left: 5.75rem;
+      margin-left: 4vw;
     }
   }
 
   .icon {
-    margin-right: 1.25rem;
+    margin-right: 1vw;
   }
+}
+
+.bntSendMeEmail {
+  @extend %bntDefault;
+
+  margin-left: 165px;
+  margin-top: 60px;
+
+  button {
+    font-family: var(--font-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .icon {
+      margin-right: 1.25rem;
+    }
+    span {
+      font-weight: 300;
+      font-size: 1.5625rem;
+      margin-left: 8.75rem;
+    }
+  }
+
+  button span {
+    position: relative;
+    z-index: 2;
+  }
+
+  button:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--color-gray2);
+    transition: all 0.35s;
+    z-index: 1;
+  }
+
+  button:hover {
+    color: var(--color-white);
+  }
+
+  button:hover:after {
+    width: 100%;
+  }
+
+  button:hover .icon {
+    color: var(--color-white);
+  }
+
+  .icon {
+    font-weight: 300;
+    font-size: 25px;
+    color: var(--color-black);
+    transition: color 0.35s ease;
+    z-index: 3;
+  }
+}
+
+.arrowIcon {
+  font-size: 6.25vw;
+  color: var(--color-black);
 }

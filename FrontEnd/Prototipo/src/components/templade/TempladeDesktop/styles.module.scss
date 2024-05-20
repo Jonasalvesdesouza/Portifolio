@@ -1,0 +1,62 @@
+.templateDefaultContainer {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  background: linear-gradient(
+    to right,
+    var(--color-black) 25vw,
+    var(--color-white) 25vw
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.templateDefaultContainer:before {
+  content: '';
+  position: absolute;
+  top: 80vh;
+  left: 0;
+  width: 25vw;
+  height: 1px;
+  background-color: var(--color-gray1);
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+
+  main {
+    position: absolute;
+    top: 20vh;
+    left: 25vw;
+    width: 100%;
+  }
+}
+
+.leftSideContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 5vw;
+
+  nav {
+    position: absolute;
+    top: 30vh;
+    left: 12vw;
+    width: auto;
+
+    @media (max-width: 1050px) {
+      span {
+        font-size: 1.3vw;
+      }
+    }
+  }
+
+  footer {
+    position: absolute;
+    top: 78vh;
+    left: 0;
+    width: 35vw;
+  }
+}

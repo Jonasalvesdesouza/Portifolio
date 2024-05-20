@@ -1,8 +1,32 @@
 .footerContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  margin-top: 2.5vw;
 }
+
 .footerIconContainer {
   display: flex;
   flex-direction: row;
+
+  img {
+    width: 4vw;
+  }
+
+  margin-right: 20px;
+}
+
+.copyrighContainer {
+  width: 10vw;
+  gap: 0.1875rem;
+  max-width: 100%;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.icon {
+  font-size: 1.5vw;
+  color: var(--color-white);
 }

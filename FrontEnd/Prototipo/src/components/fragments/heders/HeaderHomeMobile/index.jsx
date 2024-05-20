@@ -1,11 +1,11 @@
-import YellowLogo from '../../../assets/YellowLogo.svg';
-import BlackNavIcon from '../../../assets/BlackNav.svg';
+import YellowLogo from '../../../../assets/YellowLogo.svg';
+import BlackNavIcon from '../../../../assets/BlackNav.svg';
 import { useContext } from 'react';
 
-import { Button } from '../Button';
+import { Button } from '../../Button';
 import { Link } from 'react-router-dom';
-import { AppBehaviorContext } from '../../../providers';
-import { NavHomePage } from '../NavHomePage';
+import { AppBehaviorContext } from '../../../../providers';
+import { NavHomePage } from '../../NavHomePage';
 
 export const HeaderHomeMobile = ({ setIsOpen }) => {
   const { location, setRouteLocation } = useContext(AppBehaviorContext);

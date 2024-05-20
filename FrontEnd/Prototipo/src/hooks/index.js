@@ -17,3 +17,5 @@ export { useDateFormatEduIsJobExp } from './useDateFormatEduIsJobExp';
 export { useCardSwipe } from './useCardSwipe';
 export { useRenderImage } from './useRenderImage';
 export { useStateImage } from './useStateImage';
+export { useGetLinkObject } from './useGetLinkObject';
+export { useScreenHeight } from './useScreenHeight';

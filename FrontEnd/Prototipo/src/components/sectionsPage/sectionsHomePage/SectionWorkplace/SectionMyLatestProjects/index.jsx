@@ -5,13 +5,18 @@ import { AppBehaviorContext } from '../../../../../providers';
 import styles from './styles.module.scss';
 
 export const SectionMyLatestProjectsHomePage = () => {
-  const { setCurrentCard } = useContext(AppBehaviorContext);
+  const { setCurrentCard, screenHeight, screenWidth } =
+    useContext(AppBehaviorContext);
+  const isHeightHigh = screenWidth * 0.6 <= screenHeight;
+
   const handleClick = () => {
     setCurrentCard(0);
   };
 
   return (
-    <div className={`${styles.workplaceProjectContainer}`}>
+    <div
+      className={`${isHeightHigh ? '' : styles.workplaceProjectContainerHorizontal}`}
+    >
       <div>
         <h3 className="title1">
           My latest <br />
@@ -23,7 +28,7 @@ export const SectionMyLatestProjectsHomePage = () => {
         </p>
       </div>
 
-      <div className="marginTop bntWorplace">
+      <div className={`${styles.btnContainer} bntWorplace`}>
         <Link onClick={handleClick} to={'/projects'}>
           <span>SEE MY LATEST WORK</span>
           <span>

@@ -1,11 +1,16 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Button } from '../Button';
 import { AppBehaviorContext } from '../../../providers/ApplicationBehaviorContext';
 
 import styles from './styles.module.scss';
 
 export const NavHomePage = () => {
-  const { setCurrentCard } = useContext(AppBehaviorContext);
+  const { setCurrentCard, currentCard } = useContext(AppBehaviorContext);
+  const [activeButton, setActiveButton] = useState(0);
+
+  useEffect(() => {
+    setActiveButton(currentCard);
+  }, [currentCard]);
 
   const buttons = [
     { label: 'Home', index: 0 },
@@ -19,9 +24,14 @@ export const NavHomePage = () => {
       <nav>
         <ul>
           {buttons.map((button) => (
-            <li key={button.index}>
-              <Button onClick={() => setCurrentCard(button.index)}>
-                <span className={`${styles.test} btn`}>{button.label}</span>
+            <li className={`${styles.buttonContainer}`} key={button.index}>
+              <Button
+                className={
+                  button.index === activeButton ? styles.activeButton : ''
+                }
+                onClick={() => setCurrentCard(button.index)}
+              >
+                <span className={`${styles.label}`}>{button.label}</span>
               </Button>
             </li>
           ))}

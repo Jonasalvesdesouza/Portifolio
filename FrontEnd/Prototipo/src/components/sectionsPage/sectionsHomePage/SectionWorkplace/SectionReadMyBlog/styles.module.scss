@@ -1,14 +1,20 @@
-.workplaceBlogContainer {
-  display: flex;
-  flex-direction: column;
+.workplaceBlogContainerHorizontal {
+  position: absolute;
+  top: -5vh;
+  left: 35vw;
+  width: 100%;
 
-  margin-left: 5%;
-
-  width: 50%;
-
-  div {
-    p {
-      margin-top: 5%;
-    }
+  p {
+    position: absolute;
+    top: 15vh;
+    left: 0vw;
+    width: 25%;
   }
+}
+
+.btnContainer {
+  position: absolute;
+  top: 30vh;
+  left: 0vw;
+  width: 25%;
 }

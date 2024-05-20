@@ -1,36 +1,27 @@
-.aboutHomeContainer {
+.aboutHomeContainerHorizontal {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  button {
-    margin-top: 4.875rem;
+  position: absolute;
+  top: 1vh;
+  left: 4vw;
+  width: auto;
+
+  p {
+    margin-top: 3.1vw;
+    width: 55%;
   }
 }
-
-.flexBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  margin-left: 3.125rem;
-
-  div {
-    display: flex;
-    flex-direction: column;
-
-    h2 {
-      margin-bottom: 0.9375rem;
-      line-height: 1.2;
-    }
-
-    p {
-      margin-bottom: 2.5625rem;
-      margin-right: 4.375rem;
-    }
-  }
+.buttonRouterHorizontal {
+  position: absolute;
+  top: 5vh;
+  left: 15vw;
+  width: auto;
 }
-
-.apresentationContainer {
-  margin-right: 9.375rem;
+.buttonHorizontal {
+  position: absolute;
+  top: 64vh;
+  left: 26vw;
+  width: auto;
 }

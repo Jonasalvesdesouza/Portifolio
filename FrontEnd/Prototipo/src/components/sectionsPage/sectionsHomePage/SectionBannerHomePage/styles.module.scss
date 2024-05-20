@@ -1,35 +1,48 @@
-.bannerHomeContainer {
+.containerHorizontal {
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+.bannerContainerHorizontal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 
-  button {
-    margin-top: 250px;
+  margin-left: 3.125rem;
+}
+.apresentationContainerHorizontal {
+  @media (max-width: 1050px) {
+    h1 {
+      font-size: 3.8vw;
+    }
+    span {
+      font-size: 3.8vw;
+    }
   }
 }
 
-.flexBox {
+.middleSectionHorizontal {
+  width: 100%;
+
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+}
 
-  margin-left: 3.125rem;
-
-  div {
-    display: flex;
-    flex-direction: column;
-
-    h1 {
-      margin-bottom: 3.125rem;
-      line-height: 1.2;
-    }
-
-    img {
-      width: 129%;
-    }
+.presentationHorizontal {
+  width: 50%;
+}
+.imgContainerHorizontal {
+  width: 100%;
+  img {
+    width: 20vw;
   }
 }
 
-.apresentationContainer {
-  width: 50%;
-  margin-right: 9.375rem;
+.buttonHorizontal {
+  position: absolute;
+  top: 65vh;
+  left: 30vw;
+  width: auto;
 }

@@ -5,8 +5,7 @@
 
 .title1 {
   @extend %title;
-  font-size: clamp(2.5625rem, 5vw, 3.1875rem);
-  width: 500;
+  font-size: 3vw;
 
   &.yellow {
     color: var(--color-yellow2);
@@ -30,21 +29,19 @@
 
 .parapraph {
   @extend %text;
-  font-size: 22px;
+  font-size: 1.2vw;
 
   &.home {
     color: var(--color-gray1);
     line-height: 2;
   }
+  &.about {
+    color: var(--color-gray1);
+    line-height: 1.3;
+  }
 }
 
 .text {
   @extend %text;
-  font-size: 11px;
-}
-
-.label {
-  @extend %text;
-
-  font-size: 0.875rem;
+  font-size: 1vw;
 }

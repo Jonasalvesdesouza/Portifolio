@@ -1,6 +1,17 @@
-.meEmailContainer {
+.meEmailContainerHorizontal {
   display: flex;
   flex-direction: column;
 
   max-width: 100%;
+
+  margin-left: 3.125rem;
+}
+
+.descriptionSectionHorizontal {
+  margin-bottom: 3.125rem;
+}
+
+.btnDirectsToTheHomeHorizontal {
+  margin-top: 5.25rem;
+  margin-left: 9.625rem;
 }
