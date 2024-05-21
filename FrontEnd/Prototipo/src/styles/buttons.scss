@@ -112,29 +112,26 @@
 
 .bntSendMeEmail {
   @extend %bntDefault;
-
-  margin-left: 165px;
-  margin-top: 60px;
-
   button {
     font-family: var(--font-primary);
+    font-size: 1.8vw;
+    font-weight: 300;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     .icon {
-      margin-right: 1.25rem;
-    }
-    span {
-      font-weight: 300;
-      font-size: 1.5625rem;
-      margin-left: 8.75rem;
+      margin-right: 1vw;
+      font-size: 1.8vw;
     }
   }
 
   button span {
     position: relative;
     z-index: 2;
+
+    margin-left: 9vw;
   }
 
   button:after {

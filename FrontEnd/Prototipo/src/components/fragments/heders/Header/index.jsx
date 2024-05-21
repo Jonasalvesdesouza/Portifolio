@@ -1,26 +1,31 @@
 import YellowLogo from '../../../../assets/YellowLogo.svg';
 import BlackLogo from '../../../../assets/BlackLogo.svg';
 
-import BlackNavIcon from '../../../../assets/BlackNav.svg';
-import WhiteNavIcon from '../../../../assets/WhiteNav.svg';
+import { Divide as Hamburger } from 'hamburger-react';
 
-import { Button } from '../../Button';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AppBehaviorContext } from '../../../../providers';
 import styles from './styles.module.scss';
+import { HamburgerButton } from '../../HamburguerButton';
 
 export const Header = ({ setIsOpen }) => {
-  const { location, setRouteLocation, setCurrentCard } =
+  const [isOpen, setOpen] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
+  const { location, setRouteLocation, setCurrentCard, setReturShapeHam } =
     useContext(AppBehaviorContext);
 
   const compareRoutes = location === '/projects' || location === '/blog';
 
-  const CompareRouteCurriculum = location === '/curriculum' || '/';
-
   const handleClick = () => {
     setIsOpen(true);
     setRouteLocation(location);
+    setReturShapeHam(true);
+  };
+
+  const handleClickLogo = () => {
+    setReturShapeHam(false);
     setCurrentCard(0);
   };
 
@@ -29,7 +34,7 @@ export const Header = ({ setIsOpen }) => {
       <div className={`${styles.headerContainer}`}>
         <div>
           {compareRoutes ? (
-            <Link to={'/'} onClick={() => setCurrentCard(0)}>
+            <Link to={'/'} onClick={handleClickLogo}>
               <img
                 className={`${styles.logo}`}
                 src={BlackLogo}
@@ -37,7 +42,7 @@ export const Header = ({ setIsOpen }) => {
               />
             </Link>
           ) : (
-            <Link to={'/'} onClick={() => setCurrentCard(0)}>
+            <Link to={'/'} onClick={handleClickLogo}>
               <img
                 className={`${styles.logo}`}
                 src={YellowLogo}
@@ -46,31 +51,7 @@ export const Header = ({ setIsOpen }) => {
             </Link>
           )}
         </div>
-        <div>
-          {
-            <Button onClick={handleClick}>
-              {CompareRouteCurriculum ? (
-                <img
-                  className={`${styles.icon}`}
-                  src={BlackNavIcon}
-                  alt="Black NavIcon"
-                />
-              ) : compareRoutes ? (
-                <img
-                  className={`${styles.icon}`}
-                  src={BlackNavIcon}
-                  alt="Black NavIcon"
-                />
-              ) : (
-                <img
-                  className={`${styles.icon}`}
-                  src={WhiteNavIcon}
-                  alt="White NavIcon"
-                />
-              )}
-            </Button>
-          }
-        </div>
+        <HamburgerButton handleClick={handleClick} />
       </div>
     </header>
   );

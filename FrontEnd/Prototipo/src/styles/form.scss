@@ -13,19 +13,24 @@
 
 .input-small {
   @extend %default;
-  height: 2.625rem;
+  height: 42px;
 }
 .input-medium {
   @extend %default;
-  width: 31.25rem;
-  height: 2.625rem;
+  width: 25vw;
+  height: 5.5vh;
 
-  padding-left: 0.625rem;
+  font-size: 1vw;
+
+  padding-left: 1vh;
 }
 
 .textArea-medium {
   @extend %default;
-  width: 500px;
-  height: 200px;
-  padding-left: 0.625rem;
+  width: 30vw;
+  height: 23vh;
+
+  font-size: 1vw;
+
+  padding-left: 1vh;
 }

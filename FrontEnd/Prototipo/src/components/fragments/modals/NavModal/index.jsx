@@ -6,7 +6,7 @@ import IconGitHubBlack from '../../../../assets/IconGithubBlack.svg';
 
 import { Button } from '../../Button';
 import { useContext } from 'react';
-import { AppBehaviorContext } from '../../../../providers';
+import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
 import {
   useKeydown,
   useOutclick,
@@ -16,20 +16,23 @@ import { listPage } from './listPages';
 import { CardListPage } from './cardListPage';
 
 export const NavModal = ({ setIsOpen }) => {
-  const { routeLocation } = useContext(AppBehaviorContext);
+  const { routeLocation, setReturShapeHam } = useContext(AppBehaviorContext);
 
   const closeModalOutClick = useOutclick(() => {
     setIsOpen(false);
+    setReturShapeHam(false);
   });
 
   const closeModalKeyDownEsque = useKeydown(() => {
     setIsOpen(false);
+    setReturShapeHam(false);
   });
 
   const ListPage = useRemoveStringFromArray(listPage, routeLocation);
 
   const handleClick = () => {
-    return setIsOpen(false);
+    setIsOpen(false);
+    setReturShapeHam(false);
   };
 
   return (

@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { AppBehaviorContext } from '../../../../../providers';
 
 export const CardListPage = ({ page }) => {
-  const { resetStadeCategorys } = useContext(AppBehaviorContext);
+  const { resetStadeCategorys, setReturShapeHam } =
+    useContext(AppBehaviorContext);
 
   const handleClick = () => {
-    return resetStadeCategorys();
+    setReturShapeHam(false);
+    resetStadeCategorys('');
   };
 
   return (

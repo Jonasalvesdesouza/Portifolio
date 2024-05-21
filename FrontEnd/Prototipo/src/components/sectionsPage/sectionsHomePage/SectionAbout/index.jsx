@@ -12,7 +12,7 @@ import { smallResolution } from '../../../../config';
 import styles from './styles.module.scss';
 
 export const SectionAboutHomePage = () => {
-  const { setCurrentCard, screenWidth, screenHeight } =
+  const { setCurrentCard, screenWidth, screenHeight, setReturShapeHa } =
     useContext(AppBehaviorContext);
 
   const { profile } = useContext(UserAdmContext);
@@ -21,6 +21,10 @@ export const SectionAboutHomePage = () => {
 
   const handleClick = () => {
     setCurrentCard(2);
+  };
+  const handleClickCurriculum = () => {
+    setReturShapeHa(false);
+    setCurrentCard(0);
   };
 
   const isHeightHigh = screenWidth * 0.6 <= screenHeight;
@@ -41,7 +45,7 @@ export const SectionAboutHomePage = () => {
         <div
           className={`${isHeightHigh ? '' : styles.buttonRouterHorizontal} bntAboutHome`}
         >
-          <Link onClick={handleClick} to={'/curriculum'}>
+          <Link to={'/curriculum'} onClick={handleClickCurriculum}>
             <span>CURRICULUM</span>
             <div>
               <SlArrowRight className="icon" />

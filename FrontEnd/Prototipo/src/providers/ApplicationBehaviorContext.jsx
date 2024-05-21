@@ -25,6 +25,8 @@ export const AppBehaviorProvider = ({ children }) => {
   const [imageProject, setImageProject] = useState({});
   const [imageArticle, setImageArticle] = useState({});
 
+  const [returShapeHam, setReturShapeHam] = useState(false);
+
   const resetStadeCategorys = () => {
     setCategorysArticles({});
     setCategorysProject({});
@@ -61,6 +63,8 @@ export const AppBehaviorProvider = ({ children }) => {
         setImageProject,
         imageArticle,
         setImageArticle,
+        returShapeHam,
+        setReturShapeHam,
       }}
     >
       {children}

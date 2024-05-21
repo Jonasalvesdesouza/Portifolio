@@ -1,6 +1,6 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
-import { DefaultTemplate, TempladeDesktop } from '../../components/templade';
+import { DefaultTemplate, TempladeHorizontal } from '../../components/templade';
 import {
   SectionBannerHomePage,
   SectionAboutHomePage,
@@ -12,12 +12,21 @@ import { NavModal } from '../../components/fragments';
 import { AppBehaviorContext } from '../../providers';
 
 import { useScreenWidth, useCardSwipe, useScreenHeight } from '../../hooks';
+import styles from './styles.module.scss';
+import { smallResolution } from '../../config';
 
 export const HomePage = () => {
   const { screenWidth, screenHeight, currentCard } =
     useContext(AppBehaviorContext);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    setAnimate(true);
+    const timer = setTimeout(() => setAnimate(false), 500); // tempo da animação deve coincidir com a duração da animação CSS
+    return () => clearTimeout(timer);
+  }, [currentCard]);
 
   const cards = [
     <SectionBannerHomePage />,
@@ -46,15 +55,17 @@ export const HomePage = () => {
           </div>
         </DefaultTemplate>
       ) : (
-        <TempladeDesktop setIsOpen={setIsOpen}>
+        <TempladeHorizontal setIsOpen={setIsOpen}>
           <div
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {cards[currentCard]}
+            <div className={animate ? styles.slide : ''}>
+              {cards[currentCard]}
+            </div>
           </div>
-        </TempladeDesktop>
+        </TempladeHorizontal>
       )}
       {isOpen ? <NavModal setIsOpen={setIsOpen} /> : null}
     </>

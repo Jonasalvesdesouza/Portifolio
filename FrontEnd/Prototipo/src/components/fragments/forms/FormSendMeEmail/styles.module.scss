@@ -14,16 +14,16 @@
 .inputContainer {
   display: flex;
   flex-direction: column;
-  padding-bottom: 3.75rem;
+  padding-bottom: 6vh;
 }
 
 .textAreaContainer {
-  margin-left: 3.125rem;
-  margin-bottom: 3.125rem;
+  margin-left: 2vw;
+  margin-bottom: 2vw;
 }
 
 .labelSendMeEmail {
-  font-size: 1.875rem;
+  font-size: 1.8vw;
   font-family: var(--font-primary);
   font-weight: 300;
   color: var(--color-black);

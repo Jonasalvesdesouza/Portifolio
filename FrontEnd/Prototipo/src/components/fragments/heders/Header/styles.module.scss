@@ -8,6 +8,14 @@
   div {
     margin-top: 3vh;
   }
+
+  img {
+    width: 2.5vw;
+    transition: opacity 0.3s ease-in-out;
+  }
+  img:hover {
+    opacity: 0.5;
+  }
 }
 
 .logo {
@@ -15,8 +23,4 @@
   @media (max-width: 1050px) {
     width: 3vw;
   }
-}
-
-.icon {
-  width: 4vw;
 }

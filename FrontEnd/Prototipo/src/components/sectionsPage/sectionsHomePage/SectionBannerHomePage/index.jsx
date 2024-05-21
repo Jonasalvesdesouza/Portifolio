@@ -4,7 +4,6 @@ import { IoIosArrowDown } from 'react-icons/io';
 import { Button } from '../../../fragments';
 import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
 import { useRenderImage } from '../../../../hooks';
-import { smallResolution } from '../../../../config';
 import styles from './styles.module.scss';
 
 export const SectionBannerHomePage = () => {
@@ -25,12 +24,8 @@ export const SectionBannerHomePage = () => {
       <div
         className={`${isHeightHigh ? '' : styles.bannerContainerHorizontal}`}
       >
-        <div
-          className={`${isHeightHigh ? '' : styles.apresentationContainerHorizontal}`}
-        >
-          <div
-            className={`${isHeightHigh ? '' : styles.titleContainerHorizontal}`}
-          >
+        <div>
+          <div>
             <h1 className="title1">
               Devoloper <br />
               <span className="title1 yellow">Full </span>

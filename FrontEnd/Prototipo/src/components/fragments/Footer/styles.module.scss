@@ -12,6 +12,10 @@
 
   img {
     width: 4vw;
+    transition: opacity 0.3s ease-in-out;
+  }
+  img:hover {
+    opacity: 0.5; /* Define a opacidade mais fraca quando em hover */
   }
 
   margin-right: 20px;

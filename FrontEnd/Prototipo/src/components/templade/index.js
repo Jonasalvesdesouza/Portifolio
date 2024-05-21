@@ -1,2 +1,2 @@
 export { DefaultTemplate } from './DefaultTemplade';
-export { TempladeDesktop } from './TempladeDesktop';
+export { TempladeHorizontal } from './TempladeHorizontal';

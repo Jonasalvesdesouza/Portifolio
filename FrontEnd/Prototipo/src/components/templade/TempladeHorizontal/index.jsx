@@ -2,7 +2,7 @@ import { Footer, Header, NavHomePage } from '../../fragments';
 
 import styles from './styles.module.scss';
 
-export const TempladeDesktop = ({ children, setIsOpen }) => {
+export const TempladeHorizontal = ({ children, setIsOpen }) => {
   return (
     <div className={`${styles.templateDefaultContainer}`}>
       <Header setIsOpen={setIsOpen} />
