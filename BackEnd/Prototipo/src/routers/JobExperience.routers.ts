@@ -5,7 +5,7 @@ import { JobExperienceControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
 import { JobExperienceSchema, JobExperienceUpdateSchema } from "../schemas";
 
-export const JobExperienceRouter = Router();
+const JobExperienceRouter = Router();
 
 container.registerSingleton("JobExperienceServices", JobExperienceServices);
 const Controllers = container.resolve(JobExperienceControllers);
@@ -31,3 +31,5 @@ JobExperienceRouter.patch(
 JobExperienceRouter.delete("/:id", userAuth.VerifyToken, (req, res) =>
   Controllers.delete(req, res)
 );
+
+export { JobExperienceRouter };

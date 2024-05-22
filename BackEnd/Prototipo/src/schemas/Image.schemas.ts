@@ -12,23 +12,35 @@ const isBuffer = (value: any): value is Buffer => {
   return Buffer.isBuffer(value);
 };
 
-export const imageSchema = z.object({
+const imageSchema = z.object({
   id: z.number().positive(),
   path: z.string().min(1),
 });
 
-export const ImageSchema = imageSchema.omit({
+const ImageSchema = imageSchema.omit({
   id: true,
 });
-export const ImageReturnSchema = imageSchema.pick({
+const ImageReturnSchema = imageSchema.pick({
   id: true,
   path: true,
 });
 
-export const ImageUpdateSchema = ImageSchema.partial();
+const ImageUpdateSchema = ImageSchema.partial();
 
-export type typeExpectationImage = z.infer<typeof ImageSchema>;
-export type typeImage = z.infer<typeof ImageSchema>;
+type typeExpectationImage = z.infer<typeof ImageSchema>;
+type typeImage = z.infer<typeof ImageSchema>;
 
-export type typeUpdateImage = Partial<typeImage>;
-export type typeUpdateImageExpect = Partial<typeImage>;
+type typeUpdateImage = Partial<typeImage>;
+type typeUpdateImageExpect = Partial<typeImage>;
+
+export {
+  isBuffer,
+  imageSchema,
+  ImageSchema,
+  ImageReturnSchema,
+  ImageUpdateSchema,
+  typeExpectationImage,
+  typeImage,
+  typeUpdateImage,
+  typeUpdateImageExpect,
+};

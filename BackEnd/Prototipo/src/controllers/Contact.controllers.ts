@@ -3,7 +3,7 @@ import { ContactServices } from "../services";
 import { Request, Response } from "express";
 
 @injectable()
-export class ContactControllers {
+class ContactControllers {
   constructor(
     @inject(ContactServices)
     private contactService: ContactServices
@@ -31,3 +31,5 @@ export class ContactControllers {
     return res.status(200).json(response);
   }
 }
+
+export { ContactControllers };

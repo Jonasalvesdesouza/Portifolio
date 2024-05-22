@@ -8,7 +8,7 @@ import {
   typeUpdateJobExperience,
 } from "../schemas";
 
-export class JobExperienceServices {
+class JobExperienceServices {
   async create(
     body: typeJobExperience,
     userId: number
@@ -98,3 +98,5 @@ export class JobExperienceServices {
     await prisma.jobExperience.delete({ where: { id } });
   }
 }
+
+export { JobExperienceServices };

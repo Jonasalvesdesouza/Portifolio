@@ -8,7 +8,7 @@ import {
   typeUpdateSocialMedia,
 } from "../schemas";
 
-export class SocialMidiaServices {
+class SocialMidiaServices {
   async create(
     body: typeSocialMedia,
     userId: number
@@ -106,3 +106,5 @@ export class SocialMidiaServices {
     await prisma.socialMedia.delete({ where: { id } });
   }
 }
+
+export { SocialMidiaServices };

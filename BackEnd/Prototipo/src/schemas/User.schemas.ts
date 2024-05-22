@@ -1,6 +1,7 @@
+import { exec } from "child_process";
 import { z } from "zod";
 
-export const userSchema = z.object({
+const userSchema = z.object({
   id: z.number().positive(),
   name: z.string().min(1),
   email: z.string().email().min(1),
@@ -8,30 +9,44 @@ export const userSchema = z.object({
   profileId: z.number().positive().nullish(),
 });
 
-export const UserSchema = userSchema.omit({
+const UserSchema = userSchema.omit({
   id: true,
   profileId: true,
 });
 
-export const PromiseUserSchema = userSchema.omit({ profileId: true });
+const PromiseUserSchema = userSchema.omit({ profileId: true });
 
-export const LoginUserSchema = userSchema.pick({
+const LoginUserSchema = userSchema.pick({
   email: true,
   password: true,
 });
 
-export const UserReturnSchema = userSchema.omit({
+const UserReturnSchema = userSchema.omit({
   password: true,
 });
 
-export type typePromiseUserSchema = z.infer<typeof PromiseUserSchema>;
-export type typeCreateUser = z.infer<typeof UserSchema>;
-export type typeUpdateUser = Partial<typeCreateUser>;
+type typePromiseUserSchema = z.infer<typeof PromiseUserSchema>;
+type typeCreateUser = z.infer<typeof UserSchema>;
+type typeUpdateUser = Partial<typeCreateUser>;
 
-export type typeLoginUser = z.infer<typeof LoginUserSchema>;
-export type typeUserReturnSchema = z.infer<typeof UserReturnSchema>;
+type typeLoginUser = z.infer<typeof LoginUserSchema>;
+type typeUserReturnSchema = z.infer<typeof UserReturnSchema>;
 
-export type typeLoginReturn = {
+type typeLoginReturn = {
   accessToken: string;
   user: typeUserReturnSchema;
+};
+
+export {
+  userSchema,
+  UserSchema,
+  PromiseUserSchema,
+  LoginUserSchema,
+  UserReturnSchema,
+  typePromiseUserSchema,
+  typeCreateUser,
+  typeUpdateUser,
+  typeLoginUser,
+  typeUserReturnSchema,
+  typeLoginReturn,
 };

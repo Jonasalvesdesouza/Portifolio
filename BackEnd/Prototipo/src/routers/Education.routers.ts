@@ -5,7 +5,7 @@ import { EducationControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
 import { EducationSchema, EducationUpdateSchema } from "../schemas";
 
-export const EducationRouter = Router();
+const EducationRouter = Router();
 
 container.registerSingleton("EducationServices", EducationServices);
 const Controllers = container.resolve(EducationControllers);
@@ -31,3 +31,5 @@ EducationRouter.patch(
 EducationRouter.delete("/:id", userAuth.VerifyToken, (req, res) =>
   Controllers.delete(req, res)
 );
+
+export { EducationRouter };

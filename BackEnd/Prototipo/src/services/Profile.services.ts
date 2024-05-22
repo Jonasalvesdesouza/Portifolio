@@ -9,7 +9,7 @@ import {
 import { AppError } from "../erros";
 
 @injectable()
-export class ProfileServices {
+class ProfileServices {
   async create(body: typeCreateProfile, userId: number) {
     const user = await prisma.user.findFirst({
       where: {
@@ -115,3 +115,5 @@ export class ProfileServices {
     await prisma.profile.delete({ where: { id } });
   }
 }
+
+export { ProfileServices };

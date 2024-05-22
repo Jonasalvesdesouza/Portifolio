@@ -6,7 +6,7 @@ import { ValidateBody, isEmailAlreadyRegister, userAuth } from "../middlewares";
 import { UserServices } from "../services/User.services";
 import { LoginUserSchema } from "../schemas";
 
-export const UserRouter = Router();
+const UserRouter = Router();
 
 container.registerSingleton("UserServices", UserServices);
 const userControllers = container.resolve(UserControllers);
@@ -26,3 +26,5 @@ UserRouter.patch("/", userAuth.VerifyToken, (req, res) =>
 UserRouter.get("/:id", userAuth.VerifyToken, (req, res) =>
   userControllers.getUser(req, res)
 );
+
+export { UserRouter };

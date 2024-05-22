@@ -1,18 +1,9 @@
 import { prisma } from "../database/prisma";
 import { AppError } from "../erros";
-import {
-  ContactReturnSchema,
-  typeContact,
-  typeExpectationContact,
-  typeUpdateContact,
-  typeUpdateContactExpct,
-} from "../schemas";
+import { IContact, IBodyContact, IUpdateBodyContact } from "../interfaces";
 
-export class ContactServices {
-  async create(
-    body: typeContact,
-    userId: number
-  ): Promise<typeExpectationContact> {
+class ContactServices {
+  async create(body: IBodyContact, userId: number): Promise<IContact> {
     if (!userId) {
       throw new AppError(409, "User is required");
     }
@@ -40,7 +31,7 @@ export class ContactServices {
       },
     });
 
-    return ContactReturnSchema.parse(data);
+    return data;
   }
 
   async findFirst() {
@@ -49,10 +40,7 @@ export class ContactServices {
     return data;
   }
 
-  async Update(
-    body: typeUpdateContact,
-    userId: number
-  ): Promise<typeUpdateContactExpct> {
+  async Update(body: IUpdateBodyContact, userId: number): Promise<IContact> {
     const profile = await prisma.profile.findFirst({
       where: { userId },
     });
@@ -71,9 +59,11 @@ export class ContactServices {
 
     const data = await prisma.contact.update({
       where: { id: contact.id },
-      data: body,
+      data: body as any,
     });
 
-    return ContactReturnSchema.parse(data);
+    return data;
   }
 }
+
+export { ContactServices };

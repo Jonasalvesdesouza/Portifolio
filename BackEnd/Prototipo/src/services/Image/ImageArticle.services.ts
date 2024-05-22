@@ -7,7 +7,7 @@ import {
   typeUpdateImageExpect,
 } from "../../schemas";
 
-export class ImageArticleServices {
+class ImageArticleServices {
   async create(
     userId: number,
     articleId: number,
@@ -86,3 +86,5 @@ export class ImageArticleServices {
     });
   }
 }
+
+export { ImageArticleServices };

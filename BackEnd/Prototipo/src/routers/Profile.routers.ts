@@ -7,7 +7,7 @@ import { ProfileSchema, ProfileUpdateSchema } from "../schemas";
 import { ContactRouter } from "./Contact.routers";
 import { ImageProfileRouter } from "./Image";
 
-export const ProfileRouter = Router();
+const ProfileRouter = Router();
 
 container.registerSingleton("ProfileServices", ProfileServices);
 const profileControllers = container.resolve(ProfileControllers);
@@ -34,3 +34,5 @@ ProfileRouter.delete("/:id", userAuth.VerifyToken, (req, res) =>
 
 ProfileRouter.use("/", ContactRouter);
 ProfileRouter.use("/", ImageProfileRouter);
+
+export { ProfileRouter };

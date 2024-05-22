@@ -54,7 +54,7 @@ export const SectionAboutHomePage = () => {
         </div>
       </div>
       <div>
-        {!isHeightHigh ? (
+        {isHeightHigh ? null : (
           <Button
             className={`${styles.buttonHorizontal}`}
             id="button"
@@ -62,7 +62,7 @@ export const SectionAboutHomePage = () => {
           >
             <IoIosArrowDown className="arrowIcon" />
           </Button>
-        ) : null}
+        )}
       </div>
     </div>
   );

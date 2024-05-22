@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const educationSchema = z.object({
+const educationSchema = z.object({
   id: z.number().positive(),
   title: z.string().min(1),
   course: z.string().min(1),
@@ -12,14 +12,24 @@ export const educationSchema = z.object({
   endDate: z.string(),
 });
 
-export const EducationSchema = educationSchema.omit({
+const EducationSchema = educationSchema.omit({
   id: true,
 });
 
-export const EducationUpdateSchema = EducationSchema.partial();
+const EducationUpdateSchema = EducationSchema.partial();
 
-export type typeExpectationEducation = z.infer<typeof EducationSchema>;
-export type typeEducation = z.infer<typeof EducationSchema>;
+type typeExpectationEducation = z.infer<typeof EducationSchema>;
+type typeEducation = z.infer<typeof EducationSchema>;
 
-export type typeUpdateExpectationEducation = Partial<typeExpectationEducation>;
-export type typeUpdateEducation = Partial<typeEducation>;
+type typeUpdateExpectationEducation = Partial<typeExpectationEducation>;
+type typeUpdateEducation = Partial<typeEducation>;
+
+export {
+  educationSchema,
+  EducationSchema,
+  EducationUpdateSchema,
+  typeExpectationEducation,
+  typeEducation,
+  typeUpdateExpectationEducation,
+  typeUpdateEducation,
+};

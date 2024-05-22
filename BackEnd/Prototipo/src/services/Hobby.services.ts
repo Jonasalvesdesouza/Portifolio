@@ -11,7 +11,7 @@ import {
   typeUpdateHobby,
 } from "../schemas";
 
-export class HobbyServices {
+class HobbyServices {
   async create(body: typeHobby, userId: number): Promise<typeExpectationHobby> {
     if (!userId) {
       throw new AppError(409, "User ID is required");
@@ -105,3 +105,5 @@ export class HobbyServices {
     await prisma.hobby.delete({ where: { id } });
   }
 }
+
+export { HobbyServices };

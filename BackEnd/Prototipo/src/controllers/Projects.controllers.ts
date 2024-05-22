@@ -3,7 +3,7 @@ import { ProjectsServices } from "../services";
 import { Request, Response } from "express";
 
 @injectable()
-export class ProjectsControllers {
+class ProjectsControllers {
   constructor(
     @inject(ProjectsServices)
     private service: ProjectsServices
@@ -50,3 +50,5 @@ export class ProjectsControllers {
     return res.status(204).json();
   }
 }
+
+export { ProjectsControllers };

@@ -1,25 +1,16 @@
 import { z } from "zod";
 
-export const contactSchema = z.object({
+const contactSchema = z.object({
   id: z.number().positive(),
   email: z.string(),
   cel: z.string(),
   profileId: z.number().positive().nullable(),
 });
 
-export const ContactSchema = contactSchema.omit({
+const ContactBodySchema = contactSchema.omit({
   id: true,
-  profileId: true,
 });
 
-export const ContactReturnSchema = contactSchema.omit({
-  profileId: true,
-});
+const ContactUpdateSchema = contactSchema.partial();
 
-export const ContactUpdateSchema = ContactSchema.partial();
-
-export type typeExpectationContact = z.infer<typeof ContactSchema>;
-export type typeContact = z.infer<typeof ContactSchema>;
-
-export type typeUpdateContact = Partial<typeContact>;
-export type typeUpdateContactExpct = Partial<typeContact>;
+export { contactSchema, ContactBodySchema, ContactUpdateSchema };

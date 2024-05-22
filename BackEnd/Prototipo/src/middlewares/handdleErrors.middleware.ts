@@ -4,7 +4,7 @@ import { NextFunction, Request, Response } from "express";
 
 import { AppError } from "../erros";
 
-export class HandleErrors {
+class HandleErrors {
   static execute(
     error: Error,
     req: Request,
@@ -28,3 +28,5 @@ export class HandleErrors {
     return res.status(500).json({ message: "Internal server error" });
   }
 }
+
+export { HandleErrors };

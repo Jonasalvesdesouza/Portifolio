@@ -10,7 +10,7 @@ import uploadsConfig from "../../configs/multer.config";
 
 const uploadDirectory = path.join(__dirname, "../../../");
 
-export const ImageArticleRouter = Router();
+const ImageArticleRouter = Router();
 const upload = multer(uploadsConfig);
 
 container.registerSingleton("ImageArticleServices", ImageArticleServices);
@@ -44,3 +44,5 @@ ImageArticleRouter.patch(
 ImageArticleRouter.delete("/image/:id", userAuth.VerifyToken, (req, res) =>
   imageControllers.delete(req, res)
 );
+
+export { ImageArticleRouter };

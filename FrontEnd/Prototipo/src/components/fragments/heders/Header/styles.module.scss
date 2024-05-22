@@ -11,16 +11,10 @@
 
   img {
     width: 2.5vw;
+    margin-bottom: 1vw;
     transition: opacity 0.3s ease-in-out;
   }
   img:hover {
     opacity: 0.5;
-  }
-}
-
-.logo {
-  width: 2.2vw;
-  @media (max-width: 1050px) {
-    width: 3vw;
   }
 }

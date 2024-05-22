@@ -3,7 +3,7 @@ import { AppError } from "../../erros";
 
 import { typeExpectationImage, typeUpdateImageExpect } from "../../schemas";
 
-export class ImageProjectServices {
+class ImageProjectServices {
   async create(
     userId: number,
     projectIdId: number,
@@ -86,3 +86,5 @@ export class ImageProjectServices {
     });
   }
 }
+
+export { ImageProjectServices };

@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import { prisma } from "../database/prisma";
 import { AppError } from "../erros/appError";
 
-export class isEmailAlreadyRegister {
+class isEmailAlreadyRegister {
   static async execute(req: Request, res: Response, next: NextFunction) {
     if (!req.body.email || typeof req.body.email !== "string") {
       throw new AppError(400, "Invalid email provided");
@@ -20,3 +20,5 @@ export class isEmailAlreadyRegister {
     next();
   }
 }
+
+export { isEmailAlreadyRegister };

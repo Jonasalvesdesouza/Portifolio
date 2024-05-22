@@ -3,7 +3,7 @@ import { ProfileServices } from "../services/Profile.services";
 import { Request, Response } from "express";
 
 @injectable()
-export class ProfileControllers {
+class ProfileControllers {
   constructor(
     @inject(ProfileServices)
     private profileService: ProfileServices
@@ -37,3 +37,5 @@ export class ProfileControllers {
     return res.status(204).json();
   }
 }
+
+export { ProfileControllers };

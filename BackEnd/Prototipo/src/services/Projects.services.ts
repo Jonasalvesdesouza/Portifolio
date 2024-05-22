@@ -8,7 +8,7 @@ import {
   typeUpdateExpectationProjects,
 } from "../schemas";
 
-export class ProjectsServices {
+class ProjectsServices {
   async create(
     body: typeProjects,
     userId: number
@@ -118,3 +118,5 @@ export class ProjectsServices {
     await prisma.project.delete({ where: { id } });
   }
 }
+
+export { ProjectsServices };

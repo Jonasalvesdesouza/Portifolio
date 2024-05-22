@@ -3,7 +3,7 @@ import { AppError } from "../erros";
 
 import { typeMessage, typeExpectationMessage } from "../schemas";
 
-export class MessageServices {
+class MessageServices {
   async create(body: typeMessage, id: number): Promise<typeExpectationMessage> {
     const data = await prisma.message.create({
       data: {
@@ -49,3 +49,5 @@ export class MessageServices {
     await prisma.message.delete({ where: { id } });
   }
 }
+
+export { MessageServices };

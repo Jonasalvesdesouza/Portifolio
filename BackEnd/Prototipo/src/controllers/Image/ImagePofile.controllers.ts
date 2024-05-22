@@ -1,86 +1,58 @@
-import { inject, injectable } from "tsyringe"
-import { ImageProfileServices } from "../../services"
-import { Request, Response } from "express"
+import { inject, injectable } from "tsyringe";
+import { ImageProfileServices } from "../../services";
+import { Request, Response } from "express";
 
 @injectable()
-export class ImageProfileControllers {
-    
-    constructor(
+class ImageProfileControllers {
+  constructor(
+    @inject(ImageProfileServices)
+    private imageServices: ImageProfileServices
+  ) {}
 
-        @inject(ImageProfileServices)
-        private imageServices: ImageProfileServices
+  async create(req: Request, res: Response): Promise<Response> {
+    const userId = Number(res.locals.decode.id);
+    const path = req.file ? req.file.path : undefined;
 
-    ) {}
-
-    async create(
-
-        req: Request,
-        res: Response
-
-    ): Promise <Response> {
-
-        const userId = Number(res.locals.decode.id)
-        const path = req.file ? req.file.path : undefined
-
-        if (!path) {
-            return res.status(400).json({ error: 'Nenhum arquivo foi enviado na requisição.' });
-        }
-
-        const response = await this.imageServices.create(
-            path,
-            userId,
-        )
-
-        return res.status(201).json(response)
+    if (!path) {
+      return res
+        .status(400)
+        .json({ error: "Nenhum arquivo foi enviado na requisição." });
     }
 
-    async update(
+    const response = await this.imageServices.create(path, userId);
 
-        req: Request,
-        res: Response
+    return res.status(201).json(response);
+  }
 
-    ): Promise <Response> {
-        const userId = Number(res.locals.decode.id)
-        const imageId = Number(req.params.id)
-        const path = req.file ? req.file.path : undefined
+  async update(req: Request, res: Response): Promise<Response> {
+    const userId = Number(res.locals.decode.id);
+    const imageId = Number(req.params.id);
+    const path = req.file ? req.file.path : undefined;
 
-        if (!path) {
-            return res.status(400).json({ error: 'Nenhum arquivo foi enviado na requisição.' });
-        }
-
-        const response = await this.imageServices.Update(
-            path,
-            userId,
-            imageId
-        )
-
-        return res.status(200).json(response)
+    if (!path) {
+      return res
+        .status(400)
+        .json({ error: "Nenhum arquivo foi enviado na requisição." });
     }
 
-    async findFirst(
+    const response = await this.imageServices.Update(path, userId, imageId);
 
-        req: Request,
-        res: Response
+    return res.status(200).json(response);
+  }
 
-    ): Promise<Response>{
-        
-        const response = await this.imageServices.findFirst()
+  async findFirst(req: Request, res: Response): Promise<Response> {
+    const response = await this.imageServices.findFirst();
 
-        return res.status(200).json(response)
-    }
+    return res.status(200).json(response);
+  }
 
-    async delete(
+  async delete(req: Request, res: Response): Promise<Response> {
+    const userId = res.locals.decode.id;
 
-        req: Request,
-        res: Response
+    await this.imageServices.delete(Number(userId));
 
-    ): Promise <Response>{
-        const userId = res.locals.decode.id
-
-        await this.imageServices.delete(Number(userId))
-
-        return res.status(204).json()
-
-    }
-
+    return res.status(204).json();
+  }
 }
+
+export { ImageProfileControllers };

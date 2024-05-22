@@ -1,3 +1,4 @@
+import { exec } from "child_process";
 import { prisma } from "../database/prisma";
 import { AppError } from "../erros";
 
@@ -8,7 +9,7 @@ import {
   typeUpdateEducation,
 } from "../schemas";
 
-export class EducationServices {
+class EducationServices {
   async create(
     body: typeEducation,
     userId: number
@@ -108,3 +109,5 @@ export class EducationServices {
     await prisma.education.delete({ where: { id } });
   }
 }
+
+export { EducationServices };

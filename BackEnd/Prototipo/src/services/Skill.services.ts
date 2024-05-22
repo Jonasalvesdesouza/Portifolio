@@ -8,7 +8,7 @@ import {
   typeUpdateSkill,
 } from "../schemas";
 
-export class SkillServices {
+class SkillServices {
   async create(body: typeSkill, userId: number): Promise<typeExpctationSkill> {
     if (!userId) {
       throw new AppError(409, "User ID is required");
@@ -99,3 +99,5 @@ export class SkillServices {
     await prisma.skill.delete({ where: { id } });
   }
 }
+
+export { SkillServices };

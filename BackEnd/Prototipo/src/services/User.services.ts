@@ -15,7 +15,7 @@ import {
 import { jwtConfig } from "../configs";
 
 @injectable()
-export class UserServices {
+class UserServices {
   async userRegister(body: typeCreateUser): Promise<typeUserReturnSchema> {
     if (!body.password) {
       throw new AppError(400, "Password is required");
@@ -117,3 +117,5 @@ export class UserServices {
     return UserReturnSchema.parse(user);
   }
 }
+
+export { UserServices };

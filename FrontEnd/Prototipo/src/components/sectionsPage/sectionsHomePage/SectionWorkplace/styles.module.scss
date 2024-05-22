@@ -48,13 +48,11 @@
   top: 66%;
   left: 50%;
   transform: translate(-50%, 0%);
-  animation: ring 1.5s infinite;
+  animation: ring 3s infinite;
 }
 
-.buttonHorizontal:hover::after,
-.buttonHorizontal:focus::after {
-  animation: none;
-  display: none;
+.buttonHorizontal:hover::after {
+  animation: ring 0.5s infinite;
 }
 
 @keyframes ring {

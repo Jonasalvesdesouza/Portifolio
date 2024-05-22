@@ -3,10 +3,10 @@ import { container } from "tsyringe";
 import { ArticleServices } from "../services";
 import { ArticlesControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
-import { ArticlesSchema, ArticlesUpdateSchema } from "../schemas";
+import { ArticleBodySchema, ArticlesBodyUpdateSchema } from "../schemas";
 import { ImageArticleRouter } from "./Image";
 
-export const ArticlesRouter = Router();
+const ArticlesRouter = Router();
 
 container.registerSingleton("ArticleServices", ArticleServices);
 const Controllers = container.resolve(ArticlesControllers);
@@ -14,7 +14,7 @@ const Controllers = container.resolve(ArticlesControllers);
 ArticlesRouter.post(
   "/",
   userAuth.VerifyToken,
-  ValidateBody.execute(ArticlesSchema),
+  ValidateBody.execute(ArticleBodySchema),
   (req, res) => Controllers.create(req, res)
 );
 
@@ -25,7 +25,7 @@ ArticlesRouter.get("/", (req, res) => Controllers.findMany(req, res));
 ArticlesRouter.patch(
   "/:id",
   userAuth.VerifyToken,
-  ValidateBody.execute(ArticlesUpdateSchema),
+  ValidateBody.execute(ArticlesBodyUpdateSchema),
   (req, res) => Controllers.update(req, res)
 );
 
@@ -34,3 +34,5 @@ ArticlesRouter.delete("/:id", userAuth.VerifyToken, (req, res) =>
 );
 
 ArticlesRouter.use("/", ImageArticleRouter);
+
+export { ArticlesRouter };

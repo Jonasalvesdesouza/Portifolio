@@ -13,7 +13,7 @@ import {
   socialMediaSchema,
 } from "./";
 
-export const profileSchema = z.object({
+const profileSchema = z.object({
   id: z.number().positive(),
   profession: z.string().min(1),
   presentation: z.string().min(1),
@@ -35,16 +35,16 @@ export const profileSchema = z.object({
   message: z.array(messageSchema).nullish(),
 });
 
-export const ProfileSchema = profileSchema.pick({
+const ProfileSchema = profileSchema.pick({
   profession: true,
   presentation: true,
   about: true,
   bio: true,
 });
 
-export const ProfileUpdateSchema = ProfileSchema.partial();
+const ProfileUpdateSchema = ProfileSchema.partial();
 
-export const ProfileFullSchema = profileSchema
+const ProfileFullSchema = profileSchema
   .omit({
     userId: true,
     contactId: true,
@@ -63,6 +63,16 @@ export const ProfileFullSchema = profileSchema
     image: ImageSchema.nullish(),
   });
 
-export type typeCreateProfile = z.infer<typeof ProfileSchema>;
-export type typeUpdateProfile = Partial<typeCreateProfile>;
-export type typeProfileFull = z.infer<typeof ProfileFullSchema>;
+type typeCreateProfile = z.infer<typeof ProfileSchema>;
+type typeUpdateProfile = Partial<typeCreateProfile>;
+type typeProfileFull = z.infer<typeof ProfileFullSchema>;
+
+export {
+  profileSchema,
+  ProfileSchema,
+  ProfileUpdateSchema,
+  ProfileFullSchema,
+  typeCreateProfile,
+  typeUpdateProfile,
+  typeProfileFull,
+};

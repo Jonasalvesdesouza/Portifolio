@@ -9,6 +9,7 @@ import { SectionReadMyBlogHomePage } from './SectionReadMyBlog';
 import { useScreenWidth } from '../../../../hooks';
 
 import styles from './styles.module.scss';
+import { smallResolution } from '../../../../config';
 
 export const SectionWorkplace = () => {
   const { setCurrentCard, screenWidth, screenHeight } =
@@ -28,13 +29,13 @@ export const SectionWorkplace = () => {
       <SectionMyLatestProjectsHomePage />
       <SectionReadMyBlogHomePage />
 
-      {!isHeightHigh ? (
+      {isHeightHigh ? null : (
         <div className={`${styles.buttonHorizontal}`}>
           <Button id="button" onClick={handleClick}>
             <IoIosArrowDown className="arrowIcon" />
           </Button>
         </div>
-      ) : null}
+      )}
     </div>
   );
 };

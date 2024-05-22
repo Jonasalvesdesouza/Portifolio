@@ -5,6 +5,7 @@ import { Button } from '../../../fragments';
 import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
 import { useRenderImage } from '../../../../hooks';
 import styles from './styles.module.scss';
+import { smallResolution } from '../../../../config';
 
 export const SectionBannerHomePage = () => {
   const { setCurrentCard, screenWidth, screenHeight } =
@@ -49,11 +50,11 @@ export const SectionBannerHomePage = () => {
         </div>
       </div>
       <div className={`${isHeightHigh ? '' : styles.buttonHorizontal}`}>
-        {!isHeightHigh ? (
+        {isHeightHigh ? null : (
           <Button id="button" onClick={handleClick}>
             <IoIosArrowDown className="arrowIcon" />
           </Button>
-        ) : null}
+        )}
       </div>
     </div>
   );

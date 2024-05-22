@@ -1,18 +1,13 @@
 import YellowLogo from '../../../../assets/YellowLogo.svg';
 import BlackLogo from '../../../../assets/BlackLogo.svg';
 
-import { Divide as Hamburger } from 'hamburger-react';
-
 import { Link } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { AppBehaviorContext } from '../../../../providers';
 import styles from './styles.module.scss';
 import { HamburgerButton } from '../../HamburguerButton';
 
 export const Header = ({ setIsOpen }) => {
-  const [isOpen, setOpen] = useState(false);
-  const [isActive, setIsActive] = useState(false);
-
   const { location, setRouteLocation, setCurrentCard, setReturShapeHam } =
     useContext(AppBehaviorContext);
 

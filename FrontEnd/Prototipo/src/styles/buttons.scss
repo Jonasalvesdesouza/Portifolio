@@ -13,15 +13,16 @@
 %bntDefault {
   font-family: var(--font-primary);
   font-weight: 300;
-  font-size: 1.8vw;
+  font-size: 1.3vw;
   color: var(--color-black);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 
-  width: 26vw;
-  height: 5vw;
+  width: 15vw;
+  height: 3.5vw;
   border: solid 1px var(--color-black);
   position: relative;
   overflow: hidden;
@@ -30,14 +31,7 @@
   a {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
-    div {
-      margin-right: 0.9vw;
-    }
-    span {
-      margin-left: 7.5vw;
-    }
+    justify-content: space-evenly;
   }
 
   a span {
@@ -73,17 +67,19 @@
     color: var(--color-black);
     transition: color 0.35s ease;
     position: relative;
+    left: 1.5vw;
     z-index: 5;
   }
 }
 
 .bntAboutHome {
   @extend %bntDefault;
+  left: 21vw;
 }
 
 .bntWorplace {
   @extend %bntDefault;
-  width: 27vw;
+  width: 21.8vw;
 
   a {
     span {
@@ -93,11 +89,12 @@
 
   .icon {
     margin-right: 1vw;
+    left: 0;
   }
 }
 .bntWorplace2 {
   @extend %bntDefault;
-  width: 27vw;
+  width: 21.8vw;
 
   a {
     span {
@@ -107,6 +104,7 @@
 
   .icon {
     margin-right: 1vw;
+    left: 0;
   }
 }
 
@@ -114,24 +112,21 @@
   @extend %bntDefault;
   button {
     font-family: var(--font-primary);
-    font-size: 1.8vw;
+    font-size: 1.3vw;
     font-weight: 300;
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
 
+    span {
+      margin-left: 2vw;
+      z-index: 1;
+    }
     .icon {
       margin-right: 1vw;
-      font-size: 1.8vw;
+      font-size: 1.3vw;
+      margin-left: 1vw;
     }
-  }
-
-  button span {
-    position: relative;
-    z-index: 2;
-
-    margin-left: 9vw;
   }
 
   button:after {
@@ -143,7 +138,7 @@
     height: 100%;
     background: var(--color-gray2);
     transition: all 0.35s;
-    z-index: 1;
+    z-index: 0;
   }
 
   button:hover {

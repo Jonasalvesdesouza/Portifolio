@@ -3,7 +3,7 @@ import { MessageServices } from "../services";
 import { Request, Response } from "express";
 
 @injectable()
-export class MessageControllers {
+class MessageControllers {
   constructor(
     @inject(MessageServices)
     private service: MessageServices
@@ -37,3 +37,5 @@ export class MessageControllers {
     return res.status(204).json();
   }
 }
+
+export { MessageControllers };

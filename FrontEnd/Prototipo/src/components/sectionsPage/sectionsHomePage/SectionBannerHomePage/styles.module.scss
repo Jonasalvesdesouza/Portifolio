@@ -71,15 +71,12 @@
   top: 66%;
   left: 50%;
   transform: translate(-50%, 0%);
-  animation: ring 1.5s infinite;
+  animation: ring 3s infinite;
 }
 
-.buttonHorizontal:hover::after,
-.buttonHorizontal:focus::after {
-  animation: none;
-  display: none;
+.buttonHorizontal:hover::after {
+  animation: ring 0.5s infinite;
 }
-
 @keyframes ring {
   0% {
     width: 0.1vw;
@@ -97,14 +94,14 @@
   top: 66vh;
   left: 29.8vw;
   width: auto;
-  animation: moveUpDown 1.5s infinite alternate ease-in-out;
+  animation: moveUpDown 3s infinite alternate ease-in-out;
 }
 
 @keyframes moveUpDown {
   0% {
-    transform: translateY(-1vw);
+    transform: translateY(0);
   }
   100% {
-    transform: translateY(1vw);
+    transform: translateY(-20px);
   }
 }

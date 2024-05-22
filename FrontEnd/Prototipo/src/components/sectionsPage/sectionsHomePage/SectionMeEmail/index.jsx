@@ -40,7 +40,7 @@ export const SectionMeEmail = () => {
         </div>
       </div>
 
-      {!isHeightHigh ? (
+      {isHeightHigh ? null : (
         <Button
           className={`${isHeightHigh ? '' : styles.buttonHorizontal}`}
           id="button"
@@ -48,7 +48,7 @@ export const SectionMeEmail = () => {
         >
           <IoIosArrowUp className="arrowIcon" />
         </Button>
-      ) : null}
+      )}
     </div>
   );
 };

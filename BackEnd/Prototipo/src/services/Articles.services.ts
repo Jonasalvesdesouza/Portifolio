@@ -1,19 +1,11 @@
 import { prisma } from "../database/prisma";
 import { AppError } from "../erros";
 
-import {
-  ArticleReturnSchema,
-  typeArticles,
-  typeExpectationArticles,
-  typeUpdateArticles,
-  typeUpdateExpectationArticles,
-} from "../schemas";
+import { IArticles, IBodyArticles, IbodyUpdate } from "../interfaces";
+import { ReturnBodyArticleSchema } from "../schemas";
 
-export class ArticleServices {
-  async create(
-    body: typeArticles,
-    userId: number
-  ): Promise<typeExpectationArticles> {
+class ArticleServices {
+  async create(body: IBodyArticles, userId: number): Promise<IArticles> {
     if (!userId) {
       throw new AppError(409, "User ID is required");
     }
@@ -44,7 +36,7 @@ export class ArticleServices {
       },
     });
 
-    return ArticleReturnSchema.parse(data);
+    return ReturnBodyArticleSchema.parse(data);
   }
 
   async getOne(id: number) {
@@ -77,10 +69,10 @@ export class ArticleServices {
   }
 
   async Update(
-    body: typeUpdateArticles,
+    body: IbodyUpdate,
     userId: number,
     id: number
-  ): Promise<typeUpdateExpectationArticles> {
+  ): Promise<IArticles> {
     const profile = await prisma.profile.findFirst({
       where: { userId },
     });
@@ -120,3 +112,5 @@ export class ArticleServices {
     await prisma.article.delete({ where: { id } });
   }
 }
+
+export { ArticleServices };

@@ -5,7 +5,7 @@ import { HobbyControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
 import { HobbySchema, HobbyUpdate } from "../schemas";
 
-export const HobbyRouter = Router();
+const HobbyRouter = Router();
 
 container.registerSingleton("HobbyServices", HobbyServices);
 const Controllers = container.resolve(HobbyControllers);
@@ -30,3 +30,5 @@ HobbyRouter.patch(
 HobbyRouter.delete("/:id", userAuth.VerifyToken, (req, res) =>
   Controllers.delete(req, res)
 );
+
+export { HobbyRouter };

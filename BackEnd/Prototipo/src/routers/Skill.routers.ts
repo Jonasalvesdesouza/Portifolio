@@ -5,7 +5,7 @@ import { SkillControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
 import { SkillSchema, SkillUpdateSchema } from "../schemas";
 
-export const SkillRouter = Router();
+const SkillRouter = Router();
 
 container.registerSingleton("SkillServices", SkillServices);
 const Controllers = container.resolve(SkillControllers);
@@ -30,3 +30,5 @@ SkillRouter.patch(
 SkillRouter.delete("/:id", userAuth.VerifyToken, (req, res) =>
   Controllers.delete(req, res)
 );
+
+export { SkillRouter };

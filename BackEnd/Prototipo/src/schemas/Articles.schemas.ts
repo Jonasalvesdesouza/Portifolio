@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { ImageSchema } from "./Image.schemas";
+import { ImageSchema } from ".";
 
-export const articlesSchema = z.object({
+const articlesSchema = z.object({
   id: z.number().positive(),
   title: z.string().min(1),
   description: z.string().min(1),
@@ -9,11 +9,12 @@ export const articlesSchema = z.object({
   imageId: z.number().positive().nullish(),
 });
 
-export const ArticlesSchema = articlesSchema.omit({
+const ArticleBodySchema = articlesSchema.omit({
   id: true,
 });
+const ArticlesBodyUpdateSchema = ArticleBodySchema.partial();
 
-export const ArticleReturnSchema = articlesSchema
+const ReturnBodyArticleSchema = articlesSchema
   .omit({
     imageId: true,
   })
@@ -21,10 +22,9 @@ export const ArticleReturnSchema = articlesSchema
     image: ImageSchema.nullish(),
   });
 
-export const ArticlesUpdateSchema = ArticlesSchema.partial();
-
-export type typeExpectationArticles = z.infer<typeof ArticlesSchema>;
-export type typeArticles = z.infer<typeof ArticlesSchema>;
-
-export type typeUpdateExpectationArticles = Partial<typeExpectationArticles>;
-export type typeUpdateArticles = Partial<typeArticles>;
+export {
+  articlesSchema,
+  ArticleBodySchema,
+  ArticlesBodyUpdateSchema,
+  ReturnBodyArticleSchema,
+};

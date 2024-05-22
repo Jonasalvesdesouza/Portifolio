@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const projectsSchema = z.object({
+const projectsSchema = z.object({
   id: z.number().positive(),
   title: z.string().min(1),
   description: z.string().min(1),
@@ -10,14 +10,24 @@ export const projectsSchema = z.object({
   subCategory: z.string().min(1),
 });
 
-export const ProjectsSchema = projectsSchema.omit({
+const ProjectsSchema = projectsSchema.omit({
   id: true,
 });
 
-export const ProjectsUpdateSchema = ProjectsSchema.partial();
+const ProjectsUpdateSchema = ProjectsSchema.partial();
 
-export type typeExpectationProjects = z.infer<typeof ProjectsSchema>;
-export type typeProjects = z.infer<typeof ProjectsSchema>;
+type typeExpectationProjects = z.infer<typeof ProjectsSchema>;
+type typeProjects = z.infer<typeof ProjectsSchema>;
 
-export type typeUpdateExpectationProjects = Partial<typeExpectationProjects>;
-export type typeUpdateProjects = Partial<typeProjects>;
+type typeUpdateExpectationProjects = Partial<typeExpectationProjects>;
+type typeUpdateProjects = Partial<typeProjects>;
+
+export {
+  projectsSchema,
+  ProjectsSchema,
+  ProjectsUpdateSchema,
+  typeExpectationProjects,
+  typeProjects,
+  typeUpdateExpectationProjects,
+  typeUpdateProjects,
+};

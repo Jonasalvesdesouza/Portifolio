@@ -3,16 +3,16 @@ import { ArticleServices } from "../services";
 import { Request, Response } from "express";
 
 @injectable()
-export class ArticlesControllers {
+class ArticlesControllers {
   constructor(
     @inject(ArticleServices)
     private service: ArticleServices
   ) {}
 
   async create(req: Request, res: Response): Promise<Response> {
-    const userId = res.locals.decode.id;
+    const userId = Number(res.locals.decode.id);
 
-    const response = await this.service.create(req.body, Number(userId));
+    const response = await this.service.create(req.body, userId);
 
     return res.status(201).json(response);
   }
@@ -46,3 +46,5 @@ export class ArticlesControllers {
     return res.status(204).json();
   }
 }
+
+export { ArticlesControllers };

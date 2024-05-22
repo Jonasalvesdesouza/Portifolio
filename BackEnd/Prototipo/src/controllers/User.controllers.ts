@@ -4,7 +4,7 @@ import { inject, injectable } from "tsyringe";
 import { UserServices } from "../services";
 
 @injectable()
-export class UserControllers {
+class UserControllers {
   constructor(
     @inject("UserServices")
     private userServices: UserServices
@@ -38,3 +38,5 @@ export class UserControllers {
     return res.status(200).json(response);
   }
 }
+
+export { UserControllers };

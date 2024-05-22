@@ -6,7 +6,7 @@ import { ValidateBody, userAuth } from "../middlewares";
 import { ProjectsSchema, ProjectsUpdateSchema } from "../schemas";
 import { ImageProjectRouter } from "./Image";
 
-export const ProjectsRouter = Router();
+const ProjectsRouter = Router();
 
 container.registerSingleton("ProjectsServices", ProjectsServices);
 const Controllers = container.resolve(ProjectsControllers);
@@ -34,3 +34,5 @@ ProjectsRouter.delete("/:id", userAuth.VerifyToken, (req, res) =>
 );
 
 ProjectsRouter.use("/", ImageProjectRouter);
+
+export { ProjectsRouter };

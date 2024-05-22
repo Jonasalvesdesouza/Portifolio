@@ -3,9 +3,9 @@ import { container } from "tsyringe";
 import { ContactServices } from "../services";
 import { ContactControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
-import { ContactSchema, ContactUpdateSchema } from "../schemas";
+import { contactSchema, ContactUpdateSchema } from "../schemas";
 
-export const ContactRouter = Router();
+const ContactRouter = Router();
 
 container.registerSingleton("ContactServices", ContactServices);
 const contactControllers = container.resolve(ContactControllers);
@@ -13,7 +13,7 @@ const contactControllers = container.resolve(ContactControllers);
 ContactRouter.post(
   "/contact/",
   userAuth.VerifyToken,
-  ValidateBody.execute(ContactSchema),
+  ValidateBody.execute(contactSchema),
   (req, res) => contactControllers.create(req, res)
 );
 
@@ -27,3 +27,5 @@ ContactRouter.patch(
   ValidateBody.execute(ContactUpdateSchema),
   (req, res) => contactControllers.update(req, res)
 );
+
+export { ContactRouter };

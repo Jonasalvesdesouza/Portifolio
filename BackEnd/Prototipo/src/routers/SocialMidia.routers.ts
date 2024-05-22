@@ -5,7 +5,7 @@ import { SocialMediaControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
 import { SocialMediaSchema, SocialMediaUpdateSchema } from "../schemas";
 
-export const SocialMidiaRouter = Router();
+const SocialMidiaRouter = Router();
 
 container.registerSingleton("SocialMidiaServices", SocialMidiaServices);
 const Controllers = container.resolve(SocialMediaControllers);
@@ -31,3 +31,5 @@ SocialMidiaRouter.patch(
 SocialMidiaRouter.delete("/:id", userAuth.VerifyToken, (req, res) =>
   Controllers.delete(req, res)
 );
+
+export { SocialMidiaRouter };

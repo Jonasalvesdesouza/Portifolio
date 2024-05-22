@@ -30,15 +30,15 @@ model Profile{
   contact Contact?
   image ImageProfile?
 
-  socialMedia SocialMedia[] //ok -- ok -- getOne: -- ok --(Adicionar mensagem delete!)
-  hobby Hobby[] //ok -- ok -- getOne: ok
-  skill Skill[] //ok -- ok -- getOne: ok
-  jobExperience JobExperience[] //ok -- ok -- addres: ok -- getOne: ok
-  education Education[] //ok -- ok -- address: ok -- getOne: ok
+  socialMedia SocialMedia[] 
+  hobby Hobby[] 
+  skill Skill[] 
+  jobExperience JobExperience[] 
+  education Education[] 
 
-  projects Project[] // ok
-  articles Article[] // ok
-  message Message[] // ok
+  projects Project[] 
+  articles Article[]
+  message Message[] 
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

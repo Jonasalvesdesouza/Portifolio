@@ -71,13 +71,9 @@ export {
 
 export {
   articlesSchema,
-  ArticlesSchema,
-  ArticlesUpdateSchema,
-  ArticleReturnSchema,
-  typeExpectationArticles,
-  typeArticles,
-  typeUpdateExpectationArticles,
-  typeUpdateArticles,
+  ArticleBodySchema,
+  ArticlesBodyUpdateSchema,
+  ReturnBodyArticleSchema,
 } from "./Articles.schemas";
 
 export {
@@ -90,13 +86,8 @@ export {
 
 export {
   contactSchema,
-  ContactSchema,
+  ContactBodySchema,
   ContactUpdateSchema,
-  ContactReturnSchema,
-  typeExpectationContact,
-  typeContact,
-  typeUpdateContact,
-  typeUpdateContactExpct,
 } from "./Contact.schemas";
 
 export {

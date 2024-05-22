@@ -3,7 +3,7 @@ import { SocialMidiaServices } from "../services";
 import { Request, Response } from "express";
 
 @injectable()
-export class SocialMediaControllers {
+class SocialMediaControllers {
   constructor(
     @inject(SocialMidiaServices)
     private service: SocialMidiaServices
@@ -50,3 +50,5 @@ export class SocialMediaControllers {
     return res.status(204).json();
   }
 }
+
+export { SocialMediaControllers };

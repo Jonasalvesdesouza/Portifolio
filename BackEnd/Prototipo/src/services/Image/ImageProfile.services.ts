@@ -2,15 +2,9 @@ import { Request } from "express";
 import { prisma } from "../../database/prisma";
 import { AppError } from "../../erros";
 
-import {
-  ImageReturnSchema,
-  typeExpectationImage,
-  typeImage,
-  typeUpdateImage,
-  typeUpdateImageExpect,
-} from "../../schemas";
+import { typeExpectationImage, typeUpdateImageExpect } from "../../schemas";
 
-export class ImageProfileServices {
+class ImageProfileServices {
   async create(path: string, userId: number): Promise<typeExpectationImage> {
     if (!userId) {
       throw new AppError(409, "User ID is required");
@@ -91,3 +85,5 @@ export class ImageProfileServices {
     });
   }
 }
+
+export { ImageProfileServices };

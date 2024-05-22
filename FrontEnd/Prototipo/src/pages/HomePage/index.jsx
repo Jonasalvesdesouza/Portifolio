@@ -24,7 +24,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     setAnimate(true);
-    const timer = setTimeout(() => setAnimate(false), 500); // tempo da animação deve coincidir com a duração da animação CSS
+    const timer = setTimeout(() => setAnimate(false), 500);
     return () => clearTimeout(timer);
   }, [currentCard]);
 
@@ -45,7 +45,7 @@ export const HomePage = () => {
 
   return (
     <>
-      {isHeightHigh ? (
+      {isHeightHigh || screenWidth === smallResolution ? (
         <DefaultTemplate setIsOpen={setIsOpen}>
           <div>
             <SectionBannerHomePage />
@@ -67,7 +67,7 @@ export const HomePage = () => {
           </div>
         </TempladeHorizontal>
       )}
-      {isOpen ? <NavModal setIsOpen={setIsOpen} /> : null}
+      {isOpen ? <NavModal setIsOpen={setIsOpen} isOpen={isOpen} /> : null}
     </>
   );
 };

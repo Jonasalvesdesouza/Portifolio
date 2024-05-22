@@ -8,6 +8,7 @@ import { Button } from '../../Button';
 import { useContext } from 'react';
 import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
 import {
+  useGetLinkObject,
   useKeydown,
   useOutclick,
   useRemoveStringFromArray,
@@ -15,7 +16,14 @@ import {
 import { listPage } from './listPages';
 import { CardListPage } from './cardListPage';
 
-export const NavModal = ({ setIsOpen }) => {
+import styles from './styles.module.scss';
+
+export const NavModal = ({ setIsOpen, isOpen }) => {
+  const { socialMediaList } = useContext(UserAdmContext);
+
+  const linkLinkedin = useGetLinkObject(socialMediaList, 'linkedin');
+  const linkGitHub = useGetLinkObject(socialMediaList, 'github');
+
   const { routeLocation, setReturShapeHam } = useContext(AppBehaviorContext);
 
   const closeModalOutClick = useOutclick(() => {
@@ -36,37 +44,46 @@ export const NavModal = ({ setIsOpen }) => {
   };
 
   return (
-    <div role="dialog" ref={closeModalOutClick}>
-      <div>
-        <Button onClick={handleClick}>
-          <IoCloseOutline size={28} color="#1b1f24" />
-        </Button>
-      </div>
-      <div>
-        <ul>
-          {ListPage.map((page) => {
-            return <CardListPage key={page.id} page={page} />;
-          })}
-        </ul>
-      </div>
+    <div
+      className={`${styles.modalOverlay} ${isOpen ? styles.visible : ''}`}
+      role="dialog"
+      ref={closeModalOutClick}
+    >
+      <div className={`${styles.modalBox}`}>
+        <div className={`${styles.closeContainer}`}>
+          <Button onClick={handleClick}>
+            <IoCloseOutline className={`${styles.closeIcon}`} />
+          </Button>
+        </div>
+        <div className={`${styles.middleModal}`}>
+          <ul>
+            {ListPage.map((page) => {
+              return <CardListPage key={page.id} page={page} />;
+            })}
+          </ul>
+        </div>
 
-      {
-        <div>
+        <div className={`${styles.bottomModal}`}>
           <div>
-            <a
-              href="https://www.linkedin.com/in/jonas-alves-de-souza-61540b114/"
-              target="_blank"
-            >
-              <img src={IconGitHubBlack} alt="Linkdin Icon" />
+            <a href={linkLinkedin} target="_blank">
+              <img
+                className={`${styles.iconLinkedin}`}
+                src={IconLinkedinBalck}
+                alt="Linkdin Icon"
+              />
             </a>
           </div>
           <div>
-            <a href="https://github.com/Jonasalvesdesouza" target="_blank">
-              <img src={IconLinkedinBalck} alt="GitHub Icon" />
+            <a href={linkGitHub} target="_blank">
+              <img
+                className={`${styles.iconGitHub}`}
+                src={IconGitHubBlack}
+                alt="GitHub Icon"
+              />
             </a>
           </div>
         </div>
-      }
+      </div>
     </div>
   );
 };
