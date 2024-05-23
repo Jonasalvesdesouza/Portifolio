@@ -2,12 +2,7 @@ import { Router } from "express";
 import { container } from "tsyringe";
 import { ProfileServices } from "../services";
 import { ProfileControllers } from "../controllers";
-import {
-  ValidateBody,
-  userAuth,
-  ckProfile,
-  checkProfileUser,
-} from "../middlewares";
+import { ValidateBody, userAuth, ckProfile } from "../middlewares";
 import { BodyProfileSchema, ProfileUpdateSchema } from "../schemas";
 import { ContactRouter } from "./Contact.routers";
 import { ImageProfileRouter } from "./Image";

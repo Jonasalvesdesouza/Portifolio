@@ -23,9 +23,9 @@ class UserControllers {
   }
 
   async update(req: Request, res: Response): Promise<Response> {
-    const userId = res.locals.decode.id;
+    const userId = Number(req.params.id);
 
-    const response = await this.userServices.update(Number(userId), req.body);
+    const response = await this.userServices.update(userId, req.body);
 
     return res.status(200).json(response);
   }

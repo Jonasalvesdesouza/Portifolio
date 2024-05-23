@@ -11,3 +11,6 @@ export { ckJobExperience } from "./checkJobExperience";
 export { ckMessage } from "./checkMessage.middleware";
 export { ckProfile } from "./checkProfile.middleware";
 export { ckProjects } from "./checkProjects.middleware";
+export { ckSkill } from "./checkSkill.middleware";
+export { ckSocialMedia } from "./checkSocialMedia.middleware";
+export { ckUser } from "./checkUser.middleware";

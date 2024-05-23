@@ -4,31 +4,11 @@ import { AppError } from "../erros";
 import { ISkill, IBodySkill, IBodyUpdateSkill } from "../interfaces";
 
 class SkillServices {
-  async create(body: IBodySkill, userId: number): Promise<ISkill> {
-    if (!userId) {
-      throw new AppError(409, "User ID is required");
-    }
-
-    const profile = await prisma.profile.findFirst({
-      where: { userId },
-    });
-
-    if (!profile) {
-      throw new AppError(404, "Profile does not match user");
-    }
-
-    const skill = await prisma.skill.findFirst({
-      where: { name: body.name },
-    });
-
-    if (skill) {
-      throw new AppError(404, "Skill already exists");
-    }
-
+  async create(body: IBodySkill, profileId: number): Promise<ISkill> {
     const data = await prisma.skill.create({
       data: {
         ...body,
-        profileId: profile.id,
+        profileId,
       },
     });
 
@@ -49,48 +29,16 @@ class SkillServices {
     return data;
   }
 
-  async Update(
-    body: IBodyUpdateSkill,
-    userId: number,
-    id: number
-  ): Promise<ISkill> {
-    const profile = await prisma.profile.findFirst({
-      where: { userId },
-    });
-
-    if (!profile) {
-      throw new AppError(404, "Profile does not match user");
-    }
-
-    const skill = await prisma.skill.findFirst({
-      where: { id },
-    });
-
-    if (!skill) {
-      throw new AppError(404, "Skill not foud");
-    }
-
+  async Update(body: IBodyUpdateSkill, id: number): Promise<ISkill> {
     const data = await prisma.skill.update({
       where: { id },
       data: body,
     });
 
-    if (!data) {
-      throw new AppError(404, "Skill midia not found");
-    }
-
     return data;
   }
 
   async delete(id: number): Promise<void> {
-    const skill = await prisma.skill.findFirst({
-      where: { id },
-    });
-
-    if (!skill) {
-      throw new AppError(404, "skill Media not foud");
-    }
-
     await prisma.skill.delete({ where: { id } });
   }
 }

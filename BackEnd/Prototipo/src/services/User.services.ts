@@ -17,17 +17,7 @@ import { jwtConfig } from "../configs";
 @injectable()
 class UserServices {
   async userRegister(body: IBodyCreateUser): Promise<IBodyUserReturn> {
-    if (!body.password) {
-      throw new AppError(400, "Password is required");
-    }
-
     const hashedPassword = await hash(body.password, 10);
-
-    const existingUser = await prisma.user.findFirst();
-
-    if (existingUser) {
-      throw new AppError(409, "User already exists");
-    }
 
     const newUser = await prisma.user.create({
       data: {
@@ -101,19 +91,10 @@ class UserServices {
   }
 
   async getUser(id: number): Promise<IBodyUserReturn> {
-    if (!id) {
-      throw new AppError(404, "User id required.");
-    }
-
     const user = await prisma.user.findFirst({
       where: { id },
       include: { profile: true },
     });
-
-    if (!user) {
-      throw new AppError(404, "User not found");
-    }
-
     return UserReturnSchema.parse(user);
   }
 }

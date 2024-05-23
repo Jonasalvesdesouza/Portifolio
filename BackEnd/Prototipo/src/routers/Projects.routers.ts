@@ -30,7 +30,7 @@ ProjectsRouter.get("/:id", (req, res) => Controllers.getOne(req, res));
 ProjectsRouter.get("/", (req, res) => Controllers.findMany(req, res));
 
 ProjectsRouter.patch(
-  "/update/:id",
+  "/:id",
   userAuth.VerifyToken,
   ckProjects.checkProjectsId,
   checkProfileUser.execute,
