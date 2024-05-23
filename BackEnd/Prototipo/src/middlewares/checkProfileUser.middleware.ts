@@ -9,6 +9,12 @@ class checkProfileUser {
       if (isNaN(userId)) {
         throw new AppError(400, "Invalid user ID");
       }
+      const user = await prisma.user.findFirst({
+        where: { id: userId },
+      });
+      if (!user) {
+        throw new AppError(404, "User not foud");
+      }
 
       const profile = await prisma.profile.findFirst({
         where: { userId },

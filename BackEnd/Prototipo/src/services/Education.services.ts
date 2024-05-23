@@ -9,33 +9,11 @@ import {
 } from "../interfaces";
 
 class EducationServices {
-  async create(body: IBodyEducation, userId: number): Promise<IEducation> {
-    if (!userId) {
-      throw new AppError(409, "User ID is required");
-    }
-
-    const profile = await prisma.profile.findFirst({
-      where: { userId },
-    });
-
-    if (!profile) {
-      throw new AppError(404, "Profile does not match user");
-    }
-
-    const education = await prisma.education.findFirst({
-      where: {
-        title: body.title,
-      },
-    });
-
-    if (education) {
-      throw new AppError(404, "Education already exists");
-    }
-
+  async create(body: IBodyEducation, profileId: number): Promise<IEducation> {
     const data = await prisma.education.create({
       data: {
         ...body,
-        profileId: profile.id,
+        profileId,
       },
     });
 
@@ -43,18 +21,9 @@ class EducationServices {
   }
 
   async getOne(id: number) {
-    if (!id) {
-      throw new AppError(404, "Id not found");
-    }
-
     const data = await prisma.education.findFirst({
       where: { id },
     });
-
-    if (!data) {
-      throw new AppError(404, "Education not found");
-    }
-
     return data;
   }
 
@@ -64,27 +33,7 @@ class EducationServices {
     return data;
   }
 
-  async Update(
-    body: IbodyUpDateEducation,
-    userId: number,
-    id: number
-  ): Promise<IEducation> {
-    const profile = await prisma.profile.findFirst({
-      where: { userId },
-    });
-
-    if (!profile) {
-      throw new AppError(404, "Profile does not match user");
-    }
-
-    const education = await prisma.education.findFirst({
-      where: { id },
-    });
-
-    if (!education) {
-      throw new AppError(404, "Education not foud");
-    }
-
+  async Update(body: IbodyUpDateEducation, id: number): Promise<IEducation> {
     const data = await prisma.education.update({
       where: { id },
       data: body,

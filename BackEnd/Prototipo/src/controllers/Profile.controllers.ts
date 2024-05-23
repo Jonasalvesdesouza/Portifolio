@@ -10,9 +10,14 @@ class ProfileControllers {
   ) {}
 
   async create(req: Request, res: Response): Promise<Response> {
-    const userId = res.locals.decode.id;
+    const userId = Number(res.locals.decode.id);
+    const userName = res.locals.userName;
 
-    const response = await this.profileService.create(req.body, Number(userId));
+    const response = await this.profileService.create(
+      req.body,
+      userId,
+      userName
+    );
 
     return res.status(201).json(response);
   }
@@ -24,9 +29,9 @@ class ProfileControllers {
   }
 
   async update(req: Request, res: Response): Promise<Response> {
-    const userId = res.locals.decode.id;
+    const profileId = Number(req.params.id);
 
-    const response = await this.profileService.update(Number(userId), req.body);
+    const response = await this.profileService.update(profileId, req.body);
 
     return res.status(200).json(response);
   }

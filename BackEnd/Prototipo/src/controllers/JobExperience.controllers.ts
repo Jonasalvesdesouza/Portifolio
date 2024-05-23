@@ -10,17 +10,17 @@ class JobExperienceControllers {
   ) {}
 
   async create(req: Request, res: Response): Promise<Response> {
-    const userId = res.locals.decode.id;
+    const profileId = Number(res.locals.profileId);
 
-    const response = await this.service.create(req.body, Number(userId));
+    const response = await this.service.create(req.body, profileId);
 
     return res.status(201).json(response);
   }
 
   async getOne(req: Request, res: Response): Promise<Response> {
-    const id = req.params.id;
+    const id = Number(req.params.id);
 
-    const response = await this.service.getOne(Number(id));
+    const response = await this.service.getOne(id);
 
     return res.status(200).json(response);
   }
@@ -32,14 +32,9 @@ class JobExperienceControllers {
   }
 
   async update(req: Request, res: Response): Promise<Response> {
-    const userId = res.locals.decode.id;
-    const id = req.params.id;
+    const id = Number(req.params.id);
 
-    const response = await this.service.Update(
-      req.body,
-      Number(userId),
-      Number(id)
-    );
+    const response = await this.service.Update(req.body, id);
 
     return res.status(200).json(response);
   }

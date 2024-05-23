@@ -4,33 +4,11 @@ import { AppError } from "../erros";
 import { IProject, IBodyProjects, IBodyUpdateProjects } from "../interfaces";
 
 class ProjectsServices {
-  async create(body: IBodyProjects, userId: number): Promise<IProject> {
-    if (!userId) {
-      throw new AppError(409, "User ID is required");
-    }
-
-    const profile = await prisma.profile.findFirst({
-      where: { userId },
-    });
-
-    if (!profile) {
-      throw new AppError(404, "Profile does not match user");
-    }
-
-    const project = await prisma.project.findFirst({
-      where: {
-        title: body.title,
-      },
-    });
-
-    if (project) {
-      throw new AppError(404, "Project already exists");
-    }
-
+  async create(body: IBodyProjects, profileId: number): Promise<IProject> {
     const data = await prisma.project.create({
       data: {
         ...body,
-        profileId: profile.id,
+        profileId,
       },
     });
 
@@ -66,27 +44,7 @@ class ProjectsServices {
     return data;
   }
 
-  async Update(
-    body: IBodyUpdateProjects,
-    userId: number,
-    id: number
-  ): Promise<IProject> {
-    const profile = await prisma.profile.findFirst({
-      where: { userId },
-    });
-
-    if (!profile) {
-      throw new AppError(404, "Profile does not match user");
-    }
-
-    const project = await prisma.project.findFirst({
-      where: { id },
-    });
-
-    if (!project) {
-      throw new AppError(404, "Project not foud");
-    }
-
+  async Update(body: IBodyUpdateProjects, id: number): Promise<IProject> {
     const data = await prisma.project.update({
       where: { id },
       data: body,
@@ -99,14 +57,6 @@ class ProjectsServices {
   }
 
   async delete(id: number): Promise<void> {
-    const project = await prisma.project.findFirst({
-      where: { id },
-    });
-
-    if (!project) {
-      throw new AppError(404, "Project not foud");
-    }
-
     await prisma.project.delete({ where: { id } });
   }
 }

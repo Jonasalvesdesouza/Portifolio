@@ -2,7 +2,6 @@ import { injectable } from "tsyringe";
 import { prisma } from "../database/prisma";
 
 import {
-  Iprofile,
   IBodyProfile,
   IBodyUpdateProfile,
   IBodyFullProfile,
@@ -11,29 +10,16 @@ import { AppError } from "../erros";
 
 @injectable()
 class ProfileServices {
-  async create(body: IBodyProfile, userId: number): Promise<IBodyProfile> {
-    const user = await prisma.user.findFirst({
-      where: {
-        id: userId,
-      },
-    });
-
-    if (!user) {
-      throw new AppError(404, "Not foud");
-    }
-
-    const profile = await prisma.profile.findFirst({
-      where: { userId },
-    });
-
-    if (profile) {
-      throw new AppError(404, "Not foud");
-    }
+  async create(
+    body: IBodyProfile,
+    userId: number,
+    userName: string
+  ): Promise<IBodyProfile> {
     const data = await prisma.profile.create({
       data: {
         ...body,
         userId,
-        userName: user.name,
+        userName,
       },
     });
 
@@ -64,40 +50,15 @@ class ProfileServices {
       },
     });
 
-    if (!data) {
-      throw new AppError(404, "Not Data");
-    }
-    const { contact, ...rest } = data;
-
-    if (!contact) {
-      return { ...rest, contact: null };
-    }
-
-    const validatedContact = {
-      ...contact,
-      profileId: contact.profileId ?? null,
-    };
-
-    return {
-      ...rest,
-      contact: validatedContact,
-    };
+    return data;
   }
 
   async update(
     id: number,
     body: IBodyUpdateProfile
   ): Promise<IBodyUpdateProfile> {
-    const profile = await prisma.profile.findFirst({
-      where: { userId: id },
-    });
-
-    if (!profile) {
-      throw new AppError(404, "Profile not foud");
-    }
-
     const data = await prisma.profile.update({
-      where: { id: profile.id },
+      where: { id },
       data: body,
     });
 
@@ -108,11 +69,6 @@ class ProfileServices {
     const profile = await prisma.profile.findFirst({
       where: { id },
     });
-
-    if (!profile) {
-      throw new AppError(404, "Profile not foud");
-    }
-
     await prisma.profile.delete({ where: { id } });
   }
 }

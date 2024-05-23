@@ -10,23 +10,25 @@ class ContactControllers {
   ) {}
 
   async create(req: Request, res: Response): Promise<Response> {
-    const userId = res.locals.decode.id;
+    const profileId = Number(res.locals.profileId);
 
-    const response = await this.contactService.create(req.body, Number(userId));
+    const response = await this.contactService.create(req.body, profileId);
 
     return res.status(201).json(response);
   }
 
   async findFirst(req: Request, res: Response): Promise<Response> {
-    const response = await this.contactService.findFirst();
+    const contactId = Number(req.params.id);
+
+    const response = await this.contactService.findFirst(contactId);
 
     return res.status(200).json(response);
   }
 
   async update(req: Request, res: Response): Promise<Response> {
-    const userId = res.locals.decode.id;
+    const contactId = Number(req.params.id);
 
-    const response = await this.contactService.Update(req.body, Number(userId));
+    const response = await this.contactService.Update(req.body, contactId);
 
     return res.status(200).json(response);
   }

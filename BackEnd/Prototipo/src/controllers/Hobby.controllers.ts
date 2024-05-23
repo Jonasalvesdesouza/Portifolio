@@ -10,9 +10,9 @@ class HobbyControllers {
   ) {}
 
   async create(req: Request, res: Response): Promise<Response> {
-    const userId = res.locals.decode.id;
+    const profileId = Number(res.locals.profileId);
 
-    const response = await this.service.create(req.body, Number(userId));
+    const response = await this.service.create(req.body, profileId);
 
     return res.status(201).json(response);
   }
@@ -35,11 +35,7 @@ class HobbyControllers {
     const userId = res.locals.decode.id;
     const id = req.params.id;
 
-    const response = await this.service.Update(
-      req.body,
-      Number(userId),
-      Number(id)
-    );
+    const response = await this.service.Update(req.body, Number(id));
 
     return res.status(200).json(response);
   }
