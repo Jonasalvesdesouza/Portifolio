@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { EducationServices } from "../services";
 import { EducationControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
-import { EducationSchema, EducationUpdateSchema } from "../schemas";
+import { BodyEducationSchema, EducationUpdateSchema } from "../schemas";
 
 const EducationRouter = Router();
 
@@ -13,7 +13,7 @@ const Controllers = container.resolve(EducationControllers);
 EducationRouter.post(
   "/",
   userAuth.VerifyToken,
-  ValidateBody.execute(EducationSchema),
+  ValidateBody.execute(BodyEducationSchema),
   (req, res) => Controllers.create(req, res)
 );
 

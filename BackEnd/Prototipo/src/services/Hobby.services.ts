@@ -1,18 +1,10 @@
 import { prisma } from "../database/prisma";
 import { AppError } from "../erros";
 
-import {
-  hobbySchema,
-  HobbySchema,
-  HobbyUpdate,
-  typeExpectationHobby,
-  typeHobby,
-  typeExpectUpdateHobby,
-  typeUpdateHobby,
-} from "../schemas";
+import { IHobby, IBodyHobby, IBodyUpdateHobby } from "../interfaces";
 
 class HobbyServices {
-  async create(body: typeHobby, userId: number): Promise<typeExpectationHobby> {
+  async create(body: IBodyHobby, userId: number): Promise<IHobby> {
     if (!userId) {
       throw new AppError(409, "User ID is required");
     }
@@ -66,10 +58,10 @@ class HobbyServices {
   }
 
   async Update(
-    body: typeUpdateHobby,
+    body: IBodyUpdateHobby,
     userId: number,
     id: number
-  ): Promise<typeExpectUpdateHobby> {
+  ): Promise<IHobby> {
     const profile = await prisma.profile.findFirst({
       where: { userId },
     });

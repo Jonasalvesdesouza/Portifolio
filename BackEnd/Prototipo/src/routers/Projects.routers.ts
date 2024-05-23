@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { ProjectsServices } from "../services";
 import { ProjectsControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
-import { ProjectsSchema, ProjectsUpdateSchema } from "../schemas";
+import { BodyProjectsSchema, ProjectsUpdateSchema } from "../schemas";
 import { ImageProjectRouter } from "./Image";
 
 const ProjectsRouter = Router();
@@ -14,13 +14,13 @@ const Controllers = container.resolve(ProjectsControllers);
 ProjectsRouter.post(
   "/",
   userAuth.VerifyToken,
-  ValidateBody.execute(ProjectsSchema),
+  ValidateBody.execute(BodyProjectsSchema),
   (req, res) => Controllers.create(req, res)
 );
 
-ProjectsRouter.get("/get/:id", (req, res) => Controllers.getOne(req, res));
+ProjectsRouter.get("/:id", (req, res) => Controllers.getOne(req, res));
 
-ProjectsRouter.get("/get", (req, res) => Controllers.findMany(req, res));
+ProjectsRouter.get("/", (req, res) => Controllers.findMany(req, res));
 
 ProjectsRouter.patch(
   "/update/:id",

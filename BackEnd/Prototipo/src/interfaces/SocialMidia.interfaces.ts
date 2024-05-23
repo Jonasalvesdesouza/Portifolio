@@ -1,19 +1,8 @@
 import { z } from "zod";
+import { socialMediaSchema, BodySocialMediaSchema } from "../schemas";
 
-export const socialMediaSchema = z.object({
-  id: z.number().positive(),
-  name: z.string().min(1),
-  link: z.string().min(1),
-});
+type ISocialMedia = z.infer<typeof socialMediaSchema>;
+type IBodySocialMedia = z.infer<typeof BodySocialMediaSchema>;
+type IBodyUpdateSocialMedia = Partial<IBodySocialMedia>;
 
-export const SocialMediaSchema = socialMediaSchema.omit({
-  id: true,
-});
-
-export const SocialMediaUpdateSchema = SocialMediaSchema.partial();
-
-export type typeExpectationSocialMedia = z.infer<typeof SocialMediaSchema>;
-export type typeSocialMedia = z.infer<typeof SocialMediaSchema>;
-
-export type typeUpdateSocialmediaExpct = Partial<typeExpectationSocialMedia>;
-export type typeUpdateSocialMedia = Partial<typeSocialMedia>;
+export { ISocialMedia, IBodySocialMedia, IBodyUpdateSocialMedia };

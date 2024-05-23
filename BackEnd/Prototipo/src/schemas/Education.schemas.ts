@@ -12,24 +12,10 @@ const educationSchema = z.object({
   endDate: z.string(),
 });
 
-const EducationSchema = educationSchema.omit({
+const BodyEducationSchema = educationSchema.omit({
   id: true,
 });
 
-const EducationUpdateSchema = EducationSchema.partial();
+const EducationUpdateSchema = educationSchema.partial();
 
-type typeExpectationEducation = z.infer<typeof EducationSchema>;
-type typeEducation = z.infer<typeof EducationSchema>;
-
-type typeUpdateExpectationEducation = Partial<typeExpectationEducation>;
-type typeUpdateEducation = Partial<typeEducation>;
-
-export {
-  educationSchema,
-  EducationSchema,
-  EducationUpdateSchema,
-  typeExpectationEducation,
-  typeEducation,
-  typeUpdateExpectationEducation,
-  typeUpdateEducation,
-};
+export { educationSchema, BodyEducationSchema, EducationUpdateSchema };

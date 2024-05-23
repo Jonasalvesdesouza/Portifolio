@@ -1,18 +1,10 @@
 import { prisma } from "../database/prisma";
 import { AppError } from "../erros";
 
-import {
-  typeProjects,
-  typeExpectationProjects,
-  typeUpdateProjects,
-  typeUpdateExpectationProjects,
-} from "../schemas";
+import { IProject, IBodyProjects, IBodyUpdateProjects } from "../interfaces";
 
 class ProjectsServices {
-  async create(
-    body: typeProjects,
-    userId: number
-  ): Promise<typeExpectationProjects> {
+  async create(body: IBodyProjects, userId: number): Promise<IProject> {
     if (!userId) {
       throw new AppError(409, "User ID is required");
     }
@@ -75,10 +67,10 @@ class ProjectsServices {
   }
 
   async Update(
-    body: typeUpdateProjects,
+    body: IBodyUpdateProjects,
     userId: number,
     id: number
-  ): Promise<typeUpdateExpectationProjects> {
+  ): Promise<IProject> {
     const profile = await prisma.profile.findFirst({
       where: { userId },
     });

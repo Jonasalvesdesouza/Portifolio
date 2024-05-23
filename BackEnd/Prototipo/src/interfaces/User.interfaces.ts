@@ -24,14 +24,23 @@ export const UserReturnSchema = userSchema.omit({
   password: true,
 });
 
-export type typePromiseUserSchema = z.infer<typeof PromiseUserSchema>;
-export type typeCreateUser = z.infer<typeof UserSchema>;
-export type typeUpdateUser = Partial<typeCreateUser>;
+type IUser = z.infer<typeof userSchema>;
+type IBodyCreateUser = z.infer<typeof UserSchema>;
+type IBodypdateUser = Partial<IBodyCreateUser>;
 
-export type typeLoginUser = z.infer<typeof LoginUserSchema>;
-export type typeUserReturnSchema = z.infer<typeof UserReturnSchema>;
+type IBodyLoginUser = z.infer<typeof LoginUserSchema>;
+type IBodyUserReturn = z.infer<typeof UserReturnSchema>;
 
-export type typeLoginReturn = {
+type IBodyLoginReturn = {
   accessToken: string;
-  user: typeUserReturnSchema;
+  user: IBodyUserReturn;
+};
+
+export {
+  IUser,
+  IBodyCreateUser,
+  IBodypdateUser,
+  IBodyLoginUser,
+  IBodyUserReturn,
+  IBodyLoginReturn,
 };

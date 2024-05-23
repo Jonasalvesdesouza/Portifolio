@@ -5,33 +5,11 @@ import { IArticles, IBodyArticles, IbodyUpdate } from "../interfaces";
 import { ReturnBodyArticleSchema } from "../schemas";
 
 class ArticleServices {
-  async create(body: IBodyArticles, userId: number): Promise<IArticles> {
-    if (!userId) {
-      throw new AppError(409, "User ID is required");
-    }
-
-    const profile = await prisma.profile.findFirst({
-      where: { userId },
-    });
-
-    if (!profile) {
-      throw new AppError(404, "Profile does not match user");
-    }
-
-    const article = await prisma.article.findFirst({
-      where: {
-        title: body.title,
-      },
-    });
-
-    if (article) {
-      throw new AppError(404, "Article already exists");
-    }
-
+  async create(body: IBodyArticles, profileId: number): Promise<IArticles> {
     const data = await prisma.article.create({
       data: {
         ...body,
-        profileId: profile.id,
+        profileId: profileId,
         image: {},
       },
     });
@@ -40,21 +18,12 @@ class ArticleServices {
   }
 
   async getOne(id: number) {
-    if (!id) {
-      throw new AppError(404, "Id not found");
-    }
-
     const data = await prisma.article.findFirst({
       where: { id },
       include: {
         image: true,
       },
     });
-
-    if (!data) {
-      throw new AppError(404, "Article not found");
-    }
-
     return data;
   }
 
@@ -68,27 +37,7 @@ class ArticleServices {
     return data;
   }
 
-  async Update(
-    body: IbodyUpdate,
-    userId: number,
-    id: number
-  ): Promise<IArticles> {
-    const profile = await prisma.profile.findFirst({
-      where: { userId },
-    });
-
-    if (!profile) {
-      throw new AppError(404, "Profile does not match user");
-    }
-
-    const article = await prisma.article.findFirst({
-      where: { id },
-    });
-
-    if (!article) {
-      throw new AppError(404, "Article not foud");
-    }
-
+  async Update(body: IbodyUpdate, id: number): Promise<IArticles> {
     const data = await prisma.article.update({
       where: { id },
       data: body,
@@ -101,14 +50,6 @@ class ArticleServices {
   }
 
   async delete(id: number): Promise<void> {
-    const article = await prisma.article.findFirst({
-      where: { id },
-    });
-
-    if (!article) {
-      throw new AppError(404, "Article not foud");
-    }
-
     await prisma.article.delete({ where: { id } });
   }
 }

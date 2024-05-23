@@ -8,19 +8,10 @@ const messageSchema = z.object({
   description: z.string().min(1),
 });
 
-const MessageSchema = messageSchema.omit({
+const BodyMessageSchema = messageSchema.omit({
   id: true,
 });
 
-const MessageUpdateSchema = MessageSchema.partial();
+const MessageUpdateSchema = BodyMessageSchema.partial();
 
-type typeExpectationMessage = z.infer<typeof MessageSchema>;
-type typeMessage = z.infer<typeof MessageSchema>;
-
-export {
-  messageSchema,
-  MessageSchema,
-  MessageUpdateSchema,
-  typeExpectationMessage,
-  typeMessage,
-};
+export { messageSchema, BodyMessageSchema, MessageUpdateSchema };

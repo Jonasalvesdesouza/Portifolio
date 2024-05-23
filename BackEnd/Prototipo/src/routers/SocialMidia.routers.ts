@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { SocialMidiaServices } from "../services";
 import { SocialMediaControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
-import { SocialMediaSchema, SocialMediaUpdateSchema } from "../schemas";
+import { BodySocialMediaSchema, SocialMediaUpdateSchema } from "../schemas";
 
 const SocialMidiaRouter = Router();
 
@@ -13,7 +13,7 @@ const Controllers = container.resolve(SocialMediaControllers);
 SocialMidiaRouter.post(
   "/",
   userAuth.VerifyToken,
-  ValidateBody.execute(SocialMediaSchema),
+  ValidateBody.execute(BodySocialMediaSchema),
   (req, res) => Controllers.create(req, res)
 );
 

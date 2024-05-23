@@ -10,24 +10,10 @@ const projectsSchema = z.object({
   subCategory: z.string().min(1),
 });
 
-const ProjectsSchema = projectsSchema.omit({
+const BodyProjectsSchema = projectsSchema.omit({
   id: true,
 });
 
-const ProjectsUpdateSchema = ProjectsSchema.partial();
+const ProjectsUpdateSchema = BodyProjectsSchema.partial();
 
-type typeExpectationProjects = z.infer<typeof ProjectsSchema>;
-type typeProjects = z.infer<typeof ProjectsSchema>;
-
-type typeUpdateExpectationProjects = Partial<typeExpectationProjects>;
-type typeUpdateProjects = Partial<typeProjects>;
-
-export {
-  projectsSchema,
-  ProjectsSchema,
-  ProjectsUpdateSchema,
-  typeExpectationProjects,
-  typeProjects,
-  typeUpdateExpectationProjects,
-  typeUpdateProjects,
-};
+export { projectsSchema, BodyProjectsSchema, ProjectsUpdateSchema };

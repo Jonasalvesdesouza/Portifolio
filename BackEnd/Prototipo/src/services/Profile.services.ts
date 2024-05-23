@@ -2,15 +2,16 @@ import { injectable } from "tsyringe";
 import { prisma } from "../database/prisma";
 
 import {
-  typeCreateProfile,
-  typeProfileFull,
-  typeUpdateProfile,
-} from "../schemas";
+  Iprofile,
+  IBodyProfile,
+  IBodyUpdateProfile,
+  IBodyFullProfile,
+} from "../interfaces";
 import { AppError } from "../erros";
 
 @injectable()
 class ProfileServices {
-  async create(body: typeCreateProfile, userId: number) {
+  async create(body: IBodyProfile, userId: number): Promise<IBodyProfile> {
     const user = await prisma.user.findFirst({
       where: {
         id: userId,
@@ -39,7 +40,7 @@ class ProfileServices {
     return data;
   }
 
-  async findFirst(): Promise<typeProfileFull | null> {
+  async findFirst(): Promise<IBodyFullProfile | null> {
     const data = await prisma.profile.findFirst({
       include: {
         contact: true,
@@ -85,8 +86,8 @@ class ProfileServices {
 
   async update(
     id: number,
-    body: typeUpdateProfile
-  ): Promise<typeUpdateProfile> {
+    body: IBodyUpdateProfile
+  ): Promise<IBodyUpdateProfile> {
     const profile = await prisma.profile.findFirst({
       where: { userId: id },
     });

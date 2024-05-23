@@ -7,7 +7,7 @@ import {
   hobbySchema,
   jobExperienceSchema,
   messageSchema,
-  ImageSchema,
+  BodyImageSchema,
   projectsSchema,
   skillSchema,
   socialMediaSchema,
@@ -35,14 +35,14 @@ const profileSchema = z.object({
   message: z.array(messageSchema).nullish(),
 });
 
-const ProfileSchema = profileSchema.pick({
+const BodyProfileSchema = profileSchema.pick({
   profession: true,
   presentation: true,
   about: true,
   bio: true,
 });
 
-const ProfileUpdateSchema = ProfileSchema.partial();
+const ProfileUpdateSchema = BodyProfileSchema.partial();
 
 const ProfileFullSchema = profileSchema
   .omit({
@@ -60,19 +60,12 @@ const ProfileFullSchema = profileSchema
   .extend({
     user: userSchema.nullish(),
     contact: contactSchema.nullish(),
-    image: ImageSchema.nullish(),
+    image: BodyImageSchema.nullish(),
   });
-
-type typeCreateProfile = z.infer<typeof ProfileSchema>;
-type typeUpdateProfile = Partial<typeCreateProfile>;
-type typeProfileFull = z.infer<typeof ProfileFullSchema>;
 
 export {
   profileSchema,
-  ProfileSchema,
+  BodyProfileSchema,
   ProfileUpdateSchema,
   ProfileFullSchema,
-  typeCreateProfile,
-  typeUpdateProfile,
-  typeProfileFull,
 };

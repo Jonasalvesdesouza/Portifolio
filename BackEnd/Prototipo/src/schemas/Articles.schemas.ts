@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ImageSchema } from ".";
+import { BodyImageSchema } from ".";
 
 const articlesSchema = z.object({
   id: z.number().positive(),
@@ -19,7 +19,7 @@ const ReturnBodyArticleSchema = articlesSchema
     imageId: true,
   })
   .extend({
-    image: ImageSchema.nullish(),
+    image: BodyImageSchema.nullish(),
   });
 
 export {

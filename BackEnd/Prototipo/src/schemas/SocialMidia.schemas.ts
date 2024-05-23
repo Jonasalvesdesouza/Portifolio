@@ -6,24 +6,10 @@ const socialMediaSchema = z.object({
   link: z.string().min(1),
 });
 
-const SocialMediaSchema = socialMediaSchema.omit({
+const BodySocialMediaSchema = socialMediaSchema.omit({
   id: true,
 });
 
-const SocialMediaUpdateSchema = SocialMediaSchema.partial();
+const SocialMediaUpdateSchema = BodySocialMediaSchema.partial();
 
-type typeExpectationSocialMedia = z.infer<typeof SocialMediaSchema>;
-type typeSocialMedia = z.infer<typeof SocialMediaSchema>;
-
-type typeUpdateSocialmediaExpct = Partial<typeExpectationSocialMedia>;
-type typeUpdateSocialMedia = Partial<typeSocialMedia>;
-
-export {
-  socialMediaSchema,
-  SocialMediaSchema,
-  SocialMediaUpdateSchema,
-  typeExpectationSocialMedia,
-  typeSocialMedia,
-  typeUpdateSocialmediaExpct,
-  typeUpdateSocialMedia,
-};
+export { socialMediaSchema, BodySocialMediaSchema, SocialMediaUpdateSchema };

@@ -1,14 +1,14 @@
 import { prisma } from "../../database/prisma";
 import { AppError } from "../../erros";
 
-import { typeExpectationImage, typeUpdateImageExpect } from "../../schemas";
+import { IImage, IBodyUpdateImage } from "../../interfaces";
 
 class ImageProjectServices {
   async create(
     userId: number,
     projectIdId: number,
     path: string
-  ): Promise<typeExpectationImage> {
+  ): Promise<IImage> {
     if (!userId) {
       throw new AppError(409, "User ID is required");
     }
@@ -47,7 +47,7 @@ class ImageProjectServices {
     path: string,
     userId: number,
     imageId: number
-  ): Promise<typeUpdateImageExpect> {
+  ): Promise<IBodyUpdateImage> {
     const profile = await prisma.profile.findFirst({
       where: { userId },
     });

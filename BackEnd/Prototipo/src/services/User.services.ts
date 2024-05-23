@@ -4,19 +4,19 @@ import { injectable } from "tsyringe";
 
 import { prisma } from "../database/prisma";
 import { AppError } from "../erros/appError";
+import { UserReturnSchema } from "../schemas";
 import {
-  typeCreateUser,
-  typeLoginUser,
-  UserReturnSchema,
-  typeUserReturnSchema,
-  typeLoginReturn,
-  typeUpdateUser,
-} from "../schemas";
+  IBodyCreateUser,
+  IBodypdateUser,
+  IBodyLoginUser,
+  IBodyUserReturn,
+  IBodyLoginReturn,
+} from "../interfaces";
 import { jwtConfig } from "../configs";
 
 @injectable()
 class UserServices {
-  async userRegister(body: typeCreateUser): Promise<typeUserReturnSchema> {
+  async userRegister(body: IBodyCreateUser): Promise<IBodyUserReturn> {
     if (!body.password) {
       throw new AppError(400, "Password is required");
     }
@@ -39,7 +39,7 @@ class UserServices {
     return UserReturnSchema.parse(newUser);
   }
 
-  async login({ email, password }: typeLoginUser): Promise<typeLoginReturn> {
+  async login({ email, password }: IBodyLoginUser): Promise<IBodyLoginReturn> {
     const user = await prisma.user.findFirst({
       where: { email },
       include: { profile: true },
@@ -70,8 +70,8 @@ class UserServices {
 
   async update(
     id: number,
-    { email, password, name }: typeUpdateUser
-  ): Promise<typeUpdateUser> {
+    { email, password, name }: IBodypdateUser
+  ): Promise<IBodypdateUser> {
     if (password) {
       const hashedPassword = await hash(password, 10);
 
@@ -100,7 +100,7 @@ class UserServices {
     return UserReturnSchema.parse(user);
   }
 
-  async getUser(id: number): Promise<typeUserReturnSchema> {
+  async getUser(id: number): Promise<IBodyUserReturn> {
     if (!id) {
       throw new AppError(404, "User id required.");
     }

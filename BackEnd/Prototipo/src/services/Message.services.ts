@@ -1,10 +1,10 @@
 import { prisma } from "../database/prisma";
 import { AppError } from "../erros";
 
-import { typeMessage, typeExpectationMessage } from "../schemas";
+import { IMessage, IBodyMessage } from "../interfaces";
 
 class MessageServices {
-  async create(body: typeMessage, id: number): Promise<typeExpectationMessage> {
+  async create(body: IBodyMessage, id: number): Promise<IMessage> {
     const data = await prisma.message.create({
       data: {
         ...body,

@@ -6,24 +6,10 @@ const skillSchema = z.object({
   category: z.string().min(1),
 });
 
-const SkillSchema = skillSchema.omit({
+const BodySkillSchema = skillSchema.omit({
   id: true,
 });
 
-const SkillUpdateSchema = SkillSchema.partial();
+const SkillUpdateSchema = BodySkillSchema.partial();
 
-type typeExpctationSkill = z.infer<typeof SkillSchema>;
-type typeSkill = z.infer<typeof SkillSchema>;
-
-type typeUpdateExpectSkill = Partial<typeExpctationSkill>;
-type typeUpdateSkill = Partial<typeSkill>;
-
-export {
-  skillSchema,
-  SkillSchema,
-  SkillUpdateSchema,
-  typeExpctationSkill,
-  typeSkill,
-  typeUpdateExpectSkill,
-  typeUpdateSkill,
-};
+export { skillSchema, BodySkillSchema, SkillUpdateSchema };

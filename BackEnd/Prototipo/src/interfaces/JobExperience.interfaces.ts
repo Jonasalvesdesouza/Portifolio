@@ -1,26 +1,8 @@
 import { z } from "zod";
+import { BodyJobExperienceSchema, jobExperienceSchema } from "../schemas";
 
-export const jobExperienceSchema = z.object({
-  id: z.number().positive(),
-  title: z.string().min(1),
-  companyName: z.string().min(1),
-  country: z.string().min(1),
-  city: z.string().min(1),
-  state: z.string().min(1),
-  description: z.string().min(1),
-  initialDate: z.string(),
-  endDate: z.string(),
-});
+type IJobExperience = z.infer<typeof jobExperienceSchema>;
+type IbodyJobExperience = z.infer<typeof BodyJobExperienceSchema>;
+type IbodyUpateJobExperience = Partial<IbodyJobExperience>;
 
-export const JobExperienceSchema = jobExperienceSchema.omit({
-  id: true,
-});
-
-export const JobExperienceUpdateSchema = JobExperienceSchema.partial();
-
-export type typeExpectationJobExperience = z.infer<typeof JobExperienceSchema>;
-export type typeJobExperience = z.infer<typeof JobExperienceSchema>;
-
-export type typeUpdateExpectationJobExperience =
-  Partial<typeExpectationJobExperience>;
-export type typeUpdateJobExperience = Partial<typeJobExperience>;
+export { IJobExperience, IbodyJobExperience, IbodyUpateJobExperience };

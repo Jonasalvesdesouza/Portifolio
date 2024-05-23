@@ -1,83 +1,36 @@
 export {
-  socialMediaSchema,
-  SocialMediaSchema,
-  SocialMediaUpdateSchema,
-  typeExpectationSocialMedia,
-  typeSocialMedia,
-  typeUpdateSocialmediaExpct,
-  typeUpdateSocialMedia,
+  ISocialMedia,
+  IBodySocialMedia,
+  IBodyUpdateSocialMedia,
 } from "./SocialMidia.interfaces";
 
-export {
-  imageSchema,
-  ImageSchema,
-  ImageUpdateSchema,
-  ImageReturnSchema,
-  typeExpectationImage,
-  typeImage,
-  typeUpdateImage,
-  typeUpdateImageExpect,
-} from "./Image.interfaces";
+export { IImage, IBodyImage, IBodyUpdateImage } from "./Image.interfaces";
+
+export { IHobby, IBodyHobby, IBodyUpdateHobby } from "./Hobby.interfaces";
+
+export { ISkill, IBodySkill, IBodyUpdateSkill } from "./Skill.interfaces";
 
 export {
-  hobbySchema,
-  HobbySchema,
-  HobbyUpdate,
-  typeExpectationHobby,
-  typeHobby,
-  typeExpectUpdateHobby,
-  typeUpdateHobby,
-} from "./Hobby.interfaces";
-
-export {
-  skillSchema,
-  SkillSchema,
-  SkillUpdateSchema,
-  typeExpctationSkill,
-  typeSkill,
-  typeUpdateExpectSkill,
-  typeUpdateSkill,
-} from "./Skill.interfaces";
-
-export {
-  jobExperienceSchema,
-  JobExperienceSchema,
-  JobExperienceUpdateSchema,
-  typeExpectationJobExperience,
-  typeJobExperience,
-  typeUpdateExpectationJobExperience,
-  typeUpdateJobExperience,
+  IJobExperience,
+  IbodyJobExperience,
+  IbodyUpateJobExperience,
 } from "./JobExperience.interfaces";
 
 export {
-  educationSchema,
-  EducationSchema,
-  EducationUpdateSchema,
-  typeExpectationEducation,
-  typeEducation,
-  typeUpdateExpectationEducation,
-  typeUpdateEducation,
+  IEducation,
+  IBodyEducation,
+  IbodyUpDateEducation,
 } from "./Education.interfaces";
 
 export {
-  projectsSchema,
-  ProjectsSchema,
-  ProjectsUpdateSchema,
-  typeExpectationProjects,
-  typeProjects,
-  typeUpdateExpectationProjects,
-  typeUpdateProjects,
+  IProject,
+  IBodyProjects,
+  IBodyUpdateProjects,
 } from "./Projects.interfaces";
 
 export { IArticles, IBodyArticles, IbodyUpdate } from "./Articles.interfaces";
 
-export {
-  messageSchema,
-  MessageSchema,
-  MessageUpdateSchema,
-  typeExpectationMessage,
-  typeMessage,
-} from "./Message.interfaces";
+export { IMessage, IBodyMessage } from "./Message.interfaces";
 
 export {
   IContact,
@@ -86,25 +39,17 @@ export {
 } from "./Contact.interfaces";
 
 export {
-  userSchema,
-  UserSchema,
-  PromiseUserSchema,
-  LoginUserSchema,
-  typePromiseUserSchema,
-  typeCreateUser,
-  typeUpdateUser,
-  typeLoginUser,
-  UserReturnSchema,
-  typeUserReturnSchema,
-  typeLoginReturn,
+  IUser,
+  IBodyCreateUser,
+  IBodypdateUser,
+  IBodyLoginUser,
+  IBodyUserReturn,
+  IBodyLoginReturn,
 } from "./User.interfaces";
 
 export {
-  profileSchema,
-  ProfileSchema,
-  ProfileUpdateSchema,
-  ProfileFullSchema,
-  typeCreateProfile,
-  typeUpdateProfile,
-  typeProfileFull,
+  Iprofile,
+  IBodyProfile,
+  IBodyUpdateProfile,
+  IBodyFullProfile,
 } from "./Profile.interfaces";

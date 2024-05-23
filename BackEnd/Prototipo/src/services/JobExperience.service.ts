@@ -2,17 +2,16 @@ import { prisma } from "../database/prisma";
 import { AppError } from "../erros";
 
 import {
-  typeExpectationJobExperience,
-  typeJobExperience,
-  typeUpdateExpectationJobExperience,
-  typeUpdateJobExperience,
-} from "../schemas";
+  IJobExperience,
+  IbodyJobExperience,
+  IbodyUpateJobExperience,
+} from "../interfaces";
 
 class JobExperienceServices {
   async create(
-    body: typeJobExperience,
+    body: IbodyJobExperience,
     userId: number
-  ): Promise<typeExpectationJobExperience> {
+  ): Promise<IJobExperience> {
     if (!userId) {
       throw new AppError(409, "User ID is required");
     }
@@ -58,10 +57,10 @@ class JobExperienceServices {
   }
 
   async Update(
-    body: typeUpdateJobExperience,
+    body: IbodyUpateJobExperience,
     userId: number,
     id: number
-  ): Promise<typeUpdateExpectationJobExperience> {
+  ): Promise<IJobExperience> {
     const profile = await prisma.profile.findFirst({
       where: { userId },
     });

@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { HobbyServices } from "../services";
 import { HobbyControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
-import { HobbySchema, HobbyUpdate } from "../schemas";
+import { BodyHobbySchema, HobbyUpdate } from "../schemas";
 
 const HobbyRouter = Router();
 
@@ -13,7 +13,7 @@ const Controllers = container.resolve(HobbyControllers);
 HobbyRouter.post(
   "/",
   userAuth.VerifyToken,
-  ValidateBody.execute(HobbySchema),
+  ValidateBody.execute(BodyHobbySchema),
   (req, res) => Controllers.create(req, res)
 );
 HobbyRouter.get("/:id", (req, res) => Controllers.getOne(req, res));

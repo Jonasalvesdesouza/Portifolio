@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { ProfileServices } from "../services";
 import { ProfileControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
-import { ProfileSchema, ProfileUpdateSchema } from "../schemas";
+import { BodyProfileSchema, ProfileUpdateSchema } from "../schemas";
 import { ContactRouter } from "./Contact.routers";
 import { ImageProfileRouter } from "./Image";
 
@@ -14,7 +14,7 @@ const profileControllers = container.resolve(ProfileControllers);
 
 ProfileRouter.post(
   "/",
-  ValidateBody.execute(ProfileSchema),
+  ValidateBody.execute(BodyProfileSchema),
   userAuth.VerifyToken,
   (req, res) => profileControllers.create(req, res)
 );

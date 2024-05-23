@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { ContactServices } from "../services";
 import { ContactControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
-import { contactSchema, ContactUpdateSchema } from "../schemas";
+import { ContactBodySchema, ContactUpdateSchema } from "../schemas";
 
 const ContactRouter = Router();
 
@@ -13,7 +13,7 @@ const contactControllers = container.resolve(ContactControllers);
 ContactRouter.post(
   "/contact/",
   userAuth.VerifyToken,
-  ValidateBody.execute(contactSchema),
+  ValidateBody.execute(ContactBodySchema),
   (req, res) => contactControllers.create(req, res)
 );
 

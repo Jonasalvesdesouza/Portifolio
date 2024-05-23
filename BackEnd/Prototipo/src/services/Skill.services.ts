@@ -1,15 +1,10 @@
 import { prisma } from "../database/prisma";
 import { AppError } from "../erros";
 
-import {
-  typeExpctationSkill,
-  typeSkill,
-  typeUpdateExpectSkill,
-  typeUpdateSkill,
-} from "../schemas";
+import { ISkill, IBodySkill, IBodyUpdateSkill } from "../interfaces";
 
 class SkillServices {
-  async create(body: typeSkill, userId: number): Promise<typeExpctationSkill> {
+  async create(body: IBodySkill, userId: number): Promise<ISkill> {
     if (!userId) {
       throw new AppError(409, "User ID is required");
     }
@@ -55,10 +50,10 @@ class SkillServices {
   }
 
   async Update(
-    body: typeUpdateSkill,
+    body: IBodyUpdateSkill,
     userId: number,
     id: number
-  ): Promise<typeUpdateExpectSkill> {
+  ): Promise<ISkill> {
     const profile = await prisma.profile.findFirst({
       where: { userId },
     });

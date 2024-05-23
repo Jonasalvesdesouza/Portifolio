@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { SkillServices } from "../services";
 import { SkillControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
-import { SkillSchema, SkillUpdateSchema } from "../schemas";
+import { BodySkillSchema, SkillUpdateSchema } from "../schemas";
 
 const SkillRouter = Router();
 
@@ -13,7 +13,7 @@ const Controllers = container.resolve(SkillControllers);
 SkillRouter.post(
   "/",
   userAuth.VerifyToken,
-  ValidateBody.execute(SkillSchema),
+  ValidateBody.execute(BodySkillSchema),
   (req, res) => Controllers.create(req, res)
 );
 SkillRouter.get("/:id", (req, res) => Controllers.getOne(req, res));

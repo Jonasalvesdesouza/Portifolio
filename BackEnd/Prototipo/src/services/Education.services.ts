@@ -3,17 +3,13 @@ import { prisma } from "../database/prisma";
 import { AppError } from "../erros";
 
 import {
-  typeExpectationEducation,
-  typeEducation,
-  typeUpdateExpectationEducation,
-  typeUpdateEducation,
-} from "../schemas";
+  IEducation,
+  IBodyEducation,
+  IbodyUpDateEducation,
+} from "../interfaces";
 
 class EducationServices {
-  async create(
-    body: typeEducation,
-    userId: number
-  ): Promise<typeExpectationEducation> {
+  async create(body: IBodyEducation, userId: number): Promise<IEducation> {
     if (!userId) {
       throw new AppError(409, "User ID is required");
     }
@@ -69,10 +65,10 @@ class EducationServices {
   }
 
   async Update(
-    body: typeUpdateEducation,
+    body: IbodyUpDateEducation,
     userId: number,
     id: number
-  ): Promise<typeUpdateExpectationEducation> {
+  ): Promise<IEducation> {
     const profile = await prisma.profile.findFirst({
       where: { userId },
     });

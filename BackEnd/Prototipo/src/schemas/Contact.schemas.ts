@@ -9,6 +9,7 @@ const contactSchema = z.object({
 
 const ContactBodySchema = contactSchema.omit({
   id: true,
+  profileId: true,
 });
 
 const ContactUpdateSchema = contactSchema.partial();

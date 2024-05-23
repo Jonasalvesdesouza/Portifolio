@@ -1,18 +1,9 @@
 import { z } from "zod";
+import { hobbySchema } from "../schemas";
+import { BodyHobbySchema } from "../schemas/Hobby.schemas";
 
-export const hobbySchema = z.object({
-  id: z.number().positive(),
-  name: z.string().min(1),
-});
+type IHobby = z.infer<typeof hobbySchema>;
+type IBodyHobby = z.infer<typeof BodyHobbySchema>;
+type IBodyUpdateHobby = Partial<IBodyHobby>;
 
-export const HobbySchema = hobbySchema.omit({
-  id: true,
-});
-
-export const HobbyUpdate = HobbySchema.partial();
-
-export type typeExpectationHobby = z.infer<typeof HobbySchema>;
-export type typeHobby = z.infer<typeof HobbySchema>;
-
-export type typeExpectUpdateHobby = Partial<typeExpectationHobby>;
-export type typeUpdateHobby = Partial<typeHobby>;
+export { IHobby, IBodyHobby, IBodyUpdateHobby };

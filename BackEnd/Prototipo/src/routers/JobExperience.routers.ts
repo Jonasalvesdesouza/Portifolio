@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { JobExperienceServices } from "../services";
 import { JobExperienceControllers } from "../controllers";
 import { ValidateBody, userAuth } from "../middlewares";
-import { JobExperienceSchema, JobExperienceUpdateSchema } from "../schemas";
+import { BodyJobExperienceSchema, JobExperienceUpdateSchema } from "../schemas";
 
 const JobExperienceRouter = Router();
 
@@ -13,7 +13,7 @@ const Controllers = container.resolve(JobExperienceControllers);
 JobExperienceRouter.post(
   "/",
   userAuth.VerifyToken,
-  ValidateBody.execute(JobExperienceSchema),
+  ValidateBody.execute(BodyJobExperienceSchema),
   (req, res) => Controllers.create(req, res)
 );
 

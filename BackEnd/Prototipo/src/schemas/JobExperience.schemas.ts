@@ -12,24 +12,14 @@ const jobExperienceSchema = z.object({
   endDate: z.string(),
 });
 
-const JobExperienceSchema = jobExperienceSchema.omit({
+const BodyJobExperienceSchema = jobExperienceSchema.omit({
   id: true,
 });
 
-const JobExperienceUpdateSchema = JobExperienceSchema.partial();
-
-type typeExpectationJobExperience = z.infer<typeof JobExperienceSchema>;
-type typeJobExperience = z.infer<typeof JobExperienceSchema>;
-
-type typeUpdateExpectationJobExperience = Partial<typeExpectationJobExperience>;
-type typeUpdateJobExperience = Partial<typeJobExperience>;
+const JobExperienceUpdateSchema = BodyJobExperienceSchema.partial();
 
 export {
   jobExperienceSchema,
-  JobExperienceSchema,
+  BodyJobExperienceSchema,
   JobExperienceUpdateSchema,
-  typeExpectationJobExperience,
-  typeJobExperience,
-  typeUpdateExpectationJobExperience,
-  typeUpdateJobExperience,
 };

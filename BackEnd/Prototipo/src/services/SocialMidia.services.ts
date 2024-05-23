@@ -2,17 +2,13 @@ import { prisma } from "../database/prisma";
 import { AppError } from "../erros";
 
 import {
-  typeExpectationSocialMedia,
-  typeSocialMedia,
-  typeUpdateSocialmediaExpct,
-  typeUpdateSocialMedia,
-} from "../schemas";
+  ISocialMedia,
+  IBodySocialMedia,
+  IBodyUpdateSocialMedia,
+} from "../interfaces";
 
 class SocialMidiaServices {
-  async create(
-    body: typeSocialMedia,
-    userId: number
-  ): Promise<typeExpectationSocialMedia> {
+  async create(body: IBodySocialMedia, userId: number): Promise<ISocialMedia> {
     if (!userId) {
       throw new AppError(409, "User ID is required");
     }
@@ -66,10 +62,10 @@ class SocialMidiaServices {
   }
 
   async Update(
-    body: typeUpdateSocialMedia,
+    body: IBodyUpdateSocialMedia,
     userId: number,
     id: number
-  ): Promise<typeUpdateSocialmediaExpct> {
+  ): Promise<ISocialMedia> {
     const profile = await prisma.profile.findFirst({
       where: { userId },
     });
