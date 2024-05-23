@@ -28,11 +28,11 @@ UserRouter.post("/login", ValidateBody.execute(LoginUserSchema), (req, res) =>
   userControllers.login(req, res)
 );
 
-UserRouter.patch("/:id", ckUser.checkUserId, userAuth.VerifyToken, (req, res) =>
+UserRouter.patch("/", userAuth.VerifyToken, ckUser.checkUserId, (req, res) =>
   userControllers.update(req, res)
 );
 
-UserRouter.get("/:id", ckUser.checkUserId, userAuth.VerifyToken, (req, res) =>
+UserRouter.get("/:id", userAuth.VerifyToken, ckUser.checkUserId, (req, res) =>
   userControllers.getUser(req, res)
 );
 

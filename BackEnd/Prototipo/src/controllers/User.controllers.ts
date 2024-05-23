@@ -23,7 +23,7 @@ class UserControllers {
   }
 
   async update(req: Request, res: Response): Promise<Response> {
-    const userId = Number(req.params.id);
+    const userId = Number(res.locals.decode.id);
 
     const response = await this.userServices.update(userId, req.body);
 

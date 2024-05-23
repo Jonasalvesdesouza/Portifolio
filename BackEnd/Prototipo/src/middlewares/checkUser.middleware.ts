@@ -20,17 +20,21 @@ class checkUser {
 
   async checkUserId(req: Request, res: Response, next: NextFunction) {
     try {
-      const { id } = res.locals.decode.id;
-
-      const getUserId = await prisma.user.findFirst({
-        where: { id: Number(id) },
-      });
-
-      if (!getUserId) {
-        throw new AppError(404, "User not foud");
+      const userId = Number(res.locals.decode.id);
+      if (isNaN(userId)) {
+        throw new AppError(400, "Invalid user ID");
       }
 
-      return next();
+      const user = await prisma.user.findFirst({
+        where: { id: userId },
+      });
+
+      if (!user) {
+        throw new AppError(404, "User not found");
+      }
+
+      res.locals.user = user;
+      next();
     } catch (error) {
       next(error);
     }
