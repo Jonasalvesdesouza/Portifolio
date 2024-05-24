@@ -8,8 +8,8 @@ import { UserAdmContext } from '../../../../../providers';
 export const SectionContactCurriculum = () => {
   const { profile } = useContext(UserAdmContext);
 
-  const cel = profile.contact?.cel;
-  const email = profile.contact?.email;
+  const cel = profile?.contact?.cel;
+  const email = profile?.contact?.email;
 
   return (
     <div>

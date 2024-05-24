@@ -24,18 +24,10 @@ export const SectionWorkplace = () => {
 
   return (
     <div
-      className={`${isHeightHigh ? '' : styles.workplaceContainerHorizontal}`}
+      className={`${isHeightHigh ? `${styles.workplaceContainerVertical} container` : styles.workplaceContainerHorizontal}`}
     >
       <SectionMyLatestProjectsHomePage />
       <SectionReadMyBlogHomePage />
-
-      {isHeightHigh ? null : (
-        <div className={`${styles.buttonHorizontal}`}>
-          <Button id="button" onClick={handleClick}>
-            <IoIosArrowDown className="arrowIcon" />
-          </Button>
-        </div>
-      )}
     </div>
   );
 };

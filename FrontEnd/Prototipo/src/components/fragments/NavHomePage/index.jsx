@@ -27,7 +27,7 @@ export const NavHomePage = () => {
             <li className={`${styles.buttonContainer}`} key={button.index}>
               <Button
                 className={
-                  button.index === activeButton ? styles.activeButton : ''
+                  button.index === activeButton ? styles.activeButton : ``
                 }
                 onClick={() => setCurrentCard(button.index)}
               >

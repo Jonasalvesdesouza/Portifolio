@@ -48,7 +48,7 @@
     height: 100%;
     background: var(--color-gray2);
     transition: all 0.35s;
-    z-index: 1;
+    z-index: 2;
   }
 
   a:hover {
@@ -74,7 +74,7 @@
 
 .bntAboutHome {
   @extend %bntDefault;
-  left: 21vw;
+  left: 18vw;
 }
 
 .bntWorplace {
@@ -110,6 +110,8 @@
 
 .bntSendMeEmail {
   @extend %bntDefault;
+
+  margin-left: 18vw;
   button {
     font-family: var(--font-primary);
     font-size: 1.3vw;

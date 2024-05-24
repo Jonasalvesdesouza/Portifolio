@@ -5,7 +5,7 @@ import { useRenderImage } from '../../../../../hooks';
 export const SectionTopLeftCurriclum = () => {
   const { profile } = useContext(UserAdmContext);
 
-  const name = profile.userName?.toUpperCase();
+  const name = profile?.userName?.toUpperCase();
   const profession = profile?.profession;
 
   const urlImage = useRenderImage(profile);

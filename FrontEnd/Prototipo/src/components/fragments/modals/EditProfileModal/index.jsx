@@ -14,7 +14,7 @@ import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
 export const EditProfileModal = ({ setIsOpen }) => {
   const { imageProfile, setImageProfile } = useContext(AppBehaviorContext);
   const { profile } = useContext(UserAdmContext);
-  const [profileImage, setProjectImage] = useState('');
+  const [profileImage, setProjectImage] = useState();
 
   const closeModalOutClick = useOutclick(() => {
     setIsOpen(false);
@@ -30,13 +30,13 @@ export const EditProfileModal = ({ setIsOpen }) => {
   };
 
   useEffect(() => {
-    if (imageProfile) {
+    if (imageProfile === null) {
       setProjectImage(imageProfile);
     } else {
       const urlImage = useRenderImage(profile);
       setProjectImage(urlImage);
     }
-  }, [profile, imageProfile]);
+  }, [imageProfile, profileImage]);
 
   return (
     <div role="dialog" ref={closeModalOutClick}>

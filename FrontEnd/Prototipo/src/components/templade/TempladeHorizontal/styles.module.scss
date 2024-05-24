@@ -22,9 +22,6 @@
 }
 
 .mainContainer {
-  display: flex;
-  flex-direction: row;
-
   main {
     position: absolute;
     top: 20vh;
@@ -58,5 +55,32 @@
     top: 78vh;
     left: 0;
     width: 35vw;
+  }
+}
+
+.button {
+  position: absolute;
+  top: 85vh;
+  left: 50vw;
+  width: auto;
+  animation: moveUpDown 1.5s infinite alternate ease-in-out;
+  transition: 0.5s;
+  transform: 3s;
+
+  @media (max-width: 1700px) {
+    top: 45vw;
+  }
+}
+
+.button:hover {
+  opacity: 0.5;
+  animation: moveUpDown 0.5s infinite alternate ease-in-out;
+}
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-20px);
   }
 }

@@ -7,7 +7,7 @@ export const SectionAboutCurriculum = () => {
   return (
     <div>
       <h2>About.</h2>
-      <p>{profile.about}</p>
+      <p>{profile?.about}</p>
     </div>
   );
 };

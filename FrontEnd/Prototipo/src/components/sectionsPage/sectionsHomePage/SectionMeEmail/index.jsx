@@ -22,33 +22,18 @@ export const SectionMeEmail = () => {
   };
 
   return (
-    <div>
-      <div
-        className={`${isHeightHigh ? '' : styles.meEmailContainerHorizontal}`}
-      >
-        <div>
-          <h4 className="title1">
-            Send <span className="title1 yellow">me </span>a email
-            <span className="title1 yellow">.</span>
-          </h4>
-          <p className="parapraph home">
-            Are you in need of a project, or just say hello!
-          </p>
-        </div>
-        <div>
-          <FormSendMeEmail />
-        </div>
-      </div>
+    <div
+      className={`${isHeightHigh ? 'container' : styles.meEmailContainerHorizontal}`}
+    >
+      <h4 className="title1">
+        Send <span className="title1 yellow">me </span>a email
+        <span className="title1 yellow">.</span>
+      </h4>
+      <p className="parapraph home">
+        Are you in need of a project, or just say hello!
+      </p>
 
-      {isHeightHigh ? null : (
-        <Button
-          className={`${isHeightHigh ? '' : styles.buttonHorizontal}`}
-          id="button"
-          onClick={handleClick}
-        >
-          <IoIosArrowUp className="arrowIcon" />
-        </Button>
-      )}
+      <FormSendMeEmail />
     </div>
   );
 };

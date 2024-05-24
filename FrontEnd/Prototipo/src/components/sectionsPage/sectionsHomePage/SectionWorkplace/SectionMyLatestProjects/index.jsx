@@ -17,18 +17,16 @@ export const SectionMyLatestProjectsHomePage = () => {
     <div
       className={`${isHeightHigh ? '' : styles.workplaceProjectContainerHorizontal}`}
     >
-      <div>
-        <h3 className="title1">
-          My latest <br />
-          <span className="title1 yellow">Projects.</span>
-        </h3>
-        <p className="parapraph home">
-          Check out some freelance projects and work completed during my
-          learning journey as a full stack developer.
-        </p>
-      </div>
+      <h3 className="title1">
+        My latest <br />
+        <span className="title1 yellow">Projects.</span>
+      </h3>
+      <p className="parapraph home">
+        Check out some freelance projects and work completed during my learning
+        journey as a full stack developer.
+      </p>
 
-      <div className={`${styles.btnContainer} bntWorplace`}>
+      <div className={`${isHeightHigh ? '' : styles.btnContainer} bntWorplace`}>
         <Link onClick={handleClick} to={'/projects'}>
           <span>SEE MY LATEST WORK</span>
           <span>

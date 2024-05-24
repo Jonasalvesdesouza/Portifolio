@@ -17,18 +17,18 @@ export const SectionReadMyBlogHomePage = () => {
     <div
       className={`${isHeightHigh ? '' : styles.workplaceBlogContainerHorizontal}`}
     >
-      <div>
-        <h3 className="title1">
-          Let"s read <br />
-          my <span className="title1 yellow">blog!</span>
-        </h3>
-        <p className="parapraph home">
-          Welcome to my blog, where I'll share with you some of the knowledge
-          I've acquired during my journey.
-        </p>
-      </div>
+      <h3 className="title1">
+        Let"s read <br />
+        my <span className="title1 yellow">blog!</span>
+      </h3>
+      <p className="parapraph home">
+        Welcome to my blog, where I'll share with you some of the knowledge I've
+        acquired during my journey.
+      </p>
 
-      <div className={`${styles.btnContainer} bntWorplace2`}>
+      <div
+        className={`${isHeightHigh ? '' : styles.btnContainer} bntWorplace2`}
+      >
         <Link onClick={handleClick} to={'/blog'}>
           <span>READ MY ARTICLES</span>
           <span>

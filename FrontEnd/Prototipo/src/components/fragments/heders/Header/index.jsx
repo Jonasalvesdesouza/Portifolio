@@ -26,7 +26,7 @@ export const Header = ({ setIsOpen }) => {
 
   return (
     <header>
-      <div className={`${styles.headerContainer}`}>
+      <div className={`${styles.headerContainer} container`}>
         <div>
           {compareRoutes ? (
             <Link to={'/'} onClick={handleClickLogo}>

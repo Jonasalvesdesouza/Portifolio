@@ -1,19 +1,11 @@
 .workplaceBlogContainerHorizontal {
-  position: absolute;
-  left: 30vw;
-  width: 100%;
-
+  width: 28%;
   p {
-    position: absolute;
-    top: 15vh;
-    left: 0vw;
-    width: 25%;
+    margin-top: 1vw;
+    width: 100%;
   }
 }
 
 .btnContainer {
-  position: absolute;
-  top: 30vh;
-  left: 2vw;
-  width: 25%;
+  margin-top: 3vw;
 }
