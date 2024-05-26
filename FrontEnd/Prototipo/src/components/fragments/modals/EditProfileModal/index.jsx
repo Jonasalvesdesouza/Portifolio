@@ -30,7 +30,7 @@ export const EditProfileModal = ({ setIsOpen }) => {
   };
 
   useEffect(() => {
-    if (imageProfile === null) {
+    if (imageProfile) {
       setProjectImage(imageProfile);
     } else {
       const urlImage = useRenderImage(profile);

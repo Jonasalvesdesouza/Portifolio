@@ -21,15 +21,15 @@ export const AppBehaviorProvider = ({ children }) => {
   const [isOpenDashboard, setIsOpenDashboard] = useState(false);
   const [stateImage, setStateImage] = useState(false);
 
-  const [imageProfile, setImageProfile] = useState({});
-  const [imageProject, setImageProject] = useState({});
-  const [imageArticle, setImageArticle] = useState({});
+  const [imageProfile, setImageProfile] = useState('');
+  const [imageProject, setImageProject] = useState('');
+  const [imageArticle, setImageArticle] = useState('');
 
   const [returShapeHam, setReturShapeHam] = useState(false);
 
   const resetStadeCategorys = () => {
-    setCategorysArticles({});
-    setCategorysProject({});
+    setCategorysArticles('');
+    setCategorysProject('');
   };
 
   return (

@@ -11,13 +11,16 @@ import {
 import { NavModal } from '../../components/fragments';
 import { AppBehaviorContext } from '../../providers';
 
-import { useScreenWidth, useCardSwipe, useScreenHeight } from '../../hooks';
+import {
+  useScreenWidth,
+  useCardSwipe,
+  useScreenHeight,
+  useResponsive,
+} from '../../hooks';
 import styles from './styles.module.scss';
-import { smallResolution } from '../../config';
 
 export const HomePage = () => {
-  const { screenWidth, screenHeight, currentCard } =
-    useContext(AppBehaviorContext);
+  const { currentCard } = useContext(AppBehaviorContext);
 
   const [isOpen, setIsOpen] = useState(false);
   const [animate, setAnimate] = useState(false);
@@ -41,11 +44,9 @@ export const HomePage = () => {
   useScreenWidth();
   useScreenHeight();
 
-  const isHeightHigh = screenWidth * 0.6 <= screenHeight;
-
   return (
     <>
-      {isHeightHigh || screenWidth === smallResolution ? (
+      {useResponsive() ? (
         <DefaultTemplate setIsOpen={setIsOpen}>
           <div>
             <SectionBannerHomePage />

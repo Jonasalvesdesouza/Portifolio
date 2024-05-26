@@ -1,16 +1,18 @@
 .bannerContainerHorizontal {
   display: flex;
   flex-direction: column;
+}
 
-  margin-left: 3vw;
+.middleSectionHorizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-  @media (max-width: 1050px) {
-    h1 {
-      font-size: 3.8vw;
-    }
-    span {
-      font-size: 3.8vw;
-    }
+  width: 58%;
+
+  line-height: 2;
+  img {
+    width: 20vw;
   }
 }
 
@@ -18,27 +20,116 @@
   display: flex;
   flex-direction: column;
 
-  p {
-    width: 60%;
-  }
-  img {
-    width: 100%;
+  margin-left: 10vw;
+  margin-top: 2vw;
 
-    margin-right: 30px;
+  h1 {
+    color: var(--color-white);
+  }
+
+  @media (max-width: 1050px) {
+    h1 {
+      margin: 3vw 0vw 5vw 0vw;
+    }
+    .middleSectionVertical {
+      display: flex;
+      flex-direction: column-reverse;
+
+      position: relative;
+      top: 0vh;
+      left: -15vw;
+      p {
+        width: 70%;
+        margin-left: 5vw;
+        line-height: 1.2;
+      }
+
+      img {
+        margin: 0 10vw 8vw 10vw;
+      }
+    }
+
+    .middleSectionVertical:before {
+      content: '';
+      position: absolute;
+      top: 24vw;
+      left: 15vw;
+      width: 65vw;
+      height: 1px;
+      background-color: var(--color-gray0);
+    }
+  }
+
+  @media (max-width: 680px) {
+    h1 {
+      font-size: 6vw;
+      span {
+        font-size: 6vw;
+      }
+    }
+  }
+  @media (max-width: 570px) {
+    h1 {
+      font-size: 6.5vw;
+      span {
+        font-size: 6.5vw;
+      }
+    }
   }
 }
 
-.middleSection {
+.middleSectionVertical {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 58%;
+  width: 100%;
+  p {
+    font-size: 18px;
+    width: 55%;
+    line-height: 1.5;
+  }
   img {
     width: 20vw;
+    margin-left: 1.5vw;
   }
-}
 
-.presentationVertical {
-  width: 100%;
-  margin-right: 20px;
+  @media (max-width: 1800px) {
+    p {
+      width: 40%;
+    }
+    img {
+      width: 23vw;
+      margin-left: 10vw;
+    }
+  }
+  @media (max-width: 1260px) {
+    p {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 1090px) {
+    p {
+      width: 68%;
+    }
+    img {
+      margin: 0 10vw 5vw 4vw;
+    }
+  }
+
+  @media (max-width: 800px) {
+    p {
+      line-height: 2;
+    }
+  }
+  @media (max-width: 680px) {
+    p {
+      font-size: 2.3vw;
+    }
+  }
+  @media (max-width: 570px) {
+    p {
+      font-size: 3vw;
+    }
+  }
 }

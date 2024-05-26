@@ -1,12 +1,6 @@
 .workplaceContainerHorizontal {
   display: flex;
   flex-direction: row;
-
-  margin-left: 3vw;
-}
-.workplaceContainerVertical {
-  display: flex;
-  flex-direction: row;
 }
 
 .workplaceContainerHorizontal:before {
@@ -17,4 +11,46 @@
   width: 1px;
   height: 53vh;
   background-color: var(--color-gray0);
+}
+
+.workplaceContainerVertical {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 10vw;
+  margin-left: 10vw;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+
+    margin-left: 0vw;
+  }
+}
+
+.workplaceContainerVertical:before {
+  content: '';
+  position: relative;
+  top: -3vw;
+  left: 33vw;
+  width: 1px;
+  height: 25vw;
+  background-color: var(--colo-Darkwhite);
+
+  @media (max-width: 1430px) {
+    height: 28vw;
+  }
+
+  @media (max-width: 1050px) {
+    height: 35vw;
+  }
+
+  @media (max-width: 900px) {
+    position: relative;
+    top: 24.5vw;
+    left: 10vw;
+    width: 68vw;
+    height: 1px;
+
+    background-color: var(--color-gray0);
+  }
 }

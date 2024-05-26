@@ -35,7 +35,7 @@ export const FormSendMeEmail = () => {
             <div className={`${styles.inputContainer}`}>
               <span className={`${styles.labelSendMeEmail}`}>You Name.</span>
               <Input
-                className="input-medium parapraph home"
+                className="input-medium parapraph homeInput"
                 placeholder="Enter your name"
                 type="text"
                 error={errors.title}
@@ -48,7 +48,7 @@ export const FormSendMeEmail = () => {
                 Email Anddress.
               </span>
               <Input
-                className="input-medium parapraph home"
+                className="input-medium parapraph homeInput"
                 placeholder="Enter your email address"
                 type="email"
                 error={errors.email}
@@ -60,7 +60,7 @@ export const FormSendMeEmail = () => {
           <div className={`${styles.textAreaContainer}`}>
             <span className={`${styles.labelSendMeEmail}`}>Your Message.</span>
             <TextArea
-              className="textArea-medium parapraph home"
+              className="textArea-medium parapraph homeInput"
               placeholder="Come on, don't be shy, send a message..."
               cols={30}
               row={5}

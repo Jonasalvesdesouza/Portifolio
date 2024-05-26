@@ -8,8 +8,14 @@ import styles from './styles.module.scss';
 import { HamburgerButton } from '../../HamburguerButton';
 
 export const Header = ({ setIsOpen }) => {
-  const { location, setRouteLocation, setCurrentCard, setReturShapeHam } =
-    useContext(AppBehaviorContext);
+  const {
+    location,
+    setRouteLocation,
+    setCurrentCard,
+    setReturShapeHam,
+    screenWidth,
+    screenHeight,
+  } = useContext(AppBehaviorContext);
 
   const compareRoutes = location === '/projects' || location === '/blog';
 
@@ -26,7 +32,7 @@ export const Header = ({ setIsOpen }) => {
 
   return (
     <header>
-      <div className={`${styles.headerContainer} container`}>
+      <div className={`${styles.headerContainer}`}>
         <div>
           {compareRoutes ? (
             <Link to={'/'} onClick={handleClickLogo}>

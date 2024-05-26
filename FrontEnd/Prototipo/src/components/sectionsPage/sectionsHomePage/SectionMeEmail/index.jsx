@@ -5,7 +5,7 @@ import { Button } from '../../../fragments';
 import { AppBehaviorContext } from '../../../../providers';
 
 import { FormSendMeEmail } from '../../../fragments/forms';
-import { useScreenWidth } from '../../../../hooks';
+import { useResponsive, useScreenWidth } from '../../../../hooks';
 import { smallResolution } from '../../../../config';
 
 import styles from './styles.module.scss';
@@ -13,7 +13,6 @@ import styles from './styles.module.scss';
 export const SectionMeEmail = () => {
   const { setCurrentCard, screenWidth, screenHeight } =
     useContext(AppBehaviorContext);
-  const isHeightHigh = screenWidth * 0.6 <= screenHeight;
 
   useScreenWidth();
 
@@ -23,7 +22,7 @@ export const SectionMeEmail = () => {
 
   return (
     <div
-      className={`${isHeightHigh ? 'container' : styles.meEmailContainerHorizontal}`}
+      className={`${useResponsive() ? styles.meEmailContainerVertical : styles.meEmailContainerHorizontal}`}
     >
       <h4 className="title1">
         Send <span className="title1 yellow">me </span>a email

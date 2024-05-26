@@ -16,6 +16,7 @@ export { useRemoveStringFromArray } from './useRemoveStringArray';
 export { useDateFormatEduIsJobExp } from './useDateFormatEduIsJobExp';
 export { useCardSwipe } from './useCardSwipe';
 export { useRenderImage } from './useRenderImage';
-export { useStateImage } from './useStateImage';
 export { useGetLinkObject } from './useGetLinkObject';
 export { useScreenHeight } from './useScreenHeight';
+export { useResponsive } from './useResponsive';
+export { useColorHamburgerBar } from './useColorHamburguerBar';

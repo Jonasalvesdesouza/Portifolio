@@ -8,6 +8,12 @@
   flex-direction: row;
 
   align-items: center;
+
+  @media (max-width: 1050px) {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+  }
 }
 
 .inputContainer {
@@ -19,6 +25,10 @@
 .textAreaContainer {
   margin-left: 2vw;
   margin-bottom: 2vw;
+
+  @media (max-width: 1050px) {
+    margin-left: 0vw;
+  }
 }
 
 .labelSendMeEmail {
@@ -28,8 +38,4 @@
   color: var(--color-black);
 
   margin-bottom: 0.625rem;
-}
-
-.btnSend {
-  margin-left: 800px;
 }

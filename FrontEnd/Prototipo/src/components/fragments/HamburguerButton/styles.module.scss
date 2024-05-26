@@ -4,6 +4,16 @@
   width: 4vw;
   transition: opacity 0.3s ease-in-out;
   cursor: pointer;
+
+  @media (max-width: 850px) {
+    width: 5vw;
+  }
+  @media (max-width: 650px) {
+    width: 6vw;
+  }
+  @media (max-width: 400px) {
+    width: 7vw;
+  }
 }
 .label:hover {
   opacity: 0.55;
@@ -12,9 +22,23 @@
 .label .span {
   background: var(--color-gray1);
   border-radius: 1vw;
-  height: 0.4vw;
+  height: 0.3vw;
   margin: 0.3vw 0;
   transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+  &.white {
+    background: var(--color-white);
+  }
+
+  @media (max-width: 850px) {
+    height: 0.6vw;
+  }
+  @media (max-width: 650px) {
+    height: 0.7vw;
+  }
+  @media (max-width: 400px) {
+    width: 0.8vw;
+  }
 }
 
 .span:nth-of-type(1) {

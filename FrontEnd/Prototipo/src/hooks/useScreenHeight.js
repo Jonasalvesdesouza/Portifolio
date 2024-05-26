@@ -9,7 +9,6 @@ export const useScreenHeight = () => {
       setScreenHeight(window.innerHeight);
     };
 
-    // Capture initial height
     handleResize();
 
     window.addEventListener('resize', handleResize);

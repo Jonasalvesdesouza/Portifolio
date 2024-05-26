@@ -1,6 +1,49 @@
 .meEmailContainerHorizontal {
-  margin-left: 3vw;
   form {
     margin-top: 1.5vw;
+  }
+}
+.meEmailContainerVertical {
+  margin-top: 8vw;
+  margin-left: 10vw;
+  margin-bottom: 5vw;
+
+  p {
+    margin-bottom: 1.5vw;
+  }
+
+  @media (max-width: 1050px) {
+    p {
+      font-size: 1.6vw;
+      line-height: 1.2;
+
+      margin-bottom: 3vw;
+    }
+  }
+
+  @media (max-width: 800px) {
+    p {
+      line-height: 1.2;
+    }
+  }
+
+  @media (max-width: 680px) {
+    h4 {
+      font-size: 6vw;
+      span {
+        font-size: 6vw;
+      }
+    }
+    p {
+      font-size: 2.3vw;
+    }
+  }
+  @media (max-width: 570px) {
+    h1 {
+      font-size: 6.5vw;
+      span {
+        font-size: 6.5vw;
+      }
+    }
   }
 }

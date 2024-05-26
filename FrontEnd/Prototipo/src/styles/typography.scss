@@ -5,7 +5,7 @@
 
 .title1 {
   @extend %title;
-  font-size: 3vw;
+  font-size: clamp(40px, 5vw, 51px);
 
   &.yellow {
     color: var(--color-yellow2);
@@ -14,7 +14,7 @@
 
 .title2 {
   @extend %title;
-  font-size: 1rem;
+  font-size: 2.1875rem;
 }
 
 %text {
@@ -29,19 +29,30 @@
 
 .parapraph {
   @extend %text;
-  font-size: 1.2vw;
+  font-size: clamp(11px, 1vw, 22px);
 
   &.home {
     color: var(--color-gray0);
-    line-height: 2;
   }
-  &.about {
+  &.homeWork {
     color: var(--color-gray0);
-    line-height: 1.3;
+    font-size: clamp(11px, 1.7vw, 22px);
+  }
+  &.homeWorkMobile {
+    color: var(--colo-Darkwhite);
+    font-size: clamp(11px, 1.7vw, 22px);
+  }
+  &.homeInput {
+    color: var(--color-gray0);
+    font-size: clamp(11px, 1.4vw, 22px);
+  }
+
+  &.homeMobile {
+    color: var(--colo-Darkwhite);
   }
 }
 
 .text {
   @extend %text;
-  font-size: 1vw;
+  font-size: 11px;
 }
