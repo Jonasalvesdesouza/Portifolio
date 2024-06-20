@@ -25,8 +25,6 @@ export const FormInsertSkill = ({ setIsOpenDashboard }) => {
   });
 
   const onSubmit = (payLoad) => {
-    console.log(handleSubmit);
-
     skillRegister(payLoad, setLoading, reset, setIsOpenDashboard);
   };
 

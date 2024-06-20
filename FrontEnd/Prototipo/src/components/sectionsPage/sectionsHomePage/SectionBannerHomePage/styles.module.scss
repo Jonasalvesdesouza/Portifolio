@@ -6,13 +6,20 @@
 .middleSectionHorizontal {
   display: flex;
   flex-direction: row;
-  align-items: center;
 
-  width: 58%;
+  width: 55%;
 
   line-height: 2;
+
+  p {
+    margin-top: 1vw;
+    width: 60%;
+    margin-right: 80px;
+  }
+
   img {
     width: 20vw;
+    margin-top: -4vw;
   }
 }
 
@@ -20,44 +27,60 @@
   display: flex;
   flex-direction: column;
 
-  margin-left: 10vw;
-  margin-top: 2vw;
+  margin-top: 5vw;
+  margin-bottom: 10vw;
 
   h1 {
     color: var(--color-white);
+    margin-left: 10vw;
   }
 
   @media (max-width: 1050px) {
+    height: 40vw;
+
     h1 {
-      margin: 3vw 0vw 5vw 0vw;
+      position: absolute;
+      top: 21vw;
+      left: 1vw;
     }
+
     .middleSectionVertical {
       display: flex;
       flex-direction: column-reverse;
 
       position: relative;
       top: 0vh;
-      left: -15vw;
+      left: -10vw;
       p {
         width: 70%;
-        margin-left: 5vw;
+        margin-left: 0vw;
         line-height: 1.2;
+
+        position: absolute;
+        top: 27vw;
+        left: 10vw;
       }
 
       img {
-        margin: 0 10vw 8vw 10vw;
+        position: absolute;
+        top: 5vw;
+        left: 40vw;
       }
     }
 
     .middleSectionVertical:before {
       content: '';
       position: absolute;
-      top: 24vw;
-      left: 15vw;
+      top: 27.1vw;
+      left: 10vw;
       width: 65vw;
       height: 1px;
       background-color: var(--color-gray0);
     }
+  }
+
+  @media (max-width: 705px) {
+    margin-bottom: 20vw;
   }
 
   @media (max-width: 680px) {
@@ -81,16 +104,21 @@
 .middleSectionVertical {
   display: flex;
   flex-direction: row;
-  align-items: center;
   width: 100%;
+
+  margin-left: 10vw;
+
   p {
     font-size: 18px;
     width: 55%;
     line-height: 1.5;
+
+    margin-top: 2vw;
   }
   img {
     width: 20vw;
     margin-left: 1.5vw;
+    margin-top: -9vw;
   }
 
   @media (max-width: 1800px) {
@@ -104,16 +132,16 @@
   }
   @media (max-width: 1260px) {
     p {
-      width: 50%;
+      width: 40%;
     }
   }
 
   @media (max-width: 1090px) {
     p {
-      width: 68%;
+      width: 45%;
     }
     img {
-      margin: 0 10vw 5vw 4vw;
+      margin: -5vw 0vw 0vw 8vw;
     }
   }
 

@@ -34,8 +34,6 @@ export const FormEditProject = ({ setIsOpen }) => {
   });
 
   const onSubmit = (payLoad) => {
-    console.log(handleSubmit);
-
     projectUpdate(payLoad, setLoading, reset, setIsOpen);
   };
 

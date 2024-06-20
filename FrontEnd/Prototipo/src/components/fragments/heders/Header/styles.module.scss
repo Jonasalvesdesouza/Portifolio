@@ -1,4 +1,4 @@
-.headerContainer {
+%headerDefault {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,7 +20,6 @@
   img:hover {
     opacity: 0.5;
   }
-
   @media (max-width: 1200px) {
     img {
       width: 3.5vw;
@@ -43,9 +42,10 @@
   }
 }
 
-.headerContainerVertical {
-  margin: 0 auto;
-  max-width: 90vw;
+.headerContainerHorizontal {
+  @extend %headerDefault;
+}
 
-  margin-bottom: 1.5vw;
+.headerContainerVertical {
+  @extend %headerDefault;
 }

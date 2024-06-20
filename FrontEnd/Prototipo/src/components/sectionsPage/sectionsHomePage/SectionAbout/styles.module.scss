@@ -4,9 +4,13 @@
   align-items: center;
 
   p {
-    margin-top: 3.1vw;
+    margin-top: 1vw;
     width: 55%;
     line-height: 2;
+  }
+  .bntCurriculum {
+    margin-left: 6vw;
+    margin-top: 1vw;
   }
 }
 
@@ -15,7 +19,11 @@
   flex-direction: column;
 
   margin-left: 10vw;
-  margin-top: 10vw;
+
+  .bntCurriculum {
+    margin-top: 1vw;
+  }
+
   p {
     font-size: 18px;
     width: 85%;
@@ -24,18 +32,17 @@
   }
 
   .bntCurriculum {
-    margin-left: 8vw;
+    margin-left: 12vw;
   }
   @media (max-width: 1050px) {
+    margin-top: 5vw;
+
     p {
       line-height: 1.2;
     }
   }
-
-  @media (max-width: 800px) {
-    p {
-      line-height: 1.2;
-    }
+  @media (max-width: 830px) {
+    margin-top: 7vw;
   }
 
   @media (max-width: 680px) {
@@ -60,5 +67,5 @@
 }
 
 .bntCurriculum {
-  margin-top: 5vw;
+  margin-top: 0vw;
 }

@@ -3,7 +3,7 @@ import { RenderProjects } from './RenderProjects';
 
 export const SectionProjects = () => {
   return (
-    <div>
+    <div className="container">
       <FilterProjects />
       <RenderProjects />
     </div>

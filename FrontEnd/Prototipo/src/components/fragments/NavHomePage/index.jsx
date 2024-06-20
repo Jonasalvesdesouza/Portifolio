@@ -19,8 +19,13 @@ export const NavHomePage = () => {
     { label: 'Contact', index: 3 },
   ];
 
+  const handleClick = (index) => {
+    console.log('CLICOU');
+    return setCurrentCard(index);
+  };
+
   return (
-    <div>
+    <div className={`${styles.container}`}>
       <nav>
         <ul>
           {buttons.map((button) => (
@@ -29,7 +34,7 @@ export const NavHomePage = () => {
                 className={
                   button.index === activeButton ? styles.activeButton : ``
                 }
-                onClick={() => setCurrentCard(button.index)}
+                onClick={() => handleClick(button.index)}
               >
                 <span className={`${styles.label}`}>{button.label}</span>
               </Button>

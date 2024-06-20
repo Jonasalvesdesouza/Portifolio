@@ -4,7 +4,7 @@ import { UserAdmContext } from '../providers';
 export const useCategoryProjectsData = () => {
   const { projectsList } = useContext(UserAdmContext);
 
-  const categorys = projectsList.map((project) => project.category);
+  const categorys = projectsList?.map((project) => project.category);
   const data = [...new Set(categorys)];
 
   return data;

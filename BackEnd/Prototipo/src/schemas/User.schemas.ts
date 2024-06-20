@@ -6,6 +6,7 @@ const userSchema = z.object({
   email: z.string().email().min(1),
   password: z.string().min(8),
   profileId: z.number().positive().nullish(),
+  AdmId: z.number().positive().nullish(),
 });
 
 const UserSchema = userSchema.omit({

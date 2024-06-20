@@ -8,6 +8,7 @@ import { Button, Input, TextArea } from '../..';
 import { sendMeEmailFormSchema } from '../../../../schema';
 import { UserAdmContext } from '../../../../providers';
 import styles from './styles.module.scss';
+import { useResponsive } from '../../../../hooks';
 
 export const FormSendMeEmail = () => {
   const { messageMeRegister } = useContext(UserAdmContext);
@@ -30,12 +31,14 @@ export const FormSendMeEmail = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={`${styles.container}`}>
-        <div className={`${styles.formContainer}`}>
+        <div
+          className={`${styles.formContainer} ${useResponsive() ? styles.left : ''}`}
+        >
           <div>
             <div className={`${styles.inputContainer}`}>
               <span className={`${styles.labelSendMeEmail}`}>You Name.</span>
               <Input
-                className="input-medium parapraph homeInput"
+                className={` ${useResponsive() ? 'input-medium vertical parapraph homeInput' : 'input-medium parapraph homeInput'}`}
                 placeholder="Enter your name"
                 type="text"
                 error={errors.title}
@@ -48,7 +51,7 @@ export const FormSendMeEmail = () => {
                 Email Anddress.
               </span>
               <Input
-                className="input-medium parapraph homeInput"
+                className={` ${useResponsive() ? 'input-medium vertical parapraph homeInput' : 'input-medium parapraph homeInput'}`}
                 placeholder="Enter your email address"
                 type="email"
                 error={errors.email}
@@ -60,7 +63,7 @@ export const FormSendMeEmail = () => {
           <div className={`${styles.textAreaContainer}`}>
             <span className={`${styles.labelSendMeEmail}`}>Your Message.</span>
             <TextArea
-              className="textArea-medium parapraph homeInput"
+              className={`${useResponsive() ? 'textArea-medium vertical parapraph homeInput' : 'textArea-medium parapraph homeInput'}`}
               placeholder="Come on, don't be shy, send a message..."
               cols={30}
               row={5}

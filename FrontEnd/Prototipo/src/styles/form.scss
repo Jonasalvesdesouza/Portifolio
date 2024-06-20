@@ -24,25 +24,33 @@
 
   padding-left: 1vh;
 
-  @media (max-width: 1050px) {
-    width: 60vw;
-    height: 5.8vw;
+  &.vertical {
+    width: 35vw;
+    height: 3.5vw;
+
+    @media (max-width: 1050px) {
+      width: 70vw;
+      height: 5.8vw;
+    }
   }
 }
 
 .textArea-medium {
   @extend %default;
   width: 29vw;
-  height: 11.5vw;
+  height: 10.5vw;
 
   font-size: 1vw;
 
-  padding-left: 1vw;
+  padding: 1vw;
 
-  @media (max-width: 1050px) {
-    width: 60vw;
-    height: 15.5vw;
+  &.vertical {
+    width: 35vw;
+    @media (max-width: 1050px) {
+      width: 70vw;
+      height: 15.5vw;
 
-    padding: 1vw;
+      padding: 1vw;
+    }
   }
 }

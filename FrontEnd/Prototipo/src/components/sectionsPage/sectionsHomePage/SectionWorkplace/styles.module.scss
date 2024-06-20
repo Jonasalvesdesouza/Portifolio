@@ -7,7 +7,7 @@
   content: '';
   position: absolute;
   top: -5vh;
-  left: 28.5vw;
+  left: 31vw;
   width: 1px;
   height: 53vh;
   background-color: var(--color-gray0);
@@ -31,7 +31,7 @@
   content: '';
   position: relative;
   top: -3vw;
-  left: 33vw;
+  left: 38vw;
   width: 1px;
   height: 25vw;
   background-color: var(--colo-Darkwhite);
@@ -46,11 +46,9 @@
 
   @media (max-width: 900px) {
     position: relative;
-    top: 24.5vw;
-    left: 10vw;
-    width: 68vw;
-    height: 1px;
-
-    background-color: var(--color-gray0);
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
   }
 }

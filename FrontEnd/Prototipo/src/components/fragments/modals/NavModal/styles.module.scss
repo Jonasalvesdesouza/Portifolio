@@ -13,20 +13,20 @@
 .modalBox {
   position: relative;
   width: 100%;
-  max-width: 15vw;
-  height: 21vw;
+  max-width: 18.75rem;
+  height: 25rem;
   background: var(--color-white);
   border-radius: 0.1875rem;
   box-shadow: 20px 20px 20px -20px rgba(0, 0, 0, 0.7);
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-name: slidein;
 }
 .modalBox:before {
   content: '';
   position: absolute;
-  top: 14vw;
-  left: 2vw;
-  width: 10vw;
+  top: 16.875rem;
+  left: 3.125rem;
+  width: 12.5rem;
   height: 1px;
   background-color: var(--color-gray0);
 }
@@ -44,12 +44,12 @@
 }
 
 .closeContainer {
-  margin-left: 10vw;
-  margin-top: 1vw;
+  margin-left: 12.5rem;
+  margin-top: 1.25rem;
 }
 
 .closeIcon {
-  font-size: 2.5vw;
+  font-size: 3.125rem;
   color: var(--color-gray1);
   transition: 0.5s;
 }
@@ -58,14 +58,14 @@
 }
 
 .middleModal {
-  margin-left: 3vw;
-  margin-top: 1vw;
+  margin-left: 55px;
+  margin-top: 20px;
 
   a {
     font-family: var(--font-primary);
-    font-weight: 400;
-    font-size: 1.3vw;
+    font-size: 1.5625rem;
     line-height: 1.8;
+    font-weight: 400;
     color: var(--color-gray1);
   }
 }
@@ -75,10 +75,10 @@
   flex-direction: row;
   align-items: center;
 
-  margin-top: 3.5vw;
-  margin-left: 3vw;
+  margin-top: 4.375rem;
+  margin-left: 3.75rem;
 
-  gap: 1vw;
+  gap: 1.25rem;
 
   @media (max-width: 935px) {
     left: 2.5vw;
@@ -89,11 +89,11 @@
 }
 
 .iconLinkedin {
-  width: 2.5vw;
+  width: 3.125rem;
   transition: opacity 0.3s ease-in-out;
 }
 .iconGitHub {
-  width: 3.3vw;
+  width: 4.0625rem;
   transition: opacity 0.3s ease-in-out;
 }
 .iconLinkedin:hover {

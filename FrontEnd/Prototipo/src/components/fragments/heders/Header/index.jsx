@@ -6,16 +6,11 @@ import { useContext } from 'react';
 import { AppBehaviorContext } from '../../../../providers';
 import styles from './styles.module.scss';
 import { HamburgerButton } from '../../HamburguerButton';
+import { useResponsive } from '../../../../hooks';
 
 export const Header = ({ setIsOpen }) => {
-  const {
-    location,
-    setRouteLocation,
-    setCurrentCard,
-    setReturShapeHam,
-    screenWidth,
-    screenHeight,
-  } = useContext(AppBehaviorContext);
+  const { location, setRouteLocation, setCurrentCard, setReturShapeHam } =
+    useContext(AppBehaviorContext);
 
   const compareRoutes = location === '/projects' || location === '/blog';
 
@@ -32,7 +27,9 @@ export const Header = ({ setIsOpen }) => {
 
   return (
     <header>
-      <div className={`${styles.headerContainer}`}>
+      <div
+        className={`${useResponsive() ? styles.headerContainerVertical : styles.headerContainerHorizontal}`}
+      >
         <div>
           {compareRoutes ? (
             <Link to={'/'} onClick={handleClickLogo}>

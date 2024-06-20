@@ -27,8 +27,6 @@ export const FormEditHobby = ({ setIsOpen }) => {
   });
 
   const onSubmit = (payLoad) => {
-    console.log(handleSubmit);
-
     hobbyUpdate(payLoad, setLoading, reset, setIsOpen);
   };
 

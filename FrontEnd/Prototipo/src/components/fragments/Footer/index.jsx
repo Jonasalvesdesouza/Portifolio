@@ -10,19 +10,26 @@ import { useGetLinkObject, useResponsive } from '../../../hooks';
 
 export const Footer = () => {
   const { socialMediaList } = useContext(UserAdmContext);
-  const { setCurrentCard, screenWidth, screenHeight } =
-    useContext(AppBehaviorContext);
+  const { location } = useContext(AppBehaviorContext);
 
   const linkLinkedin = useGetLinkObject(socialMediaList, 'linkedin');
   const linkGitHub = useGetLinkObject(socialMediaList, 'github');
 
+  const renderClass = () => {
+    if (location === '/') {
+      return useResponsive();
+    } else {
+      return true;
+    }
+  };
+
   return (
     <footer>
       <div
-        className={`${useResponsive() ? styles.footerContainerVertical : styles.footerContainerHorizontal}`}
+        className={`${renderClass() ? styles.footerContainerVertical : styles.footerContainerHorizontal}`}
       >
         <div
-          className={`${useResponsive() ? styles.footerIconContainerVertical : styles.footerIconContainerHorizontal}`}
+          className={`${renderClass() ? styles.footerIconContainerVertical : styles.footerIconContainerHorizontal}`}
         >
           <div>
             <a href={linkLinkedin} target="_blank">
@@ -37,7 +44,7 @@ export const Footer = () => {
         </div>
 
         <div
-          className={`${useResponsive() ? styles.copyrighContainerVertical : styles.copyrighContainerHorizontal}`}
+          className={`${renderClass() ? styles.copyrighContainerVertical : styles.copyrighContainerHorizontal}`}
         >
           <div>
             <PiCopyrightLight className={`${styles.icon}`} />

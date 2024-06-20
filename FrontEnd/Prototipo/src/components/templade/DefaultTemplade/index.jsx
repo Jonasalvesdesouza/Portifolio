@@ -9,7 +9,7 @@ export const DefaultTemplate = ({ children, setIsOpen }) => {
   const router = location.pathname === '/';
 
   return (
-    <div className={`${router ? styles.templateContainer : ''}`}>
+    <div className={`${router ? styles.backgroudHomePage : styles.backgroud}`}>
       <Header setIsOpen={setIsOpen} />
 
       <main>{children}</main>

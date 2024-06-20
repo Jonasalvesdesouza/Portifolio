@@ -46,7 +46,6 @@ model Profile{
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-
 model ImageProfile{
   id Int @id @default(autoincrement())
   path String
@@ -71,8 +70,6 @@ model Contact{
 
   profile Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }
-
-
 
 model SocialMedia{
   id Int @id @default(autoincrement())

@@ -3,6 +3,8 @@ import { useFilterSubCategory } from '../../../../../../hooks';
 import { UserAdmContext } from '../../../../../../providers';
 import { ProjectCard } from '../ProjectCard';
 
+import styles from './styles.module.scss';
+
 export const AllProjects = () => {
   const { projectsList } = useContext(UserAdmContext);
 
@@ -10,9 +12,9 @@ export const AllProjects = () => {
   const studyProjects = useFilterSubCategory(projectsList, 'Study');
 
   return (
-    <div>
+    <div className={`${styles.allProjectsContainer}`}>
       <div>
-        <h2>Independent Projects.</h2>
+        <h2 className="title2 gray">Independent Projects.</h2>
         <ul>
           {independentProjects?.map((project) => {
             return <ProjectCard key={project.id} project={project} />;
@@ -20,7 +22,7 @@ export const AllProjects = () => {
         </ul>
       </div>
       <div>
-        <h2>Study Projects.</h2>
+        <h2 className="title2 gray">Study Projects.</h2>
         <ul>
           {studyProjects?.map((project) => {
             return <ProjectCard key={project.id} project={project} />;

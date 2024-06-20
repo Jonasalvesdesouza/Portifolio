@@ -142,8 +142,8 @@
 
 .bntSendMeEmail {
   @extend %bntDefault;
+  margin-top: 1.5vw;
 
-  margin-left: 18vw;
   button {
     font-family: var(--font-primary);
     font-size: 1.3vw;

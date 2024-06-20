@@ -9,7 +9,6 @@ import { SectionReadMyBlogHomePage } from './SectionReadMyBlog';
 import { useResponsive, useScreenWidth } from '../../../../hooks';
 
 import styles from './styles.module.scss';
-import { smallResolution } from '../../../../config';
 
 export const SectionWorkplace = () => {
   const { setCurrentCard, screenWidth, screenHeight } =

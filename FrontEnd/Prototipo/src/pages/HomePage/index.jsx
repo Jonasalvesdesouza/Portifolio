@@ -68,6 +68,7 @@ export const HomePage = () => {
           </div>
         </TempladeHorizontal>
       )}
+
       {isOpen ? <NavModal setIsOpen={setIsOpen} isOpen={isOpen} /> : null}
     </>
   );

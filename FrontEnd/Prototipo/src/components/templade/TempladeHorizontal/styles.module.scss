@@ -61,15 +61,10 @@
 .button {
   position: absolute;
   top: 85vh;
-  left: 50vw;
-  width: auto;
+  left: 56.5vw;
   animation: moveUpDown 1.5s infinite alternate ease-in-out;
   transition: 0.5s;
   transform: 3s;
-
-  @media (max-width: 1700px) {
-    top: 45vw;
-  }
 }
 
 .button:hover {

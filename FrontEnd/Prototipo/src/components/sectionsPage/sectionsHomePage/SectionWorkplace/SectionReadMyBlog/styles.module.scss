@@ -1,6 +1,6 @@
 .workplaceBlogContainerHorizontal {
   width: 28%;
-  margin-left: 3vw;
+  margin-left: 6vw;
 
   h3 {
     display: flex;
@@ -8,11 +8,12 @@
   }
   p {
     margin-top: 1vw;
-    width: 100%;
+    width: 90%;
   }
 }
 .btnContainer {
-  margin-top: 4vw;
+  position: absolute;
+  margin-top: 70px;
 
   @media (max-width: 900px) {
     margin-left: 25vw;
@@ -20,7 +21,7 @@
 }
 .workplaceBlogContainerVertical {
   width: 28%;
-  margin-left: 15vw;
+  margin-left: 25vw;
   h3 {
     color: var(--color-white);
   }
@@ -36,11 +37,12 @@
     }
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 1050px) {
     p {
       line-height: 1.4;
     }
   }
+
   @media (max-width: 900px) {
     margin: 0vw 0vw 0vw 10vw;
     width: 65%;
