@@ -12,7 +12,7 @@ export const BlogPage = () => {
 
   return (
     <DefaultTemplate setIsOpen={setIsOpen}>
-      <div>
+      <div className="container">
         <SectionTopBlog />
         <SectionAticles />
       </div>

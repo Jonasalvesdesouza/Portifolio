@@ -47,12 +47,12 @@
   }
 
   &.copyrighContainerVertical {
-    width: 10vw;
+    width: 100%;
     flex-direction: row;
   }
 }
 
 .icon {
-  font-size: 1.5vw;
+  font-size: clamp(8px, 1.7vw, 11px);
   color: var(--color-white);
 }

@@ -6,6 +6,8 @@ import { Button } from '../../Button';
 import { Input } from '../../InputDefault';
 import { AppBehaviorContext } from '../../../../providers';
 
+import styles from './styles.module.scss';
+
 export const FormSearchArticles = () => {
   const { setSearch } = useContext(AppBehaviorContext);
   const [value, setValue] = useState('');
@@ -17,19 +19,18 @@ export const FormSearchArticles = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={submit}>
-        <Button to={'/blog'}>
-          <TfiSearch size={25} color="#848484" />
-        </Button>
+    <form className={`${styles.searchContainer}`} onSubmit={submit}>
+      <Button to={'/blog'}>
+        <TfiSearch size={25} color="#848484" />
+      </Button>
 
-        <Input
-          tyepe="text"
-          placeholder="Type here what you want to find..."
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-      </form>
-    </div>
+      <Input
+        className={`${styles.searchInput} parapraph homeInput`}
+        tyepe="text"
+        placeholder="Search..."
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+    </form>
   );
 };

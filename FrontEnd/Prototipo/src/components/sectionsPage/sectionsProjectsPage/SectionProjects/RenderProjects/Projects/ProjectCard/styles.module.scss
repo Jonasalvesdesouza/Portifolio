@@ -6,8 +6,17 @@ li {
     width: 356px;
     height: 383px;
 
+    border: solid 1px transparent;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    transition:
+      border 0.3s,
+      box-shadow 0.3s;
+
+    &:hover {
+      border: solid 1px #c8c8c8;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+    }
 
     .header {
       display: flex;
@@ -31,11 +40,13 @@ li {
       display: flex;
       flex-direction: column;
 
+      flex-grow: 1;
       padding: 20px;
 
       width: 90%;
 
       .presentationContainer {
+        flex: 1;
         h3 {
           width: 100%;
           margin-bottom: 10px;
@@ -46,8 +57,10 @@ li {
       }
 
       .bntView {
+        align-self: flex-end;
         margin-top: 20px;
-        margin-left: 250px;
+
+        transition: 0.3s;
 
         a {
           font-family: var(--font-primary);
@@ -59,6 +72,14 @@ li {
             display: flex;
             flex-direction: row;
             align-items: center;
+          }
+        }
+
+        &:hover {
+          opacity: 0.7;
+
+          a {
+            text-decoration: underline;
           }
         }
       }

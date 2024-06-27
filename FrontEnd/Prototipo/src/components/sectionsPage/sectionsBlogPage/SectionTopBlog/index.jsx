@@ -1,14 +1,11 @@
 import { FormSearchArticles } from '../../../fragments/forms/index';
+import styles from './styles.module.scss';
 
 export const SectionTopBlog = () => {
   return (
-    <div>
-      <div>
-        <h1>Blog.</h1>
-      </div>
-      <div>
-        <FormSearchArticles />
-      </div>
+    <div className={`${styles.headerBlog}`}>
+      <h1 className="title1 black">Blog.</h1>
+      <FormSearchArticles />
     </div>
   );
 };

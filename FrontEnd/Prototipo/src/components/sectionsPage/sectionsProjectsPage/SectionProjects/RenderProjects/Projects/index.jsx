@@ -1,19 +1,15 @@
-import {
-  useFilterProjects,
-  useFilterSubCategory,
-} from '../../../../../../hooks';
-import { ProjectCard } from '../ProjectCard';
+import { useFilterSubCategory } from '../../../../../../hooks';
+import { ProjectCard } from './ProjectCard';
+
 import styles from './styles.module.scss';
 
-export const ResultProjects = () => {
-  const projectsList = useFilterProjects();
-
+export const Projects = ({ projectsList }) => {
   const independentProjects = useFilterSubCategory(projectsList, 'Independent');
   const studyProjects = useFilterSubCategory(projectsList, 'Study');
 
   return (
-    <div className={`${styles.resultContainer}`}>
-      <div>
+    <div className={styles.projectContainer}>
+      <div className={styles.independentSection}>
         <h2 className="title2 gray">Independent Projects.</h2>
         <ul>
           {independentProjects?.map((project) => {
@@ -21,7 +17,7 @@ export const ResultProjects = () => {
           })}
         </ul>
       </div>
-      <div>
+      <div className={styles.studySection}>
         <h2 className="title2 gray">Study Projects</h2>
         <ul>
           {studyProjects?.map((project) => {

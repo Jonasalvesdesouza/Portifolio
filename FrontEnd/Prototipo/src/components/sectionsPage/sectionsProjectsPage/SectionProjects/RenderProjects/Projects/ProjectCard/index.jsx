@@ -3,7 +3,7 @@ import {
   useLinkProject,
   useRenderImage,
   useLimitedDescription,
-} from '../../../../../../hooks';
+} from '../../../../../../../hooks';
 
 import styles from './styles.module.scss';
 
@@ -30,7 +30,7 @@ export const ProjectCard = ({ project }) => {
           </div>
           <div className={`${styles.bntView}`}>
             <a
-              href={`https://${useLinkProject(project)}`}
+              href={`${useLinkProject(project)}`}
               target="_blank"
               rel="noopener noreferrer"
             >

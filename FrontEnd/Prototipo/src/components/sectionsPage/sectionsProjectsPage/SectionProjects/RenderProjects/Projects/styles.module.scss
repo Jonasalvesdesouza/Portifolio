@@ -1,0 +1,36 @@
+.projectContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 50px;
+
+  margin-bottom: 70px;
+
+  .independentSection {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: 0;
+      width: 80vw;
+      height: 0.0625rem;
+      background-color: var(--color-gray0);
+    }
+  }
+
+  .studySection {
+    position: relative;
+    margin-top: 100px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+
+    gap: 30px;
+
+    margin-top: 50px;
+  }
+}
