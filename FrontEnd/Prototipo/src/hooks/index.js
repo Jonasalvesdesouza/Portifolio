@@ -20,3 +20,5 @@ export { useGetLinkObject } from './useGetLinkObject';
 export { useScreenHeight } from './useScreenHeight';
 export { useResponsive } from './useResponsive';
 export { useColorHamburgerBar } from './useColorHamburguerBar';
+export { useRemoveTitle } from './useRemoveTitle';
+export { useDynamicTopValue } from './useDynamicTopValue';

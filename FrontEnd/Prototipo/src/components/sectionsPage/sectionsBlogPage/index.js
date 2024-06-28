@@ -1,2 +1,2 @@
 export { SectionTopBlog } from './SectionTopBlog';
-export { SectionAticles } from './SectionArticles';
+export { SectionArticles } from './SectionArticles';

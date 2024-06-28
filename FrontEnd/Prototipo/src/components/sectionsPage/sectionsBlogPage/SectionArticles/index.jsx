@@ -4,9 +4,8 @@ import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
 import { useArticlesSearch } from '../../../../hooks';
 
 import { RenderArticles } from './RenderArticles';
-import { FilterCategoryArticles } from './FilterCategoryArticles';
 
-export const SectionAticles = () => {
+export const SectionArticles = () => {
   const { search } = useContext(AppBehaviorContext);
   const { articlesList } = useContext(UserAdmContext);
 
@@ -14,7 +13,6 @@ export const SectionAticles = () => {
 
   return (
     <div>
-      <FilterCategoryArticles />
       <RenderArticles search={search} articlesResult={articlesResult} />
     </div>
   );

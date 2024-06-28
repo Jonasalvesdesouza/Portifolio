@@ -6,6 +6,8 @@ import { Button } from '../../../../fragments';
 
 import { CardFilter } from './CardFilter';
 
+import styles from './styles.module.scss';
+
 export const FilterCategoryArticles = () => {
   const { resetStadeCategorys, setSearch } = useContext(AppBehaviorContext);
   const categorysData = useCategoryArticlesData();
@@ -16,10 +18,10 @@ export const FilterCategoryArticles = () => {
   };
 
   return (
-    <div>
+    <div className={`${styles.filterContainer}`}>
       <ul>
         <li>
-          <Button onClick={handleClick}>All Articles</Button>
+          <Button onClick={handleClick}>Emphasis</Button>
         </li>
         {categorysData?.map((category) => {
           return <CardFilter key={category} category={category} />;

@@ -3,8 +3,7 @@ import { smallResolution } from '../config';
 import { AppBehaviorContext } from '../providers';
 
 export const useResponsive = () => {
-  const { screenWidth, screenHeight, location } =
-    useContext(AppBehaviorContext);
+  const { screenWidth, screenHeight } = useContext(AppBehaviorContext);
 
   const isHeightHigh = screenWidth * 0.6 <= screenHeight;
 
