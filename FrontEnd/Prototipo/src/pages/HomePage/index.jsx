@@ -26,31 +26,28 @@ export const HomePage = () => {
   const [animate, setAnimate] = useState(false);
   const [headerClass, setHeaderClass] = useState('');
 
-  const { ref: section1Ref, inView: inViewSection1 } = useInView({
-    threshold: 0.1,
-  });
-  const { ref: section2Ref, inView: inViewSection2 } = useInView({
-    threshold: 0.1,
-  });
-  const { ref: section3Ref, inView: inViewSection3 } = useInView({
-    threshold: 0.1,
-  });
-  const { ref: section4Ref, inView: inViewSection4 } = useInView({
-    threshold: 0.1,
-  });
+  const sectionRefs = [
+    useInView({ threshold: 0.1 }),
+    useInView({ threshold: 0.1 }),
+    useInView({ threshold: 0.1 }),
+    useInView({ threshold: 0.1 }),
+  ];
+
+  const [section1Ref, inViewSection1] = sectionRefs[0];
+  const [section2Ref, inViewSection2] = sectionRefs[1];
+  const [section3Ref, inViewSection3] = sectionRefs[2];
+  const [section4Ref, inViewSection4] = sectionRefs[3];
 
   useEffect(() => {
-    let newHeaderClass = '';
-
-    if (inViewSection1) {
-      newHeaderClass = 'headerSection1';
-    } else if (inViewSection2) {
-      newHeaderClass = 'headerSection2';
-    } else if (inViewSection3) {
-      newHeaderClass = 'headerSection3';
-    } else if (inViewSection4) {
-      newHeaderClass = 'headerSection4';
-    }
+    const newHeaderClass = inViewSection1
+      ? 'headerSection1'
+      : inViewSection2
+        ? 'headerSection2'
+        : inViewSection3
+          ? 'headerSection3'
+          : inViewSection4
+            ? 'headerSection4'
+            : '';
 
     setHeaderClass(newHeaderClass);
   }, [inViewSection1, inViewSection2, inViewSection3, inViewSection4]);
@@ -62,10 +59,10 @@ export const HomePage = () => {
   }, [currentCard]);
 
   const cards = [
-    <SectionBannerHomePage />,
-    <SectionAboutHomePage />,
-    <SectionWorkplace />,
-    <SectionMeEmail />,
+    <SectionBannerHomePage key="section1" />,
+    <SectionAboutHomePage key="section2" />,
+    <SectionWorkplace key="section3" />,
+    <SectionMeEmail key="section4" />,
   ];
 
   const { handleTouchStart, handleTouchMove, handleTouchEnd } =
@@ -79,18 +76,10 @@ export const HomePage = () => {
       {useResponsive() ? (
         <DefaultTemplate setIsOpen={setIsOpen} headerClass={headerClass}>
           <div>
-            <div ref={section1Ref}>
-              <SectionBannerHomePage />
-            </div>
-            <div ref={section2Ref}>
-              <SectionAboutHomePage />
-            </div>
-            <div ref={section3Ref}>
-              <SectionWorkplace />
-            </div>
-            <div ref={section4Ref}>
-              <SectionMeEmail />
-            </div>
+            <div ref={section1Ref}>{cards[0]}</div>
+            <div ref={section2Ref}>{cards[1]}</div>
+            <div ref={section3Ref}>{cards[2]}</div>
+            <div ref={section4Ref}>{cards[3]}</div>
           </div>
         </DefaultTemplate>
       ) : (
@@ -107,7 +96,7 @@ export const HomePage = () => {
         </TempladeHorizontal>
       )}
 
-      {isOpen ? <NavModal setIsOpen={setIsOpen} isOpen={isOpen} /> : null}
+      {isOpen && <NavModal setIsOpen={setIsOpen} isOpen={isOpen} />}
     </>
   );
 };
