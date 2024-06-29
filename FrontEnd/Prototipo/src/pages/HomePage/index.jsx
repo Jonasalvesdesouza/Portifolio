@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-
 import { DefaultTemplate, TempladeHorizontal } from '../../components/templade';
 import {
   SectionBannerHomePage,
@@ -8,10 +7,8 @@ import {
   SectionMeEmail,
   SectionWorkplace,
 } from '../../components/sectionsPage/sectionsHomePage';
-
 import { NavModal } from '../../components/fragments';
 import { AppBehaviorContext } from '../../providers';
-
 import {
   useScreenWidth,
   useCardSwipe,
@@ -27,30 +24,19 @@ export const HomePage = () => {
   const [headerClass, setHeaderClass] = useState('');
 
   const sectionRefs = [
-    useInView({ threshold: 0.1 }),
-    useInView({ threshold: 0.1 }),
-    useInView({ threshold: 0.1 }),
-    useInView({ threshold: 0.1 }),
+    { ref: useInView({ threshold: 0.1 }), className: 'headerSection1' },
+    { ref: useInView({ threshold: 0.1 }), className: 'headerSection2' },
+    { ref: useInView({ threshold: 0.1 }), className: 'headerSection3' },
+    { ref: useInView({ threshold: 0.1 }), className: 'headerSection4' },
   ];
 
-  const [section1Ref, inViewSection1] = sectionRefs[0];
-  const [section2Ref, inViewSection2] = sectionRefs[1];
-  const [section3Ref, inViewSection3] = sectionRefs[2];
-  const [section4Ref, inViewSection4] = sectionRefs[3];
-
-  useEffect(() => {
-    const newHeaderClass = inViewSection1
-      ? 'headerSection1'
-      : inViewSection2
-        ? 'headerSection2'
-        : inViewSection3
-          ? 'headerSection3'
-          : inViewSection4
-            ? 'headerSection4'
-            : '';
-
-    setHeaderClass(newHeaderClass);
-  }, [inViewSection1, inViewSection2, inViewSection3, inViewSection4]);
+  useEffect(
+    () => {
+      const visibleSection = sectionRefs.find((section) => section.ref.inView);
+      setHeaderClass(visibleSection ? visibleSection.className : '');
+    },
+    sectionRefs.map((section) => section.ref.inView),
+  );
 
   useEffect(() => {
     setAnimate(true);
@@ -59,10 +45,10 @@ export const HomePage = () => {
   }, [currentCard]);
 
   const cards = [
-    <SectionBannerHomePage key="section1" />,
-    <SectionAboutHomePage key="section2" />,
-    <SectionWorkplace key="section3" />,
-    <SectionMeEmail key="section4" />,
+    <SectionBannerHomePage />,
+    <SectionAboutHomePage />,
+    <SectionWorkplace />,
+    <SectionMeEmail />,
   ];
 
   const { handleTouchStart, handleTouchMove, handleTouchEnd } =
@@ -76,10 +62,11 @@ export const HomePage = () => {
       {useResponsive() ? (
         <DefaultTemplate setIsOpen={setIsOpen} headerClass={headerClass}>
           <div>
-            <div ref={section1Ref}>{cards[0]}</div>
-            <div ref={section2Ref}>{cards[1]}</div>
-            <div ref={section3Ref}>{cards[2]}</div>
-            <div ref={section4Ref}>{cards[3]}</div>
+            {sectionRefs.map(({ ref }, index) => (
+              <div key={index} ref={ref.ref}>
+                {cards[index]}
+              </div>
+            ))}
           </div>
         </DefaultTemplate>
       ) : (
@@ -96,7 +83,7 @@ export const HomePage = () => {
         </TempladeHorizontal>
       )}
 
-      {isOpen && <NavModal setIsOpen={setIsOpen} isOpen={isOpen} />}
+      {isOpen ? <NavModal setIsOpen={setIsOpen} isOpen={isOpen} /> : null}
     </>
   );
 };
