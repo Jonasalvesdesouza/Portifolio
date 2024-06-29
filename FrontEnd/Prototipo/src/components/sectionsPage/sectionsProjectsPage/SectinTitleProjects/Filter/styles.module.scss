@@ -29,7 +29,6 @@
       transition: height 0.3s ease;
     }
 
-    &:hover:after,
     &:focus:after,
     &.focused:after {
       height: 0.125rem;

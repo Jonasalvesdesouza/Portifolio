@@ -29,7 +29,6 @@ export const FilterProjects = () => {
     <ul className={`${styles.filterContainer}`}>
       <li key="emphasis">
         <Button
-          /* className={`${styles.button}`} */
           className={`${styles.button} ${focusedButton === 'Emphasis' ? styles.focused : ''}`}
           onClick={handleClick}
         >
@@ -41,7 +40,6 @@ export const FilterProjects = () => {
         return (
           <li key={category}>
             <Button
-              /* className={`${styles.button}`} */
               className={`${styles.button} ${focusedButton === category ? styles.focused : ''}`}
               onClick={() => handleClick2(category)}
             >

@@ -7,10 +7,19 @@
 
   border: 1px solid var(--colo-Darkwhite);
   border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
+  transition:
+    border 0.3s,
+    box-shadow 0.3s;
+
   margin: 0 0 80px 0;
   padding: 20px;
 
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  &:hover {
+    border: solid 1px #c8c8c8;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+  }
 
   .cardLeft {
     display: flex;
