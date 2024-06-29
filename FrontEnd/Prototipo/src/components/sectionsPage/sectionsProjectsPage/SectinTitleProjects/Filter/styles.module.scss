@@ -1,7 +1,7 @@
 .filterContainer {
   display: flex;
   flex-direction: row;
-  margin: 4vw 0 3vw 0;
+  margin: 2vw 0 3vw 0;
   position: relative;
 
   width: 80vw;
@@ -30,12 +30,14 @@
     }
 
     &:hover:after,
-    &:focus:after {
+    &:focus:after,
+    &.focused:after {
       height: 0.125rem;
     }
 
     &:hover,
-    &:focus {
+    &:focus,
+    &.focused {
       color: var(--color-black);
     }
   }

@@ -14,6 +14,7 @@
     var(--color-white) 100%
   );
   position: relative;
+
   @media (max-width: 1364px) {
     background: linear-gradient(
       to bottom,
@@ -84,21 +85,18 @@
     );
   }
 
-  @media (max-width: 705px) {
-    background: linear-gradient(
-      to bottom,
-      var(--color-black) 0%,
-      var(--color-black) 25%,
-      var(--color-white) 25%,
-      var(--color-white) 46%,
-      var(--color-black) 46%,
-      var(--color-black) 70%,
-      var(--color-white) 70%,
-      var(--color-white) 100%
-    );
-  }
-
-  @media (max-width: 680px) {
+  @media (max-width: 705px),
+    (max-width: 680px),
+    (max-width: 590px),
+    (max-width: 510px),
+    (max-width: 488px),
+    (max-width: 450px),
+    (max-width: 423px),
+    (max-width: 403px),
+    (max-width: 360px),
+    (max-width: 334px),
+    (max-width: 308px),
+    (max-width: 290px) {
     background: linear-gradient(
       to bottom,
       var(--color-black) 0%,
@@ -111,144 +109,16 @@
       var(--color-white) 100%
     );
   }
-  @media (max-width: 590px) {
-    background: linear-gradient(
-      to bottom,
-      var(--color-black) 0%,
-      var(--color-black) 25%,
-      var(--color-white) 25%,
-      var(--color-white) 44.5%,
-      var(--color-black) 44.5%,
-      var(--color-black) 69.5%,
-      var(--color-white) 69.5%,
-      var(--color-white) 100%
-    );
-  }
-  @media (max-width: 510px) {
-    background: linear-gradient(
-      to bottom,
-      var(--color-black) 0%,
-      var(--color-black) 25%,
-      var(--color-white) 25%,
-      var(--color-white) 44%,
-      var(--color-black) 44%,
-      var(--color-black) 69%,
-      var(--color-white) 69%,
-      var(--color-white) 100%
-    );
-  }
-  @media (max-width: 488px) {
-    background: linear-gradient(
-      to bottom,
-      var(--color-black) 0%,
-      var(--color-black) 25%,
-      var(--color-white) 25%,
-      var(--color-white) 43%,
-      var(--color-black) 43%,
-      var(--color-black) 69%,
-      var(--color-white) 69%,
-      var(--color-white) 100%
-    );
-  }
-  @media (max-width: 450px) {
-    background: linear-gradient(
-      to bottom,
-      var(--color-black) 0%,
-      var(--color-black) 24%,
-      var(--color-white) 24%,
-      var(--color-white) 42.5%,
-      var(--color-black) 42.5%,
-      var(--color-black) 68.5%,
-      var(--color-white) 68.5%,
-      var(--color-white) 100%
-    );
-  }
-  @media (max-width: 423px) {
-    background: linear-gradient(
-      to bottom,
-      var(--color-black) 0%,
-      var(--color-black) 23.5%,
-      var(--color-white) 23.5%,
-      var(--color-white) 41.5%,
-      var(--color-black) 41.5%,
-      var(--color-black) 68.5%,
-      var(--color-white) 68.5%,
-      var(--color-white) 100%
-    );
-  }
-
-  @media (max-width: 403px) {
-    background: linear-gradient(
-      to bottom,
-      var(--color-black) 0%,
-      var(--color-black) 23.5%,
-      var(--color-white) 23.5%,
-      var(--color-white) 40.5%,
-      var(--color-black) 40.5%,
-      var(--color-black) 69.5%,
-      var(--color-white) 69.5%,
-      var(--color-white) 100%
-    );
-  }
-  @media (max-width: 360px) {
-    background: linear-gradient(
-      to bottom,
-      var(--color-black) 0%,
-      var(--color-black) 22.5%,
-      var(--color-white) 22.5%,
-      var(--color-white) 39.5%,
-      var(--color-black) 39.5%,
-      var(--color-black) 68.5%,
-      var(--color-white) 68.5%,
-      var(--color-white) 100%
-    );
-  }
-  @media (max-width: 334px) {
-    background: linear-gradient(
-      to bottom,
-      var(--color-black) 0%,
-      var(--color-black) 22.5%,
-      var(--color-white) 22.5%,
-      var(--color-white) 38.5%,
-      var(--color-black) 38.5%,
-      var(--color-black) 68.5%,
-      var(--color-white) 68.5%,
-      var(--color-white) 100%
-    );
-  }
-  @media (max-width: 308px) {
-    background: linear-gradient(
-      to bottom,
-      var(--color-black) 0%,
-      var(--color-black) 21.5%,
-      var(--color-white) 21.5%,
-      var(--color-white) 37%,
-      var(--color-black) 37%,
-      var(--color-black) 68.5%,
-      var(--color-white) 68.5%,
-      var(--color-white) 100%
-    );
-  }
-  @media (max-width: 290px) {
-    background: linear-gradient(
-      to bottom,
-      var(--color-black) 0%,
-      var(--color-black) 20.5%,
-      var(--color-white) 20.5%,
-      var(--color-white) 35%,
-      var(--color-black) 35%,
-      var(--color-black) 69.5%,
-      var(--color-white) 69.5%,
-      var(--color-white) 100%
-    );
-  }
 
   header {
     width: 100%;
     height: auto;
 
-    background-color: transparent;
-    z-index: 1;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 5px 5px 10px rgba(27, 31, 36, 0.3);
+
+    z-index: 8;
 
     position: sticky;
     top: 0;
@@ -299,20 +169,4 @@
     background: var(--color-black);
     z-index: 0;
   }
-}
-
-.headerSection1 {
-  background-color: var(--color-white);
-}
-
-.headerSection2 {
-  background-color: var(--color-black);
-}
-
-.headerSection3 {
-  background-color: var(--color-white);
-}
-
-.headerSection4 {
-  background-color: var(--color-black);
 }

@@ -3,10 +3,14 @@
   flex-direction: row;
   justify-content: space-between;
 
-  width: 96%;
+  width: 93%;
 
-  border-bottom: 1px solid var(--color-gray0);
+  border: 1px solid var(--colo-Darkwhite);
+  border-radius: 5px;
   margin: 0 0 80px 0;
+  padding: 20px;
+
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 
   .cardLeft {
     display: flex;
@@ -28,6 +32,11 @@
         font-size: 22px;
         font-weight: 700;
         color: var(--color-black);
+        transition: opacity 0.3s ease-in-out;
+
+        &:hover {
+          opacity: 0.5;
+        }
       }
     }
 
@@ -62,6 +71,11 @@
   .cardRight {
     img {
       width: 200px;
+      transition: opacity 0.3s ease-in-out;
+
+      &:hover {
+        opacity: 0.5;
+      }
     }
   }
 }

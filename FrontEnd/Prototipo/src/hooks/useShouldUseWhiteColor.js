@@ -1,6 +1,5 @@
 export const shouldUseWhiteColor = (colorBar, headerClass) => {
   if (!colorBar) {
-    console.log('error');
     return false;
   }
 

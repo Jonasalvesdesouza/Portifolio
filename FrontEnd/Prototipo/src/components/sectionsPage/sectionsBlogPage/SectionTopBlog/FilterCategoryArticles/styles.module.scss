@@ -1,7 +1,6 @@
 .filterContainer {
-  margin: 4vw 0 3vw 0;
+  margin: 2vw 0 3vw 0;
   position: relative;
-
   width: 80vw;
   height: 41px;
   border-bottom: 1px solid var(--color-gray0);
@@ -32,12 +31,14 @@
       }
 
       &:hover:after,
-      &:focus:after {
+      &:focus:after,
+      &.focused:after {
         height: 0.125rem;
       }
 
       &:hover,
-      &:focus {
+      &:focus,
+      &.focused {
         color: var(--color-black);
       }
     }
