@@ -12,20 +12,18 @@ import { useDynamicTopValue } from '../../hooks';
 
 export const BlogPage = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const topValue = useDynamicTopValue();
 
   return (
-    <DefaultTemplate setIsOpen={setIsOpen}>
-      <div className="container">
-        <div className={`${styles.fixedTop}`} style={{ top: topValue }}>
-          <SectionTopBlog />
+    <>
+      <DefaultTemplate setIsOpen={setIsOpen} topContent={<SectionTopBlog />}>
+        <div className="container">
+          <div className={`${styles.scrollableContent}`}>
+            <SectionArticles />
+          </div>
         </div>
-        <div className={`${styles.scrollableContent}`}>
-          <SectionArticles />
-        </div>
-      </div>
+      </DefaultTemplate>
       {isOpen ? <NavModal setIsOpen={setIsOpen} /> : null}
-    </DefaultTemplate>
+    </>
   );
 };

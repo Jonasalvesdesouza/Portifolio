@@ -1,11 +1,15 @@
-import { FilterProjects } from './Filter';
-import { RenderProjects } from './RenderProjects';
+import { useContext } from 'react';
+import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
+import { useFilterProjects } from '../../../../hooks';
+import { Projects } from './Projects';
 
 export const SectionProjects = () => {
-  return (
-    <div className="container">
-      <FilterProjects />
-      <RenderProjects />
-    </div>
-  );
+  const { categorysProject } = useContext(AppBehaviorContext);
+  const { projectsList: allProjectsList } = useContext(UserAdmContext);
+  const filteredProjectsList = useFilterProjects();
+
+  const projectsList =
+    categorysProject === '' ? allProjectsList : filteredProjectsList;
+
+  return <Projects projectsList={projectsList} />;
 };

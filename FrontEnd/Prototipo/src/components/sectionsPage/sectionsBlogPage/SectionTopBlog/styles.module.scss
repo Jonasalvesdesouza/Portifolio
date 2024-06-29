@@ -1,7 +1,9 @@
-.headerBlog {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.topBlogContainer {
+  .headerBlog {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-  width: 80vw;
+    width: 80vw;
+  }
 }

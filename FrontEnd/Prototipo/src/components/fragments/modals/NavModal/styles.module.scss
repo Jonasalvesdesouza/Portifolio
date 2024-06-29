@@ -1,34 +1,98 @@
 .modalOverlay {
   position: fixed;
-
   display: flex;
   justify-content: flex-end;
-
   inset: 0;
-
   width: 100%;
   height: 100vh;
-  background: rgb(0, 0, 0, 0.3);
-}
-.modalBox {
-  position: relative;
-  width: 100%;
-  max-width: 18.75rem;
-  height: 25rem;
-  background: var(--color-white);
-  border-radius: 0.1875rem;
-  box-shadow: 20px 20px 20px -20px rgba(0, 0, 0, 0.7);
-  animation-duration: 0.5s;
-  animation-name: slidein;
-}
-.modalBox:before {
-  content: '';
-  position: absolute;
-  top: 16.875rem;
-  left: 3.125rem;
-  width: 12.5rem;
-  height: 1px;
-  background-color: var(--color-gray0);
+  background: rgba(0, 0, 0, 0.3);
+
+  z-index: 100;
+
+  .modalBox {
+    position: relative;
+    width: 100%;
+    max-width: 18.75rem;
+    height: 25rem;
+    background: var(--color-white);
+    border-radius: 0.1875rem;
+    box-shadow: 20px 20px 20px -20px rgba(0, 0, 0, 0.7);
+    animation-duration: 0.5s;
+    animation-name: slidein;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 16.875rem;
+      left: 3.125rem;
+      width: 12.5rem;
+      height: 1px;
+      background-color: var(--color-gray0);
+    }
+
+    .closeContainer {
+      margin-left: 12.5rem;
+      margin-top: 1.25rem;
+
+      .closeIcon {
+        font-size: 3.125rem;
+        color: var(--color-gray1);
+        transition: 0.5s;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    .middleModal {
+      margin-left: 55px;
+      margin-top: 20px;
+
+      a {
+        font-family: var(--font-primary);
+        font-size: 1.5625rem;
+        line-height: 1.8;
+        font-weight: 400;
+        color: var(--color-gray1);
+      }
+    }
+
+    .bottomModal {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 4.375rem;
+      margin-left: 3.75rem;
+      gap: 1.25rem;
+
+      @media (max-width: 935px) {
+        left: 2.5vw;
+      }
+
+      @media (max-width: 750px) {
+        left: 2vw;
+      }
+
+      .iconLinkedin {
+        width: 3.125rem;
+        transition: opacity 0.3s ease-in-out;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+
+      .iconGitHub {
+        width: 4.0625rem;
+        transition: opacity 0.3s ease-in-out;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
 }
 
 @keyframes slidein {
@@ -41,64 +105,4 @@
     margin-left: 30%;
     width: 30%;
   }
-}
-
-.closeContainer {
-  margin-left: 12.5rem;
-  margin-top: 1.25rem;
-}
-
-.closeIcon {
-  font-size: 3.125rem;
-  color: var(--color-gray1);
-  transition: 0.5s;
-}
-.closeIcon:hover {
-  opacity: 0.5;
-}
-
-.middleModal {
-  margin-left: 55px;
-  margin-top: 20px;
-
-  a {
-    font-family: var(--font-primary);
-    font-size: 1.5625rem;
-    line-height: 1.8;
-    font-weight: 400;
-    color: var(--color-gray1);
-  }
-}
-
-.bottomModal {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  margin-top: 4.375rem;
-  margin-left: 3.75rem;
-
-  gap: 1.25rem;
-
-  @media (max-width: 935px) {
-    left: 2.5vw;
-  }
-  @media (max-width: 750px) {
-    left: 2vw;
-  }
-}
-
-.iconLinkedin {
-  width: 3.125rem;
-  transition: opacity 0.3s ease-in-out;
-}
-.iconGitHub {
-  width: 4.0625rem;
-  transition: opacity 0.3s ease-in-out;
-}
-.iconLinkedin:hover {
-  opacity: 0.5;
-}
-.iconGitHub:hover {
-  opacity: 0.5;
 }

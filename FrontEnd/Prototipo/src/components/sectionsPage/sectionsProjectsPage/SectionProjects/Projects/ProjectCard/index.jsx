@@ -3,7 +3,7 @@ import {
   useLinkProject,
   useRenderImage,
   useLimitedDescription,
-} from '../../../../../../../hooks';
+} from '../../../../../../hooks';
 
 import styles from './styles.module.scss';
 

@@ -22,3 +22,4 @@ export { useResponsive } from './useResponsive';
 export { useColorHamburgerBar } from './useColorHamburguerBar';
 export { useRemoveTitle } from './useRemoveTitle';
 export { useDynamicTopValue } from './useDynamicTopValue';
+export { shouldUseWhiteColor } from './useShouldUseWhiteColor';

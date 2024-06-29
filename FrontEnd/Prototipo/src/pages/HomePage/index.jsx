@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 import { DefaultTemplate, TempladeHorizontal } from '../../components/templade';
 import {
@@ -21,9 +22,38 @@ import styles from './styles.module.scss';
 
 export const HomePage = () => {
   const { currentCard } = useContext(AppBehaviorContext);
-
   const [isOpen, setIsOpen] = useState(false);
   const [animate, setAnimate] = useState(false);
+  const [headerClass, setHeaderClass] = useState('');
+
+  const { ref: section1Ref, inView: inViewSection1 } = useInView({
+    threshold: 0.1,
+  });
+  const { ref: section2Ref, inView: inViewSection2 } = useInView({
+    threshold: 0.1,
+  });
+  const { ref: section3Ref, inView: inViewSection3 } = useInView({
+    threshold: 0.1,
+  });
+  const { ref: section4Ref, inView: inViewSection4 } = useInView({
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    let newHeaderClass = '';
+
+    if (inViewSection1) {
+      newHeaderClass = 'headerSection1';
+    } else if (inViewSection2) {
+      newHeaderClass = 'headerSection2';
+    } else if (inViewSection3) {
+      newHeaderClass = 'headerSection3';
+    } else if (inViewSection4) {
+      newHeaderClass = 'headerSection4';
+    }
+
+    setHeaderClass(newHeaderClass);
+  }, [inViewSection1, inViewSection2, inViewSection3, inViewSection4]);
 
   useEffect(() => {
     setAnimate(true);
@@ -47,12 +77,20 @@ export const HomePage = () => {
   return (
     <>
       {useResponsive() ? (
-        <DefaultTemplate setIsOpen={setIsOpen}>
+        <DefaultTemplate setIsOpen={setIsOpen} headerClass={headerClass}>
           <div>
-            <SectionBannerHomePage />
-            <SectionAboutHomePage />
-            <SectionWorkplace />
-            <SectionMeEmail />
+            <div ref={section1Ref}>
+              <SectionBannerHomePage />
+            </div>
+            <div ref={section2Ref}>
+              <SectionAboutHomePage />
+            </div>
+            <div ref={section3Ref}>
+              <SectionWorkplace />
+            </div>
+            <div ref={section4Ref}>
+              <SectionMeEmail />
+            </div>
           </div>
         </DefaultTemplate>
       ) : (

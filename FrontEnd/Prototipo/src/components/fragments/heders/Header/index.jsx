@@ -2,17 +2,21 @@ import YellowLogo from '../../../../assets/YellowLogo.svg';
 import BlackLogo from '../../../../assets/BlackLogo.svg';
 
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { Children, useContext } from 'react';
 import { AppBehaviorContext } from '../../../../providers';
 import styles from './styles.module.scss';
 import { HamburgerButton } from '../../HamburguerButton';
 import { useResponsive } from '../../../../hooks';
 
-export const Header = ({ setIsOpen }) => {
+export const Header = ({ setIsOpen, children, headerClass }) => {
   const { location, setRouteLocation, setCurrentCard, setReturShapeHam } =
     useContext(AppBehaviorContext);
 
   const compareRoutes = location === '/projects' || location === '/blog';
+  const useBlackLogo =
+    compareRoutes ||
+    headerClass === 'headerSection2' ||
+    headerClass === 'headerSection4';
 
   const handleClick = () => {
     setIsOpen(true);
@@ -31,26 +35,16 @@ export const Header = ({ setIsOpen }) => {
         className={`${useResponsive() ? styles.headerContainerVertical : styles.headerContainerHorizontal}`}
       >
         <div>
-          {compareRoutes ? (
-            <Link to={'/'} onClick={handleClickLogo}>
-              <img
-                className={`${styles.logo}`}
-                src={BlackLogo}
-                alt="Black Logo"
-              />
-            </Link>
-          ) : (
-            <Link to={'/'} onClick={handleClickLogo}>
-              <img
-                className={`${styles.logo}`}
-                src={YellowLogo}
-                alt="Yellow Logo"
-              />
-            </Link>
-          )}
+          <Link to={'/'} onClick={handleClickLogo}>
+            <img
+              src={useBlackLogo ? BlackLogo : YellowLogo}
+              alt={useBlackLogo ? 'Black Logo' : 'Yellow Logo'}
+            />
+          </Link>
         </div>
-        <HamburgerButton handleClick={handleClick} />
+        <HamburgerButton headerClass={headerClass} handleClick={handleClick} />
       </div>
+      {children}
     </header>
   );
 };

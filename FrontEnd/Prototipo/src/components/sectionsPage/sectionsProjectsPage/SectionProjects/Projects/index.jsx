@@ -1,4 +1,4 @@
-import { useFilterSubCategory } from '../../../../../../hooks';
+import { useFilterSubCategory } from '../../../../../hooks';
 import { ProjectCard } from './ProjectCard';
 
 import styles from './styles.module.scss';

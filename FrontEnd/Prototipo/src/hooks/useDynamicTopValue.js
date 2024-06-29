@@ -6,10 +6,7 @@ export const useDynamicTopValue = () => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      const newTopValue = `${-0.00203 * width + 11.49}vw`;
-
-      console.log('newTopValue: ', newTopValue);
-      console.log('width: ', width);
+      const newTopValue = `${-0.00195 * width + 11.5}vw`;
 
       setTopValue(newTopValue);
     };

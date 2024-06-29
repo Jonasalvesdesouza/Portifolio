@@ -10,12 +10,16 @@ export const ProjectsPage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <DefaultTemplate setIsOpen={setIsOpen}>
-      <div>
-        <SectionTitleProjects />
-        <SectionProjects />
-      </div>
+    <>
+      <DefaultTemplate
+        setIsOpen={setIsOpen}
+        topContent={<SectionTitleProjects />}
+      >
+        <div className="container">
+          <SectionProjects />
+        </div>
+      </DefaultTemplate>
       {isOpen ? <NavModal setIsOpen={setIsOpen} /> : null}
-    </DefaultTemplate>
+    </>
   );
 };

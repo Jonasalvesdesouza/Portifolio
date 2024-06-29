@@ -20,7 +20,6 @@ export const NavHomePage = () => {
   ];
 
   const handleClick = (index) => {
-    console.log('CLICOU');
     return setCurrentCard(index);
   };
 
