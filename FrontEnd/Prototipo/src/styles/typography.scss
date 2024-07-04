@@ -14,6 +14,9 @@
   &.yellow {
     color: var(--color-yellow2);
   }
+  &.white {
+    color: var(--color-white);
+  }
 }
 
 .title2 {
@@ -23,6 +26,12 @@
 
   &.gray {
     color: var(--color-gray0);
+  }
+
+  &.articlePage {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-white);
   }
 }
 
@@ -48,9 +57,13 @@
 
 .parapraphDefault {
   @extend %text;
-  font-size: clamp(14px, 1.5vw, 14px);
+  font-size: clamp(0.875rem, 1.5vw, 0.875rem);
   line-height: 1.2;
   color: var(--color-gray0);
+
+  &.black {
+    color: var(--color-black);
+  }
 }
 
 .parapraph {
@@ -82,9 +95,14 @@
     font-size: clamp(0.6875rem, 1.5vw, 1.375rem);
     color: var(--color-gray0);
   }
+
+  &.articleCategory {
+    font-size: clamp(10px, 1.5vw, 16px);
+    color: var(--color-gray0);
+  }
 }
 
 .text {
   @extend %text;
-  font-size: clamp(8px, 1.7vw, 11px);
+  font-size: clamp(0.5rem, 1.7vw, 0.6875rem);
 }

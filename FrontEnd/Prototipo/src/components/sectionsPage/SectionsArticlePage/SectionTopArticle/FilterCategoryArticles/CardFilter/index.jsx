@@ -1,6 +1,9 @@
 import { useContext } from 'react';
-import { Button } from '../../../../../fragments';
+import { Link } from 'react-router-dom';
+
 import { AppBehaviorContext } from '../../../../../../providers';
+
+import styles from '../styles.module.scss';
 
 export const CardFilter = ({ category, className, setFocusedButton }) => {
   const { setCategorysArticles, setSearch } = useContext(AppBehaviorContext);
@@ -9,14 +12,13 @@ export const CardFilter = ({ category, className, setFocusedButton }) => {
     setCategorysArticles(category);
     setFocusedButton(category);
     setSearch('');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <li>
-      <a className={className} onClick={handleClick}>
+      <Link to={'/blog'} className={className} onClick={handleClick}>
         {category}
-      </a>
+      </Link>
     </li>
   );
 };

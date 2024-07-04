@@ -1,0 +1,16 @@
+.sectionArticleContainer {
+  width: 100%;
+  margin: 0 auto;
+
+  .filterContainer {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+  }
+
+  .sectionArticle {
+    width: 83%;
+    margin: 0 auto;
+  }
+}

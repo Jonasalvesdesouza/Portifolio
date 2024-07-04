@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 
 import { AppBehaviorContext } from '../../../../../providers';
 import { useCategoryArticlesData } from '../../../../../hooks';
@@ -9,27 +9,27 @@ import { CardFilter } from './CardFilter';
 import styles from './styles.module.scss';
 
 export const FilterCategoryArticles = () => {
-  const { resetStadeCategorys, setSearch, setCategorysArticles } =
+  const { resetStadeCategorys, setSearch, focusedButton, setFocusedButton } =
     useContext(AppBehaviorContext);
   const categorysData = useCategoryArticlesData();
-  const [focusedButton, setFocusedButton] = useState('Emphasis');
 
   const handleClick = () => {
     resetStadeCategorys();
     setSearch('');
     setFocusedButton('Emphasis');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div className={`${styles.filterContainer}`}>
       <ul>
         <li>
-          <Button
+          <a
             className={focusedButton === 'Emphasis' ? styles.focused : ''}
             onClick={handleClick}
           >
             Emphasis
-          </Button>
+          </a>
         </li>
         {categorysData?.map((category) => {
           return (

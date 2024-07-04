@@ -27,6 +27,8 @@ export const AppBehaviorProvider = ({ children }) => {
 
   const [returShapeHam, setReturShapeHam] = useState(false);
 
+  const [focusedButton, setFocusedButton] = useState('Emphasis');
+
   const resetStadeCategorys = () => {
     setCategorysArticles('');
     setCategorysProject('');
@@ -65,6 +67,8 @@ export const AppBehaviorProvider = ({ children }) => {
         setImageArticle,
         returShapeHam,
         setReturShapeHam,
+        focusedButton,
+        setFocusedButton,
       }}
     >
       {children}

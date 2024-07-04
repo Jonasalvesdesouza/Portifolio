@@ -22,42 +22,45 @@ export const CardArticle = ({ article }) => {
 
   const handleClick = () => {
     localStorage.setItem('@IDARTICLE', article.id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const urlImage = useRenderImage(article);
 
   return (
-    <li className={`${styles.cardarticleContainer}`}>
-      <div className={`${styles.cardLeft}`}>
-        <div>
-          <div className={`${styles.headerCard}`}>
-            <Link to={'/articlepage'} onClick={handleClick}>
+    <li>
+      <Link
+        to={'/articlepage'}
+        onClick={handleClick}
+        className={`${styles.cardarticleContainer}`}
+      >
+        <div className={`${styles.cardLeft}`}>
+          <div>
+            <div className={`${styles.headerCard}`}>
               <h2> {article.title} </h2>
-            </Link>
-            <span> {dateArticle} </span>
+              <span> {dateArticle} </span>
+            </div>
+            <div className={`${styles.descriptionContainer} ql-snow`}>
+              <p
+                className="ql-editor"
+                dangerouslySetInnerHTML={{ __html: LimitedDescription }}
+              />
+            </div>
           </div>
-          <div className={`${styles.descriptionContainer} ql-snow`}>
-            <p
-              className="ql-editor"
-              dangerouslySetInnerHTML={{ __html: LimitedDescription }}
-            />
-          </div>
-        </div>
 
-        <div className={`${styles.cardFooter}`}>
-          <span className={`${styles.cardCategory}`}>
-            {article.category} -{' '}
-          </span>
-          <span className={`${styles.readingTime}`}>
-            {' Reading time ' + timeText + ' minute'}
-          </span>
+          <div className={`${styles.cardFooter}`}>
+            <span className={`${styles.cardCategory}`}>
+              {article.category} -{' '}
+            </span>
+            <span className={`${styles.readingTime}`}>
+              {' Reading time ' + timeText + ' minute'}
+            </span>
+          </div>
         </div>
-      </div>
-      <div className={`${styles.cardRight}`}>
-        <Link to={'/articlepage'} onClick={handleClick}>
+        <div className={`${styles.cardRight}`}>
           <img src={urlImage} alt={article.title} />
-        </Link>
-      </div>
+        </div>
+      </Link>
     </li>
   );
 };

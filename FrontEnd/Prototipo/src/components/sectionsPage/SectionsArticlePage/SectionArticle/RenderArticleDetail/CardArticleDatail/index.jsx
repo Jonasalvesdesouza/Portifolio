@@ -1,5 +1,12 @@
 import React from 'react';
-import { useLimitedDescription, useRenderImage } from '../../../../../../hooks';
+import {
+  useLimitedDescription,
+  useRemoveTitle,
+  useRenderImage,
+} from '../../../../../../hooks';
+
+import styles from './styles.module.scss';
+
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 import css from 'highlight.js/lib/languages/css';
@@ -11,11 +18,9 @@ hljs.registerLanguage('css', css);
 hljs.registerLanguage('html', html);
 
 export const CardArticleDatail = ({ object }) => {
+  const { remainingText } = useRemoveTitle(object.description, 'h1');
   const maxLength = 50;
-  const LimitedDescription = useLimitedDescription(
-    object?.description,
-    maxLength,
-  );
+  const LimitedDescription = useLimitedDescription(remainingText, maxLength);
   const urlImage = useRenderImage(object);
 
   const highlightCode = () => {
@@ -27,14 +32,16 @@ export const CardArticleDatail = ({ object }) => {
   React.useEffect(() => {
     highlightCode();
   }, []);
+
   return (
-    <li>
+    <li className={`${styles.cardAticleDetailContainer}`}>
       <div>
         <div className="ql-snow">
-          <span>{object.category}</span>
-          <h2>{object.title}</h2>
+          <h2 className="title2 articlePage">{object.title}</h2>
+          <span className="parapraph articleCategory">{object.category}</span>
+
           <p
-            className="ql-editor"
+            className="ql-editor parapraph articleCategory"
             dangerouslySetInnerHTML={{ __html: LimitedDescription }}
           />
         </div>

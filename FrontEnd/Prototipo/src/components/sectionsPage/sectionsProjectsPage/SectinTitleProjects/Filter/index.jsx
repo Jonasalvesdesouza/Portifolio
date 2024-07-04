@@ -23,28 +23,26 @@ export const FilterProjects = () => {
     setFocusedButton(category);
   };
 
-  console.log('focusedButton: ', focusedButton);
-
   return (
     <ul className={`${styles.filterContainer}`}>
       <li key="emphasis">
-        <Button
+        <a
           className={`${styles.button} ${focusedButton === 'Emphasis' ? styles.focused : ''}`}
           onClick={handleClick}
         >
           Emphasis
-        </Button>
+        </a>
       </li>
 
       {categorysData?.map((category) => {
         return (
           <li key={category}>
-            <Button
+            <a
               className={`${styles.button} ${focusedButton === category ? styles.focused : ''}`}
               onClick={() => handleClick2(category)}
             >
               {category}
-            </Button>
+            </a>
           </li>
         );
       })}

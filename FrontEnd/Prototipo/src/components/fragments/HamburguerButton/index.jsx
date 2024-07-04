@@ -4,7 +4,7 @@ import { AppBehaviorContext } from '../../../providers';
 import {
   useColorHamburgerBar,
   useResponsive,
-  shouldUseWhiteColor,
+  useShouldUseWhiteColor,
 } from '../../../hooks';
 
 export const HamburgerButton = ({ handleClick, headerClass }) => {
@@ -12,7 +12,9 @@ export const HamburgerButton = ({ handleClick, headerClass }) => {
 
   const colorBar = useColorHamburgerBar(useResponsive);
 
-  const useWhiteColor = shouldUseWhiteColor(colorBar, headerClass);
+  const useWhiteColor = useShouldUseWhiteColor(colorBar, headerClass);
+
+  console.log(useWhiteColor);
 
   return (
     <label className={`${styles.label}`} onClick={handleClick}>

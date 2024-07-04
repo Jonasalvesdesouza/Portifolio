@@ -1,19 +1,21 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import { AppBehaviorContext } from '../../../../../../providers';
+import { AppBehaviorContext } from '../../../../../providers';
 
-export const CardFilter = ({ category }) => {
+export const CardFilter = ({ category, className, setFocusedButton }) => {
   const { setCategorysArticles, setSearch } = useContext(AppBehaviorContext);
 
   const handleClick = () => {
     setCategorysArticles(category);
+    setFocusedButton(category);
     setSearch('');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <li>
-      <Link to={'/blog'} onClick={handleClick}>
+      <Link to={'/blog'} className={className} onClick={handleClick}>
         {category}
       </Link>
     </li>

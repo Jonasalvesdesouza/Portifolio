@@ -9,8 +9,13 @@ import { HamburgerButton } from '../../HamburguerButton';
 import { useResponsive } from '../../../../hooks';
 
 export const Header = ({ setIsOpen, children, headerClass }) => {
-  const { location, setRouteLocation, setCurrentCard, setReturShapeHam } =
-    useContext(AppBehaviorContext);
+  const {
+    location,
+    setRouteLocation,
+    setCurrentCard,
+    setReturShapeHam,
+    setFocusedButton,
+  } = useContext(AppBehaviorContext);
 
   const compareRoutes = location === '/projects' || location === '/blog';
   const useBlackLogo =
@@ -22,6 +27,7 @@ export const Header = ({ setIsOpen, children, headerClass }) => {
     setIsOpen(true);
     setRouteLocation(location);
     setReturShapeHam(true);
+    setFocusedButton('Emphasis');
   };
 
   const handleClickLogo = () => {

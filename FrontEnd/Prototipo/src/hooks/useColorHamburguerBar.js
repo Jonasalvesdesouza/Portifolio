@@ -2,9 +2,10 @@ import { useLocation } from 'react-router-dom';
 
 export const useColorHamburgerBar = (useResponsive) => {
   const location = useLocation();
-  const router = location.pathname === '/';
+  const homepage = location.pathname === '/';
+  const articlepage = location.pathname === '/articlepage';
 
-  if (router && useResponsive()) {
+  if ((homepage && useResponsive()) || articlepage) {
     return true;
   } else {
     return false;
