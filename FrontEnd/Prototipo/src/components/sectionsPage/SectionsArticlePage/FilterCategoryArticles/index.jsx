@@ -5,6 +5,7 @@ import { AppBehaviorContext } from '../../../../providers';
 import {
   useCategoryArticlesData,
   useFilterArticleById,
+  useSticky,
 } from '../../../../hooks';
 
 import { CardFilter } from './CardFilter';
@@ -19,6 +20,8 @@ export const FilterCategoryArticles = () => {
   const articleId = localStorage.getItem('@IDARTICLE');
   const article = useFilterArticleById(articleId);
 
+  const [isSticky, filterRef] = useSticky();
+
   useEffect(() => {
     if (article && article.category) {
       setFocusedButton(article.category);
@@ -29,11 +32,14 @@ export const FilterCategoryArticles = () => {
     resetStadeCategorys();
     setSearch('');
     setFocusedButton('Emphasis');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   };
 
   return (
-    <div className={`${styles.filterContainer}`}>
+    <div
+      className={`${styles.filterContainer} ${isSticky ? styles.sticky : ''}`}
+      ref={filterRef}
+    >
       <ul>
         <li>
           <Link to={'/blog'} onClick={handleClick}>

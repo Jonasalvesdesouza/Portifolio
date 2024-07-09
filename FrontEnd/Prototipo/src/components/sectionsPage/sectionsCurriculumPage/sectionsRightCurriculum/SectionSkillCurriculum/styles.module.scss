@@ -1,0 +1,20 @@
+.sectionSkillContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  .sectionSkillHeader {
+    border-bottom: 1px solid var(--color-gray0);
+    padding-bottom: 20px;
+  }
+
+  .skillsContainer {
+    ul {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 16px;
+
+      /* Deixar responsivel com o display grid */
+    }
+  }
+}

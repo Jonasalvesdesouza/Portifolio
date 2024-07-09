@@ -76,8 +76,13 @@ export const UserAdmProvider = ({ children }) => {
   const profileUpdate = async (payload, setLoading, reset) => {
     try {
       setLoading(true);
+      const profileId = payload.id;
 
-      const { data } = await api.patch('/profile/', payload, headers);
+      const { data } = await api.patch(
+        `/profile/${profileId}`,
+        payload,
+        headers,
+      );
 
       NotifySucess('User update successfully!');
       reset();
@@ -784,7 +789,6 @@ export const UserAdmProvider = ({ children }) => {
   };
 
   const messageMeDelete = async (messageId, setLoading) => {
-    console.log(messageId);
     try {
       await api.delete(`/messages/${messageId}`, headers);
       const newMessageList = messageList.filter(

@@ -27,6 +27,10 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 6vh;
+
+  p {
+    margin-top: 5px;
+  }
 }
 
 .textAreaContainer {
@@ -43,6 +47,5 @@
   font-family: var(--font-primary);
   font-weight: 300;
   color: var(--color-black);
-
   margin-bottom: 0.625rem;
 }

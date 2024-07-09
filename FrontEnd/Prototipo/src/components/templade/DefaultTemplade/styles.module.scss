@@ -134,13 +134,6 @@
   flex-direction: column;
 
   min-height: 100vh;
-  /*   background: linear-gradient(
-    to bottom,
-    var(--color-black) 0%,
-    var(--color-black) 35%,
-    var(--color-white) 35%,
-    var(--color-white) 100%
-  ); */
 
   position: relative;
 
@@ -148,11 +141,8 @@
     width: 100%;
     height: auto;
 
-    background-color: var(--color-black-transparent);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-
-    position: relative;
+    position: sticky;
+    top: 0;
 
     z-index: 1;
   }
@@ -197,7 +187,7 @@
   main {
     min-height: 100vh;
     z-index: 0;
-    padding: 20px;
+    padding: 50px;
   }
 
   footer {

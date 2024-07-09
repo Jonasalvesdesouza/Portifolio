@@ -9,7 +9,7 @@ export const CardFilter = ({ category, className, setFocusedButton }) => {
     setCategorysArticles(category);
     setFocusedButton(category);
     setSearch('');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   };
 
   return (

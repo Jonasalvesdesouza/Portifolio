@@ -8,7 +8,7 @@ export const TextArea = forwardRef(
 
         <textarea {...rest} ref={ref} cols={cols} rows={rows} />
 
-        {error ? <p>{error.message}</p> : null}
+        {error ? <p className="parapraph error">{error.message}</p> : null}
       </div>
     );
   },

@@ -5,14 +5,18 @@ import {
   SectionRightCurriculum,
 } from '../../components/sectionsPage/sectionsCurriculumPage';
 
+import styles from './styles.module.scss';
+
 export const CurriculumPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div>
+    <div className={`${styles.curriculumContainer}`}>
       <Header setIsOpen={setIsOpen} />
       <main>
-        <div>
+        <div className={`${styles.leftContainer}`}>
           <SectionLeftCurriculum />
+        </div>
+        <div className={`${styles.rightContainer}`}>
           <SectionRightCurriculum />
         </div>
       </main>

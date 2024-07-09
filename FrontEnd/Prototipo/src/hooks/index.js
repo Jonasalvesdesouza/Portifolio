@@ -24,3 +24,5 @@ export { useRemoveTitle } from './useRemoveTitle';
 export { useDynamicTopValue } from './useDynamicTopValue';
 export { useDynamicBackground } from './useDynamicBackground';
 export { useShouldUseWhiteColor } from './useShouldUseWhiteColor';
+export { useSticky } from './useSticky';
+export { useFormattedName } from './useFormattedName';

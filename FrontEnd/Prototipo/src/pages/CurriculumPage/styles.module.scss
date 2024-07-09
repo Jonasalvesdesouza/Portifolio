@@ -1,0 +1,30 @@
+.curriculumContainer {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    to right,
+    var(--color-black) 50%,
+    var(--color-white) 50%
+  );
+
+  header {
+    position: sticky;
+    top: 0;
+  }
+
+  main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: 0 auto;
+    max-width: 78vw;
+
+    .leftContainer {
+      width: 45%;
+    }
+    .rightContainer {
+      width: 45%;
+    }
+  }
+}

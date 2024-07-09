@@ -6,9 +6,16 @@ import {
   FaReact,
   FaNodeJs,
   FaSass,
+  FaAngular,
 } from 'react-icons/fa';
-import { SiTypescript } from 'react-icons/si';
-import { SiAdobexd, SiAdobeillustrator } from 'react-icons/si';
+import {
+  SiTypescript,
+  SiAdobexd,
+  SiAdobeillustrator,
+  SiPenpot,
+  SiExpress,
+  SiNestjs,
+} from 'react-icons/si';
 
 export const IconsSkills = [
   { name: 'HTML5', icon: <FaHtml5 size={55} color="#1b1f24" /> },
@@ -21,7 +28,11 @@ export const IconsSkills = [
   { name: 'Sass', icon: <FaSass size={55} color="#1b1f24" /> },
   { name: 'Adobe Xd', icon: <SiAdobexd size={55} color="#1b1f24" /> },
   {
-    name: 'Adobe Ilustrator',
+    name: 'Ilustrator',
     icon: <SiAdobeillustrator size={55} color="#1b1f24" />,
   },
+  { name: 'Penpot', icon: <SiPenpot size={55} color="#1b1f24" /> },
+  { name: 'Angular', icon: <FaAngular size={55} color="#1b1f24" /> },
+  { name: 'Express', icon: <SiExpress size={55} color="#1b1f24" /> },
+  { name: 'NestJs', icon: <SiNestjs size={55} color="#1b1f24" /> },
 ];

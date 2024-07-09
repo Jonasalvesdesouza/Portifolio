@@ -11,7 +11,7 @@ import { TextArea, Input, Button } from '../../../index';
 export const FormProfile = () => {
   const [loading, setLoading] = useState(false);
 
-  const { editProfile, profileUpdate } = useContext(UserAdmContext);
+  const { editProfile, profileUpdate, profile } = useContext(UserAdmContext);
 
   const {
     register,
@@ -29,7 +29,8 @@ export const FormProfile = () => {
   });
 
   const onSubmit = (payLoad) => {
-    profileUpdate(payLoad, setLoading, reset);
+    const updatedPayload = { ...payLoad, id: profile.id };
+    profileUpdate(updatedPayload, setLoading, reset);
   };
 
   return (

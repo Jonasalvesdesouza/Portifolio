@@ -1,0 +1,20 @@
+.cardEducationContainer {
+  display: flex;
+  flex-direction: column;
+
+  padding-bottom: 20px;
+
+  .cardEducationHeader {
+    display: flex;
+    flex-direction: column;
+
+    padding-bottom: 10px;
+
+    .TopHeader {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}

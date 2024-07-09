@@ -1,0 +1,17 @@
+.sectionEducationContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  .sectionEducationHeader {
+    border-bottom: 1px solid var(--color-gray0);
+    padding-bottom: 20px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+  }
+}

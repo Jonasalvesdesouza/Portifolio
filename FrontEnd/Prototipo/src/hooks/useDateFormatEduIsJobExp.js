@@ -1,8 +1,8 @@
 export const useDateFormatEduIsJobExp = (date) => {
   const formatDate = (dateString) => {
-    const isoParts = dateString.split('-');
-    if (isoParts.length === 3) {
-      const [year, month] = isoParts;
+    const dateParts = dateString.split('/');
+    if (dateParts.length === 3) {
+      const [day, month, year] = dateParts;
 
       const monthNames = [
         'Jan',
@@ -20,9 +20,9 @@ export const useDateFormatEduIsJobExp = (date) => {
       ];
       const abbreviatedMonth = monthNames[Number(month) - 1];
 
-      return abbreviatedMonth ? `${abbreviatedMonth}.${year}` : 'Mês inválido';
+      return abbreviatedMonth ? `${abbreviatedMonth}.${year}` : 'Invalid month';
     } else {
-      return 'Formato de data inválido';
+      return 'Invalid date format';
     }
   };
 

@@ -6,6 +6,7 @@ export const SectionTopArticle = () => {
     <div className={`${styles.topArticleContainer}`}>
       <div className={`${styles.headerArticle}`}>
         <h1 className="title1 white">Article.</h1>
+        <FormSearchArticles />
       </div>
     </div>
   );

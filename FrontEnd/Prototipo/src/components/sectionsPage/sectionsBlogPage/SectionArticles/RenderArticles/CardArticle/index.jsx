@@ -22,7 +22,7 @@ export const CardArticle = ({ article }) => {
 
   const handleClick = () => {
     localStorage.setItem('@IDARTICLE', article.id);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   };
 
   const urlImage = useRenderImage(article);

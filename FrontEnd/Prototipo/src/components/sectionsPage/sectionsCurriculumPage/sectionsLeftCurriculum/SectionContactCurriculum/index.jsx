@@ -5,6 +5,8 @@ import { BsMailboxFlag } from 'react-icons/bs';
 
 import { UserAdmContext } from '../../../../../providers';
 
+import styles from './styles.module.scss';
+
 export const SectionContactCurriculum = () => {
   const { profile } = useContext(UserAdmContext);
 
@@ -12,15 +14,17 @@ export const SectionContactCurriculum = () => {
   const email = profile?.contact?.email;
 
   return (
-    <div>
-      <h3>Contact.</h3>
-      <div>
-        <SlPhone size={20} color="#848484" />
-        <p>{cel}</p>
-      </div>
-      <div>
-        <BsMailboxFlag size={20} color="#848484" />
-        <p>{email}</p>
+    <div className={`${styles.sectionContactContainer}`}>
+      <h3 className="title1 curriculum">Contact.</h3>
+      <div className={`${styles.contacts}`}>
+        <div>
+          <SlPhone size={22} color="#76787b" />
+          <p className="parapraphDefault curriculum">{cel}</p>
+        </div>
+        <div>
+          <BsMailboxFlag size={22} color="#76787b" />
+          <p className="parapraphDefault curriculum">{email}</p>
+        </div>
       </div>
     </div>
   );

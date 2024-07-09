@@ -41,7 +41,7 @@ export const FormSendMeEmail = () => {
                 className={` ${useResponsive() ? 'input-medium vertical parapraph homeInput' : 'input-medium parapraph homeInput'}`}
                 placeholder="Enter your name"
                 type="text"
-                error={errors.title}
+                error={errors.name}
                 {...register('name')}
               />
             </div>
@@ -67,7 +67,7 @@ export const FormSendMeEmail = () => {
               placeholder="Come on, don't be shy, send a message..."
               cols={30}
               row={5}
-              error={errors.message}
+              error={errors.description}
               {...register('description')}
             />
           </div>

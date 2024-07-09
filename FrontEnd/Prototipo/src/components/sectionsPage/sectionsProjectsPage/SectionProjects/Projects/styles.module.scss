@@ -26,8 +26,9 @@
   }
 
   ul {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 96%;
 
     gap: 30px;
 

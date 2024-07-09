@@ -1,0 +1,21 @@
+.sectionSocialMediaContainer {
+  display: flex;
+  flex-direction: column;
+
+  gap: 50px;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+
+    gap: 20px;
+
+    li {
+      transition: 0.3s;
+    }
+
+    li:hover {
+      opacity: 0.5;
+    }
+  }
+}

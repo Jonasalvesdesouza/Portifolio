@@ -1,0 +1,25 @@
+.topLeftContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 50px;
+  border-bottom: 1px solid var(--color-gray0);
+
+  .topLeftHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imgContainer {
+    margin-bottom: 100px;
+
+    img {
+      border: 10px solid var(--color-white);
+      border-radius: 50%;
+
+      box-shadow: 10px 10px 20px rgba(0, 0, 0, 05);
+    }
+  }
+}

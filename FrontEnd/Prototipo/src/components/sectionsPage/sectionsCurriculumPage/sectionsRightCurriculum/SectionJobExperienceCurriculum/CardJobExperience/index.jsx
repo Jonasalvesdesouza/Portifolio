@@ -1,5 +1,7 @@
 import { useDateFormatEduIsJobExp } from '../../../../../../hooks';
 
+import styles from './styles.module.scss';
+
 export const CardJobExperience = ({ job }) => {
   const initialDate = useDateFormatEduIsJobExp(job.initialDate);
   const endDate = useDateFormatEduIsJobExp(job.endDate);
@@ -14,22 +16,23 @@ export const CardJobExperience = ({ job }) => {
   const description = job.description;
 
   return (
-    <li>
-      <div>
-        <div>
-          <div>{<h4>{work}</h4>}</div>
-          <div>
-            <span>
-              {initialDate + ' - ' + (endDate === '' ? 'current' : endDate)}
-            </span>
-          </div>
+    <li className={`${styles.cardJobExperienceContainer}`}>
+      <div className={`${styles.cardJobExperienceHeader}`}>
+        <div className={`${styles.TopHeader}`}>
+          {<h4 className="title1 curriculum right">{work}</h4>}
+
+          <span className="title3 curriculum">
+            {initialDate +
+              ' - ' +
+              (endDate === 'Invalid date format' ? 'Current' : endDate)}
+          </span>
         </div>
-        <div>
+        <div className="parapraph curriculum italic">
           <span>{office + ' / ' + city + ' - ' + state + ' / ' + country}</span>
         </div>
-        <div>
-          <span>{description}</span>
-        </div>
+      </div>
+      <div>
+        <span className="parapraph curriculum">{description}</span>
       </div>
     </li>
   );

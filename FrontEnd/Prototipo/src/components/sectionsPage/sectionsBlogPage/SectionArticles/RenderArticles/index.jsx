@@ -6,7 +6,7 @@ export const RenderArticles = ({ search, articlesResult }) => {
   return (
     <div className={`${styles.renderArticlesContainer}`}>
       {search ? (
-        <div>
+        <div className={`${styles.searchInfoContainer}`}>
           <span>Listed articles: {articlesResult.length}</span>
           <p>Search results for: {search}</p>
         </div>

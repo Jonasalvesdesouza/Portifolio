@@ -17,7 +17,7 @@ export const FilterCategoryArticles = () => {
     resetStadeCategorys();
     setSearch('');
     setFocusedButton('Emphasis');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   };
 
   return (

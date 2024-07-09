@@ -9,6 +9,7 @@ export const DefaultTemplate = ({
   setIsOpen,
   topContent,
   headerClass,
+  isSticky,
 }) => {
   const location = useLocation();
   const router = location.pathname === '/';
@@ -26,7 +27,11 @@ export const DefaultTemplate = ({
       }
       style={articlePage ? { background: dynamicBackground } : {}}
     >
-      <Header headerClass={headerClass} setIsOpen={setIsOpen}>
+      <Header
+        headerClass={headerClass}
+        setIsOpen={setIsOpen}
+        isSticky={isSticky}
+      >
         {topContent}
       </Header>
 

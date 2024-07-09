@@ -14,8 +14,6 @@ export const HamburgerButton = ({ handleClick, headerClass }) => {
 
   const useWhiteColor = useShouldUseWhiteColor(colorBar, headerClass);
 
-  console.log(useWhiteColor);
-
   return (
     <label className={`${styles.label}`} onClick={handleClick}>
       <input

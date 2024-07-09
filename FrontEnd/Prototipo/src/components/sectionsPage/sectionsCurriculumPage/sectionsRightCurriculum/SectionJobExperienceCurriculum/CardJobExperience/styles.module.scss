@@ -1,0 +1,20 @@
+.cardJobExperienceContainer {
+  display: flex;
+  flex-direction: column;
+
+  padding-bottom: 20px;
+
+  .cardJobExperienceHeader {
+    display: flex;
+    flex-direction: column;
+
+    padding-bottom: 10px;
+
+    .TopHeader {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
