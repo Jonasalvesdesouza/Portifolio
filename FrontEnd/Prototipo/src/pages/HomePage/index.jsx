@@ -63,7 +63,7 @@ export const HomePage = () => {
         <DefaultTemplate setIsOpen={setIsOpen} headerClass={headerClass}>
           <div>
             {sectionRefs.map(({ ref }, index) => (
-              <div key={index} ref={ref.ref}>
+              <div className={styles.cardContainer} key={index} ref={ref.ref}>
                 {cards[index]}
               </div>
             ))}

@@ -17,7 +17,6 @@ $color-gray0: var(--color-gray0);
   background: linear-gradient(to right, $color-black 23vw, $color-white 23vw);
   position: relative;
   overflow: hidden;
-  z-index: 1;
 
   &:before {
     content: '';
@@ -38,53 +37,53 @@ $color-gray0: var(--color-gray0);
     height: 1px;
     background-color: var(--color-gray0);
   }
-}
 
-.mainContainer {
-  main {
-    position: absolute;
-    top: $template-main-top;
-    left: $template-main-left;
-    width: 100%;
-  }
-}
+  .mainContainer {
+    main {
+      position: absolute;
+      top: $template-main-top;
+      left: $template-main-left;
+      width: 100%;
+    }
 
-.leftSideContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: $template-margin-top;
+    .leftSideContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: $template-margin-top;
 
-  nav {
-    position: absolute;
-    top: $template-nav-top;
-    left: $template-nav-left;
+      nav {
+        position: absolute;
+        top: $template-nav-top;
+        left: $template-nav-left;
 
-    @media (max-width: 1050px) {
-      span {
-        font-size: 1.3vw;
+        @media (max-width: 1050px) {
+          span {
+            font-size: 1.3vw;
+          }
+        }
+      }
+
+      footer {
+        position: absolute;
+        top: $template-footer-top;
+        left: 0;
+        width: 35vw;
       }
     }
-  }
 
-  footer {
-    position: absolute;
-    top: $template-footer-top;
-    left: 0;
-    width: 35vw;
-  }
-}
+    .button {
+      position: absolute;
+      top: $template-button-top;
+      left: $template-button-left;
+      animation: moveUpDown 1.5s infinite alternate ease-in-out;
+      transition: 0.5s;
 
-.button {
-  position: absolute;
-  top: $template-button-top;
-  left: $template-button-left;
-  animation: moveUpDown 1.5s infinite alternate ease-in-out;
-  transition: 0.5s;
-
-  &:hover {
-    opacity: 0.5;
-    animation: moveUpDown 0.5s infinite alternate ease-in-out;
+      &:hover {
+        opacity: 0.5;
+        animation: moveUpDown 0.5s infinite alternate ease-in-out;
+      }
+    }
   }
 }
 

@@ -1,60 +1,66 @@
 .meEmailContainerHorizontal {
-  form {
-    margin-top: 1.5vw;
-    margin-left: -40vw;
+  .meEmailHeader {
+    margin-bottom: 30px;
   }
 }
+
 .meEmailContainerVertical {
-  margin-top: 5vw;
-  margin-left: 10vw;
-  margin-bottom: 5vw;
-  form {
-    margin-left: -13vw;
-  }
+  width: 100%;
+  height: 100%;
+  gap: 50px;
 
-  p {
-    margin-bottom: 3vw;
-  }
+  .meEmailContainer {
+    width: 80%;
+    height: 100%;
 
-  @media (max-width: 1050px) {
-    form {
-      margin-left: -13vw;
+    margin: 0 auto;
+
+    gap: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media (max-width: 1050px) {
+      form {
+        margin-left: -13vw;
+      }
+      p {
+        font-size: 1.6vw;
+        line-height: 1.2;
+
+        margin-bottom: 3vw;
+      }
     }
-    p {
-      font-size: 1.6vw;
-      line-height: 1.2;
 
-      margin-bottom: 3vw;
+    @media (max-width: 800px) {
+      p {
+        line-height: 1.2;
+      }
     }
-  }
 
-  @media (max-width: 800px) {
-    p {
-      line-height: 1.2;
-    }
-  }
-
-  @media (max-width: 680px) {
-    h4 {
-      font-size: 6vw;
-      span {
+    @media (max-width: 680px) {
+      h4 {
         font-size: 6vw;
+        span {
+          font-size: 6vw;
+        }
+      }
+      p {
+        font-size: 2.3vw;
       }
     }
-    p {
-      font-size: 2.3vw;
-    }
-  }
-  @media (max-width: 570px) {
-    h1 {
-      font-size: 6.5vw;
-      span {
+    @media (max-width: 570px) {
+      h1 {
         font-size: 6.5vw;
+        span {
+          font-size: 6.5vw;
+        }
       }
     }
-  }
 
-  @media (max-width: 334px) {
-    margin-top: 10vw;
+    @media (max-width: 334px) {
+      margin-top: 10vw;
+    }
   }
 }

@@ -21,7 +21,7 @@
   &.curriculum {
     font-size: clamp(1.25rem, 5vw, 2.5rem);
     font-weight: 500;
-    color: var(--colo-Darkwhite);
+    color: var(--color-Darkwhite);
 
     &.right {
       font-size: clamp(12.5px, 5vw, 25px);
@@ -97,7 +97,7 @@
 
 .parapraph {
   @extend %text;
-  font-size: clamp(0.6875rem, 1.5vw, 1.375rem);
+  font-size: clamp(11px, 2vw, 22px);
   line-height: 1.5;
 
   &.home {
@@ -108,7 +108,7 @@
     font-size: clamp(0.6875rem, 1.7vw, 1.375rem);
   }
   &.homeWorkMobile {
-    color: var(--colo-Darkwhite);
+    color: var(--color-Darkwhite);
     font-size: clamp(0.6875rem, 1.7vw, 1.375rem);
   }
   &.homeInput {
@@ -116,7 +116,7 @@
   }
 
   &.homeMobile {
-    color: var(--colo-Darkwhite);
+    color: var(--color-Darkwhite);
   }
 
   &.homesendEmail {

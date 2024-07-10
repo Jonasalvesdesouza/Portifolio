@@ -1,9 +1,7 @@
 import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-
 import { SlArrowRight } from 'react-icons/sl';
-
 import { Button, Input, TextArea } from '../..';
 import { sendMeEmailFormSchema } from '../../../../schema';
 import { UserAdmContext } from '../../../../providers';
@@ -28,56 +26,54 @@ export const FormSendMeEmail = () => {
     setLoading(false);
   };
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={`${styles.container}`}>
-        <div
-          className={`${styles.formContainer} ${useResponsive() ? styles.left : ''}`}
-        >
-          <div>
-            <div className={`${styles.inputContainer}`}>
-              <span className={`${styles.labelSendMeEmail}`}>You Name.</span>
-              <Input
-                className={` ${useResponsive() ? 'input-medium vertical parapraph homeInput' : 'input-medium parapraph homeInput'}`}
-                placeholder="Enter your name"
-                type="text"
-                error={errors.name}
-                {...register('name')}
-              />
-            </div>
+  const isResponsive = useResponsive();
+  const inputClass = `${isResponsive ? 'input-medium vertical' : 'input-medium'} parapraph homeInput`;
+  const textAreaClass = `${isResponsive ? 'textArea-medium vertical' : 'textArea-medium'} parapraph homeInput`;
 
-            <div className={`${styles.inputContainer}`}>
-              <span className={`${styles.labelSendMeEmail}`}>
-                Email Anddress.
-              </span>
-              <Input
-                className={` ${useResponsive() ? 'input-medium vertical parapraph homeInput' : 'input-medium parapraph homeInput'}`}
-                placeholder="Enter your email address"
-                type="email"
-                error={errors.email}
-                {...register('email')}
-              />
-            </div>
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.containerDefault}>
+      <div className={styles.formContainer}>
+        <div className={styles.formLeft}>
+          <div className={styles.inputContainer}>
+            <span className={styles.labelSendMeEmail}>Your Name.</span>
+            <Input
+              className={inputClass}
+              placeholder="Enter your name"
+              type="text"
+              error={errors.name}
+              {...register('name')}
+            />
           </div>
 
-          <div className={`${styles.textAreaContainer}`}>
-            <span className={`${styles.labelSendMeEmail}`}>Your Message.</span>
-            <TextArea
-              className={`${useResponsive() ? 'textArea-medium vertical parapraph homeInput' : 'textArea-medium parapraph homeInput'}`}
-              placeholder="Come on, don't be shy, send a message..."
-              cols={30}
-              row={5}
-              error={errors.description}
-              {...register('description')}
+          <div className={styles.inputContainer}>
+            <span className={styles.labelSendMeEmail}>Email Address.</span>
+            <Input
+              className={inputClass}
+              placeholder="Enter your email address"
+              type="email"
+              error={errors.email}
+              {...register('email')}
             />
           </div>
         </div>
-        <div className="bntSendMeEmail">
-          <Button type="submit">
-            {!loading ? <span>TO SEND</span> : <span>SENDING...</span>}
-            <SlArrowRight className="icon" />
-          </Button>
+
+        <div className={styles.textAreaContainer}>
+          <span className={styles.labelSendMeEmail}>Your Message.</span>
+          <TextArea
+            className={textAreaClass}
+            placeholder="Come on, don't be shy, send a message..."
+            cols={30}
+            row={5}
+            error={errors.description}
+            {...register('description')}
+          />
         </div>
+      </div>
+      <div className={`${!isResponsive ? styles.bntSend : ''} bntSendMeEmail`}>
+        <Button type="submit">
+          {!loading ? <span>TO SEND</span> : <span>SENDING...</span>}
+          <SlArrowRight className="icon" />
+        </Button>
       </div>
     </form>
   );

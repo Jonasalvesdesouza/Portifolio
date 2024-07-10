@@ -1,41 +1,49 @@
-.container {
+.containerDefault {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 100%;
-  z-index: 0;
+  gap: 50px;
+
+  .bntSend {
+    right: 18vw;
+  }
 }
 
 .formContainer {
   display: flex;
   flex-direction: row;
-  margin-left: 5vw;
-
-  &.left {
-    margin-left: 0;
-  }
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 50px;
 
   @media (max-width: 1050px) {
-    display: flex;
     flex-direction: column;
     align-items: normal;
+    width: 68%;
+  }
+
+  .formLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: auto;
+    height: 100%;
+    gap: 50px;
   }
 }
 
 .inputContainer {
   display: flex;
   flex-direction: column;
-  padding-bottom: 6vh;
-
-  p {
-    margin-top: 5px;
-  }
 }
 
 .textAreaContainer {
-  margin-bottom: 2vw;
-  margin-left: 3vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 
   @media (max-width: 1050px) {
     margin-left: 0;

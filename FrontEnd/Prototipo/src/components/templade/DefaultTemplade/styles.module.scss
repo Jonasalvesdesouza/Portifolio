@@ -4,13 +4,22 @@
   margin: 0;
   background: linear-gradient(
     to bottom,
+    var(--color-black) 10%,
+    var(--color-black) 10%,
+    var(--color-white) 0%,
+    var(--color-white) 0%
+  );
+  position: relative;
+
+  /*   background: linear-gradient(
+    to bottom,
     var(--color-black) 0%,
-    var(--color-black) 24%,
-    var(--color-white) 24%,
-    var(--color-white) 47.5%,
-    var(--color-black) 47.5%,
-    var(--color-black) 68.5%,
-    var(--color-white) 68.5%,
+    var(--color-black) 22%,
+    var(--color-white) 22%,
+    var(--color-white) 45.5%,
+    var(--color-black) 45.5%,
+    var(--color-black) 67.5%,
+    var(--color-white) 67.5%,
     var(--color-white) 100%
   );
   position: relative;
@@ -19,12 +28,12 @@
     background: linear-gradient(
       to bottom,
       var(--color-black) 0%,
-      var(--color-black) 24%,
-      var(--color-white) 24%,
-      var(--color-white) 47.5%,
-      var(--color-black) 47.5%,
-      var(--color-black) 71%,
-      var(--color-white) 71%,
+      var(--color-black) 22%,
+      var(--color-white) 22%,
+      var(--color-white) 45.5%,
+      var(--color-black) 45.5%,
+      var(--color-black) 69%,
+      var(--color-white) 69%,
       var(--color-white) 100%
     );
   }
@@ -33,12 +42,12 @@
     background: linear-gradient(
       to bottom,
       var(--color-black) 0%,
-      var(--color-black) 24%,
-      var(--color-white) 24%,
-      var(--color-white) 48.5%,
-      var(--color-black) 48.5%,
-      var(--color-black) 71%,
-      var(--color-white) 71%,
+      var(--color-black) 22%,
+      var(--color-white) 22%,
+      var(--color-white) 46.5%,
+      var(--color-black) 46.5%,
+      var(--color-black) 70%,
+      var(--color-white) 70%,
       var(--color-white) 100%
     );
   }
@@ -47,12 +56,12 @@
     background: linear-gradient(
       to bottom,
       var(--color-black) 0%,
-      var(--color-black) 24%,
-      var(--color-white) 24%,
-      var(--color-white) 50.5%,
-      var(--color-black) 50.5%,
-      var(--color-black) 71.5%,
-      var(--color-white) 71.5%,
+      var(--color-black) 22%,
+      var(--color-white) 22%,
+      var(--color-white) 48.5%,
+      var(--color-black) 48.5%,
+      var(--color-black) 70.5%,
+      var(--color-white) 70.5%,
       var(--color-white) 100%
     );
   }
@@ -61,12 +70,12 @@
     background: linear-gradient(
       to bottom,
       var(--color-black) 0%,
-      var(--color-black) 25%,
-      var(--color-white) 25%,
-      var(--color-white) 45.5%,
-      var(--color-black) 45.5%,
-      var(--color-black) 65.5%,
-      var(--color-white) 65.5%,
+      var(--color-black) 21%,
+      var(--color-white) 21%,
+      var(--color-white) 40.5%,
+      var(--color-black) 40.5%,
+      var(--color-black) 60.5%,
+      var(--color-white) 60.5%,
       var(--color-white) 100%
     );
   }
@@ -75,12 +84,12 @@
     background: linear-gradient(
       to bottom,
       var(--color-black) 0%,
-      var(--color-black) 23%,
-      var(--color-white) 23%,
-      var(--color-white) 44%,
-      var(--color-black) 44%,
-      var(--color-black) 68%,
-      var(--color-white) 68%,
+      var(--color-black) 18%,
+      var(--color-white) 18%,
+      var(--color-white) 39%,
+      var(--color-black) 39%,
+      var(--color-black) 66%,
+      var(--color-white) 66%,
       var(--color-white) 100%
     );
   }
@@ -109,7 +118,7 @@
       var(--color-white) 100%
     );
   }
-
+ */
   header {
     width: 100%;
     height: auto;
@@ -119,6 +128,12 @@
     position: sticky;
     top: 0;
     transition: background-color 0.3s ease-in-out;
+  }
+
+  main {
+    min-width: 100%;
+    min-height: 100vh;
+    z-index: 0;
   }
 
   footer {

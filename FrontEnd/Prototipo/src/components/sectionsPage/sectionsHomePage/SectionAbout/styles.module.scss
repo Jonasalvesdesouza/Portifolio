@@ -1,71 +1,78 @@
-.aboutHomeContainerHorizontal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  p {
-    margin-top: 1vw;
-    width: 55%;
-    line-height: 2;
-  }
-  .bntCurriculum {
-    margin-left: 6vw;
-    margin-top: 1vw;
-  }
-}
-
+.aboutHomeContainerHorizontal,
 .aboutHomeContainerVertical {
   display: flex;
   flex-direction: column;
 
-  margin-left: 10vw;
+  p {
+    line-height: 1.5;
+  }
 
   .bntCurriculum {
     margin-top: 1vw;
   }
+}
 
+.aboutHomeContainerHorizontal {
   p {
-    font-size: 18px;
-    width: 85%;
-    margin-top: 3.1vw;
-    line-height: 2;
+    margin-top: 1vw;
+    width: 60%;
   }
 
   .bntCurriculum {
-    margin-left: 12vw;
+    margin-left: 6vw;
+    margin-top: 4vw;
   }
-  @media (max-width: 1050px) {
-    margin-top: 5vw;
+}
 
-    p {
-      line-height: 1.2;
+.aboutHomeContainerVertical {
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 11px 11px -1px rgba(0, 0, 0, 0.75);
+
+  .aboutContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+
+    gap: 20px;
+
+    .bntCurriculum {
+      margin-top: 5vw;
+      margin-left: 12vw;
     }
-  }
-  @media (max-width: 830px) {
-    margin-top: 7vw;
-  }
 
-  @media (max-width: 680px) {
-    h1 {
-      font-size: 6vw;
-      span {
+    @media (max-width: 680px) {
+      h1 {
         font-size: 6vw;
+
+        span {
+          font-size: 6vw;
+        }
+      }
+
+      p {
+        font-size: 2.3vw;
       }
     }
-    p {
-      font-size: 2.3vw;
-    }
-  }
-  @media (max-width: 570px) {
-    h1 {
-      font-size: 6.5vw;
-      span {
+
+    @media (max-width: 570px) {
+      h1 {
         font-size: 6.5vw;
+
+        span {
+          font-size: 6.5vw;
+        }
       }
     }
   }
 }
 
 .bntCurriculum {
-  margin-top: 0vw;
+  margin-top: 0;
 }
