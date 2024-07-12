@@ -1,52 +1,31 @@
-import { useEffect, useRef } from 'react';
-
 export const useScrollManager = (currentCard) => {
-  const positions = useRef([0, 923, 1831, 2756]);
-  const currentTimeout = useRef(null);
+  const positions = [0, 923, 1831, 2756];
+  const position = positions[currentCard] || 0;
 
-  useEffect(() => {
-    const preventScroll = (event) => event.preventDefault();
+  const scrollToPosition = (position) => {
+    window.addEventListener('wheel', (event) => event.preventDefault(), {
+      passive: false,
+    });
+    window.addEventListener('touchmove', (event) => event.preventDefault(), {
+      passive: false,
+    });
 
-    const addPreventScroll = () => {
-      window.addEventListener('wheel', preventScroll, { passive: false });
-      window.addEventListener('touchmove', preventScroll, { passive: false });
+    window.scrollTo({
+      top: position,
+      behavior: 'smooth',
+    });
+
+    const removeListeners = () => {
+      window.removeEventListener('wheel', (event) => event.preventDefault());
+      window.removeEventListener('touchmove', (event) =>
+        event.preventDefault(),
+      );
     };
 
-    const removePreventScroll = () => {
-      window.removeEventListener('wheel', preventScroll);
-      window.removeEventListener('touchmove', preventScroll);
-    };
+    setTimeout(() => {
+      requestAnimationFrame(removeListeners);
+    }, 3000);
+  };
 
-    const scrollToPosition = (position) => {
-      if (currentTimeout.current) {
-        clearTimeout(currentTimeout.current);
-        removePreventScroll();
-      }
-
-      addPreventScroll();
-
-      window.scrollTo({
-        top: position,
-        behavior: 'smooth',
-      });
-
-      currentTimeout.current = setTimeout(() => {
-        requestAnimationFrame(removePreventScroll);
-      });
-    };
-
-    const handleCurrentCardChange = () => {
-      const position = positions.current[currentCard] || 0;
-      scrollToPosition(position);
-    };
-
-    handleCurrentCardChange();
-
-    return () => {
-      if (currentTimeout.current) {
-        clearTimeout(currentTimeout.current);
-        removePreventScroll();
-      }
-    };
-  }, [currentCard]);
+  scrollToPosition(position);
 };

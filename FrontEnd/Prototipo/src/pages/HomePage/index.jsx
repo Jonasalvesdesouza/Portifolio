@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { DefaultTemplate, TempladeHorizontal } from '../../components/templade';
 import { NavModal } from '../../components/fragments';
 import { AppBehaviorContext } from '../../providers';
@@ -24,7 +24,6 @@ import styles from './styles.module.scss';
 export const HomePage = () => {
   const { currentCard } = useContext(AppBehaviorContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [position, setPosition] = useState(0);
 
   const { headerClass, sectionRefs } = useSectionVisibility();
   const { animate } = useCardAnimation(currentCard);

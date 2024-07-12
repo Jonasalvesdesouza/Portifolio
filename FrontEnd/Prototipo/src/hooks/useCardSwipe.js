@@ -24,7 +24,7 @@ export const useCardSwipe = (cards) => {
 
     setTimeout(() => {
       isScrolling.current = false;
-    }, 100); // Tempo de debounce para suavizar a troca
+    }, 500); // Tempo de debounce para suavizar a troca
   };
 
   useEffect(() => {
