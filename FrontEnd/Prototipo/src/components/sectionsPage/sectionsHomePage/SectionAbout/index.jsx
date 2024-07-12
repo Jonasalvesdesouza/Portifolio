@@ -14,6 +14,7 @@ export const SectionAboutHomePage = () => {
   const handleClickCurriculum = () => {
     setReturShapeHa(false);
     setCurrentCard(0);
+    window.scrollTo({ top: 0 });
   };
 
   const isResponsive = useResponsive();

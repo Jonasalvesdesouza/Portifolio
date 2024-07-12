@@ -12,7 +12,7 @@ export const TempladeHorizontal = ({ children, setIsOpen }) => {
   };
 
   return (
-    <div className={styles.templateDefaultContainer}>
+    <div className={styles.templadeHorizontalContainer}>
       <Header setIsOpen={setIsOpen} />
       <div className={styles.mainContainer}>
         <div className={styles.leftSideContainer}>

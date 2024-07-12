@@ -10,7 +10,7 @@ $color-black: var(--color-black);
 $color-white: var(--color-white);
 $color-gray0: var(--color-gray0);
 
-.templateDefaultContainer {
+.templadeHorizontalContainer {
   height: 100vh;
   width: 100%;
   margin: 0;
@@ -36,6 +36,10 @@ $color-gray0: var(--color-gray0);
     width: 23vw;
     height: 1px;
     background-color: var(--color-gray0);
+  }
+
+  header {
+    width: 100%;
   }
 
   .mainContainer {

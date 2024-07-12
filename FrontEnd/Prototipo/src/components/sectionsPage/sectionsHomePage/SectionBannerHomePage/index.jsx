@@ -1,14 +1,11 @@
 import { useContext } from 'react';
 
-import { UserAdmContext, AppBehaviorContext } from '../../../../providers';
+import { UserAdmContext } from '../../../../providers';
 import { useRenderImage, useResponsive } from '../../../../hooks';
 import styles from './styles.module.scss';
 
 export const SectionBannerHomePage = () => {
   const { profile } = useContext(UserAdmContext);
-  const { screenWidth } = useContext(AppBehaviorContext);
-
-  const width = screenWidth <= 1050;
 
   const urlImage = useRenderImage(profile);
 

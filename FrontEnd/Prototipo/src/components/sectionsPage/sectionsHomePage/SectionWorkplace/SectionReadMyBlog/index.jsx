@@ -10,6 +10,7 @@ export const SectionReadMyBlogHomePage = () => {
     useContext(AppBehaviorContext);
 
   const handleClick = () => {
+    window.scrollTo({ top: 0 });
     setCurrentCard(0);
   };
 

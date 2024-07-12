@@ -8,7 +8,10 @@ import styles from './styles.module.scss';
 export const SectionMyLatestProjectsHomePage = () => {
   const { setCurrentCard } = useContext(AppBehaviorContext);
 
-  const handleClick = () => setCurrentCard(0);
+  const handleClick = () => {
+    setCurrentCard(0);
+    window.scrollTo({ top: 0 });
+  };
 
   const isResponsive = useResponsive();
 

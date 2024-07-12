@@ -17,6 +17,7 @@ import {
   useResponsive,
   useSectionVisibility,
   useCardAnimation,
+  useScrollManager,
 } from '../../hooks';
 import styles from './styles.module.scss';
 
@@ -41,41 +42,7 @@ export const HomePage = () => {
   useScreenWidth();
   useScreenHeight();
 
-  const preventScroll = (event) => {
-    event.preventDefault();
-  };
-
-  const disableScroll = () => {
-    window.addEventListener('wheel', preventScroll, { passive: false });
-    window.addEventListener('touchmove', preventScroll, { passive: false });
-  };
-
-  const enableScroll = () => {
-    window.removeEventListener('wheel', preventScroll);
-    window.removeEventListener('touchmove', preventScroll);
-  };
-
-  const scrollToPosition = (position) => {
-    disableScroll();
-    window.scrollTo({
-      top: position,
-      behavior: 'smooth',
-    });
-    setTimeout(enableScroll, 1500);
-  };
-
-  useEffect(() => {
-    if (currentCard === 0) {
-      setPosition(0);
-    } else if (currentCard === 1) {
-      setPosition(923);
-    } else if (currentCard === 2) {
-      setPosition(1831);
-    } else if (currentCard === 3) {
-      setPosition(2756);
-    }
-    scrollToPosition(position);
-  }, [currentCard, position]);
+  useScrollManager(currentCard);
 
   return (
     <>
