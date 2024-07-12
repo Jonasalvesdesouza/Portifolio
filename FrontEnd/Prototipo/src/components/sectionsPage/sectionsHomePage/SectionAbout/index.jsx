@@ -27,7 +27,7 @@ export const SectionAboutHomePage = () => {
       }
     >
       <div className={styles.aboutContainer}>
-        <div>
+        <div className={styles.headerAbout}>
           <h1 className="title1">
             Hello <span className="title1 yellow">!</span> <br />
             My name is Jonas

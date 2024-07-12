@@ -12,7 +12,6 @@ export const SectionBannerHomePage = () => {
 
   const urlImage = useRenderImage(profile);
 
-  console.log(width);
   return (
     <div
       className={`${useResponsive() ? `${styles.bannerContainerVertical}` : styles.bannerContainerHorizontal}`}

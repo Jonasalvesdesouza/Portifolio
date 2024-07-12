@@ -26,3 +26,6 @@ export { useDynamicBackground } from './useDynamicBackground';
 export { useShouldUseWhiteColor } from './useShouldUseWhiteColor';
 export { useSticky } from './useSticky';
 export { useFormattedName } from './useFormattedName';
+export { useSectionVisibility } from './useSectionVisibility';
+export { useCardAnimation } from './useCardAnimation';
+export { useIntersectionObserver } from './useIntersectionObserver';
