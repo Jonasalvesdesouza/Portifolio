@@ -40,7 +40,6 @@ export const HomePage = () => {
 
   useScreenWidth();
   useScreenHeight();
-
   useScrollManager(currentCard);
 
   return (

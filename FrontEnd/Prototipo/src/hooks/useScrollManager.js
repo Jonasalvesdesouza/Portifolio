@@ -14,17 +14,6 @@ export const useScrollManager = (currentCard) => {
       top: position,
       behavior: 'smooth',
     });
-
-    const removeListeners = () => {
-      window.removeEventListener('wheel', (event) => event.preventDefault());
-      window.removeEventListener('touchmove', (event) =>
-        event.preventDefault(),
-      );
-    };
-
-    setTimeout(() => {
-      requestAnimationFrame(removeListeners);
-    }, 3000);
   };
 
   scrollToPosition(position);
