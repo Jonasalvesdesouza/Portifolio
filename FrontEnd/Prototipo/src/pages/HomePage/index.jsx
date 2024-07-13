@@ -22,7 +22,7 @@ import {
 import styles from './styles.module.scss';
 
 export const HomePage = () => {
-  const { currentCard } = useContext(AppBehaviorContext);
+  const { currentCard, routeLocation } = useContext(AppBehaviorContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const { headerClass, sectionRefs } = useSectionVisibility();

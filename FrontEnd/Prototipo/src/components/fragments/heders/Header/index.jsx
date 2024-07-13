@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AppBehaviorContext } from '../../../../providers';
-import styles from './styles.module.scss';
 import { HamburgerButton } from '../../HamburguerButton';
+
+import styles from './styles.module.scss';
 import YellowLogo from '../../../../assets/YellowLogo.svg';
 import BlackLogo from '../../../../assets/BlackLogo.svg';
 

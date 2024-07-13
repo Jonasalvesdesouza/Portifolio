@@ -1,17 +1,19 @@
-import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const useScrollManager = (currentCard) => {
-  const positions = [0, 923, 1831, 2756];
-  const position = positions[currentCard] || 0;
+  useEffect(() => {
+    const positions = [0, 923, 1831, 2756];
+    const position = positions[currentCard] || 0;
 
-  const location = useLocation();
+    const preventScroll = (event) => {
+      event.preventDefault();
+    };
 
-  if (location.pathname === '/') {
     const scrollToPosition = (position) => {
-      window.addEventListener('wheel', (event) => event.preventDefault(), {
+      window.addEventListener('wheel', preventScroll, {
         passive: false,
       });
-      window.addEventListener('touchmove', (event) => event.preventDefault(), {
+      window.addEventListener('touchmove', preventScroll, {
         passive: false,
       });
 
@@ -22,7 +24,10 @@ export const useScrollManager = (currentCard) => {
     };
 
     scrollToPosition(position);
-  } else {
-    return null;
-  }
+
+    return () => {
+      window.removeEventListener('wheel', preventScroll);
+      window.removeEventListener('touchmove', preventScroll);
+    };
+  }, [currentCard]);
 };
