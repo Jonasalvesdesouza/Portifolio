@@ -1,20 +1,28 @@
+import { useLocation } from 'react-router-dom';
+
 export const useScrollManager = (currentCard) => {
   const positions = [0, 923, 1831, 2756];
   const position = positions[currentCard] || 0;
 
-  const scrollToPosition = (position) => {
-    window.addEventListener('wheel', (event) => event.preventDefault(), {
-      passive: false,
-    });
-    window.addEventListener('touchmove', (event) => event.preventDefault(), {
-      passive: false,
-    });
+  const location = useLocation();
 
-    window.scrollTo({
-      top: position,
-      behavior: 'smooth',
-    });
-  };
+  if (location.pathname === '/') {
+    const scrollToPosition = (position) => {
+      window.addEventListener('wheel', (event) => event.preventDefault(), {
+        passive: false,
+      });
+      window.addEventListener('touchmove', (event) => event.preventDefault(), {
+        passive: false,
+      });
 
-  scrollToPosition(position);
+      window.scrollTo({
+        top: position,
+        behavior: 'smooth',
+      });
+    };
+
+    scrollToPosition(position);
+  } else {
+    return null;
+  }
 };
