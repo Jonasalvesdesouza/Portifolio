@@ -1,4 +1,4 @@
-.container {
+.navHomecontainer {
   z-index: 1;
 
   .buttonContainer {
@@ -6,11 +6,6 @@
 
     @media (max-width: 1600px) {
       margin-left: 3vw;
-    }
-
-    &:hover {
-      transition: 0.3s;
-      color: var(--color-yellow);
     }
   }
 
@@ -68,5 +63,10 @@
     color: var(--color-white);
 
     margin-right: 1.6vw;
+
+    &:hover {
+      transition: 0.3s;
+      color: var(--color-yellow2);
+    }
   }
 }

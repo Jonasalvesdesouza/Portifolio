@@ -11,6 +11,7 @@ export const SectionBannerHomePage = () => {
 
   return (
     <div
+      id="banner"
       className={`${useResponsive() ? `${styles.bannerContainerVertical}` : styles.bannerContainerHorizontal}`}
     >
       <div className={styles.bannerContainer}>

@@ -1,7 +1,14 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-})
+  build: {
+    sourcemap: true, // Gera mapas de fontes durante a construção
+    rollupOptions: {
+      output: {
+        sourcemap: true,
+      },
+    },
+  },
+});

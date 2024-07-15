@@ -9,6 +9,7 @@ export const SectionWorkplace = () => {
 
   return (
     <div
+      id="workplace"
       className={`${useResponsive() ? styles.workplaceContainerVertical : styles.workplaceContainerHorizontal}`}
     >
       <div className={styles.workplaceContainer}>

@@ -28,4 +28,5 @@ export { useSticky } from './useSticky';
 export { useFormattedName } from './useFormattedName';
 export { useSectionVisibility } from './useSectionVisibility';
 export { useCardAnimation } from './useCardAnimation';
-export { useScrollManager } from './useScrollManager';
+export { useScrollManagerChrome } from './useScrollManagerChrome';
+export { useScrollManagerIsFirefox } from './useScrollManagerIsFirefox';

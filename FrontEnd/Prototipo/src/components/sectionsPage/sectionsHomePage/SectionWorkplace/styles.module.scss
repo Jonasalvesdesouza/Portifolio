@@ -1,68 +1,92 @@
 .workplaceContainerHorizontal {
   .workplaceContainer {
+    max-width: 65%;
     display: flex;
     flex-direction: row;
-  }
-  .workplaceContainer:before {
-    content: '';
-    position: absolute;
-    top: -5vh;
-    left: 31vw;
-    width: 1px;
-    height: 53vh;
-    background-color: var(--color-gray0);
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: -5vh;
+      left: 32vw;
+      width: 1px;
+      height: 53vh;
+      background-color: var(--color-gray0);
+    }
+
+    /* &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 32vw;
+      height: 50vh;
+      box-shadow: 20px 0px 15px -18px rgba(0, 0, 0, 0.4);
+
+      z-index: 0;
+    } */
   }
 }
 
 .workplaceContainerVertical {
   width: 100%;
-  height: 95vh;
+  height: 100vh;
   background: var(--color-black);
-
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-
   box-shadow: 1px 0px 13px 0px rgba(0, 0, 0, 0.75);
+  position: relative;
+  z-index: 1;
 
   .workplaceContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
-
+    justify-content: space-between;
     margin: 0 auto;
     width: 80%;
     height: 100%;
 
-    @media (max-width: 900px) {
-      flex-direction: column;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 50%;
+      height: 100%;
+      box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);
+      z-index: -1;
     }
   }
 
-  .workplaceContainer:before {
-    content: '';
-    position: relative;
-    top: 0vw;
-    left: 38vw;
-    width: 1px;
-    height: 35vw;
-    background-color: var(--color-Darkwhite);
+  @media (max-width: 768px) {
+    .workplaceContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-    @media (max-width: 1430px) {
-      height: 28vw;
-    }
+      width: 100%;
+      height: 100%;
 
-    @media (max-width: 1050px) {
-      height: 35vw;
-    }
+      gap: 100px;
 
-    @media (max-width: 900px) {
-      position: relative;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 0;
+      margin-top: 150px;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0%;
+        bottom: 60%;
+        left: 0%;
+        width: 100%;
+        height: 59%;
+        box-shadow: 0 0px 20px rgba(0, 0, 0, 0.5);
+        z-index: -1;
+      }
     }
   }
 }

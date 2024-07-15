@@ -8,6 +8,7 @@ export const SectionMeEmail = () => {
 
   return (
     <div
+      id="email"
       className={`${useResponsive() ? styles.meEmailContainerVertical : styles.meEmailContainerHorizontal}`}
     >
       <div className={`${styles.meEmailContainer}`}>

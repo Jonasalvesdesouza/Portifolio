@@ -13,7 +13,7 @@
 %bntDefault {
   font-family: var(--font-primary);
   font-weight: 300;
-  font-size: 1.3vw;
+  font-size: 1.3345vw;
   color: var(--color-black);
 
   display: flex;
@@ -21,8 +21,9 @@
   justify-content: center;
   align-items: center;
 
-  width: 15vw;
-  height: 3.5vw;
+  width: 20%;
+  padding: 20px;
+  height: auto;
   border: solid 1px var(--color-black);
   position: relative;
   overflow: hidden;
@@ -93,10 +94,10 @@
 
 .bntAboutHome {
   @extend %bntDefault;
-  left: 18vw;
-  @media (max-width: 900px) {
-    width: 20vw;
-    height: 5vw;
+  font-size: clamp(14px, 2vw, 22px);
+
+  @media (max-width: 580px) {
+    width: 40%;
   }
 }
 
@@ -113,30 +114,6 @@
   .icon {
     margin-right: 1vw;
     left: 0;
-  }
-
-  @media (max-width: 900px) {
-    width: 22vw;
-    height: 5vw;
-  }
-}
-.bntWorkplace2 {
-  @extend %bntDefault;
-  width: 21.8vw;
-
-  a {
-    span {
-      margin-left: 3.5vw;
-    }
-  }
-
-  .icon {
-    margin-right: 1vw;
-    left: 0;
-  }
-  @media (max-width: 900px) {
-    width: 22vw;
-    height: 5vw;
   }
 }
 
@@ -208,5 +185,5 @@
 
 .arrowIcon {
   font-size: 6.25vw;
-  color: var(--color-black);
+  color: var(--color-gray2);
 }

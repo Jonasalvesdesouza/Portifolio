@@ -24,7 +24,7 @@ export const NavHomePage = () => {
   };
 
   return (
-    <div className={`${styles.container}`}>
+    <div className={`${styles.navHomecontainer}`}>
       <nav>
         <ul>
           {buttons.map((button) => (

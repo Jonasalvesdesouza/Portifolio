@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef, useEffect } from 'react';
 import { DefaultTemplate, TempladeHorizontal } from '../../components/templade';
 import { NavModal } from '../../components/fragments';
 import { AppBehaviorContext } from '../../providers';
@@ -17,14 +17,14 @@ import {
   useResponsive,
   useSectionVisibility,
   useCardAnimation,
-  useScrollManager,
+  useScrollManagerChrome,
+  useScrollManagerIsFirefox,
 } from '../../hooks';
 import styles from './styles.module.scss';
 
 export const HomePage = () => {
-  const { currentCard, routeLocation } = useContext(AppBehaviorContext);
+  const { currentCard } = useContext(AppBehaviorContext);
   const [isOpen, setIsOpen] = useState(false);
-
   const { headerClass, sectionRefs } = useSectionVisibility();
   const { animate } = useCardAnimation(currentCard);
 
@@ -38,16 +38,27 @@ export const HomePage = () => {
   const { handleTouchStart, handleTouchMove, handleTouchEnd } =
     useCardSwipe(cards);
 
+  const isResponsive = useResponsive();
+  const userAgent = window.navigator.userAgent.toLowerCase();
+
+  const isChrome = /chrome/.test(userAgent);
+  const isFirefox = /firefox/.test(userAgent);
+
+  useScrollManagerChrome(currentCard, isResponsive && isChrome);
+  useScrollManagerIsFirefox(currentCard, isResponsive && isFirefox);
+
   useScreenWidth();
   useScreenHeight();
 
-  useScrollManager(currentCard);
-
   return (
     <>
-      {useResponsive() ? (
+      {isResponsive ? (
         <DefaultTemplate setIsOpen={setIsOpen} headerClass={headerClass}>
-          <div>
+          <div
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             {sectionRefs.map(({ ref }, index) => (
               <div key={index} ref={ref.ref}>
                 {cards[index]}

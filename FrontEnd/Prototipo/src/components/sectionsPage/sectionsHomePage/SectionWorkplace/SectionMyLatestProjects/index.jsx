@@ -19,25 +19,25 @@ export const SectionMyLatestProjectsHomePage = () => {
     <div
       className={
         isResponsive
-          ? styles.workplaceProjectContainerVertical
-          : styles.workplaceProjectContainerHorizontal
+          ? styles.projectContainerVertical
+          : styles.projectContainerHorizontal
       }
     >
-      <h3 className="title1">
-        My latest <br />
-        <span className="title1 yellow">Projects.</span>
-      </h3>
-      <p
-        className={
-          isResponsive ? 'parapraph homeWorkMobile' : 'parapraph homeWork'
-        }
-      >
-        Check out some freelance projects and work completed during my learning
-        journey as a full stack developer.
-      </p>
-      <div
-        className={`${styles.btnContainer} bntWorkplace ${isResponsive ? 'mobile' : ''}`}
-      >
+      <div className={styles.projectHeader}>
+        <h3 className="title1">
+          My latest <br />
+          <span className="title1 yellow">Projects.</span>
+        </h3>
+        <p
+          className={
+            isResponsive ? 'parapraph homeWorkMobile' : 'parapraph homeWork'
+          }
+        >
+          Check out some freelance projects and work completed during my
+          learning journey as a full stack developer.
+        </p>
+      </div>
+      <div className={`bntWorkplace ${isResponsive ? 'mobile' : ''}`}>
         <Link onClick={handleClick} to="/projects">
           <span>SEE MY LATEST WORK</span>
           <span>

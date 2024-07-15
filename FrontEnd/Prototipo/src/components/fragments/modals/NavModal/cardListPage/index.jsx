@@ -4,7 +4,7 @@ import { AppBehaviorContext } from '../../../../../providers';
 import styles from './styles.module.scss';
 
 export const CardListPage = ({ page }) => {
-  const { resetStadeCategorys, setReturShapeHam, setSearch } =
+  const { resetStadeCategorys, setReturShapeHam, setSearch, setCurrentCard } =
     useContext(AppBehaviorContext);
 
   const handleClick = () => {
@@ -12,6 +12,7 @@ export const CardListPage = ({ page }) => {
     resetStadeCategorys('');
     window.scrollTo({ top: 0 });
     setSearch('');
+    setCurrentCard(0);
   };
 
   return (

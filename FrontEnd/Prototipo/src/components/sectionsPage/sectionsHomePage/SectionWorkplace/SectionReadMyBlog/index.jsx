@@ -16,9 +16,9 @@ export const SectionReadMyBlogHomePage = () => {
 
   return (
     <div
-      className={`${useResponsive() ? styles.workplaceBlogContainerVertical : styles.workplaceBlogContainerHorizontal}`}
+      className={`${useResponsive() ? styles.blogContainerVertical : styles.blogContainerHorizontal}`}
     >
-      <div className={`${styles.top}`}>
+      <div>
         <h3 className="title1">
           Let"s read{' '}
           <span className="title1">
@@ -33,9 +33,7 @@ export const SectionReadMyBlogHomePage = () => {
         </p>
       </div>
 
-      <div
-        className={`${styles.btnContainer} bntWorkplace2 ${useResponsive() ? 'mobile' : ''}`}
-      >
+      <div className={`bntWorkplace ${useResponsive() ? 'mobile' : ''}`}>
         <Link onClick={handleClick} to={'/blog'}>
           <span>READ MY ARTICLES</span>
           <span>

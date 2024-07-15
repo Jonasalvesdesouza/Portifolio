@@ -21,6 +21,7 @@ export const SectionAboutHomePage = () => {
 
   return (
     <div
+      id="about"
       className={
         isResponsive
           ? styles.aboutHomeContainerVertical
@@ -33,9 +34,13 @@ export const SectionAboutHomePage = () => {
             Hello <span className="title1 yellow">!</span> <br />
             My name is Jonas
           </h1>
-          <p className="parapraph home">{profile?.bio}</p>
+          <p
+            className={` ${useResponsive() ? `parapraph homeMobile` : `parapraph home`}`}
+          >
+            {profile?.bio}
+          </p>
         </div>
-        <div className={`${styles.bntCurriculum} bntAboutHome`}>
+        <div className={`${styles.bntAboutHome} bntAboutHome`}>
           <Link to="/curriculum" onClick={handleClickCurriculum}>
             <span>CURRICULUM</span>
             <div>

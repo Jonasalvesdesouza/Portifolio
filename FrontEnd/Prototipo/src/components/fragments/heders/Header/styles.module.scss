@@ -33,6 +33,12 @@
   img:hover {
     opacity: 0.5;
   }
+
+  @media (max-width: 1024px) {
+    img {
+      width: 30px;
+    }
+  }
 }
 
 .sticky {

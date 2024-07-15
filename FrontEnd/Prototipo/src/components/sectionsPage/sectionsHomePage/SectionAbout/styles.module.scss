@@ -3,24 +3,29 @@
   display: flex;
   flex-direction: column;
 
-  p {
-    line-height: 1.5;
-  }
+  .aboutContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-  .bntCurriculum {
-    margin-top: 1vw;
+    gap: 50px;
+
+    .headerAbout {
+      p {
+        line-height: 1.5;
+        margin-top: 30px;
+      }
+    }
   }
 }
 
 .aboutHomeContainerHorizontal {
-  p {
-    margin-top: 1vw;
+  .aboutContainer {
     width: 60%;
-  }
+    height: 100%;
 
-  .bntCurriculum {
-    margin-left: 6vw;
-    margin-top: 4vw;
+    gap: 40px;
   }
 }
 
@@ -28,52 +33,31 @@
   justify-content: center;
 
   width: 100%;
-  height: 95vh;
+  height: 100vh;
 
   box-shadow: 0px 11px 11px -1px rgba(0, 0, 0, 0.75);
 
   .aboutContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
     width: 80%;
     height: 100%;
     margin: 0 auto;
 
-    gap: 50px;
+    p {
+      color: var(--color-gray0);
+    }
 
     .headerAbout {
-      p {
+      gap: 50px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .aboutContainer {
+      width: 75%;
+      gap: 40px;
+
+      .bntAboutHome {
         margin-top: 50px;
-      }
-    }
-
-    .bntCurriculum {
-      margin-left: 12vw;
-    }
-
-    @media (max-width: 680px) {
-      h1 {
-        font-size: 6vw;
-
-        span {
-          font-size: 6vw;
-        }
-      }
-
-      p {
-        font-size: 2.3vw;
-      }
-    }
-
-    @media (max-width: 570px) {
-      h1 {
-        font-size: 6.5vw;
-
-        span {
-          font-size: 6.5vw;
-        }
       }
     }
   }
