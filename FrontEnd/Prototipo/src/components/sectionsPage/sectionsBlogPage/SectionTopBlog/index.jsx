@@ -1,16 +1,12 @@
-import { FormSearchArticles } from '../../../fragments/forms/index';
-import { FilterCategoryArticles } from './FilterCategoryArticles';
+import { FormSearchArticles } from '../../../fragments/forms/';
 import styles from './styles.module.scss';
 
 export const SectionTopBlog = () => {
   return (
-    <div className={`${styles.topBlogContainer} container`}>
+    <div className={`${styles.topBlogContainer}`}>
       <div className={`${styles.headerBlog}`}>
         <h1 className="title1 black">Blog.</h1>
         <FormSearchArticles />
-      </div>
-      <div>
-        <FilterCategoryArticles />
       </div>
     </div>
   );

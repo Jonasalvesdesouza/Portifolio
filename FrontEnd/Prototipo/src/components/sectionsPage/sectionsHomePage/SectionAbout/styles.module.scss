@@ -51,6 +51,10 @@
     }
   }
 
+  @media (orientation: landscape) and (max-width: 768px) {
+    height: 110vw; // Ajusta a altura para dispositivos móveis em orientação horizontal
+  }
+
   @media (max-width: 768px) {
     .aboutContainer {
       width: 75%;

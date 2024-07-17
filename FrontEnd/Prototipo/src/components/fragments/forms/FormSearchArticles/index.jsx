@@ -8,7 +8,7 @@ import { AppBehaviorContext } from '../../../../providers';
 
 import styles from './styles.module.scss';
 
-export const FormSearchArticles = () => {
+export const FormSearchArticles = ({ isSticky }) => {
   const { setSearch } = useContext(AppBehaviorContext);
   const [value, setValue] = useState('');
   const navigate = useNavigate();
@@ -29,16 +29,21 @@ export const FormSearchArticles = () => {
 
   return (
     <form
-      className={`${styles.searchContainer} ${checkRouter ? styles.white : ''} `}
+      className={
+        isSticky ? styles.stickySearchContainer : styles.searchContainer
+      }
       onSubmit={submit}
     >
       <Button type="submit">
-        <TfiSearch size={25} color={`${checkRouter ? '#ededf1' : `#848484`}`} />
+        <TfiSearch
+          size={isSticky ? 18 : 25}
+          color={checkRouter ? '#76787b' : '#848484'}
+        />
       </Button>
 
       <Input
-        className={`${styles.searchInput}`}
-        tyepe="text"
+        className={styles.searchInput}
+        type="text"
         placeholder="Search..."
         value={value}
         onChange={(e) => setValue(e.target.value)}

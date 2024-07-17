@@ -1,0 +1,22 @@
+.sectionArticleContainer {
+  width: 97%;
+  margin: 0 auto;
+
+  .header {
+    width: 97%;
+  }
+
+  .filterContainer {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: auto;
+
+    margin-bottom: 40px;
+  }
+
+  .sectionArticle {
+    width: 83%;
+    margin: 0 auto;
+  }
+}

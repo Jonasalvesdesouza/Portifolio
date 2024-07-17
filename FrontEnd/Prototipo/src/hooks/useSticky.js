@@ -13,7 +13,7 @@ export const useSticky = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Verifica inicialmente
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);

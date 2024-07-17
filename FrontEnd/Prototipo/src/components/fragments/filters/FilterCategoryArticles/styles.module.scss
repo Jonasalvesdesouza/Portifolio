@@ -1,0 +1,169 @@
+.filterContainer {
+  margin: 2vw 0 1vw 0;
+  width: 97%;
+  height: 60px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    width: 83%;
+    border-bottom: 1px solid var(--color-white);
+    height: 41px;
+
+    display: flex;
+    flex-direction: row;
+
+    a {
+      font-family: var(--font-primary);
+      font-size: clamp(18px, 1.5vw, 22px);
+      color: var(--color-white);
+      background: none;
+      border: none;
+      position: relative;
+      cursor: pointer;
+      margin: 0 1vw 0 0;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 42px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: var(--color-yellow2);
+      }
+
+      &:focus:after,
+      &.focused:after {
+        height: 0.125rem;
+      }
+
+      &:hover,
+      &:focus,
+      &.focused {
+        color: var(--color-yellow2);
+      }
+    }
+  }
+}
+
+.stickyContainer {
+  width: auto;
+  height: 100%;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    gap: 20px;
+
+    li {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      a {
+        font-family: var(--font-primary);
+        font-size: clamp(12px, 1.5vw, 16px);
+        font-weight: 400;
+        color: var(--color-Darkwhite);
+        background: none;
+        position: relative;
+
+        &:hover {
+          color: var(--color-yellow2);
+        }
+      }
+
+      .focused {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: auto;
+        height: 100%;
+        color: var(--color-yellow2);
+        border-bottom: 3px solid var(--color-yellow2);
+      }
+    }
+  }
+}
+
+.blogFilter {
+  margin: 2vw 0 0vw 0;
+  width: 97%;
+  height: 60px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    width: 83%;
+    border-bottom: 1px solid var(--color-black);
+    height: 41px;
+
+    display: flex;
+    flex-direction: row;
+    li {
+      a {
+        font-family: var(--font-primary);
+        font-size: clamp(18px, 1.5vw, 22px);
+        color: var(--color-gray0);
+        background: none;
+        border: none;
+        position: relative;
+        cursor: pointer;
+        margin: 0 1vw 0 0;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 42px;
+          left: 0;
+          width: 100%;
+          height: 0;
+          background-color: var(--color-black);
+          transition: height 0.3s ease;
+        }
+
+        &:focus:after,
+        &.focused:after {
+          color: var(--color-black);
+          border-bottom: 1px solid var(--color-black);
+        }
+
+        &:hover,
+        &:focus {
+          color: var(--color-black);
+        }
+      }
+
+      .focused {
+        color: var(--color-black);
+      }
+    }
+  }
+}
+
+.stickyContainerWhite {
+  ul {
+    li {
+      a {
+        color: var(--color-gray0);
+
+        &:hover {
+          color: var(--color-black);
+        }
+      }
+
+      .focused {
+        color: var(--color-black);
+        border-bottom: 3px solid var(--color-black);
+      }
+    }
+  }
+}

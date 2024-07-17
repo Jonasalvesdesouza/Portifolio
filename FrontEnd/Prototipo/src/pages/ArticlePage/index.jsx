@@ -5,14 +5,14 @@ import { DefaultTemplate } from '../../components/templade';
 import {
   SectionArticle,
   SectionTopArticle,
-  FilterCategoryArticles,
 } from '../../components/sectionsPage/SectionsArticlePage';
 
-import { NavModal } from '../../components/fragments';
+import { FormSearchArticles } from '../../components/fragments/forms';
+import { NavModal, FilterCategoryArticles } from '../../components/fragments';
+
+import { useSticky } from '../../hooks';
 
 import styles from './styles.module.scss';
-import { useSticky } from '../../hooks';
-import { FormSearchArticles } from '../../components/fragments/forms';
 
 export const ArticlePage = () => {
   const [isOpen, setIsOpen] = useState();
@@ -23,15 +23,15 @@ export const ArticlePage = () => {
     <>
       <DefaultTemplate
         setIsOpen={setIsOpen}
+        isSticky={isSticky}
         topContent={
           isSticky ? (
             <>
-              <FilterCategoryArticles />
-              <FormSearchArticles />
+              <FilterCategoryArticles isSticky={isSticky} />
+              <FormSearchArticles isSticky={isSticky} />
             </>
           ) : null
         }
-        isSticky={isSticky}
       >
         <div className={styles.sectionArticleContainer}>
           <div className={styles.header}>

@@ -1,7 +1,7 @@
 .label {
   display: flex;
   flex-direction: column;
-  width: 4vw;
+  width: 3.5vw;
   transition: opacity 0.3s ease-in-out;
   cursor: pointer;
 
@@ -22,8 +22,8 @@
   .span {
     background: var(--color-gray1);
     border-radius: 1vw;
-    height: 0.3vw;
-    margin: 0.36vw 0;
+    height: 0.25vw;
+    margin: 0.2vw 0;
     transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 
     &.white {

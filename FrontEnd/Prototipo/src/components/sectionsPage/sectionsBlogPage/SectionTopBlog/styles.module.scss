@@ -1,9 +1,12 @@
 .topBlogContainer {
+  position: relative;
+
+  width: 83%;
+  margin: 0 auto;
+
   .headerBlog {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-    width: 80vw;
   }
 }

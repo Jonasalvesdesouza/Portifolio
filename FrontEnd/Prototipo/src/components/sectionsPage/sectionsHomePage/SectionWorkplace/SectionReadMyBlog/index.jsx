@@ -6,8 +6,7 @@ import styles from './styles.module.scss';
 import { useResponsive } from '../../../../../hooks';
 
 export const SectionReadMyBlogHomePage = () => {
-  const { setCurrentCard, screenWidth, screenHeight } =
-    useContext(AppBehaviorContext);
+  const { setCurrentCard } = useContext(AppBehaviorContext);
 
   const handleClick = () => {
     window.scrollTo({ top: 0 });

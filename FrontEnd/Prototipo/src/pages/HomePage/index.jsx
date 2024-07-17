@@ -20,6 +20,7 @@ import {
   useScrollManagerChrome,
   useScrollManagerIsFirefox,
 } from '../../hooks';
+
 import styles from './styles.module.scss';
 
 export const HomePage = () => {
@@ -39,12 +40,17 @@ export const HomePage = () => {
     useCardSwipe(cards);
 
   const isResponsive = useResponsive();
-  const userAgent = window.navigator.userAgent.toLowerCase();
 
+  const userAgent = window.navigator.userAgent.toLowerCase();
   const isChrome = /chrome/.test(userAgent);
   const isFirefox = /firefox/.test(userAgent);
+  const isSafari = /safari/.test(userAgent);
 
-  useScrollManagerChrome(currentCard, isResponsive && isChrome);
+  useScrollManagerChrome(
+    currentCard,
+    (isResponsive && isChrome) || (isResponsive && isSafari),
+  );
+
   useScrollManagerIsFirefox(currentCard, isResponsive && isFirefox);
 
   useScreenWidth();

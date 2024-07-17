@@ -43,3 +43,6 @@ export { EditJobExperienceModal } from './modals/jobExperienceModals/EditJobExpe
 export { ViewMessageModal } from './modals/MessageModal /ViewMessageModal';
 
 export { NavHomePage } from './NavHomePage';
+
+export { FilterCategoryArticles } from './filters/FilterCategoryArticles';
+export { FilterProjects } from './filters/FilterProjects';

@@ -22,15 +22,15 @@
 
   font-size: 1vw;
 
-  padding-left: 1vh;
+  padding-left: 15px;
 
   &.vertical {
     width: 35vw;
     height: 3.5vw;
 
-    @media (max-width: 1050px) {
+    @media (max-width: 1024px) {
       width: 70vw;
-      height: 5.8vw;
+      height: 5vw;
     }
   }
 }
@@ -46,11 +46,10 @@
 
   &.vertical {
     width: 35vw;
-    @media (max-width: 1050px) {
-      width: 70vw;
-      height: 15.5vw;
 
-      padding: 1vw;
+    @media (max-width: 1024px) {
+      width: 70vw;
+      height: 20vw;
     }
   }
 }

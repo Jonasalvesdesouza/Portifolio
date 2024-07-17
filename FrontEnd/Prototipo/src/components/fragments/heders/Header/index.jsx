@@ -16,9 +16,12 @@ export const Header = ({ setIsOpen, children, headerClass, isSticky }) => {
     setFocusedButton,
   } = useContext(AppBehaviorContext);
 
-  const compareRoutes = location === '/projects' || location === '/blog';
+  const testRouterIsBlog = location === '/blog';
+  const testRouterIsProjects = location === '/projects';
+  const testRouterIsBlogOrProjects = testRouterIsBlog || testRouterIsProjects;
+
   const useBlackLogo =
-    compareRoutes ||
+    testRouterIsBlogOrProjects ||
     headerClass === 'headerSection2' ||
     headerClass === 'headerSection4';
 
@@ -37,16 +40,22 @@ export const Header = ({ setIsOpen, children, headerClass, isSticky }) => {
   const logo = useBlackLogo ? BlackLogo : YellowLogo;
   const logoAlt = useBlackLogo ? 'Black Logo' : 'Yellow Logo';
 
+  const headerClassName = `${isSticky ? styles.sticky : ''} ${
+    isSticky && testRouterIsBlogOrProjects ? styles['sticky-white'] : ''
+  }`;
+
   return (
-    <header className={`${isSticky ? styles.sticky : ''}`}>
-      <div className={styles.headerContainer}>
+    <header className={headerClassName}>
+      <div
+        className={`${styles.headerContainer} ${isSticky ? styles.stickyContainer : ''}`}
+      >
         <div className={styles.logo}>
           <Link to={'/'} onClick={handleClickLogo}>
             <img src={logo} alt={logoAlt} />
           </Link>
         </div>
         {isSticky && <div className={styles.nav}>{children}</div>}
-        <div className={styles.HamburgerButton}>
+        <div>
           <HamburgerButton
             headerClass={headerClass}
             handleClick={handleClick}
