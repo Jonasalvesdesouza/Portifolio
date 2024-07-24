@@ -6,7 +6,7 @@ export const useDynamicBackground = () => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      const blackPercentage = Math.max(10, Math.min(35, 0.025 * width - 0.5));
+      const blackPercentage = Math.max(17, Math.min(25, 0.025 * width - 0.5));
       const newBackgroundValue = `linear-gradient(
         to bottom,
         var(--color-black) 0%,
@@ -14,7 +14,6 @@ export const useDynamicBackground = () => {
         var(--color-white) ${blackPercentage}%,
         var(--color-white) 100%
       )`;
-
       setBackgroundValue(newBackgroundValue);
     };
 

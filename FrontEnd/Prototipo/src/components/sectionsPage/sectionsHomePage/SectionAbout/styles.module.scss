@@ -22,10 +22,10 @@
 
 .aboutHomeContainerHorizontal {
   .aboutContainer {
-    width: 60%;
+    width: 88%;
     height: 100%;
 
-    gap: 40px;
+    gap: 80px;
   }
 }
 
@@ -52,17 +52,13 @@
   }
 
   @media (orientation: landscape) and (max-width: 768px) {
-    height: 110vw; // Ajusta a altura para dispositivos móveis em orientação horizontal
+    height: 110vw;
   }
 
   @media (max-width: 768px) {
     .aboutContainer {
       width: 75%;
       gap: 40px;
-
-      .bntAboutHome {
-        margin-top: 50px;
-      }
     }
   }
 }

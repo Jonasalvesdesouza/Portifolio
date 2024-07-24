@@ -1,7 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { AppBehaviorContext } from '../providers';
 
 export const useScrollManagerIsFirefox = (currentCard, isResponsive) => {
+  const { screenWidth } = useContext(AppBehaviorContext);
+
   useEffect(() => {
+    if (screenWidth < 1024) {
+      return;
+    }
+
     if (isResponsive) {
       const sections = [
         { index: 0, key: 'banner' },
@@ -15,7 +22,7 @@ export const useScrollManagerIsFirefox = (currentCard, isResponsive) => {
       );
 
       let lastScrollTime = 0;
-      const scrollDelay = 100; // Delay for debounce in milliseconds
+      const scrollDelay = 100;
 
       const handleScroll = () => {
         const now = Date.now();

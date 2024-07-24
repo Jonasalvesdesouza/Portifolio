@@ -1,22 +1,40 @@
 .sectionArticleContainer {
   width: 100%;
-  margin: 0 auto;
 
   .header {
-    width: 97%;
-  }
+    width: 100%;
 
-  .filterContainer {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    width: auto;
+    .filterContainer {
+      z-index: 100;
+      width: auto;
 
-    margin-bottom: 80px;
+      margin-bottom: 80px;
+    }
   }
 
   .sectionArticle {
-    width: 83%;
-    margin: 0 auto;
+    width: 100%;
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 50px;
+
+    .header {
+      display: flex;
+      flex-direction: column-reverse;
+
+      margin-bottom: 50px;
+
+      .filterContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        width: 80%;
+
+        margin-bottom: 10px;
+        margin: 0 auto;
+      }
+    }
   }
 }

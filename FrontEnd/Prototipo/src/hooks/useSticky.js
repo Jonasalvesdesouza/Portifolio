@@ -8,7 +8,7 @@ export const useSticky = () => {
     const handleScroll = () => {
       if (elementRef.current) {
         const offsetTop = elementRef.current.getBoundingClientRect().top;
-        setIsSticky(offsetTop === 0);
+        setIsSticky(offsetTop <= 0);
       }
     };
 

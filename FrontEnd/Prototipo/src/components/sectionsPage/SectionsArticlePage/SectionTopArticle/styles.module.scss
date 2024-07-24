@@ -1,12 +1,15 @@
 .topArticleContainer {
   position: relative;
 
-  width: 83%;
-  margin: 0 auto;
+  width: 100%;
 
   .headerArticle {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    width: 80%;
+
+    margin: 0 auto;
   }
 }

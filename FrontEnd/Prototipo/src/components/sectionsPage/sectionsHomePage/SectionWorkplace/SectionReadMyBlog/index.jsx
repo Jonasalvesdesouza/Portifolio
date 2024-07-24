@@ -2,8 +2,9 @@ import { useContext } from 'react';
 import { SlArrowRight } from 'react-icons/sl';
 import { Link } from 'react-router-dom';
 import { AppBehaviorContext } from '../../../../../providers';
-import styles from './styles.module.scss';
 import { useResponsive } from '../../../../../hooks';
+
+import styles from './styles.module.scss';
 
 export const SectionReadMyBlogHomePage = () => {
   const { setCurrentCard } = useContext(AppBehaviorContext);
@@ -13,26 +14,28 @@ export const SectionReadMyBlogHomePage = () => {
     setCurrentCard(0);
   };
 
+  const isResponsive = useResponsive();
+
   return (
     <div
-      className={`${useResponsive() ? styles.blogContainerVertical : styles.blogContainerHorizontal}`}
+      className={`${isResponsive ? styles.blogContainerVertical : styles.blogContainerHorizontal}`}
     >
-      <div>
-        <h3 className="title1">
+      <div className={styles.blogHeader}>
+        <h3 className={isResponsive ? 'title1 white' : 'title1 black'}>
           Let"s read{' '}
-          <span className="title1">
+          <span className={isResponsive ? 'title1 white' : 'title1 black'}>
             my <span className="title1 yellow">blog!</span>
           </span>
         </h3>
         <p
-          className={`${useResponsive() ? `parapraph homeWorkMobile` : `parapraph homeWork`}`}
+          className={`${isResponsive ? `parapraph homeWorkMobile` : `parapraph homeWork`}`}
         >
           Welcome to my blog, where I'll share with you some of the knowledge
           I've acquired during my journey.
         </p>
       </div>
 
-      <div className={`bntWorkplace ${useResponsive() ? 'mobile' : ''}`}>
+      <div className={`bntWorkplace ${isResponsive ? 'mobile' : ''}`}>
         <Link onClick={handleClick} to={'/blog'}>
           <span>READ MY ARTICLES</span>
           <span>

@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { DefaultTemplate } from '../../components/templade';
 
 import {
@@ -8,24 +6,28 @@ import {
 } from '../../components/sectionsPage/SectionsArticlePage';
 
 import { FormSearchArticles } from '../../components/fragments/forms';
-import { NavModal, FilterCategoryArticles } from '../../components/fragments';
+import { FilterCategoryArticles } from '../../components/fragments';
 
-import { useSticky } from '../../hooks';
+import { useSticky, useScreenWidth } from '../../hooks';
 
 import styles from './styles.module.scss';
+import { useContext } from 'react';
+import { AppBehaviorContext } from '../../providers';
 
 export const ArticlePage = () => {
-  const [isOpen, setIsOpen] = useState();
-
+  const { screenWidth } = useContext(AppBehaviorContext);
   const [isSticky, filterRef] = useSticky();
+
+  useScreenWidth();
+
+  const isResponsive = screenWidth < 1024;
 
   return (
     <>
       <DefaultTemplate
-        setIsOpen={setIsOpen}
         isSticky={isSticky}
         topContent={
-          isSticky ? (
+          isSticky || isResponsive ? (
             <>
               <FilterCategoryArticles isSticky={isSticky} />
               <FormSearchArticles isSticky={isSticky} />
@@ -35,17 +37,18 @@ export const ArticlePage = () => {
       >
         <div className={styles.sectionArticleContainer}>
           <div className={styles.header}>
-            <SectionTopArticle />
-          </div>
-          <div className={`${styles.filterContainer}`} ref={filterRef}>
-            <FilterCategoryArticles />
+            <div>
+              <SectionTopArticle />
+            </div>
+            <div className={`${styles.filterContainer}`} ref={filterRef}>
+              {isResponsive ? <></> : <FilterCategoryArticles />}
+            </div>
           </div>
           <div className={styles.sectionArticle}>
             <SectionArticle />
           </div>
         </div>
       </DefaultTemplate>
-      {isOpen ? <NavModal setIsOpen={setIsOpen} /> : null}
     </>
   );
 };

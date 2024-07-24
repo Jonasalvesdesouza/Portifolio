@@ -42,6 +42,10 @@
       }
     }
   }
+
+  @media (max-width: 1024px) {
+    border: none;
+  }
 }
 
 .stickySearchContainer {
@@ -69,5 +73,9 @@
     &::placeholder {
       color: var(--color-gray0);
     }
+  }
+
+  @media (max-width: 1024px) {
+    border: none;
   }
 }

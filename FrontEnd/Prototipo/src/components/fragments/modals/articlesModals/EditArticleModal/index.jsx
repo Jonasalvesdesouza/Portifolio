@@ -1,6 +1,6 @@
 import { IoCloseOutline } from 'react-icons/io5';
 
-import { useKeydown, useOutclick } from '../../../../../hooks';
+import { useKeydown } from '../../../../../hooks';
 import { Button } from '../../../Button';
 import { FormEditArticle } from '../../../forms';
 

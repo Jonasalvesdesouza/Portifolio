@@ -69,7 +69,7 @@ export const FormSendMeEmail = () => {
           />
         </div>
       </div>
-      <div className={`${!isResponsive ? styles.bntSend : ''} bntSendMeEmail`}>
+      <div className="bntSendMeEmail">
         <Button type="submit">
           {!loading ? <span>TO SEND</span> : <span>SENDING...</span>}
           <SlArrowRight className="icon" />

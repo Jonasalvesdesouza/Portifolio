@@ -9,25 +9,29 @@
 
   gap: 60px;
 
-  h3 {
-    display: flex;
-    flex-direction: column;
-  }
-  p {
-    margin-top: 30px;
-    width: 88%;
+  .blogHeader {
+    h3 {
+      display: flex;
+      flex-direction: column;
+    }
+    p {
+      margin-top: 30px;
+    }
   }
 }
 
 .blogContainerVertical {
-  h3 {
-    color: var(--color-white);
+  .blogHeader {
+    width: 100%;
+    margin: 0 auto;
+    h3 {
+      width: 100%;
+      color: var(--color-white);
+    }
+    p {
+      width: 100%;
+    }
   }
-}
-
-.btnContainer {
-  position: absolute;
-  margin-top: 100px;
 }
 
 @media (max-width: 768px) {
@@ -42,5 +46,16 @@
     p {
       margin-top: 10px;
     }
+  }
+}
+
+.blogContainerVertical {
+  p {
+    width: 73%;
+  }
+}
+.blogContainerHorizontal {
+  p {
+    width: 70%;
   }
 }

@@ -24,7 +24,7 @@ export const SectionMyLatestProjectsHomePage = () => {
       }
     >
       <div className={styles.projectHeader}>
-        <h3 className="title1">
+        <h3 className={isResponsive ? 'title1 white' : 'title1 black'}>
           My latest <br />
           <span className="title1 yellow">Projects.</span>
         </h3>

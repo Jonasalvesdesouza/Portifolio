@@ -1,9 +1,4 @@
 %default {
-  font-family: var(--font-secundary);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--color-black);
-
   border-left: 1px solid var(--color-black);
   border-bottom: 1px solid var(--color-black);
   border-right: 0;
@@ -17,7 +12,7 @@
 }
 .input-medium {
   @extend %default;
-  width: 29vw;
+  width: 33vw;
   height: 2.8vw;
 
   font-size: 1vw;
@@ -37,7 +32,7 @@
 
 .textArea-medium {
   @extend %default;
-  width: 29vw;
+  width: 33vw;
   height: 10.5vw;
 
   font-size: 1vw;

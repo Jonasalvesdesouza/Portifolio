@@ -9,27 +9,29 @@ export const SectionBannerHomePage = () => {
 
   const urlImage = useRenderImage(profile);
 
+  const isResponsive = useResponsive();
+
   return (
     <div
       id="banner"
-      className={`${useResponsive() ? `${styles.bannerContainerVertical}` : styles.bannerContainerHorizontal}`}
+      className={`${isResponsive ? `${styles.bannerContainerVertical}` : styles.bannerContainerHorizontal}`}
     >
       <div className={styles.bannerContainer}>
         <div className={styles.bannerLeft}>
-          <h1 className={`title1 ${useResponsive() ? 'white' : ''}`}>
+          <h1 className={`title1 black ${isResponsive ? 'white' : ''}`}>
             Developer <br />
             <span className="title1 yellow">Full </span>
             Stack
             <span className="title1 yellow">.</span>
           </h1>
           <p
-            className={` ${useResponsive() ? `parapraph homeMobile` : `parapraph home`}`}
+            className={` ${isResponsive ? `parapraph homeMobile` : `parapraph home`}`}
           >
             {profile?.presentation}
           </p>
         </div>
 
-        <div className={`${styles.bannerRight} `}>
+        <div className={`${styles.bannerRight}`}>
           <img src={urlImage} alt="Image Jonas" />
         </div>
       </div>

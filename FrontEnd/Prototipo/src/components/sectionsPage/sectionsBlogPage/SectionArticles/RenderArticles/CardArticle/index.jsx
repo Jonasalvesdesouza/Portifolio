@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import 'highlight.js/styles/monokai.css';
 
+import { SlArrowRight } from 'react-icons/sl';
+
 import {
   useCalculateReadingTime,
   useFormtDate,

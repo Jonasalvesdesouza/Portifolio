@@ -1,6 +1,6 @@
 .workplaceContainerHorizontal {
   .workplaceContainer {
-    max-width: 65%;
+    max-width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,7 +11,7 @@
       content: '';
       position: absolute;
       top: -5vh;
-      left: 32vw;
+      left: 36.5vw;
       width: 1px;
       height: 53vh;
       background-color: var(--color-gray0);
@@ -65,7 +65,7 @@
       width: 100%;
       height: 100%;
 
-      gap: 100px;
+      gap: 50px;
 
       margin-top: 150px;
 

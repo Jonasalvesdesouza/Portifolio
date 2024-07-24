@@ -17,7 +17,7 @@ export const RenderArticles = ({ search, articlesResult }) => {
             return <CardArticle key={article.id} article={article} />;
           })
         ) : (
-          <p className="title2">No results found!</p>
+          <p className="title2 black">No results found!</p>
         )}
       </ul>
     </div>

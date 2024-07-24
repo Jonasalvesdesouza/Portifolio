@@ -7,9 +7,12 @@
     var(--color-white) 50%
   );
 
+  gap: 100px;
+
   header {
     position: sticky;
     top: 0;
+    z-index: 1;
   }
 
   main {

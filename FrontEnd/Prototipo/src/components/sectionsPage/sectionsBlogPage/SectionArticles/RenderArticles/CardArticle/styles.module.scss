@@ -26,6 +26,9 @@
     display: flex;
     flex-direction: column;
 
+    width: 50%;
+    height: 100%;
+
     .headerCard {
       display: flex;
       flex-direction: column;
@@ -41,7 +44,7 @@
         font-family: var(--font-secundary);
         font-size: 22px;
         font-weight: 700;
-        color: var(--color-black);
+        color: var(--color-gray1);
         transition: opacity 0.3s ease-in-out;
 
         &:hover {
@@ -52,12 +55,13 @@
 
     .descriptionContainer {
       margin-top: 10px;
-      width: 70%;
+      width: 90%;
+
       p {
         font-family: var(--font-secundary);
         font-size: 18px;
         font-weight: 400;
-        color: var(--color-black);
+        color: var(--color-gray1);
       }
     }
 
@@ -66,8 +70,8 @@
       .cardCategory {
         font-family: var(--font-secundary);
         font-size: 14px;
-        font-weight: 400;
-        color: var(--color-black);
+        font-weight: 700;
+        color: var(--color-gray1);
       }
 
       .readingTime {
@@ -81,13 +85,8 @@
 
   .cardRight {
     img {
-      width: 200px;
-      height: 200px;
-      transition: opacity 0.3s ease-in-out;
-
-      &:hover {
-        opacity: 0.5;
-      }
+      width: 650px;
+      height: 250px;
     }
   }
 }

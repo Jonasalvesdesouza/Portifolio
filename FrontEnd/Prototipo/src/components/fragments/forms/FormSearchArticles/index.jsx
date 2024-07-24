@@ -9,7 +9,7 @@ import { AppBehaviorContext } from '../../../../providers';
 import styles from './styles.module.scss';
 
 export const FormSearchArticles = ({ isSticky }) => {
-  const { setSearch } = useContext(AppBehaviorContext);
+  const { setSearch, screenWidth } = useContext(AppBehaviorContext);
   const [value, setValue] = useState('');
   const navigate = useNavigate();
 
@@ -26,23 +26,26 @@ export const FormSearchArticles = ({ isSticky }) => {
 
   const location = useLocation();
   const checkRouter = location.pathname === '/articlepage';
+  const isResponsive = screenWidth < 1024;
 
   return (
     <form
       className={
-        isSticky ? styles.stickySearchContainer : styles.searchContainer
+        isSticky || isResponsive
+          ? styles.stickySearchContainer
+          : styles.searchContainer
       }
       onSubmit={submit}
     >
-      <Button type="submit">
+      <Button className={isResponsive ? styles.button : ''} type="submit">
         <TfiSearch
-          size={isSticky ? 18 : 25}
+          size={isSticky || isResponsive ? 18 : 25}
           color={checkRouter ? '#76787b' : '#848484'}
         />
       </Button>
 
       <Input
-        className={styles.searchInput}
+        className={isResponsive ? styles.input : styles.searchInput}
         type="text"
         placeholder="Search..."
         value={value}

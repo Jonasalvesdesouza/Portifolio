@@ -15,19 +15,18 @@ export const AppBehaviorProvider = ({ children }) => {
   const [search, setSearch] = useState('');
   const [categorysProject, setCategorysProject] = useState('');
   const [categorysArticles, setCategorysArticles] = useState('');
+  const [focusedButton, setFocusedButton] = useState('Emphasis');
 
   const [navDashboard, setNavDashboard] = useState(null);
 
   const [isOpenDashboard, setIsOpenDashboard] = useState(false);
   const [stateImage, setStateImage] = useState(false);
+  const [isOpenNav, setIsOpenNav] = useState(false);
+  const [returShapeHam, setReturShapeHam] = useState(false);
 
   const [imageProfile, setImageProfile] = useState('');
   const [imageProject, setImageProject] = useState('');
   const [imageArticle, setImageArticle] = useState('');
-
-  const [returShapeHam, setReturShapeHam] = useState(false);
-
-  const [focusedButton, setFocusedButton] = useState('Emphasis');
 
   const resetStadeCategorys = () => {
     setCategorysArticles('');
@@ -69,6 +68,8 @@ export const AppBehaviorProvider = ({ children }) => {
         setReturShapeHam,
         focusedButton,
         setFocusedButton,
+        isOpenNav,
+        setIsOpenNav,
       }}
     >
       {children}

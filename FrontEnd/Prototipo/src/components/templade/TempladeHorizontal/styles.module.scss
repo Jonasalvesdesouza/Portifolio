@@ -1,9 +1,9 @@
-$template-margin-top: 5vw;
+$template-margin-top: 20vw;
 $template-footer-top: 78vh;
-$template-button-top: 85vh;
-$template-button-left: 54.6vw;
+$template-button-top: 83vh;
+$template-button-left: 50vw;
 $template-main-top: 10vw;
-$template-main-left: 26vw;
+$template-main-left: 16vw;
 $template-nav-top: 30vh;
 $template-nav-left: 12vw;
 $color-black: var(--color-black);
@@ -14,26 +14,16 @@ $color-gray0: var(--color-gray0);
   height: 100vh;
   width: 100%;
   margin: 0;
-  background: linear-gradient(to right, $color-black 23vw, $color-white 23vw);
+  background: linear-gradient(to right, $color-black 12vw, $color-white 12vw);
   position: relative;
   overflow: hidden;
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 23vw;
-    height: 100%;
-    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3);
-    z-index: 0;
-  }
 
   &::after {
     content: '';
     position: absolute;
     top: 80vh;
     left: 0;
-    width: 23vw;
+    width: 12vw;
     height: 1px;
     background-color: var(--color-gray0);
   }
@@ -42,40 +32,32 @@ $color-gray0: var(--color-gray0);
     width: 100%;
   }
 
-  .mainContainer {
-    main {
-      position: absolute;
-      top: $template-main-top;
-      left: $template-main-left;
-      width: 100%;
-    }
+  .container {
+    display: flex;
+    flex-direction: row;
 
+    width: 100%;
+    height: 87%;
+    .mainContainer {
+      margin-left: 5vw;
+      margin-top: 5vw;
+    }
     .leftSideContainer {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: $template-margin-top;
+      justify-content: space-between;
 
       nav {
-        position: absolute;
-        top: $template-nav-top;
-        left: $template-nav-left;
-
-        @media (max-width: 1050px) {
-          span {
-            font-size: 1.3vw;
-          }
-        }
+        margin-top: 10vw;
+        margin-left: 3vw;
       }
 
       footer {
-        position: absolute;
-        top: $template-footer-top;
-        left: 0;
-        width: 35vw;
+        margin-bottom: 3vw;
+        margin-left: 1.5vw;
       }
     }
-
     .button {
       position: absolute;
       top: $template-button-top;

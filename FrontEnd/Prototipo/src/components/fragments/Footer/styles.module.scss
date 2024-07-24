@@ -16,43 +16,29 @@
     max-width: 90vw;
     height: 6vw;
   }
-}
 
-.footerIconContainerHorizontal,
-.footerIconContainerVertical {
-  display: flex;
-  margin-right: 20px;
+  .footerIconContainer {
+    display: flex;
 
-  img {
-    width: 4vw;
-    transition: opacity 0.3s ease-in-out;
+    img {
+      width: 4vw;
+      transition: opacity 0.3s ease-in-out;
 
-    &:hover {
-      opacity: 0.5;
+      &:hover {
+        opacity: 0.5;
+      }
     }
   }
-}
 
-.copyrighContainerHorizontal,
-.copyrighContainerVertical {
-  display: flex;
-  align-items: center;
-  gap: 0.1875rem;
-  width: 100%;
-
-  &.copyrighContainerHorizontal {
-    width: 10vw;
-    max-width: 100%;
-    flex-direction: row;
-  }
-
-  &.copyrighContainerVertical {
+  .copyrighContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.1875rem;
     width: 100%;
-    flex-direction: row;
   }
-}
 
-.icon {
-  font-size: clamp(8px, 1.7vw, 11px);
-  color: var(--color-white);
+  .icon {
+    font-size: clamp(8px, 1.7vw, 11px);
+    color: var(--color-white);
+  }
 }

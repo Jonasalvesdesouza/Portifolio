@@ -4,4 +4,3 @@ export { ProjectsPage } from './ProjectsPage';
 export { BlogPage } from './BlogPage';
 export { CurriculumPage } from './CurriculumPage';
 export { ArticlePage } from './ArticlePage';
-export { ProfilePage } from './ProfilePage';

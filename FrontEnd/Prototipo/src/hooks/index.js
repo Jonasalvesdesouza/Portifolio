@@ -31,3 +31,4 @@ export { useCardAnimation } from './useCardAnimation';
 export { useScrollManagerChrome } from './useScrollManagerChrome';
 export { useScrollManagerIsFirefox } from './useScrollManagerIsFirefox';
 export { useOrientation } from './useOrientation';
+export { useIgnoreElements } from './useIgnoreElements';

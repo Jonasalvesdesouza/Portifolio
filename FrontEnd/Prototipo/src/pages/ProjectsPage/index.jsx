@@ -1,22 +1,19 @@
-import { useState } from 'react';
 import { DefaultTemplate } from '../../components/templade';
 import {
   SectionProjects,
   SectionTitleProjects,
 } from '../../components/sectionsPage/sectionsProjectsPage';
 import { useSticky } from '../../hooks';
-import { FilterProjects, NavModal } from '../../components/fragments';
+import { FilterProjects } from '../../components/fragments';
 
 import styles from './styles.module.scss';
 
 export const ProjectsPage = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [isSticky, filterRef] = useSticky();
 
   return (
     <>
       <DefaultTemplate
-        setIsOpen={setIsOpen}
         isSticky={isSticky}
         topContent={
           isSticky ? (
@@ -38,7 +35,6 @@ export const ProjectsPage = () => {
           </div>
         </div>
       </DefaultTemplate>
-      {isOpen ? <NavModal setIsOpen={setIsOpen} /> : null}
     </>
   );
 };

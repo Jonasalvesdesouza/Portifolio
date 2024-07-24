@@ -30,22 +30,20 @@ export const SectionAboutHomePage = () => {
     >
       <div className={styles.aboutContainer}>
         <div className={styles.headerAbout}>
-          <h1 className="title1">
+          <h1 className="title1 black">
             Hello <span className="title1 yellow">!</span> <br />
-            My name is Jonas
+            My name is Jonas<span className="title1 yellow">.</span>
           </h1>
           <p
-            className={` ${useResponsive() ? `parapraph homeMobile` : `parapraph home`}`}
+            className={` ${isResponsive ? `parapraph homeMobile` : `parapraph home`}`}
           >
             {profile?.bio}
           </p>
         </div>
-        <div className={`${styles.bntAboutHome} bntAboutHome`}>
+        <div className="bntAboutHome">
           <Link to="/curriculum" onClick={handleClickCurriculum}>
             <span>CURRICULUM</span>
-            <div>
-              <SlArrowRight className="icon" />
-            </div>
+            <SlArrowRight className="icon" />
           </Link>
         </div>
       </div>

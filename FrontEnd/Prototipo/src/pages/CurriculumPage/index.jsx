@@ -1,27 +1,30 @@
-import { useState } from 'react';
-import { Header, NavModal } from '../../components/fragments';
+import { useContext } from 'react';
+import { Header } from '../../components/fragments';
 import {
   SectionLeftCurriculum,
   SectionRightCurriculum,
 } from '../../components/sectionsPage/sectionsCurriculumPage';
 
 import styles from './styles.module.scss';
+import { AppBehaviorContext } from '../../providers';
 
 export const CurriculumPage = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <div className={`${styles.curriculumContainer}`}>
-      <Header setIsOpen={setIsOpen} />
-      <main>
-        <div className={`${styles.leftContainer}`}>
-          <SectionLeftCurriculum />
-        </div>
-        <div className={`${styles.rightContainer}`}>
-          <SectionRightCurriculum />
-        </div>
-      </main>
+  const { isOpenNav } = useContext(AppBehaviorContext);
 
-      {isOpen ? <NavModal setIsOpen={setIsOpen} /> : null}
-    </div>
+  return (
+    <>
+      <div className={`${styles.curriculumContainer}`}>
+        <Header />
+        <main>
+          <div className={`${styles.leftContainer}`}>
+            <SectionLeftCurriculum />
+          </div>
+          <div className={`${styles.rightContainer}`}>
+            <SectionRightCurriculum />
+          </div>
+        </main>
+        <footer />
+      </div>
+    </>
   );
 };

@@ -23,6 +23,13 @@
     }
   }
 
+  .hamburger {
+    z-index: 11;
+  }
+  .filterModal {
+    z-index: 10;
+  }
+
   div {
     transition: all 0.3s ease-in-out;
   }
@@ -36,36 +43,11 @@
   }
 }
 
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
 .sticky {
   background-color: var(--color-black-transparent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-  animation: slideDown 0.6s ease-in-out forwards;
-
-  .headerContainer {
-    animation: fadeOut 0.6s forwards;
-  }
 
   .stickyContainer {
     display: flex;
@@ -75,9 +57,12 @@
     height: 10vh;
     margin: 0 auto;
     padding: 0;
-    animation: slideDown 0.6s ease-in-out forwards;
 
-    .nav {
+    .hamburger {
+      margin-top: 1.5vh;
+    }
+
+    .filter {
       display: flex;
       flex-direction: row;
       align-content: center;
@@ -85,6 +70,8 @@
       justify-content: space-between;
       width: 85%;
       height: 100%;
+
+      z-index: 7;
     }
 
     .logo {
@@ -108,11 +95,6 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
-  animation: slideDown 0.6s ease-in-out forwards;
-
-  .headerContainer {
-    animation: fadeOut 0.6s forwards;
-  }
 
   .stickyContainer {
     display: flex;
@@ -122,9 +104,12 @@
     height: 10vh;
     margin: 0 auto;
     padding: 0;
-    animation: slideDown 0.6s ease-in-out forwards;
 
-    .nav {
+    .hamburger {
+      margin-top: 1.5vh;
+    }
+
+    .filter {
       display: flex;
       flex-direction: row;
       align-content: center;

@@ -1,30 +1,16 @@
-.btnNavHome {
-  font-family: var(--font-primary);
-  font-size: 1rem;
-  line-height: 3.5;
-  color: var(--color-white);
-  transform: 0.4s;
-
-  &:hover {
-    color: var(--color-yellow);
-  }
-}
-
 %bntDefault {
   font-family: var(--font-primary);
   font-weight: 300;
-  font-size: 1.3345vw;
+  font-size: clamp(11px, 2.5vw, 20px);
   color: var(--color-black);
-
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-
-  width: 20%;
+  width: 15%;
   padding: 20px;
   height: auto;
-  border: solid 1px var(--color-black);
+  border: solid 1px var(--color-gray0);
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -32,36 +18,37 @@
   a {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-  }
-
-  a span {
-    position: relative;
-    z-index: 4;
-  }
-
-  a:after {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: var(--color-gray2);
-    transition: all 0.35s;
-    z-index: 2;
-  }
-
-  a:hover {
-    color: var(--color-white);
-  }
-
-  a:hover:after {
+    justify-content: center;
     width: 100%;
-  }
 
-  a:hover .icon {
-    color: var(--color-white);
+    span {
+      position: relative;
+      z-index: 4;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: var(--color-gray2);
+      transition: all 0.35s;
+      z-index: 2;
+    }
+
+    &:hover {
+      color: var(--color-white);
+
+      &::after {
+        width: 100%;
+      }
+
+      .icon {
+        color: var(--color-white);
+      }
+    }
   }
 
   .icon {
@@ -80,21 +67,29 @@
       color: var(--color-Darkwhite);
     }
 
-    a:after {
-      background: var(--color-white);
-    }
-    a:hover {
-      color: var(--color-black);
-    }
-    a:hover .icon {
-      color: var(--color-black);
+    a {
+      &::after {
+        background: var(--color-white);
+      }
+
+      &:hover {
+        color: var(--color-black);
+
+        .icon {
+          color: var(--color-black);
+        }
+      }
     }
   }
 }
 
 .bntAboutHome {
   @extend %bntDefault;
-  font-size: clamp(14px, 2vw, 22px);
+  width: 20%;
+
+  @media (max-width: 920px) {
+    width: 20vw;
+  }
 
   @media (max-width: 580px) {
     width: 40%;
@@ -103,34 +98,31 @@
 
 .bntWorkplace {
   @extend %bntDefault;
-  width: 21.8vw;
+  width: 20vw;
 
   a {
-    span {
-      margin-left: 2.94vw;
-    }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
   }
 
-  .icon {
-    margin-right: 1vw;
-    left: 0;
+  @media (max-width: 1024px) {
+    width: 30vw;
   }
 }
 
 .bntSendMeEmail {
   @extend %bntDefault;
-  width: 12%;
-  margin-top: 1.5vw;
-  padding: 15px;
+  width: 10vw;
+  margin-top: 80px;
 
   button {
     font-family: var(--font-primary);
-    font-size: 1.3vw;
     font-weight: 300;
-
+    font-size: clamp(11px, 2.5vw, 20px);
     display: flex;
     align-items: center;
-
     z-index: 0;
 
     span {
@@ -138,33 +130,33 @@
     }
 
     .icon {
-      font-size: 1.3vw;
+      font-size: clamp(11px, 1.7vw, 18px);
       z-index: 1;
     }
-  }
 
-  button:after {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: var(--color-gray2);
-    transition: all 0.35s;
-    z-index: 0;
-  }
+    &::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: var(--color-gray2);
+      transition: all 0.35s;
+      z-index: 0;
+    }
 
-  button:hover {
-    color: var(--color-white);
-  }
+    &:hover {
+      color: var(--color-white);
 
-  button:hover:after {
-    width: 100%;
-  }
+      &::after {
+        width: 100%;
+      }
 
-  button:hover .icon {
-    color: var(--color-white);
+      .icon {
+        color: var(--color-white);
+      }
+    }
   }
 
   .icon {
@@ -175,12 +167,21 @@
     z-index: 3;
   }
 
+  @media (max-width: 1200px) {
+    width: 12vw;
+  }
+
+  @media (max-width: 903px) {
+    width: 15vw;
+  }
+
   @media (max-width: 768px) {
     button {
       font-size: 1.8vw;
       font-weight: 300;
     }
   }
+
   @media (max-width: 768px) {
     width: 20%;
   }

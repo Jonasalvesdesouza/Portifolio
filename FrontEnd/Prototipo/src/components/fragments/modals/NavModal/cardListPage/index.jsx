@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AppBehaviorContext } from '../../../../../providers';
 import styles from './styles.module.scss';
 
-export const CardListPage = ({ page }) => {
+export const CardListPage = ({ page, setIsOpen }) => {
   const { resetStadeCategorys, setReturShapeHam, setSearch, setCurrentCard } =
     useContext(AppBehaviorContext);
 
@@ -13,6 +13,7 @@ export const CardListPage = ({ page }) => {
     window.scrollTo({ top: 0 });
     setSearch('');
     setCurrentCard(0);
+    setIsOpen(false);
   };
 
   return (

@@ -3,7 +3,7 @@ import {
   useLimitedDescription,
   useRemoveTitle,
   useRenderImage,
-} from '../../../../../../hooks';
+} from '../../../../../hooks';
 
 import styles from './styles.module.scss';
 
@@ -19,7 +19,7 @@ hljs.registerLanguage('html', html);
 
 export const CardArticleDatail = ({ object }) => {
   const { remainingText } = useRemoveTitle(object.description, 'h1');
-  const maxLength = 50;
+  const maxLength = 300;
   const LimitedDescription = useLimitedDescription(remainingText, maxLength);
   const urlImage = useRenderImage(object);
 
@@ -36,23 +36,27 @@ export const CardArticleDatail = ({ object }) => {
   return (
     <li className={`${styles.cardAticleDetailContainer}`}>
       <div>
-        <div className="ql-snow">
-          <h2 className="title2 articlePage">{object.title}</h2>
-          <span className="parapraph articleCategory">{object.category}</span>
+        <div className={`${styles.headerContainer} ql-snow`}>
+          <div>
+            <h2 className="title2 articlePage">{object.title}</h2>
+            <span className="parapraph articleCategory">{object.category}</span>
 
-          <p
-            className="ql-editor parapraph articleCategory"
-            dangerouslySetInnerHTML={{ __html: LimitedDescription }}
-          />
+            <p
+              className="ql-editor parapraph articleCategory"
+              dangerouslySetInnerHTML={{ __html: LimitedDescription }}
+            />
+          </div>
         </div>
-        <div>
+        <div className={`${styles.bannerContainer}`}>
           <img src={urlImage} alt={object.name} />
         </div>
-        <div className="ql-snow">
-          <p
-            className="ql-editor"
-            dangerouslySetInnerHTML={{ __html: object?.description }}
-          />
+        <div className={`${styles.contentContainer} ql-snow`}>
+          <div className={`${styles.content}`}>
+            <p
+              className="ql-editor"
+              dangerouslySetInnerHTML={{ __html: object?.description }}
+            />
+          </div>
         </div>
       </div>
     </li>

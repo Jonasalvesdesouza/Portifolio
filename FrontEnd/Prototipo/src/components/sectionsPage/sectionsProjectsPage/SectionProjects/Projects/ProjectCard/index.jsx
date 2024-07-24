@@ -19,13 +19,14 @@ export const ProjectCard = ({ project }) => {
   return (
     <li>
       <div className={`${styles.cardContainer}`}>
-        <div className={`${styles.header}`}>
+        <a href={`${useLinkProject(project)}`} className={`${styles.header}`}>
           <img src={urlImage} alt={`${project.title}`} />
-        </div>
-
+        </a>
         <div className={`${styles.middle}`}>
           <div className={`${styles.presentationContainer}`}>
-            <h3 className="title3 gray">{`${project.title}`}</h3>
+            <a href={`${useLinkProject(project)}`}>
+              <h3 className="title3 gray">{`${project.title}`}</h3>
+            </a>
             <p className="parapraphDefault">{`${LimitedDescription}`}</p>
           </div>
           <div className={`${styles.bntView}`}>
@@ -35,8 +36,8 @@ export const ProjectCard = ({ project }) => {
               rel="noopener noreferrer"
             >
               <span className={styles.bntContent}>
-                View
-                <SlArrowRight seize={20} color="#76787b" />
+                view
+                <SlArrowRight className={styles.icon} />
               </span>
             </a>
           </div>

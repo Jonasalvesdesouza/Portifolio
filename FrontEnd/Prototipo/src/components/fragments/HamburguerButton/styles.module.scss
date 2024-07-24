@@ -1,19 +1,11 @@
 .label {
   display: flex;
   flex-direction: column;
-  width: 3.5vw;
+  width: 60px;
   transition: opacity 0.3s ease-in-out;
   cursor: pointer;
 
-  @media (max-width: 850px) {
-    width: 5vw;
-  }
-  @media (max-width: 650px) {
-    width: 6vw;
-  }
-  @media (max-width: 400px) {
-    width: 7vw;
-  }
+  z-index: 10;
 
   &:hover {
     opacity: 0.55;
@@ -21,10 +13,11 @@
 
   .span {
     background: var(--color-gray1);
-    border-radius: 1vw;
-    height: 0.25vw;
-    margin: 0.2vw 0;
+    border-radius: 2px;
+    height: 4px;
+    margin: 4px 0;
     transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    width: 100%;
 
     &.white {
       background: var(--color-white);
@@ -32,16 +25,6 @@
 
     &.black {
       background: var(--color-black);
-    }
-
-    @media (max-width: 850px) {
-      height: 0.6vw;
-    }
-    @media (max-width: 650px) {
-      height: 0.7vw;
-    }
-    @media (max-width: 400px) {
-      width: 0.8vw;
     }
 
     &:nth-of-type(1) {
@@ -62,18 +45,20 @@
 
     &:checked ~ .span:nth-of-type(1) {
       transform-origin: bottom;
-      transform: rotatez(45deg) translate(8px, 0px);
+      width: 25%;
+      transform: rotatez(45deg) translate(5px, 2px);
     }
 
     &:checked ~ .span:nth-of-type(2) {
       transform-origin: top;
+      width: 50%;
       transform: rotatez(-45deg);
     }
 
     &:checked ~ .span:nth-of-type(3) {
       transform-origin: bottom;
-      width: 50%;
-      transform: translate(30px, -11px) rotatez(45deg);
+      width: 25%;
+      transform: rotatez(45deg) translate(4px, -15px);
     }
   }
 }

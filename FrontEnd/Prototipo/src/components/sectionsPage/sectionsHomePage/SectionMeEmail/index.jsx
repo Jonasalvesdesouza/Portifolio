@@ -13,7 +13,7 @@ export const SectionMeEmail = () => {
     >
       <div className={`${styles.meEmailContainer}`}>
         <div className={styles.meEmailHeader}>
-          <h4 className="title1">
+          <h4 className="title1 black">
             Send <span className="title1 yellow">me </span>a email
             <span className="title1 yellow">.</span>
           </h4>

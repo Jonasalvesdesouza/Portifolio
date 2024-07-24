@@ -1,7 +1,13 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { AppBehaviorContext } from '../providers';
 
 export const useScrollManagerChrome = (currentCard, isResponsive) => {
+  const { screenWidth } = useContext(AppBehaviorContext);
   useEffect(() => {
+    if (screenWidth < 1024) {
+      return;
+    }
+
     if (isResponsive) {
       const array = [
         { index: 0, key: 'banner' },

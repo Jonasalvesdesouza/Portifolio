@@ -12,13 +12,22 @@
   .projectHeader {
     p {
       margin-top: 30px;
+      width: 73%;
     }
   }
 }
 
 .projectContainerVertical {
-  h3 {
-    color: var(--color-white);
+  .projectHeader {
+    width: 100%;
+    margin: 0 auto;
+    h3 {
+      width: 100%;
+      color: var(--color-white);
+    }
+    p {
+      width: 100%;
+    }
   }
 }
 

@@ -28,9 +28,7 @@ export const Footer = () => {
       <div
         className={`${renderClass() ? styles.footerContainerVertical : styles.footerContainerHorizontal}`}
       >
-        <div
-          className={`${renderClass() ? styles.footerIconContainerVertical : styles.footerIconContainerHorizontal}`}
-        >
+        <div className={styles.footerIconContainer}>
           <div>
             <a href={linkLinkedin} target="_blank">
               <img src={IconLinkedin} alt="Linkdin Icon" />
@@ -43,9 +41,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div
-          className={`${renderClass() ? styles.copyrighContainerVertical : styles.copyrighContainerHorizontal}`}
-        >
+        <div className={styles.copyrighContainer}>
           <div>
             <PiCopyrightLight className={`${styles.icon}`} />
           </div>
