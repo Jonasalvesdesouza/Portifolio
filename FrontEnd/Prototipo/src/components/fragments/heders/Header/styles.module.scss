@@ -72,6 +72,10 @@
       height: 100%;
 
       z-index: 7;
+
+      @media (max-width: 1024px) {
+        justify-content: flex-end;
+      }
     }
 
     .logo {

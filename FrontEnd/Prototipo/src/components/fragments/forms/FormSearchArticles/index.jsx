@@ -26,7 +26,7 @@ export const FormSearchArticles = ({ isSticky }) => {
 
   const location = useLocation();
   const checkRouter = location.pathname === '/articlepage';
-  const isResponsive = screenWidth < 1024;
+  const isResponsive = screenWidth <= 1024;
 
   return (
     <form

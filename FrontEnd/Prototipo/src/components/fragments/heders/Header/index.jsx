@@ -25,9 +25,6 @@ export const Header = ({ children, headerClass, isSticky }) => {
   const testRouterIsBlogOrProjects =
     location === '/blog' || location === '/projects';
 
-  const testRouterIsBlogOrProjectsArticles =
-    testRouterIsBlogOrProjects || location === '/articlepage';
-
   const useBlackLogo =
     testRouterIsBlogOrProjects ||
     headerClass === 'headerSection2' ||
@@ -35,11 +32,10 @@ export const Header = ({ children, headerClass, isSticky }) => {
 
   const logo = useBlackLogo ? BlackLogo : YellowLogo;
   const logoAlt = useBlackLogo ? 'Black Logo' : 'Yellow Logo';
-  const isResponsive = screenWidth < 1024;
 
   const classHamburguer = isOpenNav ? 'headerSection2' : headerClass;
-  const headerClassName = `${(testRouterIsBlogOrProjectsArticles && isResponsive) || isSticky ? styles.sticky : ''} ${(isSticky || isResponsive) && testRouterIsBlogOrProjects ? styles['sticky-white'] : ''} ${isResponsive ? '' : isSticky ? 'slide-in-top' : ''}`;
-  const classContainer = `${styles.headerContainer} ${isSticky || isResponsive ? styles.stickyContainer : ''}`;
+  const headerClassName = `${isSticky ? styles.sticky : ''} ${isSticky && testRouterIsBlogOrProjects ? styles['sticky-white'] : ''} ${isSticky ? 'slide-in-top' : ''}`;
+  const classContainer = `${styles.headerContainer} ${isSticky ? styles.stickyContainer : ''}`;
 
   const navModalRef = useRef(null);
   const headerRef = useRef(null);
@@ -85,9 +81,7 @@ export const Header = ({ children, headerClass, isSticky }) => {
             <img src={logo} alt={logoAlt} />
           </Link>
         </div>
-        {(isSticky || isResponsive) && (
-          <div className={styles.filter}>{children}</div>
-        )}
+        {isSticky && <div className={styles.filter}>{children}</div>}
         <div className={styles.hamburger}>
           <HamburgerButton
             ref={headerRef}
@@ -103,7 +97,7 @@ export const Header = ({ children, headerClass, isSticky }) => {
           />
         )}
       </div>
-      {!(isSticky || isResponsive) && children}
+      {!isSticky && children}
     </header>
   );
 };

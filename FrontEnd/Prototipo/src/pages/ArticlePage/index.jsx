@@ -20,14 +20,14 @@ export const ArticlePage = () => {
 
   useScreenWidth();
 
-  const isResponsive = screenWidth < 1024;
+  const isResponsive = screenWidth <= 1024;
 
   return (
     <>
       <DefaultTemplate
         isSticky={isSticky}
         topContent={
-          isSticky || isResponsive ? (
+          isResponsive ? null : isSticky ? (
             <>
               <FilterCategoryArticles isSticky={isSticky} />
               <FormSearchArticles isSticky={isSticky} />

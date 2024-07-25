@@ -1,17 +1,22 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AppBehaviorContext } from '../../../../providers';
-import { IoHomeOutline } from 'react-icons/io5';
 import { CiFilter } from 'react-icons/ci';
 import {
   useCategoryArticlesData,
   useFilterArticleById,
 } from '../../../../hooks';
 import { CardFilter } from './CardFilter';
-import styles from './styles.module.scss';
 import { Button } from '../../Button';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+
+import styles from './styles.module.scss';
+
+<IoIosArrowDown className="arrowIcon" />;
 
 export const FilterCategoryArticles = ({ isSticky }) => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   const {
     resetStadeCategorys,
     setSearch,
@@ -24,13 +29,17 @@ export const FilterCategoryArticles = ({ isSticky }) => {
   const articleId = localStorage.getItem('@IDARTICLE');
   const article = useFilterArticleById(articleId);
 
-  const isResponsive = screenWidth < 1024;
+  const isResponsive = screenWidth <= 1024;
 
   const handleClick = () => {
     resetStadeCategorys();
     setSearch('');
     setFocusedButton('Emphasis');
     window.scrollTo({ top: 0 });
+  };
+
+  const handleFilterToggle = () => {
+    setIsFilterOpen((prevState) => !prevState);
   };
 
   const testRouter = location === '/blog';
@@ -41,12 +50,6 @@ export const FilterCategoryArticles = ({ isSticky }) => {
       setFocusedButton(article.category);
     }
   }, [article, setFocusedButton, testRouter]);
-
-  /*
-  juntar o filter e a busca no header apartir de menos 1024px, usar referencia do 
-  isStycy como referencia, colocar icon de seta para baixo junto com o do filter o
-   mesmo vai ser ativado pelo hover 
-  */
 
   return (
     <div className={filterClass}>
@@ -74,13 +77,33 @@ export const FilterCategoryArticles = ({ isSticky }) => {
         ) : (
           <>
             <li>
-              <Button>
+              <Button onClick={handleFilterToggle}>
                 <CiFilter className={styles.icon} />
+                <div>
+                  {!isFilterOpen ? (
+                    <IoIosArrowDown className={styles.arrow} />
+                  ) : (
+                    <IoIosArrowUp className={styles.arrow} />
+                  )}
+                  ;
+                </div>
               </Button>
             </li>
           </>
         )}
       </ul>
+      {isFilterOpen && (
+        <div className={styles.filter}>
+          {categorysData?.map((category) => (
+            <CardFilter
+              className={focusedButton === category ? styles.focused : ''}
+              key={category}
+              category={category}
+              setFocusedButton={setFocusedButton}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
