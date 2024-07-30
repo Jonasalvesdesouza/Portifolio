@@ -1,0 +1,77 @@
+.modalOverlay {
+  position: fixed;
+  z-index: 9;
+
+  .modalBox {
+    position: fixed;
+    top: 3vh;
+    right: 5.5vw;
+    width: 100vw;
+    max-width: 300px;
+    height: 400px;
+    background: var(--color-white);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--color-Darkwhite);
+    border-radius: 0.1875rem;
+    box-shadow: -1px 1px 25px -8px rgba(0, 0, 0, 0.75);
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 16.875rem;
+      left: 3.125rem;
+      width: 200px;
+      height: 1px;
+      background: var(--color-gray0);
+    }
+
+    .middleModal {
+      margin-left: 60px;
+      margin-top: 80px;
+
+      a {
+        font-family: var(--font-primary);
+        font-size: 1.5625rem;
+        line-height: 1.8;
+        font-weight: 400;
+        color: var(--color-gray1);
+      }
+    }
+
+    .bottomModal {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 80px;
+      margin-left: 80px;
+      gap: 1.25rem;
+
+      @media (max-width: 935px) {
+        left: 2.5vw;
+      }
+
+      @media (max-width: 750px) {
+        left: 2vw;
+      }
+
+      .iconLinkedin {
+        width: 3.125rem;
+        transition: opacity 0.3s ease-in-out;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+
+      .iconGitHub {
+        width: 4.0625rem;
+        transition: opacity 0.3s ease-in-out;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
