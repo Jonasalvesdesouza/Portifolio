@@ -4,26 +4,39 @@
   transition:
     margin-bottom 0.3s,
     transform 0.3s;
-  color: var(--color-gray1);
+  font-family: var(--font-primary);
+  font-size: 1.5625rem;
+  line-height: 1.8;
+  font-weight: 400;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition:
+      transform 0.3s,
+      width 0.3s;
+  }
+
+  &:hover {
+    margin-bottom: 10px;
+  }
+
+  &:hover:before {
+    transform: scaleX(1);
+    width: 50%;
+  }
 }
 
-.customLink:hover {
-  margin-bottom: 10px;
+.customLinkWhite:before {
+  background-color: var(--color-white);
 }
 
-.customLink:before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50%;
-  height: 1px;
+.customLinkGray:before {
   background-color: var(--color-gray1);
-  transform-origin: left;
-  transform: scaleX(0);
-  transition: transform 0.3s;
-}
-
-.customLink:hover:before {
-  transform: scaleX(1);
 }

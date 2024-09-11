@@ -7,68 +7,114 @@ import {
 } from '../../../../hooks';
 import { listPage } from './listPages';
 import { CardListPage } from './cardListPage';
-import { useLocation } from 'react-router-dom';
+import { FilterCategoryArticles } from '../../filters/FilterCategoryArticles';
 
 import styles from './styles.module.scss';
+
 import IconLinkedinBlack from '../../../../assets/IconLinkedinBlack.svg';
+import IconLinkedinYellow from '../../../../assets/IconLinkedinYellow.svg';
+
 import IconGitHubBlack from '../../../../assets/IconGithubBlack.svg';
+import IconGitHubYellow from '../../../../assets/IconGitHubYellow.svg';
+import { FormSearchArticles } from '../../forms';
+import { FilterProjects } from '../../filters/FilterProjects';
 
-export const NavModal = forwardRef(({ closeModal, isClosing }, ref) => {
-  const { socialMediaList } = useContext(UserAdmContext);
-  const { routeLocation, isOpenNav } = useContext(AppBehaviorContext);
+export const NavModal = forwardRef(
+  ({ closeModal, isClosing, closeNav }, ref) => {
+    const { socialMediaList } = useContext(UserAdmContext);
+    const { routeLocation, isOpenNav, screenWidth } =
+      useContext(AppBehaviorContext);
 
-  const linkLinkedin = useGetLinkObject(socialMediaList, 'linkedin');
-  const linkGitHub = useGetLinkObject(socialMediaList, 'github');
+    const linkLinkedin = useGetLinkObject(socialMediaList, 'linkedin');
+    const linkGitHub = useGetLinkObject(socialMediaList, 'github');
 
-  const ListPage = useRemoveStringFromArray(listPage, routeLocation);
+    const ListPage = useRemoveStringFromArray(listPage, routeLocation);
 
-  useKeydown(closeModal);
+    useKeydown(closeModal);
 
-  const sideAnimation = `${isOpenNav ? 'slide-in-right' : ''} ${isClosing ? 'slide-out-right' : ''}`;
+    const testRouterHomeEndCurriculum =
+      routeLocation === '/' || routeLocation === '/curriculum';
 
-  const location = useLocation();
-  const router = location.pathname === '/articlepage';
+    const isResponsiveEndRouter =
+      !testRouterHomeEndCurriculum && screenWidth <= 1024;
 
-  return (
-    <div className={`${styles.modalOverlay}`} role="dialog">
-      <div
-        ref={ref}
-        className={`${styles.modalBox} ${sideAnimation}`}
-        style={
-          router
-            ? { background: 'var(--color-black)' }
-            : { background: 'var(--color-white)' }
-        }
-      >
-        <div className={styles.middleModal}>
-          <ul>
-            {ListPage.map((page) => (
-              <CardListPage key={page.id} page={page} />
-            ))}
-          </ul>
-        </div>
+    const sideAnimationRight = `${isOpenNav ? 'slide-in-right' : ''} ${isClosing ? 'slide-out-right' : ''}`;
+    const sideAnimationTop = `${isOpenNav ? 'slide-in-top' : ''} ${isClosing ? 'slide-out-top' : ''}`;
 
-        <div className={styles.bottomModal}>
-          <div>
-            <a href={linkLinkedin} target="_blank" rel="noopener noreferrer">
-              <img
-                className={styles.iconLinkedin}
-                src={IconLinkedinBlack}
-                alt="LinkedIn Icon"
-              />
-            </a>
+    const router = routeLocation === '/articlepage' || routeLocation === '/';
+    const styleBackground = router
+      ? { background: 'var(--color-blackLight)' }
+      : { background: 'var(--color-Darkwhite)' };
+
+    const iconGitHub = router ? IconGitHubYellow : IconGitHubBlack;
+    const iconLinkedin = router ? IconLinkedinYellow : IconLinkedinBlack;
+    const widthIcon = router ? { width: '65px' } : { width: '50px' };
+
+    const customLinkClass = `${styles.modalBox} ${isResponsiveEndRouter ? styles.modalBoxProjectEndAticle : null} ${router ? styles.modalBoxWhite : styles.modalBoxGray}`;
+
+    return (
+      <div className={`${styles.modalOverlay}`} role="dialog">
+        <div
+          ref={ref}
+          className={`${customLinkClass} ${!isResponsiveEndRouter ? sideAnimationRight : sideAnimationTop}`}
+          style={styleBackground}
+        >
+          <div className={styles.middleModal}>
+            {isResponsiveEndRouter ? (
+              routeLocation === '/projects' ? (
+                <FilterProjects />
+              ) : (
+                <FilterCategoryArticles closeModal={closeNav} />
+              )
+            ) : null}
+            <div>
+              <ul>
+                {ListPage.map((page) => (
+                  <CardListPage key={page.id} page={page} />
+                ))}
+              </ul>
+            </div>
           </div>
-          <div>
-            <a href={linkGitHub} target="_blank" rel="noopener noreferrer">
-              <img
-                className={styles.iconGitHub}
-                src={IconGitHubBlack}
-                alt="GitHub Icon"
-              />
-            </a>
+
+          <div className={styles.bottomModal}>
+            {isResponsiveEndRouter ? (
+              routeLocation === '/projects' ? (
+                <div></div>
+              ) : (
+                <div className={styles.formSearch}>
+                  <FormSearchArticles />
+                </div>
+              )
+            ) : null}
+
+            <div className={styles.icons}>
+              <div>
+                <a
+                  href={linkLinkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className={styles.iconLinkedin}
+                    style={widthIcon}
+                    src={iconLinkedin}
+                    alt="LinkedIn Icon"
+                  />
+                </a>
+              </div>
+              <div>
+                <a href={linkGitHub} target="_blank" rel="noopener noreferrer">
+                  <img
+                    className={styles.iconGitHub}
+                    src={iconGitHub}
+                    alt="GitHub Icon"
+                  />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-});
+    );
+  },
+);

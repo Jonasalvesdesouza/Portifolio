@@ -2,7 +2,7 @@ export const useDateFormatEduIsJobExp = (date) => {
   const formatDate = (dateString) => {
     const dateParts = dateString.split('/');
     if (dateParts.length === 3) {
-      const [day, month, year] = dateParts;
+      const [month, year] = dateParts;
 
       const monthNames = [
         'Jan',

@@ -39,7 +39,7 @@ export const ArticlePage = () => {
               <SectionTopArticle />
             </div>
             <div className={`${styles.filterContainer}`} ref={filterRef}>
-              {isResponsive ? <></> : <FilterCategoryArticles />}
+              {isResponsive ? null : <FilterCategoryArticles />}
             </div>
           </div>
           <div className={styles.sectionArticle}>

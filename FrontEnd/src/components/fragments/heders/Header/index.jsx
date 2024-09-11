@@ -33,7 +33,7 @@ export const Header = ({ children, headerClass, isSticky }) => {
   const logoAlt = useBlackLogo ? 'Black Logo' : 'Yellow Logo';
 
   const classHamburguer = isOpenNav ? 'headerSection2' : headerClass;
-  const headerClassName = `${isSticky ? styles.sticky : ''} ${isSticky && testRouterIsBlogOrProjects ? styles['sticky-white'] : ''} ${isSticky ? 'slide-in-top' : ''}`;
+  const headerClassName = `${isSticky ? styles.sticky : ''} ${isSticky && testRouterIsBlogOrProjects ? styles['stickyWhite'] : ''} ${isSticky ? 'slide-in-top' : ''}`;
   const classContainer = `${styles.headerContainer} ${isSticky ? styles.stickyContainer : ''}`;
 
   const navModalRef = useRef(null);
@@ -54,7 +54,6 @@ export const Header = ({ children, headerClass, isSticky }) => {
 
   const openNav = () => {
     setRouteLocation(location);
-    setFocusedButton('Emphasis');
     setReturShapeHam(true);
     setIsOpenNav(true);
   };
@@ -86,6 +85,7 @@ export const Header = ({ children, headerClass, isSticky }) => {
             ref={headerRef}
             handleClick={handleClick}
             headerClass={classHamburguer}
+            isOpenNav={isOpenNav}
           />
         </div>
         {isOpenNav && (
@@ -93,6 +93,7 @@ export const Header = ({ children, headerClass, isSticky }) => {
             ref={navModalRef}
             closeModal={handleClick}
             isClosing={isClosing}
+            closeNav={closeNav}
           />
         )}
       </div>

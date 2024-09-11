@@ -1,7 +1,7 @@
 .filterContainer {
   margin: 2vw 0 1vw 0;
   width: 100%;
-  height: 60px;
+  height: 3.75rem;
 
   display: flex;
   flex-direction: column;
@@ -10,52 +10,36 @@
 
   ul {
     width: 80%;
-    border-bottom: 1px solid var(--color-white);
-    height: 41px;
+    border-bottom: 0.0625rem solid var(--color-gray0);
+    height: 2.5625rem;
 
     display: flex;
     flex-direction: row;
 
     a {
       font-family: var(--font-primary);
-      font-size: clamp(18px, 1.5vw, 22px);
-      color: var(--color-white);
+      font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+      color: var(--color-gray0);
       background: none;
       border: none;
       position: relative;
       cursor: pointer;
       margin: 0 1vw 0 0;
+      transition: 0.3s;
+    }
 
-      &:after {
-        content: '';
-        position: absolute;
-        top: 42px;
-        left: 0;
-        width: 100%;
-        height: 0;
-        background-color: var(--color-yellow2);
-      }
-
-      &:focus:after,
-      &.focused:after {
-        height: 0.125rem;
-      }
-
-      &:hover,
-      &:focus,
-      &.focused {
-        color: var(--color-yellow2);
-      }
+    .focusedArticle {
+      display: flex;
+      flex-direction: row;
+      width: auto;
+      height: 100%;
+      color: var(--color-yellow2);
+      border-bottom: 2px solid var(--color-yellow2);
     }
   }
 
   @media (max-width: 1024px) {
     width: 50%;
-
-    ul {
-      border: none;
-      width: 100%;
-    }
   }
 }
 
@@ -67,7 +51,7 @@
     display: flex;
     flex-direction: row;
     height: 100%;
-    gap: 20px;
+    gap: 1.25rem;
 
     li {
       display: flex;
@@ -76,37 +60,59 @@
 
       a {
         font-family: var(--font-primary);
-        font-size: clamp(12px, 1.5vw, 16px);
+        font-size: clamp(0.75rem, 1.5vw, 1rem);
         font-weight: 400;
-        color: var(--color-Darkwhite);
+        color: var(--color-gray0);
         background: none;
         position: relative;
+
+        transition: 0.3s;
 
         &:hover {
           color: var(--color-yellow2);
         }
       }
 
-      .focused {
+      .focusedArticle {
         display: flex;
         flex-direction: row;
         align-items: center;
+
         width: auto;
         height: 100%;
+
         color: var(--color-yellow2);
-        border-bottom: 3px solid var(--color-yellow2);
+        border-bottom: 2px solid var(--color-yellow2);
+      }
+
+      .focusedBlog {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        width: auto;
+        height: 100%;
+
+        color: var(--color-black);
+        border-bottom: 2px solid var(--color-black);
       }
     }
   }
 
   @media (max-width: 1024px) {
+    margin-left: -15%;
+
     ul {
       border: none;
+      display: flex;
+      flex-direction: column;
 
       li {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        a {
+          font-family: var(--font-primary);
+          font-size: clamp(1rem, 1.5625rem, 1.125rem);
+          font-weight: 400;
+        }
 
         button {
           display: flex;
@@ -117,6 +123,10 @@
             display: flex;
           }
         }
+
+        .focused {
+          border-bottom: 0.0625rem solid var(--color-yellow2);
+        }
       }
     }
   }
@@ -125,7 +135,7 @@
 .blogFilter {
   margin: 2vw 0 0vw 0;
   width: 97%;
-  height: 60px;
+  height: 3.75rem;
 
   display: flex;
   flex-direction: column;
@@ -135,7 +145,7 @@
   ul {
     width: 83%;
     border-bottom: 1px solid var(--color-black);
-    height: 41px;
+    height: 2.5625rem;
 
     display: flex;
     flex-direction: row;
@@ -143,7 +153,7 @@
     li {
       a {
         font-family: var(--font-primary);
-        font-size: clamp(18px, 1.5vw, 22px);
+        font-size: clamp(1.125rem, 1.5vw, 1.375rem);
         color: var(--color-gray0);
         background: none;
         border: none;
@@ -151,31 +161,18 @@
         cursor: pointer;
         margin: 0 1vw 0 0;
 
-        &:after {
-          content: '';
-          position: absolute;
-          top: 42px;
-          left: 0;
-          width: 100%;
-          height: 0;
-          background-color: var(--color-black);
-          transition: height 0.3s ease;
-        }
-
-        &:focus:after,
-        &.focused:after {
-          color: var(--color-black);
-          border-bottom: 1px solid var(--color-black);
-        }
-
-        &:hover,
-        &:focus {
+        &:hover {
           color: var(--color-black);
         }
       }
 
-      .focused {
+      .focusedBlog {
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        height: 100%;
         color: var(--color-black);
+        border-bottom: 2px solid var(--color-black);
       }
     }
   }
@@ -200,59 +197,21 @@
       .focused {
         color: var(--color-black);
         border-bottom: 3px solid var(--color-black);
+
+        @media (max-width: 1024px) {
+          border-bottom: 1px solid var(--color-black);
+        }
       }
     }
   }
 }
 
 .icon {
-  font-size: 28px;
+  font-size: 1.75rem;
   color: var(--color-gray0);
 }
 
 .arrow {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--color-gray0);
-}
-
-.filter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-
-  width: 15vw;
-  height: 20vh;
-
-  gap: 0px;
-
-  background: var(--color-black);
-  border: 1px solid var(--color-gray2);
-  border-radius: 5px;
-
-  position: fixed;
-
-  margin-top: -25px;
-
-  box-shadow: -1px 1px 25px -8px rgba(0, 0, 0, 0.75);
-
-  li {
-    display: flex;
-    align-items: center;
-
-    margin-left: 50%;
-
-    width: 100%;
-
-    a {
-      font-family: var(--font-primary);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--color-white);
-
-      &:hover {
-        color: var(--color-yellow2);
-      }
-    }
-  }
 }

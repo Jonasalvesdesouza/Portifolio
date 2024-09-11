@@ -13,6 +13,10 @@
   border-bottom: 1px solid var(--color-gray0);
   border-left: 1px solid var(--color-gray0);
 
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
+
   .searchInput {
     font-family: var(--font-secundary);
     font-size: clamp(0.6875rem, 1.4vw, 1.375rem);
@@ -23,9 +27,11 @@
     width: 100%;
 
     background: transparent;
+    transition: color 0.3s ease;
 
     &::placeholder {
       color: var(--color-gray0);
+      transition: color 0.3s ease;
     }
   }
 
@@ -33,6 +39,19 @@
     border-bottom: 1px solid var(--color-white);
     border-left: 1px solid var(--color-white);
     color: var(--color-white);
+
+    .searchInput {
+      color: var(--color-white);
+
+      &::placeholder {
+        color: var(--color-white);
+      }
+    }
+  }
+
+  &.focusedWhite {
+    border-bottom: 1px solid var(--color-white);
+    border-left: 1px solid var(--color-white);
 
     .searchInput {
       color: var(--color-white);
@@ -59,23 +78,47 @@
   border-bottom: 1px solid var(--color-gray0);
   border-left: 1px solid var(--color-gray0);
 
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
+
   .searchInput {
     font-family: var(--font-secundary);
     font-size: clamp(11px, 1.4vw, 18px);
     font-weight: 400;
-    color: var(--color-gray0);
+    color: var(--color-gray10);
     border: none;
 
     width: auto;
 
     background: transparent;
 
+    transition: color 0.3s ease;
+
     &::placeholder {
       color: var(--color-gray0);
+      transition: color 0.3s ease;
+    }
+  }
+
+  &.focusedWhite {
+    border-bottom: 1px solid var(--color-white);
+    border-left: 1px solid var(--color-white);
+
+    .searchInput {
+      color: var(--color-white);
+
+      &::placeholder {
+        color: var(--color-white);
+      }
     }
   }
 
   @media (max-width: 1024px) {
-    border: none;
+    /* border: none; */
   }
+}
+
+.searchIcon {
+  transition: color 0.3s ease; // Aplica a transição à cor do ícone
 }

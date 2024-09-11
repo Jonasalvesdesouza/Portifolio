@@ -1,7 +1,10 @@
+import { useContext } from 'react';
+import { AppBehaviorContext } from '../../providers';
+
 import { DefaultTemplate } from '../../components/templade';
 import {
   SectionProjects,
-  SectionTitleProjects,
+  SectionTopProjects,
 } from '../../components/sectionsPage/sectionsProjectsPage';
 import { useSticky } from '../../hooks';
 import { FilterProjects } from '../../components/fragments';
@@ -9,14 +12,18 @@ import { FilterProjects } from '../../components/fragments';
 import styles from './styles.module.scss';
 
 export const ProjectsPage = () => {
+  const { screenWidth } = useContext(AppBehaviorContext);
+
   const [isSticky, filterRef] = useSticky();
+
+  const isResponsive = screenWidth <= 1024;
 
   return (
     <>
       <DefaultTemplate
         isSticky={isSticky}
         topContent={
-          isSticky ? (
+          isResponsive ? null : isSticky ? (
             <>
               <FilterProjects isSticky={isSticky} />
             </>
@@ -25,10 +32,10 @@ export const ProjectsPage = () => {
       >
         <div className={styles.sectionProjectContainer}>
           <div className={styles.header}>
-            <SectionTitleProjects />
+            <SectionTopProjects />
           </div>
           <div className={`${styles.filterContainer}`} ref={filterRef}>
-            <FilterProjects />
+            {isResponsive ? null : <FilterProjects />}
           </div>
           <div className={styles.sectionProject}>
             <SectionProjects />

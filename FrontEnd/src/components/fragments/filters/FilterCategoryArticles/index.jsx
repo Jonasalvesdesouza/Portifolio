@@ -1,29 +1,25 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AppBehaviorContext } from '../../../../providers';
-import { CiFilter } from 'react-icons/ci';
 import {
   useCategoryArticlesData,
   useFilterArticleById,
 } from '../../../../hooks';
 import { CardFilter } from './CardFilter';
-import { Button } from '../../Button';
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 import styles from './styles.module.scss';
 
-<IoIosArrowDown className="arrowIcon" />;
-
-export const FilterCategoryArticles = ({ isSticky }) => {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-
+export const FilterCategoryArticles = ({ isSticky, closeModal }) => {
   const {
     resetStadeCategorys,
     setSearch,
     focusedButton,
     setFocusedButton,
     screenWidth,
+    isOpenNav,
+    setIsOpenNav,
   } = useContext(AppBehaviorContext);
+
   const categorysData = useCategoryArticlesData();
   const location = useLocation().pathname;
   const articleId = localStorage.getItem('@IDARTICLE');
@@ -32,18 +28,16 @@ export const FilterCategoryArticles = ({ isSticky }) => {
   const isResponsive = screenWidth <= 1024;
 
   const handleClick = () => {
+    setIsOpenNav(false);
     resetStadeCategorys();
     setSearch('');
     setFocusedButton('Emphasis');
     window.scrollTo({ top: 0 });
-  };
-
-  const handleFilterToggle = () => {
-    setIsFilterOpen((prevState) => !prevState);
+    isOpenNav ? closeModal() : null;
   };
 
   const testRouter = location === '/blog';
-  const filterClass = `${isSticky || isResponsive ? styles.stickyContainer : testRouter ? styles.blogFilter : styles.filterContainer} ${isSticky && testRouter ? styles.stickyContainerWhite : ''}`;
+  const filterClass = `${isSticky || isResponsive ? styles.stickyContainer : testRouter ? styles.blogFilter : styles.filterContainer} ${(isSticky && testRouter) || (isResponsive && testRouter) ? styles.stickyContainerWhite : ''}`;
 
   useEffect(() => {
     if (!testRouter && article && article.category) {
@@ -51,59 +45,42 @@ export const FilterCategoryArticles = ({ isSticky }) => {
     }
   }, [article, setFocusedButton, testRouter]);
 
+  console.log('focusedButton: ', focusedButton);
+
   return (
     <div className={filterClass}>
       <ul>
-        {!isResponsive ? (
-          <>
-            <li>
-              <Link
-                to={'/blog'}
-                onClick={handleClick}
-                className={focusedButton === 'Emphasis' ? styles.focused : ''}
-              >
-                Emphasis
-              </Link>
-            </li>
-            {categorysData?.map((category) => (
-              <CardFilter
-                className={focusedButton === category ? styles.focused : ''}
-                key={category}
-                category={category}
-                setFocusedButton={setFocusedButton}
-              />
-            ))}
-          </>
-        ) : (
-          <>
-            <li>
-              <Button onClick={handleFilterToggle}>
-                <CiFilter className={styles.icon} />
-                <div>
-                  {!isFilterOpen ? (
-                    <IoIosArrowDown className={styles.arrow} />
-                  ) : (
-                    <IoIosArrowUp className={styles.arrow} />
-                  )}
-                  ;
-                </div>
-              </Button>
-            </li>
-          </>
-        )}
+        <li>
+          <Link
+            to={'/blog'}
+            onClick={handleClick}
+            className={
+              focusedButton === 'Emphasis' && testRouter
+                ? styles.focusedBlog
+                : focusedButton === 'Emphasis'
+                  ? styles.focusedArticle
+                  : null
+            }
+          >
+            Emphasis
+          </Link>
+        </li>
+        {categorysData?.map((category) => (
+          <CardFilter
+            className={
+              focusedButton === category && testRouter
+                ? styles.focusedBlog
+                : focusedButton === category
+                  ? styles.focusedArticle
+                  : null
+            }
+            key={category}
+            category={category}
+            setFocusedButton={setFocusedButton}
+            closeModal={closeModal}
+          />
+        ))}
       </ul>
-      {isFilterOpen && (
-        <div className={styles.filter}>
-          {categorysData?.map((category) => (
-            <CardFilter
-              className={focusedButton === category ? styles.focused : ''}
-              key={category}
-              category={category}
-              setFocusedButton={setFocusedButton}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 };

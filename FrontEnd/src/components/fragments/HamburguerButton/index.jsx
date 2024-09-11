@@ -1,5 +1,4 @@
 import { useContext, forwardRef } from 'react';
-import styles from './styles.module.scss';
 import { AppBehaviorContext } from '../../../providers';
 import {
   useColorHamburgerBar,
@@ -7,12 +6,18 @@ import {
   useShouldUseWhiteColor,
 } from '../../../hooks';
 
+import styles from './styles.module.scss';
+
 export const HamburgerButton = forwardRef(
-  ({ headerClass, handleClick }, ref) => {
-    const { returShapeHam } = useContext(AppBehaviorContext);
+  ({ headerClass, handleClick, isOpenNav }, ref) => {
+    const { returShapeHam, location } = useContext(AppBehaviorContext);
 
     const colorBar = useColorHamburgerBar(useResponsive);
     const useWhiteColor = useShouldUseWhiteColor(colorBar, headerClass);
+    const testRouter = location === '/articlepage' || location === '/';
+    const colorIsOpen = isOpenNav && !testRouter;
+
+    const classSpan = `${styles.span} ${colorIsOpen ? styles.black : useWhiteColor || isOpenNav ? styles.white : ''}`;
 
     return (
       <label ref={ref} className={`${styles.label}`}>
@@ -23,15 +28,9 @@ export const HamburgerButton = forwardRef(
           type="checkbox"
           id="check"
         />
-        <span
-          className={`${styles.span} ${useWhiteColor ? styles.white : ''}`}
-        ></span>
-        <span
-          className={`${styles.span} ${useWhiteColor ? styles.white : ''}`}
-        ></span>
-        <span
-          className={`${styles.span} ${useWhiteColor ? styles.white : ''}`}
-        ></span>
+        <span className={classSpan}></span>
+        <span className={classSpan}></span>
+        <span className={classSpan}></span>
       </label>
     );
   },

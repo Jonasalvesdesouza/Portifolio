@@ -3,14 +3,23 @@ import { Link } from 'react-router-dom';
 
 import { AppBehaviorContext } from '../../../../../providers';
 
-export const CardFilter = ({ category, className, setFocusedButton }) => {
-  const { setCategorysArticles, setSearch } = useContext(AppBehaviorContext);
+export const CardFilter = ({ category, className, closeModal }) => {
+  const {
+    setCategorysArticles,
+    setSearch,
+    isOpenNav,
+    setIsOpenNav,
+    setFocusedButton,
+    focusedButton,
+  } = useContext(AppBehaviorContext);
 
   const handleClick = () => {
-    setCategorysArticles(category);
     setFocusedButton(category);
+    setIsOpenNav(false);
+    setCategorysArticles(category);
     setSearch('');
     window.scrollTo({ top: 0 });
+    isOpenNav ? closeModal() : null;
   };
 
   return (

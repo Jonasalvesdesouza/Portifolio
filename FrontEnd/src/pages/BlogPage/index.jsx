@@ -8,16 +8,22 @@ import { FormSearchArticles } from '../../components/fragments/forms';
 import { useSticky } from '../../hooks';
 
 import styles from './styles.module.scss';
+import { useContext } from 'react';
+import { AppBehaviorContext } from '../../providers';
 
 export const BlogPage = () => {
+  const { screenWidth } = useContext(AppBehaviorContext);
+
   const [isSticky, filterRef] = useSticky();
+
+  const isResponsive = screenWidth <= 1024;
 
   return (
     <>
       <DefaultTemplate
         isSticky={isSticky}
         topContent={
-          isSticky ? (
+          isResponsive ? null : isSticky ? (
             <>
               <FilterCategoryArticles isSticky={isSticky} />
               <FormSearchArticles isSticky={isSticky} />
@@ -30,7 +36,7 @@ export const BlogPage = () => {
             <SectionTopBlog />
           </div>
           <div className={`${styles.filterContainer} `} ref={filterRef}>
-            <FilterCategoryArticles />
+            {isResponsive ? null : <FilterCategoryArticles />}
           </div>
           <div className={styles.sectionArticle}>
             <SectionArticles />

@@ -1,5 +1,4 @@
 export { Header } from './heders/Header';
-export { HeaderHomeMobile } from './heders/HeaderHomeMobile';
 export { HeaderDashboard } from './heders/HeaderDashboard';
 
 export { Footer } from './Footer';

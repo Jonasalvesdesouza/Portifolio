@@ -1,2 +1,2 @@
-export { SectionTitleProjects } from './SectinTitleProjects';
+export { SectionTopProjects } from './SectionTopProjects';
 export { SectionProjects } from './SectionProjects';

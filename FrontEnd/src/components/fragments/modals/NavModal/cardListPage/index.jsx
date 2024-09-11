@@ -4,8 +4,21 @@ import { AppBehaviorContext } from '../../../../../providers';
 import styles from './styles.module.scss';
 
 export const CardListPage = ({ page, setIsOpen }) => {
-  const { resetStadeCategorys, setReturShapeHam, setSearch, setCurrentCard } =
-    useContext(AppBehaviorContext);
+  const {
+    resetStadeCategorys,
+    setReturShapeHam,
+    setSearch,
+    setCurrentCard,
+    routeLocation,
+  } = useContext(AppBehaviorContext);
+
+  const router = routeLocation === '/articlepage' || routeLocation === '/';
+
+  const styleFontColor = router
+    ? { color: 'var(--color-white)' }
+    : { color: 'var(--color-gray1)' };
+
+  const customLinkClass = `${styles.customLink} ${router ? styles.customLinkWhite : styles.customLinkGray}`;
 
   const handleClick = () => {
     setReturShapeHam(false);
@@ -19,7 +32,8 @@ export const CardListPage = ({ page, setIsOpen }) => {
   return (
     <li>
       <Link
-        className={`${styles.customLink}`}
+        className={customLinkClass}
+        style={styleFontColor}
         onClick={handleClick}
         to={page.router}
       >
