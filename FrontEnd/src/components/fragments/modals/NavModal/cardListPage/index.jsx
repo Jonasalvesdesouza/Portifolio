@@ -3,16 +3,20 @@ import { Link } from 'react-router-dom';
 import { AppBehaviorContext } from '../../../../../providers';
 import styles from './styles.module.scss';
 
-export const CardListPage = ({ page, setIsOpen }) => {
+export const CardListPage = ({ page, setIsOpen, closeModal }) => {
   const {
     resetStadeCategorys,
     setReturShapeHam,
     setSearch,
     setCurrentCard,
     routeLocation,
+    isOpenNav,
   } = useContext(AppBehaviorContext);
 
-  const router = routeLocation === '/articlepage' || routeLocation === '/';
+  const router =
+    routeLocation === '/articlepage' ||
+    routeLocation === '/' ||
+    routeLocation === '/curriculum';
 
   const styleFontColor = router
     ? { color: 'var(--color-white)' }
@@ -27,6 +31,7 @@ export const CardListPage = ({ page, setIsOpen }) => {
     setSearch('');
     setCurrentCard(0);
     setIsOpen(false);
+    isOpenNav ? closeModal() : null;
   };
 
   return (

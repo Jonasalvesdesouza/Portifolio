@@ -14,7 +14,10 @@ export const HamburgerButton = forwardRef(
 
     const colorBar = useColorHamburgerBar(useResponsive);
     const useWhiteColor = useShouldUseWhiteColor(colorBar, headerClass);
-    const testRouter = location === '/articlepage' || location === '/';
+    const testRouter =
+      location === '/articlepage' ||
+      location === '/' ||
+      location === '/curriculum';
     const colorIsOpen = isOpenNav && !testRouter;
 
     const classSpan = `${styles.span} ${colorIsOpen ? styles.black : useWhiteColor || isOpenNav ? styles.white : ''}`;

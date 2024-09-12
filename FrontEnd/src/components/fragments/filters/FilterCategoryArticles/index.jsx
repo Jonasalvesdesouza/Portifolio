@@ -45,8 +45,6 @@ export const FilterCategoryArticles = ({ isSticky, closeModal }) => {
     }
   }, [article, setFocusedButton, testRouter]);
 
-  console.log('focusedButton: ', focusedButton);
-
   return (
     <div className={filterClass}>
       <ul>

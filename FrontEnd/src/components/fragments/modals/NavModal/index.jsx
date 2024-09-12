@@ -41,7 +41,11 @@ export const NavModal = forwardRef(
     const sideAnimationRight = `${isOpenNav ? 'slide-in-right' : ''} ${isClosing ? 'slide-out-right' : ''}`;
     const sideAnimationTop = `${isOpenNav ? 'slide-in-top' : ''} ${isClosing ? 'slide-out-top' : ''}`;
 
-    const router = routeLocation === '/articlepage' || routeLocation === '/';
+    const router =
+      routeLocation === '/articlepage' ||
+      routeLocation === '/' ||
+      routeLocation === '/curriculum';
+
     const styleBackground = router
       ? { background: 'var(--color-blackLight)' }
       : { background: 'var(--color-Darkwhite)' };
@@ -62,7 +66,7 @@ export const NavModal = forwardRef(
           <div className={styles.middleModal}>
             {isResponsiveEndRouter ? (
               routeLocation === '/projects' ? (
-                <FilterProjects />
+                <FilterProjects closeModal={closeNav} />
               ) : (
                 <FilterCategoryArticles closeModal={closeNav} />
               )
@@ -70,7 +74,11 @@ export const NavModal = forwardRef(
             <div>
               <ul>
                 {ListPage.map((page) => (
-                  <CardListPage key={page.id} page={page} />
+                  <CardListPage
+                    key={page.id}
+                    page={page}
+                    closeModal={closeNav}
+                  />
                 ))}
               </ul>
             </div>
@@ -79,7 +87,7 @@ export const NavModal = forwardRef(
           <div className={styles.bottomModal}>
             {isResponsiveEndRouter ? (
               routeLocation === '/projects' ? (
-                <div></div>
+                <div className={styles.formSearchPlaceholder}></div>
               ) : (
                 <div className={styles.formSearch}>
                   <FormSearchArticles />

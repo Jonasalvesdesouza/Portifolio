@@ -122,6 +122,11 @@
           .icons {
             margin-right: 13%;
           }
+
+          .formSearchPlaceholder {
+            width: 250px;
+            visibility: hidden;
+          }
         }
 
         &:before {

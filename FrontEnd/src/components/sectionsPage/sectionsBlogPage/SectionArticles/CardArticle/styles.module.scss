@@ -14,8 +14,8 @@
     border 0.3s,
     box-shadow 0.3s;
 
-  margin: 0 0 80px 0;
-  padding: 20px;
+  margin: 0 0 5% 0;
+  padding: 1.3%;
 
   &:hover {
     border: solid 1px #c8c8c8;
@@ -27,12 +27,11 @@
     flex-direction: column;
 
     width: 50%;
-    height: 100%;
+    height: auto;
 
     .headerCard {
       display: flex;
       flex-direction: column;
-      gap: 5px;
 
       span {
         font-family: var(--font-secundary);
@@ -40,6 +39,7 @@
         font-weight: 400;
         color: var(--color-gray0);
       }
+
       h2 {
         font-family: var(--font-secundary);
         font-size: 22px;
@@ -56,6 +56,7 @@
     .descriptionContainer {
       margin-top: 10px;
       width: 90%;
+      margin-bottom: 15%;
 
       p {
         font-family: var(--font-secundary);
@@ -66,7 +67,14 @@
     }
 
     .cardFooter {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      justify-content: space-between;
+
       padding: 10px;
+
       .cardCategory {
         font-family: var(--font-secundary);
         font-size: 14px;
@@ -79,6 +87,50 @@
         font-size: 14px;
         font-weight: 400;
         color: var(--color-gray0);
+      }
+
+      .bntView {
+        align-self: flex-end;
+
+        transition: 0.3s;
+
+        border-radius: 5px;
+        padding: 5px;
+
+        font-family: var(--font-primary);
+        font-size: 16px;
+        font-weight: 300;
+        color: var(--color-gray0);
+
+        .bntContent {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          font-family: var(--font-primary);
+          font-size: 16px;
+          font-weight: 300;
+          color: var(--color-gray0);
+
+          .icon {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--color-gray0);
+            margin-left: 5px;
+          }
+        }
+
+        &:hover {
+          background: var(--color-gray0);
+
+          span {
+            color: var(--color-white);
+
+            .icon {
+              color: var(--color-white);
+            }
+          }
+        }
       }
     }
   }
@@ -102,6 +154,7 @@
 
     .cardRight {
       width: 100%;
+      margin-bottom: 3%;
     }
   }
 }

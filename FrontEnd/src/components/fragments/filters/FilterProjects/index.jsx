@@ -4,22 +4,27 @@ import { useCategoryProjectsData } from '../../../../hooks';
 
 import styles from './styles.module.scss';
 
-export const FilterProjects = ({ isSticky }) => {
-  const { resetStadeCategorys, setCategorysProject } =
-    useContext(AppBehaviorContext);
-
-  const [focusedButton, setFocusedButton] = useState('Emphasis');
+export const FilterProjects = ({ isSticky, closeModal }) => {
+  const {
+    resetStadeCategorys,
+    setCategorysProject,
+    isOpenNav,
+    focusedButton,
+    setFocusedButton,
+  } = useContext(AppBehaviorContext);
 
   const categorysData = useCategoryProjectsData();
 
   const handleClick = () => {
     setFocusedButton('Emphasis');
     resetStadeCategorys('');
+    isOpenNav ? closeModal() : null;
   };
 
   const handleClick2 = (category) => {
     setCategorysProject(category);
     setFocusedButton(category);
+    isOpenNav ? closeModal() : null;
   };
 
   const filterClass = `${isSticky ? styles.stickyContainer : styles.filterContainer} `;
