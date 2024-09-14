@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "18"
+  },
   "scripts": {
-    "dev": "tsnd --respawn src/server.ts"
+    "build": "npx tsc",
+    "start": "node dist/app.js",
+    "dev": "tsnd --respawn src/server.ts",
+    "migrate:deploy": "npx prisma migrate deploy"
   },
   "keywords": [],
   "author": "",

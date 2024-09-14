@@ -1,1 +1,1 @@
-export const ConfigServerUrl = 'http://localhost:3500';
+export const ConfigServerUrl = 'https://api-portifolio-ilm0.onrender.com';
