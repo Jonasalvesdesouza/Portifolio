@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { AppBehaviorContext } from '../../../../providers';
 import { useCategoryProjectsData } from '../../../../hooks';
 
@@ -34,7 +34,7 @@ export const FilterProjects = ({ isSticky, closeModal }) => {
       <ul>
         <li key="emphasis">
           <a
-            className={`${styles.button} ${focusedButton === 'Emphasis' ? styles.focused : ''}`}
+            className={`${styles.button} ${focusedButton === 'Emphasis' ? styles.focused : null}`}
             onClick={handleClick}
           >
             Emphasis
@@ -45,7 +45,7 @@ export const FilterProjects = ({ isSticky, closeModal }) => {
           return (
             <li key={category}>
               <a
-                className={`${styles.button} ${focusedButton === category ? styles.focused : ''}`}
+                className={`${styles.button} ${focusedButton === category ? styles.focused : null}`}
                 onClick={() => handleClick2(category)}
               >
                 {category}

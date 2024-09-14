@@ -26,7 +26,7 @@
     display: flex;
     flex-direction: column;
 
-    width: 50%;
+    width: 65%;
     height: auto;
 
     .headerCard {
@@ -56,7 +56,6 @@
     .descriptionContainer {
       margin-top: 10px;
       width: 90%;
-      margin-bottom: 15%;
 
       p {
         font-family: var(--font-secundary);
@@ -94,13 +93,16 @@
 
         transition: 0.3s;
 
-        border-radius: 5px;
-        padding: 5px;
+        border-radius: 10%;
+        padding: 1% 2% 1% 2%;
 
         font-family: var(--font-primary);
         font-size: 16px;
         font-weight: 300;
-        color: var(--color-gray0);
+        color: var(--color-white);
+
+        background: var(--color-gray2);
+        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
 
         .bntContent {
           display: flex;
@@ -110,12 +112,12 @@
           font-family: var(--font-primary);
           font-size: 16px;
           font-weight: 300;
-          color: var(--color-gray0);
+          color: var(--color-white);
 
           .icon {
             font-size: 11px;
             font-weight: 500;
-            color: var(--color-gray0);
+            color: var(--color-white);
             margin-left: 5px;
           }
         }
@@ -136,7 +138,7 @@
   }
 
   .cardRight {
-    width: 45%;
+    width: 30%;
 
     img {
       width: 100%;

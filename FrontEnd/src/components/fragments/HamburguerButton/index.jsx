@@ -18,9 +18,10 @@ export const HamburgerButton = forwardRef(
       location === '/articlepage' ||
       location === '/' ||
       location === '/curriculum';
+
     const colorIsOpen = isOpenNav && !testRouter;
 
-    const classSpan = `${styles.span} ${colorIsOpen ? styles.black : useWhiteColor || isOpenNav ? styles.white : ''}`;
+    const classSpan = `${styles.span} ${colorIsOpen ? styles.black : useWhiteColor || isOpenNav ? styles.white : null}`;
 
     return (
       <label ref={ref} className={`${styles.label}`}>

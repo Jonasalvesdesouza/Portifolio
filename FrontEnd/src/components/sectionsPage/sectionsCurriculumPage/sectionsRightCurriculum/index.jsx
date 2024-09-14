@@ -1,17 +1,16 @@
+import React, { forwardRef } from 'react';
 import { SectionEducationCurriculum } from './SectionEducationCurriculum';
-import { SectionHobbiesCurriculum } from './SectionHobbiesCurriculum';
 import { SectionJobExperienceCurriculum } from './SectionJobExperienceCurriculum';
 import { SectionSkillCurriculum } from './SectionSkillCurriculum';
 
 import styles from './styles.module.scss';
 
-export const SectionRightCurriculum = () => {
+export const SectionRightCurriculum = forwardRef((props, ref) => {
   return (
-    <div className={`${styles.sectionRightContainer}`}>
+    <div ref={ref} className={`${styles.sectionRightContainer}`}>
       <SectionJobExperienceCurriculum />
       <SectionSkillCurriculum />
       <SectionEducationCurriculum />
-      {/*   <SectionHobbiesCurriculum /> */}
     </div>
   );
-};
+});

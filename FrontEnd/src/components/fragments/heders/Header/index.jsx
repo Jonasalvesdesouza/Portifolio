@@ -16,7 +16,6 @@ export const Header = ({ children, headerClass, isSticky }) => {
     setRouteLocation,
     setCurrentCard,
     setReturShapeHam,
-    setFocusedButton,
     isOpenNav,
     setIsOpenNav,
   } = useContext(AppBehaviorContext);

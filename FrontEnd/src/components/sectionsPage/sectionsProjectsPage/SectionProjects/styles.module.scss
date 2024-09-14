@@ -3,35 +3,59 @@
   flex-direction: column;
   width: 100%;
   gap: 50px;
+  margin-bottom: 7%;
 
-  margin-bottom: 70px;
-
-  .independentSection {
-    position: relative;
-
-    &:before {
-      content: '';
-      position: absolute;
-      bottom: -80px;
-      left: 0;
-      width: 80vw;
-      height: 0.0625rem;
-      background-color: var(--color-gray0);
-    }
-  }
-
+  .independentSection,
   .studySection {
     position: relative;
-    margin-top: 100px;
+    width: 100%;
+    overflow: hidden;
   }
 
-  ul {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    width: 96%;
+  .listProjects {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
 
-    gap: 30px;
+    ul {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      overflow: hidden;
+      scroll-behavior: smooth;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      position: relative;
+    }
 
-    margin-top: 50px;
+    button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 2;
+      transition: 0.3s;
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      &.left {
+        left: 0;
+      }
+
+      &.right {
+        right: 0;
+      }
+    }
+
+    .arrowIcon {
+      color: var(--color-gray0);
+      font-size: 50px;
+    }
   }
 }

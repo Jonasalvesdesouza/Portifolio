@@ -4,17 +4,16 @@
   align-items: center;
   justify-content: space-around;
 
-  width: 74px;
-  height: 100px;
-
-  gap: 5px;
+  width: 4vw;
+  height: 6vw;
 
   border: 1px solid var(--color-gray1);
   border-radius: 5px;
-
   box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.15);
 
   transition: 0.2s;
+
+  margin-bottom: 5%;
 
   &:hover {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
@@ -24,14 +23,35 @@
   .cardSkillName {
     span {
       font-family: var(--font-primary);
-      font-size: 10px;
+      font-size: 0.6vw;
     }
   }
 
   .cardSkillIcon {
     span {
-      width: 57px;
-      height: 65px;
+      font-size: 3vw;
+      color: var(--color-black);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    width: 9vw;
+    height: 12vw;
+
+    margin-bottom: 5%;
+
+    .cardSkillName {
+      span {
+        font-family: var(--font-primary);
+        font-size: 1.2vw;
+      }
+    }
+
+    .cardSkillIcon {
+      span {
+        font-size: 6vw;
+        color: var(--color-black);
+      }
     }
   }
 }

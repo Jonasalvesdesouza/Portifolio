@@ -3,4 +3,10 @@
   flex-direction: column;
 
   gap: 50px;
+
+  max-width: 100%;
+
+  @media (max-width: 1024px) {
+    max-width: 80%;
+  }
 }

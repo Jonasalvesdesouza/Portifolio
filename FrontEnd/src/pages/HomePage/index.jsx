@@ -37,9 +37,9 @@ export const HomePage = () => {
 
   const isResponsive = useResponsive();
 
-  const { handleTouchStart, handleTouchMove, handleTouchEnd, startY } =
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } =
     useCardSwipe(cards);
-  const { headerClass, sectionRefs } = useSectionVisibility();
+  const { headerClass, sectionRefs } = useSectionVisibility(cards);
   const { animate } = useCardAnimation(currentCard);
 
   useScrollManagerChrome(
