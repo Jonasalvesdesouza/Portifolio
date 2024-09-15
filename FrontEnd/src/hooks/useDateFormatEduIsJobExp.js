@@ -1,8 +1,10 @@
+import { useMemo } from 'react';
+
 export const useDateFormatEduIsJobExp = (date) => {
   const formatDate = (dateString) => {
-    const dateParts = dateString.split('/');
+    const dateParts = dateString.split('-');
     if (dateParts.length === 3) {
-      const [month, year] = dateParts;
+      const [year, month] = dateParts;
 
       const monthNames = [
         'Jan',
@@ -26,5 +28,5 @@ export const useDateFormatEduIsJobExp = (date) => {
     }
   };
 
-  return formatDate(date);
+  return useMemo(() => formatDate(date), [date]);
 };

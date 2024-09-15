@@ -7,6 +7,8 @@ import styles from './styles.module.scss';
 export const SectionEducationCurriculum = () => {
   const { educationList } = useContext(UserAdmContext);
 
+  const sortedEducationList = educationList?.sort((a, b) => b.id - a.id);
+
   return (
     <div className={`${styles.sectionEducationContainer}`}>
       <div className={`${styles.sectionEducationHeader}`}>
@@ -14,7 +16,7 @@ export const SectionEducationCurriculum = () => {
       </div>
       <div>
         <ul>
-          {educationList?.map((school) => {
+          {sortedEducationList?.map((school) => {
             return <CardEducation key={school.id} school={school} />;
           })}
         </ul>

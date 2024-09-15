@@ -10,16 +10,18 @@ import {
 import { EditProfileModal } from '../../components/fragments';
 
 export const DashboardPage = () => {
-  const [IsOpen, setIsOpen] = useState(false);
+  const [isOpenEditProfile, setIsOpenEditProfile] = useState(false);
 
   return (
     <>
       <div>
-        <HeaderDashboard setIsOpen={setIsOpen} />
+        <HeaderDashboard setIsOpenEditProfile={setIsOpenEditProfile} />
         <SectionTopDashboard />
         <SectionRenderMiddleDashboard />
       </div>
-      {IsOpen ? <EditProfileModal setIsOpen={setIsOpen} /> : null}
+      {isOpenEditProfile ? (
+        <EditProfileModal setIsOpenEditProfile={setIsOpenEditProfile} />
+      ) : null}
     </>
   );
 };

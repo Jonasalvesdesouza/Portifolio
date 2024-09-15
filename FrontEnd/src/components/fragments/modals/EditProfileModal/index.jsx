@@ -11,22 +11,22 @@ import { Button } from '../../Button';
 import { useContext, useEffect, useState } from 'react';
 import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
 
-export const EditProfileModal = ({ setIsOpen }) => {
+export const EditProfileModal = ({ setIsOpenEditProfile }) => {
   const { imageProfile, setImageProfile } = useContext(AppBehaviorContext);
   const { profile } = useContext(UserAdmContext);
   const [profileImage, setProjectImage] = useState();
 
   const closeModalOutClick = useOutclick(() => {
-    setIsOpen(false);
+    setIsOpenEditProfile(false);
   });
 
   const closeModalKeyDownEsque = useKeydown(() => {
-    setIsOpen(false);
+    setIsOpenEditProfile(false);
   });
 
   const handleClick = () => {
     setImageProfile('');
-    setIsOpen(false);
+    setIsOpenEditProfile(false);
   };
 
   useEffect(() => {

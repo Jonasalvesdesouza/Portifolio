@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState, useEffect } from 'react';
 import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
 import {
   useFilterProjects,
@@ -15,11 +15,11 @@ import { ProjectCard } from './ProjectCard';
 
 import styles from './styles.module.scss';
 
-const ProjectSection = ({ title, projects, refProp }) => (
+const ProjectSection = ({ title, projects, refProp, showArrows }) => (
   <div className={styles.projectSection}>
     <h2 className="title2 gray">{title}</h2>
     <div className={styles.listProjects}>
-      {projects.length >= 4 && (
+      {showArrows && (
         <>
           <button className={styles.left} onClick={useScrollLeft(refProp)}>
             <IoIosArrowDropleftCircle className={styles.arrowIcon} />
@@ -51,17 +51,42 @@ export const SectionProjects = () => {
   const independentRef = useRef(null);
   const studyRef = useRef(null);
 
+  const [showIndependentArrows, setShowIndependentArrows] = useState(false);
+  const [showStudyArrows, setShowStudyArrows] = useState(false);
+
+  useEffect(() => {
+    const checkScrollArrowsVisibility = () => {
+      if (independentRef.current && studyRef.current) {
+        const independentWidth = independentRef.current.scrollWidth;
+        const studyWidth = studyRef.current.scrollWidth;
+        const containerWidth = independentRef.current.clientWidth;
+
+        setShowIndependentArrows(independentWidth > containerWidth);
+        setShowStudyArrows(studyWidth > containerWidth);
+      }
+    };
+
+    checkScrollArrowsVisibility();
+    window.addEventListener('resize', checkScrollArrowsVisibility);
+
+    return () => {
+      window.removeEventListener('resize', checkScrollArrowsVisibility);
+    };
+  }, [independentProjects, studyProjects]);
+
   return (
     <div className={styles.projectContainer}>
       <ProjectSection
         title="Independent Projects."
         projects={independentProjects}
         refProp={independentRef}
+        showArrows={showIndependentArrows}
       />
       <ProjectSection
         title="Study Projects"
         projects={studyProjects}
         refProp={studyRef}
+        showArrows={showStudyArrows}
       />
     </div>
   );

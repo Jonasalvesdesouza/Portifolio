@@ -13,9 +13,14 @@
   }
 
   .imgContainer {
-    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 15%;
 
     img {
+      width: 50%;
       border: 10px solid var(--color-white);
       border-radius: 50%;
 

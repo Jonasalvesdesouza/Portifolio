@@ -8,7 +8,7 @@ export const SectionJobExperienceCurriculum = () => {
   const { jobExperienceList } = useContext(UserAdmContext);
 
   const sortedJobExperienceList = jobExperienceList?.sort(
-    (a, b) => a.id - b.id,
+    (a, b) => b.id - a.id,
   );
 
   return (

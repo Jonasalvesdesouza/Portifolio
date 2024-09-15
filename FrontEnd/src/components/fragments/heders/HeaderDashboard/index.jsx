@@ -6,13 +6,13 @@ import { Button } from '../../Button';
 import { UserAdmContext } from '../../../../providers';
 import { NavModal } from '../../modals/NavModal';
 
-export const HeaderDashboard = () => {
+export const HeaderDashboard = ({ setIsOpenEditProfile }) => {
   const { userLogout, profile, setEditProfile, setEditContactProfile } =
     useContext(UserAdmContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
-    setIsOpen(true);
+    setIsOpenEditProfile(true);
     setEditProfile(profile);
     setEditContactProfile(profile.contact);
   };
