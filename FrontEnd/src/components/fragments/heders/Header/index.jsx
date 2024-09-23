@@ -11,6 +11,7 @@ import BlackLogo from '../../../../assets/BlackLogo.svg';
 
 export const Header = ({ children, headerClass, isSticky }) => {
   const [isClosing, setIsClosing] = useState(false);
+
   const {
     location,
     setRouteLocation,

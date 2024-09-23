@@ -8,9 +8,12 @@ import { Input, Button, Select } from '../../../index';
 import { Category } from './options';
 import { TextEditor } from './TextEditor';
 
+import styles from './styles.module.scss';
+
 export const FormEditArticle = ({ setIsOpen }) => {
-  const [editorContent, setEditorContent] = useState('');
   const [loading, setLoading] = useState(false);
+  const [editorContent, setEditorContent] = useState('');
+
   const editorRef = useRef(null);
 
   const { articleUpdate, editArticles } = useContext(UserAdmContext);
@@ -30,14 +33,14 @@ export const FormEditArticle = ({ setIsOpen }) => {
 
   const onSubmit = (payload) => {
     payload.description = editorContent;
-
     articleUpdate(payload, setLoading, reset, setIsOpen);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
       <div>
         <Input
+          className={styles.inputs}
           type="text"
           label="Title"
           placeholder="Title"
@@ -45,6 +48,7 @@ export const FormEditArticle = ({ setIsOpen }) => {
           {...register('title')}
         />
         <Select
+          className={styles.selects}
           label={'Category'}
           options={Category}
           error={errors.category}
@@ -52,14 +56,19 @@ export const FormEditArticle = ({ setIsOpen }) => {
         />
         <TextEditor
           ref={editorRef}
-          setEditorContent={setEditorContent}
+          placeholder="Description"
           defaultValue={editArticles.description}
+          error={errors.category}
+          setEditorContent={setEditorContent}
+          {...register('description')}
         />
 
-        <Button type="submit">
-          {loading ? 'Loading...' : 'To send'}
-          <SlArrowRight size={20} color="#e8e9ea" />
-        </Button>
+        <div className={styles.buttonContainer}>
+          <Button className={styles.button} type="submit">
+            {loading ? <span>Loading...</span> : <span>To send</span>}
+            <SlArrowRight />
+          </Button>
+        </div>
       </div>
     </form>
   );

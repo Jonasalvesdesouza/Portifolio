@@ -1,0 +1,50 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+
+  label {
+    font-family: var(--font-primary);
+    margin-bottom: 8px;
+    color: var(--color-gray0);
+  }
+
+  .fileInput {
+    display: none;
+  }
+
+  .customFileButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 30%;
+
+    background-color: var(--color-black);
+    border: 1px solid var(--color-gray0);
+    color: var(--color-gray0);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+
+    &:hover {
+      color: var(--color-yellow2);
+      border: 1px solid var(--color-yellow2);
+    }
+  }
+
+  .fileName {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-left: 10px;
+    font-size: 12px;
+    color: var(--color-gray0);
+    font-family: var(--font-primary);
+  }
+}

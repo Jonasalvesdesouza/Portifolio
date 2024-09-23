@@ -1,0 +1,18 @@
+.insertImageContainer {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    font-size: 25px;
+    color: var(--color-gray0);
+
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      color: var(--color-yellow2);
+    }
+  }
+}

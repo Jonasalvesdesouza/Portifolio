@@ -14,7 +14,7 @@ export { FormUpdateProjectImage } from './formsProjects/FormUpdateProjectImage '
 
 export { FormInsertArticle } from './formsArticles/FormInsertArticle';
 export { FormEditArticle } from './formsArticles/FormEditArticle';
-export { FormArticleImage } from './formsArticles/FormArticleImage';
+export { FormArticleInsertImage } from './formsArticles/FormArticleInsertImage';
 export { FormUpdateArticleImage } from './formsArticles/FormUpdateArticleImage ';
 
 export { FormInsertSocialMedia } from './formsSocialMedia /FormInsertSocialMedia';

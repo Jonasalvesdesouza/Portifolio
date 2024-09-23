@@ -35,3 +35,7 @@ export { useOrientation } from './useOrientation';
 export { useIgnoreElements } from './useIgnoreElements';
 export { useScrollLeft } from './useScrollLeft';
 export { useScrollRight } from './useScrollRight';
+export { useArticleImage } from './useArticleImage';
+export { useScrollArrowsVisibility } from './useScrollArrowsVisibility';
+export { useProjectImage } from './useProjectImage';
+export { useQuill } from './useQuill';

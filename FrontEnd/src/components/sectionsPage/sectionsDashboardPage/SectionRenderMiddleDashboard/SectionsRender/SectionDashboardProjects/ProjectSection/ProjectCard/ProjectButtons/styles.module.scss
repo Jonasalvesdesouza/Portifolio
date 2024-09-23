@@ -1,0 +1,19 @@
+.btnContainer {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: flex-end;
+
+  width: 33%;
+  height: 100%;
+
+  button {
+    font-size: 25px;
+    color: var(--color-gray0);
+    transition: 0.3s;
+
+    &:hover {
+      color: var(--color-yellow);
+    }
+  }
+}

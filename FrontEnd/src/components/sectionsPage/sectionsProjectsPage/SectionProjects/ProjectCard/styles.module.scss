@@ -36,9 +36,9 @@ li {
 
       img {
         width: 100%;
-        height: 207px;
+        height: 100%;
 
-        transition: transform 0.3s ease-out; /* Adicionando a transição */
+        transition: transform 0.3s ease-out;
 
         &:hover {
           -webkit-animation: kenburns-center 0.3s ease-out both;

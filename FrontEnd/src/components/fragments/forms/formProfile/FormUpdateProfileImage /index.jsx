@@ -2,13 +2,14 @@ import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { SlArrowRight } from 'react-icons/sl';
 import { AppBehaviorContext, UserAdmContext } from '../../../../../providers';
-import { Input, Button } from '../../../index';
+import { Button, InputInsertImage } from '../../../index';
 
 export const FormUpdateProfileImage = () => {
   const [loading, setLoading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const { profileImageUpdate } = useContext(UserAdmContext);
-  const { setImageProfile } = useContext(AppBehaviorContext);
+  const { setStateImage, setImageProfile } = useContext(AppBehaviorContext);
 
   const {
     register,
@@ -18,15 +19,21 @@ export const FormUpdateProfileImage = () => {
   } = useForm();
 
   const onSubmit = (payLoad) => {
-    const formData = new FormData();
-    formData.append('path', payLoad.path[0]);
+    if (payLoad.path && payLoad.path.length > 0) {
+      const formData = new FormData();
+      formData.append('path', payLoad.path[0]);
 
-    profileImageUpdate(formData, setLoading, reset);
+      profileImageUpdate(formData, setLoading, reset, setIsOpenInsertImage);
+    } else {
+      console.error('No files were selected.');
+    }
   };
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
+      setSelectedFile(file);
+      setValue('path', event.target.files);
       const reader = new FileReader();
       reader.onload = () => {
         setImageProfile(reader.result);
@@ -35,24 +42,27 @@ export const FormUpdateProfileImage = () => {
     }
   };
 
+  const handleClick = () => {
+    setStateImage(true);
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <Input
-          label="Update Image"
-          onChangeCapture={handleImageChange}
-          type="file"
-          accept=".png, .svg, .jpeg, .jpg"
-          error={errors.path}
-          {...register('path')}
-        />
+      <InputInsertImage
+        label="Update Image"
+        onChangeCapture={handleImageChange}
+        type="file"
+        accept=".png, .svg, .jpeg, .jpg"
+        error={errors.path}
+        {...register('path', { required: 'Please select a file.' })}
+        selectedFile={selectedFile}
+      />
 
-        <Button type="submit">
-          {loading ? 'Loading...' : 'To send'}
+      <Button type="submit" onClick={handleClick}>
+        {loading ? 'Loading...' : 'To send'}
 
-          <SlArrowRight size={20} color="black" />
-        </Button>
-      </div>
+        <SlArrowRight size={20} color="black" />
+      </Button>
     </form>
   );
 };

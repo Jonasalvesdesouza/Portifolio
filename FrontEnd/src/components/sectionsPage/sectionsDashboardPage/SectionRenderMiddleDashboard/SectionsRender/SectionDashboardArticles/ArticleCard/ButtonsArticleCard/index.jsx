@@ -1,6 +1,10 @@
 import React from 'react';
+
 import { BiPencil, BiTrash } from 'react-icons/bi';
 import { Button } from '../../../../../../../fragments';
+
+import styles from './styles.module.scss';
+import { buttonsConfig } from './data';
 
 export const ButtonsArticleCard = ({
   article,
@@ -10,28 +14,17 @@ export const ButtonsArticleCard = ({
   loading,
   setLoading,
 }) => {
-  const buttons = [
-    {
-      type: 'edit',
-      icon: <BiPencil size={18} color="black" />,
-      action: () => {
-        setIsOpen(true);
-        setEditArticles(article);
-      },
-    },
-    {
-      type: 'delete',
-      icon: loading ? (
-        'Loading...'
-      ) : (
-        <BiTrash size={18} color="black" /* color="#e8e9ea" */ />
-      ),
-      action: () => articleDelete(article.id, setLoading),
-    },
-  ];
+  const buttons = buttonsConfig(
+    article,
+    setIsOpen,
+    setEditArticles,
+    articleDelete,
+    loading,
+    setLoading,
+  );
 
   return (
-    <div>
+    <div className={styles.btnsArticles}>
       {buttons.map((btn, index) => (
         <Button key={index} onClick={btn.action}>
           {btn.icon}

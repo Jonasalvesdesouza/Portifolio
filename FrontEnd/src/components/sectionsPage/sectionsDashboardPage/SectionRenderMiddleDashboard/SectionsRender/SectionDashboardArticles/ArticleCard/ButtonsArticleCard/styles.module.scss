@@ -1,0 +1,11 @@
+.btnsArticles {
+  button {
+    font-size: 30px;
+    color: var(--color-gray0);
+    transition: 0.3s;
+
+    &:hover {
+      color: var(--color-yellow2);
+    }
+  }
+}

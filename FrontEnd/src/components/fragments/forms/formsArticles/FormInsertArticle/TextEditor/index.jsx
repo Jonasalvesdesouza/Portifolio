@@ -2,6 +2,8 @@ import React, { useState, useEffect, forwardRef } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
+import styles from './styles.module.scss';
+
 export const TextEditor = forwardRef(({ setEditorContent }, ref) => {
   const [text, setText] = useState('');
 
@@ -18,6 +20,7 @@ export const TextEditor = forwardRef(({ setEditorContent }, ref) => {
 
   return (
     <ReactQuill
+      className={`${styles.textEditor}`}
       ref={ref}
       value={text}
       onChange={handleEditorChange}

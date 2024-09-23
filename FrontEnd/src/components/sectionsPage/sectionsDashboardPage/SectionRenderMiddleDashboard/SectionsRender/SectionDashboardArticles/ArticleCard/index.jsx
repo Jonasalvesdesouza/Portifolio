@@ -1,11 +1,8 @@
-import ImageDefault from '../../../../../../../assets/DefaultImage.ai.svg';
-import 'highlight.js/styles/vs.css';
-
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import {
   EditArticleModal,
-  ImageArtilceModal,
+  InserirImagemArticleModal,
   ImageUpdateArticleModal,
 } from '../../../../../../fragments';
 
@@ -13,20 +10,21 @@ import {
   useCalculateReadingTime,
   useFormtDate,
   useLimitedDescription,
+  useArticleImage,
 } from '../../../../../../../hooks';
 
 import {
   AppBehaviorContext,
   UserAdmContext,
 } from '../../../../../../../providers';
-import { InsertImage } from './InsertImage';
-import { ConfigServerUrl } from '../../../../../../../config';
+
+import { ImageButtons } from './ImageButtons';
 import { ButtonsArticleCard } from './ButtonsArticleCard';
+
+import styles from './styles.module.scss';
 
 export const ArticleCard = ({ article }) => {
   const { setImageArticle } = useContext(AppBehaviorContext);
-  const [articleImage, setArticleImage] = useState('');
-
   const { setEditArticles, articleDelete, setArticle } =
     useContext(UserAdmContext);
 
@@ -39,71 +37,53 @@ export const ArticleCard = ({ article }) => {
   const timeText = useCalculateReadingTime(article.description);
 
   const [loading, setLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
 
-  const [isOpenInsertImage, setIsOpenInsertImage] = useState(false);
-  const [isOpenUpdateImage, setIsopenUpdateImage] = useState(false);
+  const openModal = (type) => setModalType(type);
+  const closeModal = () => setModalType(null);
 
-  useEffect(() => {
-    const imageRender = () => {
-      if (!article.image) {
-        return ImageDefault;
-      } else {
-        const imagePath = article.image.path;
-        const imageName = imagePath?.substring(imagePath.lastIndexOf('/') + 1);
-        const serverUrl = ConfigServerUrl;
-        return `${serverUrl}/uploads/${imageName?.replace(/\s/g, '%20')}`;
-      }
-    };
-
-    const imageUrl = imageRender();
-    setArticleImage(imageUrl);
-  }, [article]);
+  const articleImage = useArticleImage(article);
 
   return (
     <>
-      <li>
-        <div>
-          <div>
-            <div>
-              <span>{dateArticle}</span>
-            </div>
-
-            <div>
-              <h2>{article.title}</h2>
-            </div>
-
-            <div className="ql-snow">
-              <p
-                className="ql-editor"
-                dangerouslySetInnerHTML={{ __html: LimitedDescription }}
-              />
-            </div>
-
-            <div>
-              <div>
-                <span>{article.category}</span>
-              </div>
-              <div>
-                <span>{'Reading time ' + timeText + ' minute'}</span>
-              </div>
-            </div>
+      <li className={styles.articleCardContainer}>
+        <div className={styles.cardLeft}>
+          <div className={styles.headerCard}>
+            <h2>{article.title}</h2>
+            <span>{dateArticle}</span>
           </div>
 
-          <div>
-            <ButtonsArticleCard
-              article={article}
-              setIsOpen={setIsOpen}
-              setEditArticles={setEditArticles}
-              articleDelete={articleDelete}
-              loading={loading}
-              setLoading={setLoading}
+          <div className={`${styles.descriptionContainer} ql-snow`}>
+            <p
+              className="ql-editor"
+              dangerouslySetInnerHTML={{ __html: LimitedDescription }}
             />
+          </div>
+
+          <div className={styles.cardFooter}>
             <div>
-              <InsertImage
+              <span className={`${styles.cardCategory}`}>
+                {article.category} -{' '}
+              </span>
+              <span className={styles.readingTime}>
+                {'Reading time ' + timeText + ' minute'}
+              </span>
+            </div>
+
+            <div className={styles.buttonsContainer}>
+              <ButtonsArticleCard
                 article={article}
-                setIsOpenInsertImage={setIsOpenInsertImage}
-                setIsopenUpdateImage={setIsopenUpdateImage}
+                setIsOpen={() => openModal('edit')}
+                setEditArticles={setEditArticles}
+                articleDelete={articleDelete}
+                loading={loading}
+                setLoading={setLoading}
+              />
+
+              <ImageButtons
+                article={article}
+                setIsOpenInsertImage={() => openModal('insertImage')}
+                setIsopenUpdateImage={() => openModal('updateImage')}
                 setArticle={setArticle}
                 articleImage={articleImage}
                 setImageArticle={setImageArticle}
@@ -111,22 +91,23 @@ export const ArticleCard = ({ article }) => {
             </div>
           </div>
         </div>
+        <div className={styles.cardRight}>
+          <img src={articleImage} alt={`${article.title}`} />
+        </div>
       </li>
-
-      {isOpen === true ? <EditArticleModal setIsOpen={setIsOpen} /> : null}
-      {isOpenInsertImage === true ? (
-        <ImageArtilceModal
-          setIsOpenInsertImage={setIsOpenInsertImage}
+      {modalType === 'edit' && <EditArticleModal setIsOpen={closeModal} />}
+      {modalType === 'insertImage' && (
+        <InserirImagemArticleModal
+          setIsOpenInsertImage={closeModal}
           article={article}
         />
-      ) : null}
-
-      {isOpenUpdateImage === true ? (
+      )}
+      {modalType === 'updateImage' && (
         <ImageUpdateArticleModal
           article={article}
-          setIsopenUpdateImage={setIsopenUpdateImage}
+          setIsopenUpdateImage={closeModal}
         />
-      ) : null}
+      )}
     </>
   );
 };

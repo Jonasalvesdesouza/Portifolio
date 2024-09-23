@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import { HeaderDashboard } from '../../components/fragments';
-
 import {
   SectionRenderMiddleDashboard,
   SectionTopDashboard,
@@ -9,12 +8,14 @@ import {
 
 import { EditProfileModal } from '../../components/fragments';
 
+import styles from './styles.module.scss';
+
 export const DashboardPage = () => {
   const [isOpenEditProfile, setIsOpenEditProfile] = useState(false);
 
   return (
     <>
-      <div>
+      <div className={styles.dashboardContainer}>
         <HeaderDashboard setIsOpenEditProfile={setIsOpenEditProfile} />
         <SectionTopDashboard />
         <SectionRenderMiddleDashboard />

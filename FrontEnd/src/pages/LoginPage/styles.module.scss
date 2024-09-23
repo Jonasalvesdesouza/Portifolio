@@ -1,0 +1,16 @@
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: var(--color-black);
+
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+  }
+}

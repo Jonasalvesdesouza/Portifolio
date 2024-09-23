@@ -1,0 +1,72 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  height: 100%;
+  margin-top: 2%;
+
+  .inputs,
+  .selects {
+    width: 50%;
+    margin-bottom: 2.5%;
+    padding: 10px;
+    background: var(--color-black);
+    border: 1px solid var(--color-gray0);
+    font-family: var(--font-primary);
+    font-size: 18px;
+    color: var(--color-gray0);
+    box-sizing: border-box;
+
+    &:focus {
+      color: var(--color-yellow2);
+      border: 1px solid var(--color-yellow2);
+    }
+  }
+
+  .selects {
+    width: 20%;
+  }
+
+  label {
+    font-family: var(--font-primary);
+    font-size: 19.2px;
+    font-weight: bold;
+    color: var(--color-gray0);
+
+    margin-bottom: 1%;
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 90%;
+    left: 0%;
+
+    .button {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+      max-width: 150px;
+      padding: 10px;
+      font-family: var(--font-primary);
+      font-size: 16px;
+      color: var(--color-gray0);
+      border: 1px solid var(--color-gray0);
+      border-radius: 5%;
+      transition: 0.3s;
+
+      span {
+        padding-right: 10%;
+      }
+
+      &:hover {
+        color: var(--color-yellow2);
+        border: 1px solid var(--color-yellow2);
+      }
+    }
+  }
+}

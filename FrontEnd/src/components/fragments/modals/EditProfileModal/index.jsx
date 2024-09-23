@@ -12,21 +12,25 @@ import { useContext, useEffect, useState } from 'react';
 import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
 
 export const EditProfileModal = ({ setIsOpenEditProfile }) => {
-  const { imageProfile, setImageProfile } = useContext(AppBehaviorContext);
+  const { imageProfile, setImageProfile, setFocussed } =
+    useContext(AppBehaviorContext);
   const { profile } = useContext(UserAdmContext);
   const [profileImage, setProjectImage] = useState();
 
   const closeModalOutClick = useOutclick(() => {
     setIsOpenEditProfile(false);
+    setFocussed('');
   });
 
   const closeModalKeyDownEsque = useKeydown(() => {
     setIsOpenEditProfile(false);
+    setFocussed('');
   });
 
   const handleClick = () => {
     setImageProfile('');
     setIsOpenEditProfile(false);
+    setFocussed('');
   };
 
   useEffect(() => {

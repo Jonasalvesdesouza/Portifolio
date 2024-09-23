@@ -31,11 +31,11 @@
 }
 
 .ql-syntax .hljs-function {
-  color: rgb(226, 230, 246);
+  color: rgb(5, 26, 110);
 }
 
 .ql-syntax .hljs-title {
-  color: rgb(63, 127, 192);
+  color: rgb(245, 246, 246);
 }
 
 .ql-syntax .hljs-params {
@@ -52,4 +52,28 @@
 
 .ql-syntax .hljs-html {
   color: #dfe5e9;
+}
+
+.ql-toolbar {
+  background-color: var(--color-black);
+  border: 1px solid var(--color-gray0);
+  margin-bottom: 5px;
+}
+
+.ql-container {
+  background-color: var(--color-black);
+  border: 1px solid var(--color-gray0);
+  color: var(--color-gray0);
+}
+
+.ql-editor {
+  min-height: 120px;
+  padding: 10px;
+  font-family: var(--font-primary);
+  font-size: 18px;
+  color: var(--color-gray0);
+
+  &:focus {
+    outline: none;
+  }
 }

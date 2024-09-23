@@ -1,11 +1,13 @@
 import { Header } from '../../components/fragments';
 import { FormLoginPage } from '../../components/fragments/forms';
 
+import styles from './styles.module.scss';
+
 export const LoginPage = () => {
   return (
-    <div>
+    <div className={styles.loginContainer}>
       <Header />
-      <div>
+      <div className={styles.formContainer}>
         <FormLoginPage />
       </div>
     </div>

@@ -1,8 +1,10 @@
-import { CiImageOn } from 'react-icons/ci';
+import { FaImage } from 'react-icons/fa6';
 import { LuImagePlus } from 'react-icons/lu';
 import { Button } from '../../../../../../../fragments';
 
-export const InsertImage = ({
+import styles from './styles.module.scss';
+
+export const ImageButtons = ({
   article,
   setIsOpenInsertImage,
   setIsopenUpdateImage,
@@ -23,10 +25,10 @@ export const InsertImage = ({
   };
 
   return (
-    <div>
-      <img src={articleImage} alt={`${article.title}`} />
+    <div className={styles.insertImageContainer}>
       <div>
         <Button
+          className={styles.btnImg}
           onClick={
             articleImage != '/src/assets/DefaultImage.ai.svg'
               ? handleUpdateImage
@@ -36,9 +38,9 @@ export const InsertImage = ({
           }
         >
           {articleImage != '/src/assets/DefaultImage.ai.svg' ? (
-            <CiImageOn size={28} color="black" />
+            <FaImage />
           ) : (
-            <LuImagePlus size={28} color="black" />
+            <LuImagePlus />
           )}
         </Button>
       </div>

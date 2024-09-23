@@ -1,0 +1,114 @@
+li {
+  .cardContainer {
+    display: flex;
+    flex-direction: column;
+
+    width: 356px;
+    height: 383px;
+
+    border: 1px solid var(--color-gray0);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
+    margin-bottom: 10%;
+
+    transition:
+      border 0.3s,
+      box-shadow 0.3s;
+
+    &:hover {
+      border: solid 1.5px var(--color-yellow);
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      border-radius: 10px 10px 0px 0px;
+
+      width: 100%;
+      height: 60%;
+      overflow: hidden;
+    }
+
+    .middle {
+      display: flex;
+      flex-direction: column;
+
+      flex-grow: 1;
+      padding: 20px;
+
+      width: 90%;
+
+      .presentationContainer {
+        flex: 1;
+        margin-bottom: 5%;
+
+        h3 {
+          width: 100%;
+          margin-bottom: 5%;
+
+          font-family: var(--font-primary);
+          font-size: 18px;
+          color: var(--color-gray0);
+          transition: 0.3s;
+
+          &:hover {
+            color: var(--color-yellow);
+          }
+        }
+        p {
+          width: 100%;
+
+          font-family: var(--font-primary);
+          font-size: 14px;
+          color: var(--color-gray0);
+        }
+      }
+
+      .buttonsContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+
+@-webkit-keyframes kenburns-center {
+  0% {
+    -webkit-transform: scale(1) translate(0, 0);
+    transform: scale(1) translate(0, 0);
+    -webkit-transform-origin: center;
+    transform-origin: center;
+  }
+  100% {
+    -webkit-transform: scale(1.1) translate(0, 0);
+    transform: scale(1.1) translate(0, 0);
+    -webkit-transform-origin: center;
+    transform-origin: center;
+  }
+}
+
+@keyframes kenburns-center {
+  0% {
+    -webkit-transform: scale(1) translate(0, 0);
+    transform: scale(1) translate(0, 0);
+    -webkit-transform-origin: center;
+    transform-origin: center;
+  }
+  100% {
+    -webkit-transform: scale(1.1) translate(0, 0);
+    transform: scale(1.1) translate(0, 0);
+    -webkit-transform-origin: center;
+    transform-origin: center;
+  }
+}
+
+.animate {
+  -webkit-animation: kenburns-center 0.3s ease-out both;
+  animation: kenburns-center 0.3s ease-out both;
+}

@@ -1,0 +1,47 @@
+.headerDashboardContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 80%;
+  height: 10vw;
+  margin: 0 auto;
+
+  .imgContainer {
+    img {
+      width: clamp(30px, 2.5vw, 35px);
+    }
+  }
+  .btnContainer {
+    display: flex;
+    flex-direction: row;
+
+    width: auto;
+    gap: 10px;
+
+    .bntEdit,
+    .bntLogout {
+      font-family: var(--font-primary);
+      font-size: 20px;
+      color: var(--color-gray0);
+
+      transition: 0.3s;
+
+      border: 1px solid var(--color-gray0);
+      border-radius: 5%;
+
+      padding: 10px;
+
+      &:hover {
+        color: var(--color-yellow2);
+        border: 1px solid var(--color-yellow2);
+      }
+    }
+
+    .focussed {
+      color: var(--color-yellow2);
+      border: 1px solid var(--color-yellow2);
+    }
+  }
+}

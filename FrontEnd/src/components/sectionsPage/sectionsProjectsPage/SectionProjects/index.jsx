@@ -15,28 +15,33 @@ import { ProjectCard } from './ProjectCard';
 
 import styles from './styles.module.scss';
 
-const ProjectSection = ({ title, projects, refProp, showArrows }) => (
-  <div className={styles.projectSection}>
-    <h2 className="title2 gray">{title}</h2>
-    <div className={styles.listProjects}>
-      {showArrows && (
-        <>
-          <button className={styles.left} onClick={useScrollLeft(refProp)}>
-            <IoIosArrowDropleftCircle className={styles.arrowIcon} />
-          </button>
-          <button className={styles.right} onClick={useScrollRight(refProp)}>
-            <IoIosArrowDroprightCircle className={styles.arrowIcon} />
-          </button>
-        </>
-      )}
-      <ul ref={refProp}>
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </ul>
+const ProjectSection = ({ title, projects, refProp, showArrows }) => {
+  const scrollLeft = useScrollLeft(refProp);
+  const scrollRight = useScrollRight(refProp);
+
+  return (
+    <div className={styles.projectSection}>
+      <h2 className="title2 gray">{title}</h2>
+      <div className={styles.listProjects}>
+        {showArrows && (
+          <>
+            <button className={styles.left} onClick={scrollLeft}>
+              <IoIosArrowDropleftCircle className={styles.arrowIcon} />
+            </button>
+            <button className={styles.right} onClick={scrollRight}>
+              <IoIosArrowDroprightCircle className={styles.arrowIcon} />
+            </button>
+          </>
+        )}
+        <ul ref={refProp}>
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </ul>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const SectionProjects = () => {
   const { categorysProject } = useContext(AppBehaviorContext);

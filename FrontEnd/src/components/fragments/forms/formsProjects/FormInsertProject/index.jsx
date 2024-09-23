@@ -6,10 +6,10 @@ import { SlArrowRight } from 'react-icons/sl';
 
 import { UserAdmContext } from '../../../../../providers';
 import { insertProjectSchema } from '../../../../../schema';
-
 import { TextArea, Input, Button, Select } from '../../../index';
-
 import { Category, SubCategory } from './options';
+
+import styles from './styles.module.scss';
 
 export const FormInsertProject = ({ setIsOpenDashboard }) => {
   const [loading, setLoading] = useState(false);
@@ -30,56 +30,61 @@ export const FormInsertProject = ({ setIsOpenDashboard }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <Input
-          type="text"
-          label="Title"
-          placeholder="Title"
-          error={errors.title}
-          {...register('title')}
-        />
-        <Input
-          type="text"
-          label="Web Site"
-          placeholder="Web Site"
-          error={errors.webSite}
-          {...register('webSite')}
-        />
-        <Input
-          type="text"
-          label="GitHub"
-          placeholder="GitHub"
-          error={errors.gitHub}
-          {...register('gitHub')}
-        />
+    <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        className={styles.inputs}
+        type="text"
+        label="Title"
+        placeholder="Title"
+        error={errors.title}
+        {...register('title')}
+      />
+      <Input
+        className={styles.inputs}
+        type="text"
+        label="Web Site"
+        placeholder="Web Site"
+        error={errors.webSite}
+        {...register('webSite')}
+      />
+      <Input
+        className={styles.inputs}
+        type="text"
+        label="GitHub"
+        placeholder="GitHub"
+        error={errors.gitHub}
+        {...register('gitHub')}
+      />
 
-        <Select
-          label={'Category'}
-          options={Category}
-          error={errors.category}
-          {...register('category')}
-        />
+      <Select
+        className={styles.selects}
+        label={'Category'}
+        options={Category}
+        error={errors.category}
+        {...register('category')}
+      />
 
-        <Select
-          label={'subCategory'}
-          options={SubCategory}
-          error={errors.subCategor}
-          {...register('subCategory')}
-        />
+      <Select
+        className={styles.selects}
+        label={'Sub Category'}
+        options={SubCategory}
+        error={errors.subCategor}
+        {...register('subCategory')}
+      />
 
-        <TextArea
-          type="text"
-          label="Description"
-          placeholder="Description"
-          error={errors.description}
-          {...register('description')}
-        />
+      <TextArea
+        className={styles.textArea}
+        type="text"
+        label="Description"
+        placeholder="Description"
+        error={errors.description}
+        {...register('description')}
+      />
+      <div className={styles.buttonContainer}>
+        <Button className={styles.button} type="submit">
+          {loading ? <span>Loading...</span> : <span>To Send</span>}
 
-        <Button type="submit">
-          {loading ? 'Loading...' : 'To send'}
-
-          <SlArrowRight size={20} color="#e8e9ea" />
+          <SlArrowRight />
         </Button>
       </div>
     </form>

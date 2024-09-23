@@ -16,6 +16,8 @@ export const AppBehaviorProvider = ({ children }) => {
   const [categorysProject, setCategorysProject] = useState('');
   const [categorysArticles, setCategorysArticles] = useState('');
   const [focusedButton, setFocusedButton] = useState('Emphasis');
+  const [focusBtnAdd, setFocusBtnAdd] = useState('');
+  const [focussed, setFocussed] = useState('');
 
   const [navDashboard, setNavDashboard] = useState(null);
 
@@ -68,6 +70,10 @@ export const AppBehaviorProvider = ({ children }) => {
         setReturShapeHam,
         focusedButton,
         setFocusedButton,
+        focusBtnAdd,
+        setFocusBtnAdd,
+        focussed,
+        setFocussed,
         isOpenNav,
         setIsOpenNav,
       }}

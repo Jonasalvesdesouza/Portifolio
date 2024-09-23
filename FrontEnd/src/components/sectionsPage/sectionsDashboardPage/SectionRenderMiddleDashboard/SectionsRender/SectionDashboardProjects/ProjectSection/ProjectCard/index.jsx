@@ -1,22 +1,25 @@
-import ImageDefault from '../../../../../../../assets/DefaultImage.ai.svg';
-
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import {
   EditProjectModal,
   ImageProjectModal,
   ImageUpdateProjectModal,
-} from '../../../../../../fragments';
+} from '../../../../../../../fragments';
 
 import {
   AppBehaviorContext,
   UserAdmContext,
-} from '../../../../../../../providers';
+} from '../../../../../../../../providers';
 import { InsertImage } from './InsertImage';
-import { ConfigServerUrl } from '../../../../../../../config';
 import { ProjectButtons } from './ProjectButtons';
 
+import {
+  useLimitedDescription,
+  useProjectImage,
+} from '../../../../../../../../hooks';
+
+import styles from './styles.module.scss';
+
 export const ProjectCard = ({ project }) => {
-  const [projectImage, setProjectImage] = useState('');
   const { setImageProject } = useContext(AppBehaviorContext);
 
   const { setEditProjects, projectDelete, setProject } =
@@ -28,28 +31,35 @@ export const ProjectCard = ({ project }) => {
   const [isOpenInsertImage, setIsOpenInsertImage] = useState(false);
   const [isOpenUpdateImage, setIsopenUpdateImage] = useState(false);
 
-  useEffect(() => {
-    const imageRender = () => {
-      if (!project.image) {
-        return ImageDefault;
-      } else {
-        const imagePath = project.image.path;
-        const imageName = imagePath?.substring(imagePath.lastIndexOf('/') + 1);
-        const serverUrl = ConfigServerUrl;
-        return `${serverUrl}/uploads/${imageName?.replace(/\s/g, '%20')}`;
-      }
-    };
+  const maxLength = 120;
+  const LimitedDescription = useLimitedDescription(
+    project.description,
+    maxLength,
+  );
 
-    const imageUrl = imageRender();
-    setProjectImage(imageUrl);
-  }, [project]);
+  const projectImage = useProjectImage(project);
 
   return (
     <>
       <li>
-        <div>
-          <div>
-            {
+        <div className={`${styles.cardContainer}`}>
+          <div className={`${styles.header}`}>
+            <img src={projectImage} alt={`${project.title}`} />
+          </div>
+          <div className={`${styles.middle}`}>
+            <div className={`${styles.presentationContainer}`}>
+              <h3>{project.title}</h3>
+              <p>{LimitedDescription}</p>
+            </div>
+            <div className={styles.buttonsContainer}>
+              <ProjectButtons
+                project={project}
+                setIsOpen={setIsOpen}
+                setEditProjects={setEditProjects}
+                projectDelete={projectDelete}
+                setLoading={setLoading}
+                loading={loading}
+              />
               <InsertImage
                 project={project}
                 setIsOpenInsertImage={setIsOpenInsertImage}
@@ -58,21 +68,8 @@ export const ProjectCard = ({ project }) => {
                 projectImage={projectImage}
                 setImageProject={setImageProject}
               />
-            }
+            </div>
           </div>
-          <div>
-            <h3>{project.title}</h3>
-            <p>{project.category}</p>
-            <p>{project.description}</p>
-          </div>
-          <ProjectButtons
-            project={project}
-            setIsOpen={setIsOpen}
-            setEditProjects={setEditProjects}
-            projectDelete={projectDelete}
-            setLoading={setLoading}
-            loading={loading}
-          />
         </div>
       </li>
 

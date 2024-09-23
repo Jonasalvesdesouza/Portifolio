@@ -6,6 +6,7 @@ export { NotifyError } from './notyfys/NotifyError';
 export { NotifySucess } from './notyfys/NotifySucesss/index.';
 export { Button } from './Button';
 export { Input } from './InputDefault';
+export { InputInsertImage } from './InputInsertImage';
 export { InputPassword } from './InputPassword';
 export { Select } from './Select';
 export { TextArea } from './TextArea';
@@ -21,7 +22,7 @@ export { ImageUpdateProjectModal } from './modals/projectsModals/ImageUpdateProj
 
 export { InsertArticleModal } from './modals/articlesModals/InsertArticleModal';
 export { EditArticleModal } from './modals/articlesModals/EditArticleModal';
-export { ImageArtilceModal } from './modals/articlesModals/ImageArticleModal';
+export { InserirImagemArticleModal } from './modals/articlesModals/InserirImagemArticleModal';
 export { ImageUpdateArticleModal } from './modals/articlesModals/ImageUpdateArticleModal ';
 
 export { InsertSocialMediaModal } from './modals/socialMediaModals/InsertSocialMediaModal';

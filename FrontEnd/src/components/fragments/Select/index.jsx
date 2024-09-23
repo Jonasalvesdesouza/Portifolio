@@ -1,8 +1,10 @@
 import { forwardRef } from 'react';
 
+import styles from './styles.module.scss';
+
 export const Select = forwardRef(({ label, options, error, ...rest }, ref) => {
   return (
-    <div>
+    <div className={styles.selectContainer}>
       <label>{label}</label>
       <div>
         <select name="module" id="module" ref={ref} {...rest}>

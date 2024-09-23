@@ -10,6 +10,8 @@ import { Input } from '../../InputDefault';
 import { InputPassword } from '../../InputPassword';
 import { Button } from '../../Button';
 
+import styles from './styles.module.scss';
+
 export const FormLoginPage = () => {
   const [loading, setLoading] = useState(false);
 
@@ -29,9 +31,10 @@ export const FormLoginPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
+    <form className={styles.containerForm} onSubmit={handleSubmit(onSubmit)}>
+      <div className={styles.inputsContainer}>
         <Input
+          className={styles.inputLogin}
           type="text"
           placeholder="E-mail"
           error={errors.email}
@@ -42,13 +45,13 @@ export const FormLoginPage = () => {
           error={errors.password}
           {...register('password')}
         />
-
-        <Button type="submit">
-          {loading ? 'Loading...' : 'Login'}
-
-          <SlArrowRight size={20} color="#e8e9ea" />
-        </Button>
       </div>
+
+      <Button className={styles.bntLogin} type="submit">
+        {loading ? <span>Loading...</span> : <span>Login</span>}
+
+        <SlArrowRight />
+      </Button>
     </form>
   );
 };

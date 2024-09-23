@@ -9,6 +9,8 @@ import { Input, Button, Select } from '../../../index';
 import { Category } from './options';
 import { TextEditor } from './TextEditor';
 
+import styles from './styles.module.scss';
+
 export const FormInsertArticle = ({ setIsOpenDashboard }) => {
   const [editorContent, setEditorContent] = useState('');
 
@@ -31,29 +33,31 @@ export const FormInsertArticle = ({ setIsOpenDashboard }) => {
   const editorRef = useRef(null);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <Input
-          type="text"
-          label="Title"
-          placeholder="Title"
-          error={errors.title}
-          {...register('title')}
-        />
-        <Select
-          label="Category"
-          options={Category}
-          error={errors.category}
-          {...register('category')}
-        />
-        <TextEditor
-          ref={editorRef}
-          setEditorContent={setEditorContent}
-          {...register('description')}
-        />
-        <Button type="submit">
-          {loading ? 'Loading...' : 'To send'}
-          <SlArrowRight size={20} color="#e8e9ea" />
+    <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        className={styles.inputs}
+        type="text"
+        label="Title"
+        placeholder="Title"
+        error={errors.title}
+        {...register('title')}
+      />
+      <Select
+        className={styles.selects}
+        label="Category"
+        options={Category}
+        error={errors.category}
+        {...register('category')}
+      />
+      <TextEditor
+        ref={editorRef}
+        setEditorContent={setEditorContent}
+        {...register('description')}
+      />
+      <div className={styles.buttonContainer}>
+        <Button className={styles.button} type="submit">
+          {loading ? <span>Loading...</span> : <span>To send</span>}
+          <SlArrowRight />
         </Button>
       </div>
     </form>

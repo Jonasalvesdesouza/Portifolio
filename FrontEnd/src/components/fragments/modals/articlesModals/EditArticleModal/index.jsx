@@ -1,10 +1,16 @@
 import { IoCloseOutline } from 'react-icons/io5';
 
-import { useKeydown } from '../../../../../hooks';
+import { useKeydown, useOutclick } from '../../../../../hooks';
 import { Button } from '../../../Button';
 import { FormEditArticle } from '../../../forms';
 
+import styles from './styles.module.scss';
+
 export const EditArticleModal = ({ setIsOpen }) => {
+  const closeModalOutClick = useOutclick(() => {
+    setIsOpen(false);
+  });
+
   const closeModalKeyDownEsque = useKeydown(() => {
     setIsOpen(false);
   });
@@ -14,14 +20,14 @@ export const EditArticleModal = ({ setIsOpen }) => {
   };
 
   return (
-    <div role="dialog">
-      <div>
-        <Button onClick={handleClick}>
-          <IoCloseOutline size={28} color="#1b1f24" />
+    <div className={styles.modalBackdrop} role="dialog">
+      <div ref={closeModalOutClick} className={styles.modalContainer}>
+        <Button onClick={handleClick} className={styles.closeButton}>
+          <IoCloseOutline />
         </Button>
-      </div>
-      <div>
-        <FormEditArticle setIsOpen={setIsOpen} />
+        <div className={styles.formsModal}>
+          <FormEditArticle setIsOpen={setIsOpen} />
+        </div>
       </div>
     </div>
   );

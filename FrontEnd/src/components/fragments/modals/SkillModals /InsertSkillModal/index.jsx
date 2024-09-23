@@ -3,18 +3,25 @@ import { IoCloseOutline } from 'react-icons/io5';
 import { useKeydown, useOutclick } from '../../../../../hooks';
 import { Button } from '../../../Button';
 import { FormInsertSkill } from '../../../forms';
+import { useContext } from 'react';
+import { AppBehaviorContext } from '../../../../../providers';
 
 export const InsertSkillModal = ({ setIsOpenDashboard }) => {
+  const { setFocusBtnAdd } = useContext(AppBehaviorContext);
+
   const closeModalOutClick = useOutclick(() => {
+    setFocusBtnAdd(false);
     setIsOpenDashboard(false);
   });
 
   const closeModalKeyDownEsque = useKeydown(() => {
+    setFocusBtnAdd(false);
     setIsOpenDashboard(false);
   });
 
   const handleClick = () => {
-    return setIsOpenDashboard(false);
+    setFocusBtnAdd(false);
+    setIsOpenDashboard(false);
   };
 
   return (

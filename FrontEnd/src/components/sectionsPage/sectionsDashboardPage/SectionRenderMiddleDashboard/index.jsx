@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-
 import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
 
 import {
@@ -13,11 +12,11 @@ import {
   SectionDashboardSocialMedia,
 } from './SectionsRender';
 
+import styles from './styles.module.scss';
+
 export const SectionRenderMiddleDashboard = () => {
   const { user } = useContext(UserAdmContext);
   const { navDashboard } = useContext(AppBehaviorContext);
-
-  const sectionDashboard = localStorage.getItem('@SECTIONDASHBOARD');
 
   const sections = [
     <SectionDashboardProjects />,
@@ -31,11 +30,13 @@ export const SectionRenderMiddleDashboard = () => {
   ];
 
   return (
-    <div>
-      {sectionDashboard === null ? (
-        <h3> Seja bem vindo {user.name} </h3>
+    <div className={styles.middleDashboardContaier}>
+      {navDashboard === null ? (
+        <div className={styles.apresentationSection}>
+          <h3> Seja bem vindo {user.name} </h3>
+        </div>
       ) : (
-        sections[sectionDashboard]
+        sections[navDashboard]
       )}
     </div>
   );

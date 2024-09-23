@@ -3,18 +3,25 @@ import { IoCloseOutline } from 'react-icons/io5';
 import { useKeydown, useOutclick } from '../../../../../hooks';
 import { Button } from '../../../Button';
 import { FormInsertSocialMedia } from '../../../forms';
+import { useContext } from 'react';
+import { AppBehaviorContext } from '../../../../../providers';
 
 export const InsertSocialMediaModal = ({ setIsOpenDashboard }) => {
+  const { setFocusBtnAdd } = useContext(AppBehaviorContext);
+
   const closeModalOutClick = useOutclick(() => {
+    setFocusBtnAdd('');
     setIsOpenDashboard(false);
   });
 
   const closeModalKeyDownEsque = useKeydown(() => {
+    setFocusBtnAdd('');
     setIsOpenDashboard(false);
   });
 
   const handleClick = () => {
-    return setIsOpenDashboard(false);
+    setFocusBtnAdd('');
+    setIsOpenDashboard(false);
   };
 
   return (

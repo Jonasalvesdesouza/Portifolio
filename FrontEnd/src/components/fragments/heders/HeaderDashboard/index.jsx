@@ -3,31 +3,39 @@ import { useContext, useState } from 'react';
 import YellowLogo from '../../../../assets/YellowLogo.svg';
 
 import { Button } from '../../Button';
-import { UserAdmContext } from '../../../../providers';
+import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
 import { NavModal } from '../../modals/NavModal';
+
+import styles from './styles.module.scss';
 
 export const HeaderDashboard = ({ setIsOpenEditProfile }) => {
   const { userLogout, profile, setEditProfile, setEditContactProfile } =
     useContext(UserAdmContext);
-  const [isOpen, setIsOpen] = useState(false);
+  const { focussed, setFocussed } = useContext(AppBehaviorContext);
 
   const handleClick = () => {
     setIsOpenEditProfile(true);
     setEditProfile(profile);
     setEditContactProfile(profile.contact);
+    setFocussed('editProfile');
   };
 
+  const classBtnEdit = `${styles.bntEdit} ${focussed === 'editProfile' ? styles.focussed : null}`;
+
   return (
-    <header>
-      <div>
+    <header className={styles.headerDashboardContainer}>
+      <div className={styles.imgContainer}>
         <img src={YellowLogo} alt="Logo Jonas" />
       </div>
-      <div>
-        <Button onClick={handleClick}>Edit Profile</Button>
+      <div className={styles.btnContainer}>
+        <Button className={classBtnEdit} onClick={handleClick}>
+          Edit Profile
+        </Button>
 
-        <Button onClick={userLogout}>Logout</Button>
+        <Button className={styles.bntLogout} onClick={userLogout}>
+          Logout
+        </Button>
       </div>
-      {isOpen ? <NavModal setIsOpen={setIsOpen} isOpen={isOpen} /> : null}
     </header>
   );
 };

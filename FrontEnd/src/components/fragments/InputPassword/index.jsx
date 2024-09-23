@@ -1,5 +1,6 @@
 import { forwardRef, useState } from 'react';
 import { FaRegEyeSlash, FaRegEye } from 'react-icons/fa';
+import styles from './styles.module.scss';
 
 export const InputPassword = forwardRef(({ label, error, ...rest }, ref) => {
   const [isHidden, setHidden] = useState(false);
@@ -9,21 +10,18 @@ export const InputPassword = forwardRef(({ label, error, ...rest }, ref) => {
   };
 
   return (
-    <div>
-      <label>{label}</label>
+    <>
+      <div className={styles.formPassword}>
+        <label>{label}</label>
 
-      <div>
-        <input {...rest} ref={ref} type={isHidden ? 'Text' : 'password'} />
-        <span onClick={handleClick}>
-          {isHidden ? (
-            <FaRegEyeSlash size={21} color="868E96" />
-          ) : (
-            <FaRegEye size={21} color="868E96" />
-          )}
-        </span>
+        <div className={styles.inputWrapper}>
+          <input {...rest} ref={ref} type={isHidden ? 'text' : 'password'} />
+          <span onClick={handleClick} className={styles.icon}>
+            {isHidden ? <FaRegEyeSlash /> : <FaRegEye />}
+          </span>
+        </div>
       </div>
-
-      {error ? <p>{error.message}</p> : null}
-    </div>
+      {error ? <p className="parapraph error">{error.message}</p> : null}
+    </>
   );
 });

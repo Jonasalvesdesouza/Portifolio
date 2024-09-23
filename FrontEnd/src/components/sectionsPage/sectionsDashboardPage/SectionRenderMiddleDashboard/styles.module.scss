@@ -1,0 +1,21 @@
+.middleDashboardContaier {
+  display: flex;
+
+  margin: 0 auto;
+
+  width: 80%;
+  height: 100%;
+
+  padding-top: 2%;
+
+  .apresentationSection {
+    width: 100%;
+    height: 72vh;
+
+    h3 {
+      font-family: var(--font-primary);
+      font-size: 35px;
+      color: var(--color-gray0);
+    }
+  }
+}

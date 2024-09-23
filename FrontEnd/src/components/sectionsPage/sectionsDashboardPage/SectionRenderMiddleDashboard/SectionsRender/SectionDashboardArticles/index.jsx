@@ -7,6 +7,8 @@ import {
 import { ArticleCard } from './ArticleCard';
 import { InsertArticleModal } from '../../../../../fragments';
 
+import styles from './styles.module.scss';
+
 export const SectionDashboardArticles = () => {
   const { isOpenDashboard, setIsOpenDashboard } =
     useContext(AppBehaviorContext);
@@ -15,7 +17,7 @@ export const SectionDashboardArticles = () => {
 
   return (
     <>
-      <div>
+      <div className={styles.articlesContainer}>
         <h2>Article.</h2>
         <ul>
           {articlesList?.map((article) => {
