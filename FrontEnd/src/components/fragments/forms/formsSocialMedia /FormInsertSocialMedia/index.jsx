@@ -6,53 +6,54 @@ import { SlArrowRight } from 'react-icons/sl';
 
 import { UserAdmContext } from '../../../../../providers';
 import { insertSocialMediaSchema } from '../../../../../schema';
-
 import { Input, Button, Select } from '../../../index';
-
 import { OptionsSocialMedia } from './options';
 
+import styles from './styles.module.scss';
+
 export const FormInsertSocialMedia = ({ setIsOpenDashboard }) => {
-  const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(false);
 
-  const { socialMediaRegister } = useContext(UserAdmContext);
+	const { socialMediaRegister } = useContext(UserAdmContext);
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(insertSocialMediaSchema),
-  });
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm({
+		resolver: zodResolver(insertSocialMediaSchema),
+	});
 
-  const onSubmit = (payLoad) => {
-    socialMediaRegister(payLoad, setLoading, reset, setIsOpenDashboard);
-  };
+	const onSubmit = (payLoad) => {
+		socialMediaRegister(payLoad, setLoading, reset, setIsOpenDashboard);
+	};
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <Select
-          label={'Social Media'}
-          options={OptionsSocialMedia}
-          error={errors.name}
-          {...register('name')}
-        />
+	return (
+		<form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
+			<Select
+				className={styles.selects}
+				label={'Social Media'}
+				options={OptionsSocialMedia}
+				error={errors.name}
+				{...register('name')}
+			/>
 
-        <Input
-          type="text"
-          label="Link"
-          placeholder="Link"
-          error={errors.link}
-          {...register('link')}
-        />
+			<Input
+				className={styles.inputs}
+				type="text"
+				label="Link"
+				placeholder="Link"
+				error={errors.link}
+				{...register('link')}
+			/>
+			<div className={styles.buttonContainer}>
+				<Button className={styles.button} type="submit">
+					{loading ? <span>Loading...</span> : <span>To Send</span>}
 
-        <Button type="submit">
-          {loading ? 'Loading...' : 'To send'}
-
-          <SlArrowRight size={20} color="#e8e9ea" />
-        </Button>
-      </div>
-    </form>
-  );
+					<SlArrowRight />
+				</Button>
+			</div>
+		</form>
+	);
 };

@@ -2,10 +2,10 @@ import { BiPencil, BiTrash } from 'react-icons/bi';
 import { ColorRing } from 'react-loader-spinner';
 
 export const buttonsConfig = (
-	project,
+	socialMedia,
 	setIsOpen,
-	setEditProjects,
-	projectDelete,
+	setEditSocialMedia,
+	socialMediaDelete,
 	setLoading,
 	loading,
 ) => [
@@ -27,7 +27,7 @@ export const buttonsConfig = (
 			),
 		action: () => {
 			setIsOpen(true);
-			setEditProjects(project);
+			setEditSocialMedia(socialMedia);
 		},
 	},
 	{
@@ -46,6 +46,6 @@ export const buttonsConfig = (
 			) : (
 				<BiTrash />
 			),
-		action: () => projectDelete(project.id, setLoading),
+		action: () => socialMediaDelete(socialMedia.id, setLoading),
 	},
 ];

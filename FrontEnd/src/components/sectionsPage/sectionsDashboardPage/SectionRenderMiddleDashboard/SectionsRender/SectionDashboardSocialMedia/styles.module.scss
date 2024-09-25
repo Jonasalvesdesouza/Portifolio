@@ -1,9 +1,9 @@
-.articlesContainer {
+.SocialMediaContainer {
 	display: flex;
 	flex-direction: column;
 
-	width: 80vw;
-	height: 100%;
+	width: 100%;
+	height: 70.7vh;
 
 	margin-bottom: 7%;
 	margin-top: 2%;
@@ -24,5 +24,7 @@
 		flex-direction: column;
 
 		width: 100%;
+
+		gap: 50px;
 	}
 }

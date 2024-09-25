@@ -6,6 +6,8 @@ import {
 import { SocialMediaCard } from './SocialMediaCard';
 import { InsertSocialMediaModal } from '../../../../../fragments';
 
+import styles from './styles.module.scss'
+
 export const SectionDashboardSocialMedia = () => {
   const { isOpenDashboard, setIsOpenDashboard } =
     useContext(AppBehaviorContext);
@@ -14,7 +16,7 @@ export const SectionDashboardSocialMedia = () => {
 
   return (
     <>
-      <div>
+      <div className={styles.SocialMediaContainer}>
         <h2>SocialMedia.</h2>
         <ul>
           {socialMediaList?.map((socialMedia) => {

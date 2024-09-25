@@ -1,5 +1,6 @@
 import { FaImage } from 'react-icons/fa6';
-import { LuImagePlus } from 'react-icons/lu';
+import { BiSolidImageAdd } from 'react-icons/bi';
+
 import { Button } from '../../../../../../../fragments';
 
 import styles from './styles.module.scss';
@@ -40,7 +41,7 @@ export const ImageButtons = ({
           {articleImage != '/src/assets/DefaultImage.ai.svg' ? (
             <FaImage />
           ) : (
-            <LuImagePlus />
+            <BiSolidImageAdd />
           )}
         </Button>
       </div>

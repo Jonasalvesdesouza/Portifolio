@@ -14,29 +14,29 @@ export const listSection = [
     name: 'Social Media.',
     router: 2,
   },
-  {
+/*   {
     id: 4,
     name: 'Hobby.',
+    router: 3,
+  }, */
+  {
+    id: 4,
+    name: 'Skill.',
     router: 3,
   },
   {
     id: 5,
-    name: 'Skill.',
+    name: 'Education.',
     router: 4,
   },
   {
     id: 6,
-    name: 'Education.',
+    name: 'Job Experience.',
     router: 5,
   },
   {
     id: 7,
-    name: 'Job Experience.',
-    router: 6,
-  },
-  {
-    id: 8,
     name: 'Messages.',
-    router: 7,
+    router: 6,
   },
 ];
