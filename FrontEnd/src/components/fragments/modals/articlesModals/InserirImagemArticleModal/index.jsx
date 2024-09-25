@@ -17,7 +17,7 @@ export const InserirImagemArticleModal = ({
 	article,
 	setIsOpenInsertImage,
 }) => {
-	const { imageArticle } = useContext(AppBehaviorContext);
+	const { imageArticle, setFocusBtnAdd } = useContext(AppBehaviorContext);
 	const articleImage = useObjectImage(article, imageArticle);
 
 	const { closeModalOutClick, closeModalKeyDownEsque } =
@@ -27,6 +27,7 @@ export const InserirImagemArticleModal = ({
 
 	const handleClick = () => {
 		setIsOpenInsertImage(false);
+		setFocusBtnAdd('');
 	};
 
 	return (

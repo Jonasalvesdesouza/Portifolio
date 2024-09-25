@@ -18,6 +18,8 @@ export const ImageUpdateProjectModal = ({ setIsopenUpdateImage, project }) => {
 
 	const projectImage = useObjectImage(project, imageProject);
 
+	console.log(projectImage);
+
 	const { closeModalOutClick, closeModalKeyDownEsque } =
 		useCloseModal(setIsopenUpdateImage);
 

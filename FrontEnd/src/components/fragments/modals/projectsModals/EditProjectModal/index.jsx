@@ -5,13 +5,18 @@ import { Button } from '../../../Button';
 import { FormEditProject } from '../../../forms';
 
 import styles from './styles.module.scss';
+import { useContext } from 'react';
+import { AppBehaviorContext } from '../../../../../providers';
 
 export const EditProjectModal = ({ setIsOpen }) => {
+	const { setFocusBtnAdd } = useContext(AppBehaviorContext);
+
 	const { closeModalOutClick, closeModalKeyDownEsque } =
-		useCloseModal(setIsopenUpdateImage);
+		useCloseModal(setIsOpen);
 
 	const handleClick = () => {
-		return setIsOpen(false);
+		setFocusBtnAdd('');
+		setIsOpen(false);
 	};
 
 	return (

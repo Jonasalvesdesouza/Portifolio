@@ -393,7 +393,7 @@ export const UserAdmProvider = ({ children }) => {
 
 	const articleUpdate = async (payload, setLoading, reset, setIsOpen) => {
 		try {
-			setLoading(true);
+			setLoading('edit');
 
 			const { data } = await api.patch(
 				`/articles/${editArticles.id}`,
@@ -423,7 +423,7 @@ export const UserAdmProvider = ({ children }) => {
 
 	const articleDelete = async (articleId, setLoading) => {
 		try {
-			setLoading(true);
+			setLoading('delete');
 
 			await api.delete(`/articles/${articleId}`, headers);
 			const newArdicleList = articlesList.filter(

@@ -1,10 +1,11 @@
 .formContainer {
 	display: flex;
 	flex-direction: column;
-	width: 98%;
+	width: 100%;
 	margin-top: 2%;
+	gap: 20px;
+	padding: 10px;
 
-	.inputs,
 	.selects {
 		width: 100%;
 		margin-bottom: 2.5%;
@@ -22,10 +23,6 @@
 		}
 	}
 
-	.selects {
-		width: 25%;
-	}
-
 	label {
 		font-family: var(--font-primary);
 		font-size: 19.2px;
@@ -33,7 +30,6 @@
 		color: var(--color-gray0);
 	}
 
-	input,
 	select {
 		margin-top: 1%;
 	}
@@ -42,6 +38,8 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+
+		margin-top: 20px;
 
 		.button {
 			display: flex;

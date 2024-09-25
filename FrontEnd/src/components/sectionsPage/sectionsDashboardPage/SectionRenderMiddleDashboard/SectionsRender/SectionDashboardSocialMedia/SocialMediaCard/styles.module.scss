@@ -11,10 +11,32 @@
 	border: 1px solid var(--color-gray0);
 
 	span {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
 		font-family: var(--font-primary);
 		font-size: 30px;
-		color: var(--color-gray0);
 
-		margin-bottom: 15px;
+		border: 2px solid var(--color-gray0);
+		border-radius: 5px;
+
+		padding: 10px;
+
+		transition: 0.3s;
+
+		svg {
+			color: var(--color-gray0);
+			transition: 0.3s;
+		}
+	}
+	&:hover {
+		span {
+			border: 2px solid var(--color-yellow2);
+
+			svg {
+				color: var(--color-yellow2);
+			}
+		}
 	}
 }

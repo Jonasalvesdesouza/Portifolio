@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
-
 import { ConfigServerUrl } from '../config';
 import ImageDefault from '../assets/DefaultImage.ai.svg';
 
-export const useObjectImage = (object) => {
+export const useObjectImage = (object, externalImage) => {
 	const [objectImage, setObjectImage] = useState('');
 
 	useEffect(() => {
 		const imageRender = () => {
+			if (externalImage) {
+				return externalImage;
+			}
+
 			if (!object.image) {
 				return ImageDefault;
 			} else {
@@ -19,7 +22,7 @@ export const useObjectImage = (object) => {
 
 		const imageUrl = imageRender();
 		setObjectImage(imageUrl);
-	}, [object]);
+	}, [object, externalImage]);
 
 	return objectImage;
 };

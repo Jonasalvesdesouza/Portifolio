@@ -2,17 +2,17 @@ import { BiPencil, BiTrash } from 'react-icons/bi';
 import { ColorRing } from 'react-loader-spinner';
 
 export const buttonsConfig = (
-	article,
+	skill,
 	setIsOpen,
-	setEditArticles,
-	articleDelete,
-	loading,
+	setEditSkill,
+	skillDelete,
 	setLoading,
+	loading,
 ) => [
 	{
 		type: 'edit',
 		icon:
-			loading === 'edit' ? (
+			loading === 'delete' ? (
 				<ColorRing
 					visible={true}
 					height="30"
@@ -27,25 +27,12 @@ export const buttonsConfig = (
 			),
 		action: () => {
 			setIsOpen(true);
-			setEditArticles(article);
+			setEditSkill(skill);
 		},
 	},
 	{
 		type: 'delete',
-		icon:
-			loading === 'delete' ? (
-				<ColorRing
-					visible={true}
-					height="30"
-					width="30"
-					ariaLabel="color-ring-loading"
-					wrapperStyle={{}}
-					wrapperClass="color-ring-wrapper"
-					colors={['#e3b200', '#e3b200', '#e3b200', '#e3b200', '#e3b200']}
-				/>
-			) : (
-				<BiTrash />
-			),
-		action: () => articleDelete(article.id, setLoading),
+		icon: loading ? 'Loading...' : <BiTrash />,
+		action: () => skillDelete(skill.id, setLoading),
 	},
 ];

@@ -37,7 +37,7 @@ export const ArticleCard = ({ article }) => {
 	);
 	const timeText = useCalculateReadingTime(article.description);
 
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState('');
 	const [modalType, setModalType] = useState(null);
 
 	const openModal = (type) => setModalType(type);

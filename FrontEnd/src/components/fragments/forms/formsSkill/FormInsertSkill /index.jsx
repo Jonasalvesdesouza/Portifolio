@@ -4,53 +4,59 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { SlArrowRight } from 'react-icons/sl';
 
-import { UserAdmContext } from '../../../../../providers';
+import { AppBehaviorContext, UserAdmContext } from '../../../../../providers';
 import { insertSkillSchema } from '../../../../../schema';
 import { OptionsSkill, OptionsCategorySkill } from '../options/';
 
 import { Button, Select } from '../../../index';
 
+import styles from './styles.module.scss';
+
 export const FormInsertSkill = ({ setIsOpenDashboard }) => {
-  const [loading, setLoading] = useState(false);
+	const { skillRegister } = useContext(UserAdmContext);
+	const { setFocusBtnAdd } = useContext(AppBehaviorContext);
 
-  const { skillRegister } = useContext(UserAdmContext);
+	const [loading, setLoading] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(insertSkillSchema),
-  });
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm({
+		resolver: zodResolver(insertSkillSchema),
+	});
 
-  const onSubmit = (payLoad) => {
-    skillRegister(payLoad, setLoading, reset, setIsOpenDashboard);
-  };
+	const onSubmit = (payLoad) => {
+		setFocusBtnAdd('');
+		skillRegister(payLoad, setLoading, reset, setIsOpenDashboard);
+	};
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <Select
-          label={'Skill'}
-          options={OptionsSkill}
-          error={errors.skill}
-          {...register('name')}
-        />
+	return (
+		<form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
+			<Select
+				className={styles.selects}
+				label={'Skill'}
+				options={OptionsSkill}
+				error={errors.skill}
+				{...register('name')}
+			/>
 
-        <Select
-          label={'Caregory'}
-          options={OptionsCategorySkill}
-          error={errors.category}
-          {...register('category')}
-        />
+			<Select
+				className={styles.selects}
+				label={'Caregory'}
+				options={OptionsCategorySkill}
+				error={errors.category}
+				{...register('category')}
+			/>
 
-        <Button type="submit">
-          {loading ? 'Loading...' : 'To send'}
+			<div className={styles.buttonContainer}>
+				<Button className={styles.button} type="submit">
+					{loading ? 'Loading...' : 'To send'}
 
-          <SlArrowRight size={20} color="#e8e9ea" />
-        </Button>
-      </div>
-    </form>
-  );
+					<SlArrowRight />
+				</Button>
+			</div>
+		</form>
+	);
 };

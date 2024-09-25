@@ -1,38 +1,32 @@
-import React from 'react';
-import { BiPencil, BiTrash } from 'react-icons/bi';
+import { buttonsConfig } from './data';
 import { Button } from '../../../../../../../fragments';
 
-export const SkillButtons = ({
-  skill,
-  setIsOpen,
-  setEditSkill,
-  skillDelete,
-  setLoading,
-  loading,
-}) => {
-  const buttons = [
-    {
-      type: 'edit',
-      icon: <BiPencil size={18} color="black" />,
-      action: () => {
-        setIsOpen(true);
-        setEditSkill(skill);
-      },
-    },
-    {
-      type: 'delete',
-      icon: loading ? 'Loading...' : <BiTrash size={18} color="black" />,
-      action: () => skillDelete(skill.id, setLoading),
-    },
-  ];
+import styles from './styles.module.scss';
 
-  return (
-    <div>
-      {buttons.map((btn, index) => (
-        <Button key={index} onClick={btn.action}>
-          {btn.icon}
-        </Button>
-      ))}
-    </div>
-  );
+export const SkillButtons = ({
+	skill,
+	setIsOpen,
+	setEditSkill,
+	skillDelete,
+	setLoading,
+	loading,
+}) => {
+	const buttons = buttonsConfig(
+		skill,
+		setIsOpen,
+		setEditSkill,
+		skillDelete,
+		setLoading,
+		loading,
+	);
+
+	return (
+		<div className={styles.btnContainer}>
+			{buttons.map((btn, index) => (
+				<Button key={index} onClick={btn.action}>
+					{btn.icon}
+				</Button>
+			))}
+		</div>
+	);
 };

@@ -5,23 +5,19 @@ import { IconsSkills } from '../../../../../../data';
 import styles from './styles.module.scss';
 
 export const CardSkillCurriculum = ({ skill }) => {
-  const skillName = skill.name;
+	const skillName = skill.name;
 
-  const iconObj = IconsSkills.find((icon) => icon.name === skill.name);
-  const iconComponent = iconObj ? (
-    iconObj.icon
-  ) : (
-    <MdOutlineDoNotDisturbAlt size={55} color="#1b1f24" />
-  );
+	const iconObj = IconsSkills.find((icon) => icon.name === skill.name);
+	const iconComponent = iconObj ? iconObj.icon : <MdOutlineDoNotDisturbAlt />;
 
-  return (
-    <li className={styles.cardSkillContainer}>
-      <div className={styles.cardSkillName}>
-        <span>{skillName}</span>
-      </div>
-      <div className={styles.cardSkillIcon}>
-        <span>{iconComponent}</span>
-      </div>
-    </li>
-  );
+	return (
+		<li className={styles.cardSkillContainer}>
+			<div className={styles.cardSkillName}>
+				<span>{skillName}</span>
+			</div>
+			<div className={styles.cardSkillIcon}>
+				<span>{iconComponent}</span>
+			</div>
+		</li>
+	);
 };

@@ -26,6 +26,10 @@
 		width: 25%;
 	}
 
+	.textArea {
+		height: 150px;
+	}
+
 	label {
 		font-family: var(--font-primary);
 		font-size: 19.2px;
@@ -34,7 +38,8 @@
 	}
 
 	input,
-	select {
+	select,
+	textarea {
 		margin-top: 1%;
 	}
 
