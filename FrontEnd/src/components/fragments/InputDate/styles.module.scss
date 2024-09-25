@@ -1,0 +1,41 @@
+.inputContainer {
+	display: flex;
+	flex-direction: column;
+
+	margin-bottom: 15px;
+
+	label {
+		margin-bottom: 5px;
+	}
+}
+
+.inputWrapper {
+	position: relative;
+	width: 100%;
+}
+
+input[type='date'] {
+	width: 100%;
+	padding-right: 40px;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+	&::-webkit-calendar-picker-indicator {
+		display: none;
+	}
+
+	&::-ms-clear {
+		display: none;
+	}
+}
+
+.calendarIcon {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	pointer-events: none;
+	color: var(--color-yellow2); /* Altere para a cor que deseja */
+	font-size: 20px; /* Tamanho do ícone */
+}

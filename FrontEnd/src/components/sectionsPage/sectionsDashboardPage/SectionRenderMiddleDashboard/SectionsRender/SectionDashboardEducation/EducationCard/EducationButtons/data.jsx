@@ -2,10 +2,10 @@ import { BiPencil, BiTrash } from 'react-icons/bi';
 import { ColorRing } from 'react-loader-spinner';
 
 export const buttonsConfig = (
-	skill,
+	education,
 	setIsOpen,
-	setEditSkill,
-	skillDelete,
+	setEditEducation,
+	educationDelete,
 	setLoading,
 	loading,
 ) => [
@@ -27,7 +27,7 @@ export const buttonsConfig = (
 			),
 		action: () => {
 			setIsOpen(true);
-			setEditSkill(skill);
+			setEditEducation(education);
 		},
 	},
 	{
@@ -46,6 +46,6 @@ export const buttonsConfig = (
 			) : (
 				<BiTrash />
 			),
-		action: () => skillDelete(skill.id, setLoading),
+		action: () => educationDelete(education.id, setLoading),
 	},
 ];

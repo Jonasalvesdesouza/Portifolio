@@ -8,6 +8,7 @@ export { Button } from './Button';
 export { Input } from './InputDefault';
 export { InputInsertImage } from './InputInsertImage';
 export { InputPassword } from './InputPassword';
+export { InputDate } from './InputDate';
 export { Select } from './Select';
 export { TextArea } from './TextArea';
 
