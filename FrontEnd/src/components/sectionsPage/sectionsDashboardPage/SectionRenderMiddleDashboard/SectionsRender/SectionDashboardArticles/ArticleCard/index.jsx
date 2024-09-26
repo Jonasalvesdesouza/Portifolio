@@ -28,6 +28,9 @@ export const ArticleCard = ({ article }) => {
 	const { setEditArticles, articleDelete, setArticle } =
 		useContext(UserAdmContext);
 
+	const [loading, setLoading] = useState('');
+	const [modalType, setModalType] = useState(null);
+
 	const dateArticle = useFormtDate(article.updatedAt);
 	const maxLength = 250;
 
@@ -36,9 +39,6 @@ export const ArticleCard = ({ article }) => {
 		maxLength,
 	);
 	const timeText = useCalculateReadingTime(article.description);
-
-	const [loading, setLoading] = useState('');
-	const [modalType, setModalType] = useState(null);
 
 	const openModal = (type) => setModalType(type);
 	const closeModal = () => setModalType(null);

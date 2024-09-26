@@ -1,77 +1,66 @@
 import { IoCloseOutline } from 'react-icons/io5';
 
-import { useKeydown, useOutclick, useRenderImage } from '../../../../hooks';
 import {
-  FormProfile,
-  FormProfileContact,
-  FormProfileImage,
-  FormUpdateProfileImage,
+	useCloseModal,
+	useImageObject,
+	useObjectImage,
+} from '../../../../hooks';
+import {
+	FormProfile,
+	FormProfileContact,
+	FormProfileImage,
+	FormUpdateProfileImage,
 } from '../../forms';
 import { Button } from '../../Button';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
 
+import styles from './styles.module.scss';
+
 export const EditProfileModal = ({ setIsOpenEditProfile }) => {
-  const { imageProfile, setImageProfile, setFocussed } =
-    useContext(AppBehaviorContext);
-  const { profile } = useContext(UserAdmContext);
-  const [profileImage, setProjectImage] = useState();
+	const { imageProfile, setImageProfile, setFocussed } =
+		useContext(AppBehaviorContext);
+	const { profile } = useContext(UserAdmContext);
 
-  const closeModalOutClick = useOutclick(() => {
-    setIsOpenEditProfile(false);
-    setFocussed('');
-  });
+	const profileImage = useObjectImage(profile, imageProfile);
 
-  const closeModalKeyDownEsque = useKeydown(() => {
-    setIsOpenEditProfile(false);
-    setFocussed('');
-  });
+	const { closeModalOutClick, closeModalKeyDownEsque } =
+		useCloseModal(setIsOpenEditProfile);
 
-  const handleClick = () => {
-    setImageProfile('');
-    setIsOpenEditProfile(false);
-    setFocussed('');
-  };
+	const handleClick = () => {
+		setImageProfile('');
+		setIsOpenEditProfile(false);
+		setFocussed('');
+	};
 
-  useEffect(() => {
-    if (imageProfile) {
-      setProjectImage(imageProfile);
-    } else {
-      const urlImage = useRenderImage(profile);
-      setProjectImage(urlImage);
-    }
-  }, [imageProfile, profileImage]);
+	return (
+		<div className={styles.modalBackdrop} role="dialog">
+			<div ref={closeModalOutClick} className={styles.modalContainer}>
+				<div className={styles.topModal}>
+					<Button onClick={handleClick} className={styles.closeButton}>
+						<IoCloseOutline />
+					</Button>
+					<h4>Edit Profile</h4>
+				</div>
 
-  return (
-    <div role="dialog" ref={closeModalOutClick}>
-      <div>
-        <Button onClick={handleClick}>
-          <IoCloseOutline size={28} color="#1b1f24" />
-        </Button>
-      </div>
-      <div>
-        <img
-          src={profileImage}
-          alt="Preview"
-          style={{ maxWidth: '100%', marginTop: '10px' }}
-        />
-      </div>
+				<div className={styles.imgContainer}>
+					<img
+						src={profileImage}
+						alt="Preview"
+						style={{ maxWidth: '100%', marginTop: '10px' }}
+					/>
+				</div>
 
-      <div>
-        {profile.image === null ? (
-          <FormProfileImage />
-        ) : (
-          <FormUpdateProfileImage />
-        )}
-      </div>
-
-      <div>
-        <FormProfile />
-      </div>
-
-      <div>
-        <FormProfileContact />
-      </div>
-    </div>
-  );
+				<div className={styles.formsModal}>
+					{profile.image === null ? (
+						<FormProfileImage />
+					) : (
+						<FormUpdateProfileImage />
+					)}
+					<FormProfile />
+					<FormProfileContact />
+				</div>
+			</div>
+		</div>
+	);
 };

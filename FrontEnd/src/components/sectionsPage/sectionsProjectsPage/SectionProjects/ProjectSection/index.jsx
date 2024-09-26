@@ -25,6 +25,7 @@ export const ProjectSection = ({
 						<IoIosArrowDropleftCircle className={styles.arrowIcon} />
 					</span>
 				)}
+
 				<ul ref={refProp}>
 					{projects.map((project) => (
 						<ProjectCard key={project.id} project={project} />
