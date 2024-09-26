@@ -52,7 +52,7 @@ export const FormInsertSkill = ({ setIsOpenDashboard }) => {
 
 			<div className={styles.buttonContainer}>
 				<Button className={styles.button} type="submit">
-					{loading ? 'Loading...' : 'To send'}
+					{loading ? <span>Loading...</span> : <span>To Send</span>}
 
 					<SlArrowRight />
 				</Button>

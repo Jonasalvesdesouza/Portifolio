@@ -1,0 +1,17 @@
+.cardMessageContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	padding-bottom: 10px;
+	margin-bottom: 70px;
+
+	border-bottom: 1px solid var(--color-gray0);
+
+	span {
+		font-family: var(--font-primary);
+		font-size: 20px;
+		font-weight: bold;
+		color: var(--color-gray0);
+	}
+}

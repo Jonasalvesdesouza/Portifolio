@@ -1,42 +1,32 @@
-import React from 'react';
-import { BiPencil, BiTrash } from 'react-icons/bi';
+import { buttonsConfig } from './data';
 import { Button } from '../../../../../../../fragments';
 
-export const JobExperienceButtons = ({
-  jobExperience,
-  setIsOpen,
-  setEditJobExperience,
-  jobExperienceDelete,
-  setLoading,
-  loading,
-}) => {
-  const buttons = [
-    {
-      type: 'edit',
-      icon: <BiPencil size={18} color="black" />,
-      action: () => {
-        setIsOpen(true);
-        setEditJobExperience(jobExperience);
-      },
-    },
-    {
-      type: 'delete',
-      icon: loading ? (
-        'Loading...'
-      ) : (
-        <BiTrash size={18} color="black" /* color="#e8e9ea" */ />
-      ),
-      action: () => jobExperienceDelete(jobExperience.id, setLoading),
-    },
-  ];
+import styles from './styles.module.scss';
 
-  return (
-    <div>
-      {buttons.map((btn, index) => (
-        <Button key={index} onClick={btn.action}>
-          {btn.icon}
-        </Button>
-      ))}
-    </div>
-  );
+export const JobExperienceButtons = ({
+	jobExperience,
+	setIsOpen,
+	setEditJobExperience,
+	jobExperienceDelete,
+	setLoading,
+	loading,
+}) => {
+	const buttons = buttonsConfig(
+		jobExperience,
+		setIsOpen,
+		setEditJobExperience,
+		jobExperienceDelete,
+		setLoading,
+		loading,
+	);
+
+	return (
+		<div className={styles.btnContainer}>
+			{buttons.map((btn, index) => (
+				<Button key={index} onClick={btn.action}>
+					{btn.icon}
+				</Button>
+			))}
+		</div>
+	);
 };

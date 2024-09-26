@@ -1,14 +1,12 @@
 .formContainer {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
+	width: 98%;
 	margin-top: 2%;
-	gap: 20px;
-	padding: 10px;
 
-	.selects {
+	.inputs,
+	.textArea {
 		width: 100%;
-		margin-bottom: 2.5%;
 		padding: 10px;
 		background: var(--color-black);
 		border: 1px solid var(--color-gray0);
@@ -23,6 +21,10 @@
 		}
 	}
 
+	.textArea {
+		height: 150px;
+	}
+
 	label {
 		font-family: var(--font-primary);
 		font-size: 19.2px;
@@ -30,7 +32,7 @@
 		color: var(--color-gray0);
 	}
 
-	select {
+	textarea {
 		margin-top: 1%;
 	}
 
@@ -57,10 +59,6 @@
 
 			span {
 				padding-right: 10%;
-			}
-
-			svg {
-				color: var(--color-gray0);
 			}
 
 			&:hover {

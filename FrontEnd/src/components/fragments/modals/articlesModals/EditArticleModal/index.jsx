@@ -1,6 +1,6 @@
 import { IoCloseOutline } from 'react-icons/io5';
 
-import { useKeydown, useOutclick } from '../../../../../hooks';
+import { useCloseModal } from '../../../../../hooks';
 import { Button } from '../../../Button';
 import { FormEditArticle } from '../../../forms';
 
@@ -11,13 +11,8 @@ import { AppBehaviorContext } from '../../../../../providers';
 export const EditArticleModal = ({ setIsOpen }) => {
 	const { setFocusBtnAdd } = useContext(AppBehaviorContext);
 
-	const closeModalOutClick = useOutclick(() => {
-		setIsOpen(false);
-	});
-
-	const closeModalKeyDownEsque = useKeydown(() => {
-		setIsOpen(false);
-	});
+	const { closeModalOutClick, closeModalKeyDownEsque } =
+		useCloseModal(setIsOpen);
 
 	const handleClick = () => {
 		setFocusBtnAdd('');

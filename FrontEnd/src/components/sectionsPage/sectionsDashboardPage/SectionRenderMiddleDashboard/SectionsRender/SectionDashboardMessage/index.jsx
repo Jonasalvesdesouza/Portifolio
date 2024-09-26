@@ -2,17 +2,19 @@ import { useContext } from 'react';
 import { UserAdmContext } from '../../../../../../providers';
 import { MessageCard } from './MessageCard';
 
-export const SectionDashboardMessage = () => {
-  const { messageList } = useContext(UserAdmContext);
+import styles from './styles.module.scss';
 
-  return (
-    <div>
-      <h2>Message.</h2>
-      <ul>
-        {messageList?.map((message) => {
-          return <MessageCard key={message.id} message={message} />;
-        })}
-      </ul>
-    </div>
-  );
+export const SectionDashboardMessage = () => {
+	const { messageList } = useContext(UserAdmContext);
+
+	return (
+		<div className={styles.educationContainer}>
+			<h2>Message.</h2>
+			<ul>
+				{messageList?.map((message) => {
+					return <MessageCard key={message.id} message={message} />;
+				})}
+			</ul>
+		</div>
+	);
 };

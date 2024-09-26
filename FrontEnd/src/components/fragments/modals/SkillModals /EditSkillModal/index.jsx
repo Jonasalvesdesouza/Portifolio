@@ -18,7 +18,7 @@ export const EditSkillModal = ({ setIsOpen }) => {
 		<div role="dialog" className={styles.modalBackdrop}>
 			<div ref={closeModalOutClick} className={styles.modalContainer}>
 				<Button className={styles.closeButton} onClick={handleClick}>
-					<IoCloseOutline size={28} color="#1b1f24" />
+					<IoCloseOutline />
 				</Button>
 				<div className={styles.formsModal}>
 					<FormEditSkill setIsOpen={setIsOpen} />

@@ -15,8 +15,8 @@ export const InsertSocialMediaModal = ({ setIsOpenDashboard }) => {
 		useCloseModal(setIsOpenDashboard);
 
 	const handleClick = () => {
-		setFocusBtnAdd('');
 		setIsOpenDashboard(false);
+		setFocusBtnAdd('');
 	};
 
 	return (

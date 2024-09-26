@@ -4,58 +4,58 @@ import { UserAdmContext } from '../../../../../../../providers';
 import { EditJobExperienceModal } from '../../../../../../fragments';
 import { useDateFormatEduIsJobExp } from '../../../../../../../hooks';
 
+import styles from './styles.module.scss';
+
 export const JobExperienceCard = ({ jobExperience }) => {
-  const [loading, setLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
-  const { setEditJobExperience, jobExperienceDelete } =
-    useContext(UserAdmContext);
+	const { setEditJobExperience, jobExperienceDelete } =
+		useContext(UserAdmContext);
 
-  const initialDate = useDateFormatEduIsJobExp(jobExperience.initialDate);
-  const endDate = useDateFormatEduIsJobExp(jobExperience.endDate);
+	const initialDate = useDateFormatEduIsJobExp(jobExperience.initialDate);
+	const endDate = useDateFormatEduIsJobExp(jobExperience.endDate);
 
-  const work = jobExperience.title;
-  const office = jobExperience.companyName;
+	const work = jobExperience.title;
+	const office = jobExperience.companyName;
 
-  const country = jobExperience.country;
-  const state = jobExperience.state;
-  const city = jobExperience.city;
+	const country = jobExperience.country;
+	const state = jobExperience.state;
+	const city = jobExperience.city;
 
-  const description = jobExperience.description;
+	const description = jobExperience.description;
 
-  return (
-    <>
-      <li>
-        <div>
-          <JobExperienceButtons
-            jobExperience={jobExperience}
-            setIsOpen={setIsOpen}
-            setEditJobExperience={setEditJobExperience}
-            jobExperienceDelete={jobExperienceDelete}
-            setLoading={setLoading}
-            loading={loading}
-          />
-          <div>
-            <div>{<h4>{work}</h4>}</div>
-            <div>
-              <span>
-                {initialDate + ' - ' + (endDate === '' ? 'current' : endDate)}
-              </span>
-            </div>
-          </div>
-          <div>
-            <span>
-              {office + ' / ' + city + ' - ' + state + ' / ' + country}
-            </span>
-          </div>
-          <div>
-            <span>{description}</span>
-          </div>
-        </div>
-      </li>
-      {isOpen === true ? (
-        <EditJobExperienceModal setIsOpen={setIsOpen} />
-      ) : null}
-    </>
-  );
+	return (
+		<>
+			<li className={`${styles.cardJobExperienceContainer}`}>
+				<div className={`${styles.header}`}>
+					<div className={`${styles.top}`}>
+						{<h4>{work}</h4>}
+						<span>
+							{initialDate + ' - ' + (endDate === '' ? 'current' : endDate)}
+						</span>
+					</div>
+					<div className={`${styles.middle}`}>
+						<span>
+							{office + ' / ' + city + ' - ' + state + ' / ' + country}
+						</span>
+					</div>
+				</div>
+				<div className={styles.footer}>
+					<span>{description}</span>
+					<JobExperienceButtons
+						jobExperience={jobExperience}
+						setIsOpen={setIsOpen}
+						setEditJobExperience={setEditJobExperience}
+						jobExperienceDelete={jobExperienceDelete}
+						setLoading={setLoading}
+						loading={loading}
+					/>
+				</div>
+			</li>
+			{isOpen === true ? (
+				<EditJobExperienceModal setIsOpen={setIsOpen} />
+			) : null}
+		</>
+	);
 };

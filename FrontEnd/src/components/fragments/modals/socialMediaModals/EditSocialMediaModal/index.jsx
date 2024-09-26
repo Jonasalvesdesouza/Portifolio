@@ -5,13 +5,18 @@ import { Button } from '../../../Button';
 import { FormEditSocialMedia } from '../../../forms';
 
 import styles from './styles.module.scss';
+import { useContext } from 'react';
+import { AppBehaviorContext } from '../../../../../providers';
 
 export const EditSocialMediaModal = ({ setIsOpen }) => {
+	const { setFocusBtnAdd } = useContext(AppBehaviorContext);
+
 	const { closeModalOutClick, closeModalKeyDownEsque } =
 		useCloseModal(setIsOpen);
 
 	const handleClick = () => {
-		return setIsOpen(false);
+		setIsOpen(false);
+		setFocusBtnAdd('');
 	};
 
 	return (

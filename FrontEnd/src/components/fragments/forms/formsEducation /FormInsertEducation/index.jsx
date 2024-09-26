@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { SlArrowRight } from 'react-icons/sl';
 
-import { UserAdmContext } from '../../../../../providers';
+import { AppBehaviorContext, UserAdmContext } from '../../../../../providers';
 import { insertEducationSchema } from '../../../../../schema';
 
 import { Input, Button, TextArea, InputDate } from '../../../index';
@@ -12,9 +12,10 @@ import { Input, Button, TextArea, InputDate } from '../../../index';
 import styles from './styles.module.scss';
 
 export const FormInsertEducation = ({ setIsOpenDashboard }) => {
-	const [loading, setLoading] = useState(false);
-
 	const { educationRegister } = useContext(UserAdmContext);
+	const { setFocusBtnAdd } = useContext(AppBehaviorContext);
+
+	const [loading, setLoading] = useState(false);
 
 	const {
 		register,
@@ -26,6 +27,8 @@ export const FormInsertEducation = ({ setIsOpenDashboard }) => {
 	});
 
 	const onSubmit = (payLoad) => {
+		setFocusBtnAdd('');
+
 		educationRegister(payLoad, setLoading, reset, setIsOpenDashboard);
 	};
 
@@ -105,7 +108,7 @@ export const FormInsertEducation = ({ setIsOpenDashboard }) => {
 
 			<div className={styles.buttonContainer}>
 				<Button className={styles.button} type="submit">
-					{loading ? 'Loading...' : 'To send'}
+					{loading ? <span>Loading...</span> : <span>To Send</span>}
 
 					<SlArrowRight />
 				</Button>

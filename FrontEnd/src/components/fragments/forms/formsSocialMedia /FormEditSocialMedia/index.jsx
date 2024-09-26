@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { SlArrowRight } from 'react-icons/sl';
 
-import { UserAdmContext } from '../../../../../providers';
+import { AppBehaviorContext, UserAdmContext } from '../../../../../providers';
 import { insertSocialMediaSchema } from '../../../../../schema';
 
 import { Input, Button, Select } from '../../../index';
@@ -13,9 +13,10 @@ import { OptionsSocialMedia } from './options';
 import styles from './styles.module.scss';
 
 export const FormEditSocialMedia = ({ setIsOpen }) => {
-	const [loading, setLoading] = useState(false);
-
 	const { socialMediaUpdate, editSocialMedia } = useContext(UserAdmContext);
+	const { setFocusBtnAdd } = useContext(AppBehaviorContext);
+
+	const [loading, setLoading] = useState(false);
 
 	const {
 		register,
@@ -31,6 +32,7 @@ export const FormEditSocialMedia = ({ setIsOpen }) => {
 	});
 
 	const onSubmit = (payLoad) => {
+		setFocusBtnAdd('');
 		socialMediaUpdate(payLoad, setLoading, reset, setIsOpen);
 	};
 

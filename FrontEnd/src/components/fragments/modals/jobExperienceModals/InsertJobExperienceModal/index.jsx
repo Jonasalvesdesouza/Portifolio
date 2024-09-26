@@ -1,39 +1,34 @@
 import { IoCloseOutline } from 'react-icons/io5';
 
-import { useKeydown, useOutclick } from '../../../../../hooks';
+import { useCloseModal } from '../../../../../hooks';
 import { Button } from '../../../Button';
 import { FormInsertJobExperience } from '../../../forms';
 import { useContext } from 'react';
 import { AppBehaviorContext } from '../../../../../providers';
 
+import styles from './styles.module.scss';
+
 export const InsertJobExperienceModal = ({ setIsOpenDashboard }) => {
-  const { setFocusBtnAdd } = useContext(AppBehaviorContext);
+	const { setFocusBtnAdd } = useContext(AppBehaviorContext);
 
-  const closeModalOutClick = useOutclick(() => {
-    setFocusBtnAdd('');
-    setIsOpenDashboard(false);
-  });
+	const { closeModalOutClick, closeModalKeyDownEsque } =
+		useCloseModal(setIsOpenDashboard);
 
-  const closeModalKeyDownEsque = useKeydown(() => {
-    setFocusBtnAdd('');
-    setIsOpenDashboard(false);
-  });
+	const handleClick = () => {
+		setFocusBtnAdd('');
+		setIsOpenDashboard(false);
+	};
 
-  const handleClick = () => {
-    setFocusBtnAdd('');
-    setIsOpenDashboard(false);
-  };
-
-  return (
-    <div role="dialog" ref={closeModalOutClick}>
-      <div>
-        <Button onClick={handleClick}>
-          <IoCloseOutline size={28} color="#1b1f24" />
-        </Button>
-      </div>
-      <div>
-        {<FormInsertJobExperience setIsOpenDashboard={setIsOpenDashboard} />}
-      </div>
-    </div>
-  );
+	return (
+		<div className={styles.modalBackdrop} role="dialog">
+			<div ref={closeModalOutClick} className={styles.modalContainer}>
+				<Button onClick={handleClick} className={styles.closeButton}>
+					<IoCloseOutline />
+				</Button>
+				<div className={styles.formsModal}>
+					<FormInsertJobExperience setIsOpenDashboard={setIsOpenDashboard} />
+				</div>
+			</div>
+		</div>
+	);
 };

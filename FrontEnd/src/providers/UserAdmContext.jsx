@@ -445,7 +445,7 @@ export const UserAdmProvider = ({ children }) => {
 		setIsOpenDashboard,
 	) => {
 		try {
-			setLoading(true);
+			setLoading('insert');
 
 			const { data } = await api.post('/social-medias/', payload, headers);
 
@@ -578,7 +578,7 @@ export const UserAdmProvider = ({ children }) => {
 		setIsOpenDashboard,
 	) => {
 		try {
-			setLoading(true);
+			setLoading('insert');
 
 			const { data } = await api.post('/skills/', payload, headers);
 
@@ -593,7 +593,7 @@ export const UserAdmProvider = ({ children }) => {
 
 	const skillUpdate = async (payload, setLoading, reset, setIsOpen) => {
 		try {
-			setLoading(true);
+			setLoading('edit');
 
 			const { data } = await api.patch(
 				`/skills/${editSkill.id}`,
@@ -623,7 +623,7 @@ export const UserAdmProvider = ({ children }) => {
 
 	const skillDelete = async (skillId, setLoading) => {
 		try {
-			setLoading(true);
+			setLoading('delete');
 
 			await api.delete(`/skills/${skillId}`, headers);
 			const newSkillList = skillList.filter((skill) => skill.id !== skillId);
@@ -643,7 +643,7 @@ export const UserAdmProvider = ({ children }) => {
 		setIsOpenDashboard,
 	) => {
 		try {
-			setLoading(true);
+			setLoading('insert');
 
 			const { data } = await api.post('/educations/', payload, headers);
 
@@ -660,7 +660,7 @@ export const UserAdmProvider = ({ children }) => {
 
 	const educationUpdate = async (payload, setLoading, reset, setIsOpen) => {
 		try {
-			setLoading(true);
+			setLoading('edit');
 
 			const { data } = await api.patch(
 				`/educations/${editEducation.id}`,
@@ -688,7 +688,7 @@ export const UserAdmProvider = ({ children }) => {
 
 	const educationDelete = async (educationId, setLoading) => {
 		try {
-			setLoading(true);
+			setLoading('delete');
 
 			await api.delete(`/educations/${educationId}`, headers);
 			const newEducationList = educationList.filter(
@@ -711,7 +711,7 @@ export const UserAdmProvider = ({ children }) => {
 		setIsOpenDashboard,
 	) => {
 		try {
-			setLoading(true);
+			setLoading('insert');
 
 			const { data } = await api.post('/job-experiences/', payload, headers);
 
@@ -728,7 +728,7 @@ export const UserAdmProvider = ({ children }) => {
 
 	const jobExperienceUpdate = async (payload, setLoading, reset, setIsOpen) => {
 		try {
-			setLoading(true);
+			setLoading('edit');
 
 			const { data } = await api.patch(
 				`/job-experiences/${editJobExperience.id}`,
@@ -756,7 +756,7 @@ export const UserAdmProvider = ({ children }) => {
 
 	const jobExperienceDelete = async (jobExperienceId, setLoading) => {
 		try {
-			setLoading(true);
+			setLoading('delete');
 
 			await api.delete(`/job-experiences/${jobExperienceId}`, headers);
 			const newJobExperienceList = jobExperienceList.filter(
@@ -790,6 +790,8 @@ export const UserAdmProvider = ({ children }) => {
 
 	const messageMeDelete = async (messageId, setLoading) => {
 		try {
+			setLoading('delete');
+
 			await api.delete(`/messages/${messageId}`, headers);
 			const newMessageList = messageList.filter(
 				(message) => message.id !== messageId,

@@ -56,9 +56,9 @@ export const FormEditSkill = ({ setIsOpen }) => {
 
 			<div className={styles.buttonContainer}>
 				<Button className={styles.button} type="submit">
-					{loading ? 'Loading...' : 'To send'}
+					{loading ? <span>Loading...</span> : <span>To Send</span>}
 
-					<SlArrowRight size={20} color="#e8e9ea" />
+					<SlArrowRight />
 				</Button>
 			</div>
 		</form>

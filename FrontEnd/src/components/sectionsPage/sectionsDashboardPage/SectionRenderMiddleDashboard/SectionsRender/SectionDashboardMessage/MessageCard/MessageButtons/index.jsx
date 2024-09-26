@@ -1,39 +1,33 @@
-import React from 'react';
-import { BiTrash } from 'react-icons/bi';
-import { GrView } from 'react-icons/gr';
+import { buttonsConfig } from './data';
+
 import { Button } from '../../../../../../../fragments';
 
-export const MessageButtons = ({
-  message,
-  setIsOpen,
-  setViewMessage,
-  messageMeDelete,
-  setLoading,
-  loading,
-}) => {
-  const buttons = [
-    {
-      type: 'view',
-      icon: <GrView size={18} color="black" />,
-      action: () => {
-        setIsOpen(true);
-        setViewMessage(message);
-      },
-    },
-    {
-      type: 'delete',
-      icon: loading ? 'Loading...' : <BiTrash size={18} color="black" />,
-      action: () => messageMeDelete(message.id, setLoading),
-    },
-  ];
+import styles from './styles.module.scss';
 
-  return (
-    <div>
-      {buttons.map((btn, index) => (
-        <Button key={index} onClick={btn.action}>
-          {btn.icon}
-        </Button>
-      ))}
-    </div>
-  );
+export const MessageButtons = ({
+	message,
+	setIsOpen,
+	setViewMessage,
+	messageMeDelete,
+	setLoading,
+	loading,
+}) => {
+	const buttons = buttonsConfig(
+		message,
+		setIsOpen,
+		setViewMessage,
+		messageMeDelete,
+		setLoading,
+		loading,
+	);
+
+	return (
+		<div className={styles.btnContainer}>
+			{buttons.map((btn, index) => (
+				<Button key={index} onClick={btn.action}>
+					{btn.icon}
+				</Button>
+			))}
+		</div>
+	);
 };
