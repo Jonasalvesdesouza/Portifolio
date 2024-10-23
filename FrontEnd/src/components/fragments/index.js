@@ -19,12 +19,12 @@ export { EditProfileModal } from './modals/EditProfileModal';
 export { InsertProjectModal } from './modals/projectsModals/InsertProjectModal';
 export { EditProjectModal } from './modals/projectsModals/EditProjectModal';
 export { ImageProjectModal } from './modals/projectsModals/ImageProjectModal';
-export { ImageUpdateProjectModal } from './modals/projectsModals/ImageUpdateProjectModal ';
+export { ImageUpdateProjectModal } from './modals/projectsModals/ImageUpdateProjectModal';
 
 export { InsertArticleModal } from './modals/articlesModals/InsertArticleModal';
 export { EditArticleModal } from './modals/articlesModals/EditArticleModal';
 export { InserirImagemArticleModal } from './modals/articlesModals/InserirImagemArticleModal';
-export { ImageUpdateArticleModal } from './modals/articlesModals/ImageUpdateArticleModal ';
+export { ImageUpdateArticleModal } from './modals/articlesModals/ImageUpdateArticleModal';
 
 export { InsertSocialMediaModal } from './modals/socialMediaModals/InsertSocialMediaModal';
 export { EditSocialMediaModal } from './modals/socialMediaModals/EditSocialMediaModal';
@@ -32,8 +32,8 @@ export { EditSocialMediaModal } from './modals/socialMediaModals/EditSocialMedia
 export { InsertHobbyModal } from './modals/HobbyModals/InsertHobbyModal';
 export { EditHobbyModal } from './modals/HobbyModals/EditHobbyModal';
 
-export { InsertSkillModal } from './modals/SkillModals /InsertSkillModal';
-export { EditSkillModal } from './modals/SkillModals /EditSkillModal';
+export { InsertSkillModal } from './modals/SkillModals/InsertSkillModal';
+export { EditSkillModal } from './modals/SkillModals/EditSkillModal';
 
 export { InsertEducationModal } from './modals/educationModals/InsertEducationModal';
 export { EditEducationModal } from './modals/educationModals/EditEducationModal';
@@ -41,7 +41,7 @@ export { EditEducationModal } from './modals/educationModals/EditEducationModal'
 export { InsertJobExperienceModal } from './modals/jobExperienceModals/InsertJobExperienceModal';
 export { EditJobExperienceModal } from './modals/jobExperienceModals/EditJobExperienceModal';
 
-export { ViewMessageModal } from './modals/MessageModal /ViewMessageModal';
+export { ViewMessageModal } from './modals/MessageModal/ViewMessageModal';
 
 export { NavHomePage } from './NavHomePage';
 
