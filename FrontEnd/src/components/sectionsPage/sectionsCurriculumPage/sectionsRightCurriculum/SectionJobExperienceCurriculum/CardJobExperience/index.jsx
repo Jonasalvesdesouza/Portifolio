@@ -3,37 +3,44 @@ import { useDateFormatEduIsJobExp } from '../../../../../../hooks';
 import styles from './styles.module.scss';
 
 export const CardJobExperience = ({ job }) => {
-  const initialDate = useDateFormatEduIsJobExp(job.initialDate);
-  const endDate = useDateFormatEduIsJobExp(job.endDate);
+	const initialDate = useDateFormatEduIsJobExp(job.initialDate);
+	const endDate = useDateFormatEduIsJobExp(job.endDate);
 
-  const work = job.title;
-  const office = job.companyName;
+	/* 	console.log(
+		`job.initialDate: `,
+		job.initialDate,
+		`job.endDate: `,
+		job.endDate,
+	); */
 
-  const country = job.country;
-  const state = job.state;
-  const city = job.city;
+	const work = job.title;
+	const office = job.companyName;
 
-  const description = job.description;
+	const country = job.country;
+	const state = job.state;
+	const city = job.city;
 
-  return (
-    <li className={`${styles.cardJobExperienceContainer}`}>
-      <div className={`${styles.cardJobExperienceHeader}`}>
-        <div className={`${styles.TopHeader}`}>
-          {<h4 className="title1 curriculum right">{work}</h4>}
+	const description = job.description;
 
-          <span className="title3 curriculum">
-            {initialDate +
-              ' - ' +
-              (endDate === 'Invalid date format' ? 'Current' : endDate)}
-          </span>
-        </div>
-        <div className="parapraph curriculum italic">
-          <span>{office + ' / ' + city + ' - ' + state + ' / ' + country}</span>
-        </div>
-      </div>
-      <div>
-        <span className="parapraph curriculum">{description}</span>
-      </div>
-    </li>
-  );
+	return (
+		<li className={`${styles.cardJobExperienceContainer}`}>
+			<div className={`${styles.cardJobExperienceHeader}`}>
+				<div className={`${styles.TopHeader}`}>
+					{<h4 className="title1 curriculum right">{work}</h4>}
+
+					<span className="title3 curriculum">
+						{initialDate +
+							' - ' +
+							(endDate === 'Invalid date format' ? 'Current' : endDate)}
+					</span>
+				</div>
+				<div className="parapraph curriculum italic">
+					<span>{office + ' / ' + city + ' - ' + state + ' / ' + country}</span>
+				</div>
+			</div>
+			<div>
+				<span className="parapraph curriculum">{description}</span>
+			</div>
+		</li>
+	);
 };
