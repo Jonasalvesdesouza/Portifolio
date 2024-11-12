@@ -1,140 +1,140 @@
 .headerContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 90vw;
-  height: 100%;
-  margin: 0 auto;
-  transition: all 0.3s ease-in-out;
-  padding: 25px;
-  opacity: 1;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 90vw;
+	height: 100%;
+	margin: 0 auto;
+	transition: all 0.3s ease-in-out;
+	padding: 25px;
+	opacity: 1;
 
-  .logo {
-    transition: all 0.3s ease-in-out;
-    a {
-      transition: all 0.3s ease-in-out;
-      img {
-        width: clamp(30px, 2.5vw, 35px);
-        transition: 0.3s ease-in-out;
-      }
-      img:hover {
-        opacity: 0.5;
-      }
-    }
-  }
+	.logo {
+		transition: all 0.3s ease-in-out;
+		a {
+			transition: all 0.3s ease-in-out;
+			img {
+				width: clamp(20px, 2.5vw, 35px);
+				transition: 0.3s ease-in-out;
+			}
+			img:hover {
+				opacity: 0.5;
+			}
+		}
+	}
 
-  .hamburger {
-    z-index: 11;
-  }
-  .filterModal {
-    z-index: 10;
-  }
+	.hamburger {
+		z-index: 11;
+	}
+	.filterModal {
+		z-index: 10;
+	}
 
-  div {
-    transition: all 0.3s ease-in-out;
-  }
+	div {
+		transition: all 0.3s ease-in-out;
+	}
 
-  @media (max-width: 1024px) {
-    .logo {
-      img {
-        width: 30px;
-      }
-    }
-  }
+	@media (max-width: 1024px) {
+		.logo {
+			img {
+				width: 30px;
+			}
+		}
+	}
 }
 
 .sticky {
-  background-color: var(--color-blackTransparent);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+	background-color: var(--color-blackTransparent);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
 
-  .stickyContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 90vw;
-    height: 10vh;
-    margin: 0 auto;
-    padding: 0;
+	.stickyContainer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 90vw;
+		height: 10vh;
+		margin: 0 auto;
+		padding: 0;
 
-    .hamburger {
-      margin-top: 1.5vh;
-    }
+		.hamburger {
+			margin-top: 1.5vh;
+		}
 
-    .filter {
-      display: flex;
-      flex-direction: row;
-      align-content: center;
-      align-items: center;
-      justify-content: space-between;
-      width: 85%;
-      height: 100%;
+		.filter {
+			display: flex;
+			flex-direction: row;
+			align-content: center;
+			align-items: center;
+			justify-content: space-between;
+			width: 85%;
+			height: 100%;
 
-      z-index: 7;
+			z-index: 7;
 
-      @media (max-width: 1024px) {
-        justify-content: flex-end;
-      }
-    }
+			@media (max-width: 1024px) {
+				justify-content: flex-end;
+			}
+		}
 
-    .logo {
-      transition: all 0.6s ease-in-out;
-      a {
-        transition: all 0.6s ease-in-out;
-        img {
-          width: clamp(30px, 2.5vw, 35px);
-          transition: all 0.6s ease-in-out;
-        }
-        img:hover {
-          opacity: 0.5;
-        }
-      }
-    }
-  }
+		.logo {
+			transition: all 0.6s ease-in-out;
+			a {
+				transition: all 0.6s ease-in-out;
+				img {
+					width: clamp(30px, 2.5vw, 35px);
+					transition: all 0.6s ease-in-out;
+				}
+				img:hover {
+					opacity: 0.5;
+				}
+			}
+		}
+	}
 }
 
 .stickyWhite {
-  background-color: var(--color-whiteTransparent);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+	background-color: var(--color-whiteTransparent);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
 
-  .stickyContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 90vw;
-    height: 10vh;
-    margin: 0 auto;
-    padding: 0;
+	.stickyContainer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 90vw;
+		height: 10vh;
+		margin: 0 auto;
+		padding: 0;
 
-    .hamburger {
-      margin-top: 1.5vh;
-    }
+		.hamburger {
+			margin-top: 1.5vh;
+		}
 
-    .filter {
-      display: flex;
-      flex-direction: row;
-      align-content: center;
-      align-items: center;
-      justify-content: space-between;
-      width: 85%;
-      height: 100%;
-    }
+		.filter {
+			display: flex;
+			flex-direction: row;
+			align-content: center;
+			align-items: center;
+			justify-content: space-between;
+			width: 85%;
+			height: 100%;
+		}
 
-    .logo {
-      transition: all 0.6s ease-in-out;
-      a {
-        transition: all 0.6s ease-in-out;
-        img {
-          width: clamp(30px, 2.5vw, 35px);
-          transition: all 0.6s ease-in-out;
-        }
-        img:hover {
-          opacity: 0.5;
-        }
-      }
-    }
-  }
+		.logo {
+			transition: all 0.6s ease-in-out;
+			a {
+				transition: all 0.6s ease-in-out;
+				img {
+					width: clamp(30px, 2.5vw, 35px);
+					transition: all 0.6s ease-in-out;
+				}
+				img:hover {
+					opacity: 0.5;
+				}
+			}
+		}
+	}
 }

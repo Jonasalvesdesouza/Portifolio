@@ -1,64 +1,71 @@
 .label {
-  display: flex;
-  flex-direction: column;
-  width: 60px;
-  transition: opacity 0.3s ease-in-out;
-  cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	width: 3.5vw;
+	transition: opacity 0.3s ease-in-out;
+	cursor: pointer;
 
-  z-index: 10;
+	@media (max-width: 850px) {
+		width: 5vw;
+	}
+	@media (max-width: 650px) {
+		width: 6vw;
+	}
+	@media (max-width: 400px) {
+		width: 7vw;
+	}
 
-  &:hover {
-    opacity: 0.55;
-  }
+	&:hover {
+		opacity: 0.55;
+	}
 
-  .span {
-    background: var(--color-gray1);
-    border-radius: 2px;
-    height: 4px;
-    margin: 4px 0;
-    transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-    width: 100%;
+	.span {
+		background: var(--color-gray1);
+		border-radius: 1vw;
+		height: 0.25vw;
+		margin: 0.2vw 0;
+		transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 
-    &.white {
-      background: var(--color-white);
-    }
+		&.white {
+			background: var(--color-white);
+		}
 
-    &.black {
-      background: var(--color-black);
-    }
+		&.black {
+			background: var(--color-black);
+		}
 
-    &:nth-of-type(1) {
-      width: 50%;
-    }
+		&:nth-of-type(1) {
+			width: 50%;
+		}
 
-    &:nth-of-type(2) {
-      width: 100%;
-    }
+		&:nth-of-type(2) {
+			width: 100%;
+		}
 
-    &:nth-of-type(3) {
-      width: 75%;
-    }
-  }
+		&:nth-of-type(3) {
+			width: 75%;
+		}
+	}
 
-  .input[type='checkbox'] {
-    display: none;
+	.input[type='checkbox'] {
+		display: none;
 
-    &:checked ~ .span:nth-of-type(1) {
-      transform-origin: bottom;
-      width: 25%;
-      transform: rotatez(45deg) translate(5px, 2px);
-    }
+		&:checked ~ .span:nth-of-type(1) {
+			transform-origin: bottom;
+			width: 25%;
+			transform: rotatez(45deg) translate(5px, 2px);
+		}
 
-    &:checked ~ .span:nth-of-type(2) {
-      transform-origin: top;
-      width: 50%;
-      transform: rotatez(-45deg);
-    }
+		&:checked ~ .span:nth-of-type(2) {
+			transform-origin: top;
+			width: 50%;
+			transform: rotatez(-45deg);
+		}
 
-    &:checked ~ .span:nth-of-type(3) {
-      transform-origin: bottom;
-      width: 25%;
-      transform: rotatez(45deg) translate(4px, -15px);
-    }
-  }
+		&:checked ~ .span:nth-of-type(3) {
+			transform-origin: bottom;
+			width: 25%;
+			transform: rotatez(45deg) translate(4px, -15px);
+		}
+	}
 }

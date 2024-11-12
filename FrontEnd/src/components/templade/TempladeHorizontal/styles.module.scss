@@ -11,73 +11,78 @@ $color-white: var(--color-white);
 $color-gray0: var(--color-gray0);
 
 .templadeHorizontalContainer {
-  height: 100vh;
-  width: 100%;
-  margin: 0;
-  background: linear-gradient(to right, $color-black 12vw, $color-white 12vw);
-  position: relative;
-  overflow: hidden;
+	height: 100vh;
+	width: 100%;
+	margin: 0;
+	background: linear-gradient(to right, $color-black 12vw, $color-white 12vw);
+	position: relative;
+	overflow: hidden;
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 80vh;
-    left: 0;
-    width: 12vw;
-    height: 1px;
-    background-color: var(--color-gray0);
-  }
+	&::after {
+		content: '';
+		position: absolute;
+		top: 80vh;
+		left: 0;
+		width: 12vw;
+		height: 1px;
+		background-color: var(--color-gray0);
+	}
 
-  header {
-    width: 100%;
-  }
+	header {
+		width: 100%;
+	}
 
-  .container {
-    display: flex;
-    flex-direction: row;
+	.container {
+		display: flex;
+		flex-direction: row;
 
-    width: 100%;
-    height: 87%;
-    .mainContainer {
-      margin-left: 5vw;
-      margin-top: 5vw;
-    }
-    .leftSideContainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
+		width: 100%;
+		height: 87%;
+		.mainContainer {
+			margin-left: 5vw;
+			margin-top: 5vw;
+		}
+		.leftSideContainer {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
 
-      nav {
-        margin-top: 10vw;
-        margin-left: 3vw;
-      }
+			nav {
+				margin-top: 10vw;
+				margin-left: 3vw;
+			}
 
-      footer {
-        margin-bottom: 3vw;
-        margin-left: 1.5vw;
-      }
-    }
-    .button {
-      position: absolute;
-      top: $template-button-top;
-      left: $template-button-left;
-      animation: moveUpDown 1.5s infinite alternate ease-in-out;
-      transition: 0.5s;
+			footer {
+				margin-bottom: 3vw;
+				margin-left: 1.5vw;
+			}
+		}
+		.button {
+			position: absolute;
+			top: $template-button-top;
+			left: $template-button-left;
+			animation: moveUpDown 1.5s infinite alternate ease-in-out;
+			transition: 0.5s;
 
-      &:hover {
-        opacity: 0.5;
-        animation: moveUpDown 0.5s infinite alternate ease-in-out;
-      }
-    }
-  }
+			&:hover {
+				opacity: 0.5;
+				animation: moveUpDown 0.5s infinite alternate ease-in-out;
+			}
+		}
+	}
+
+	.arrowIcon {
+		font-size: 3vw;
+		color: var(--color-gray2);
+	}
 }
 
 @keyframes moveUpDown {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-20px);
-  }
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(-20px);
+	}
 }

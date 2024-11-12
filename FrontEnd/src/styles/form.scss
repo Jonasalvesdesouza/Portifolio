@@ -1,50 +1,50 @@
 %default {
-  border-left: 1px solid var(--color-black);
-  border-bottom: 1px solid var(--color-black);
-  border-right: 0;
-  border-top: 0;
-  background: var(--color-white);
+	border-left: 1px solid var(--color-gray0);
+	border-bottom: 1px solid var(--color-gray0);
+	border-right: 0;
+	border-top: 0;
+	background: var(--color-white);
 }
 
-.input-small {
-  @extend %default;
-  height: 42px;
+.inputSmall {
+	@extend %default;
+	height: 42px;
 }
-.input-medium {
-  @extend %default;
-  width: 33vw;
-  height: 2.8vw;
+.inputMedium {
+	@extend %default;
+	width: 33vw;
+	height: 2.8vw;
 
-  font-size: 1vw;
+	font-size: 1vw;
 
-  padding-left: 15px;
+	padding-left: 15px;
 
-  &.vertical {
-    width: 35vw;
-    height: 3.5vw;
+	&.vertical {
+		width: 35vw;
+		height: 3.5vw;
 
-    @media (max-width: 1024px) {
-      width: 70vw;
-      height: 5vw;
-    }
-  }
+		@media (max-width: 1024px) {
+			width: 70vw;
+			height: 5vw;
+		}
+	}
 }
 
-.textArea-medium {
-  @extend %default;
-  width: 33vw;
-  height: 10.5vw;
+.textAreaMedium {
+	@extend %default;
+	width: 33vw;
+	height: 100%;
 
-  font-size: 1vw;
+	font-size: 1vw;
 
-  padding: 1vw;
+	padding: 1vw;
 
-  &.vertical {
-    width: 35vw;
+	&.vertical {
+		width: 35vw;
 
-    @media (max-width: 1024px) {
-      width: 70vw;
-      height: 20vw;
-    }
-  }
+		@media (max-width: 1024px) {
+			width: 70vw;
+			height: 20vw;
+		}
+	}
 }
