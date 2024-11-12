@@ -22,8 +22,6 @@ export const useDateFormatEduIsJobExp = (date) => {
 			];
 			const abbreviatedMonth = monthNames[Number(month) - 1];
 
-			console.log(abbreviatedMonth);
-
 			return abbreviatedMonth ? `${abbreviatedMonth}.${year}` : 'Invalid month';
 		} else {
 			return 'Invalid date format';

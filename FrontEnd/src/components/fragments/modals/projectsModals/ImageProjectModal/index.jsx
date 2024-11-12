@@ -14,9 +14,6 @@ import styles from './styles.module.scss';
 export const ImageProjectModal = ({ project, setIsOpenInsertImage }) => {
 	const { imageProject } = useContext(AppBehaviorContext);
 	const projectImage = useObjectImage(project, imageProject);
-
-	console.log(projectImage);
-
 	const { closeModalOutClick, closeModalKeyDownEsque } =
 		useCloseModal(setIsOpenInsertImage);
 

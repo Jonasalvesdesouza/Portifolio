@@ -1,19 +1,11 @@
 .label {
 	display: flex;
 	flex-direction: column;
-	width: 3.5vw;
+	width: clamp(55px, 3.5vw, 80px);
 	transition: opacity 0.3s ease-in-out;
 	cursor: pointer;
 
-	@media (max-width: 850px) {
-		width: 5vw;
-	}
-	@media (max-width: 650px) {
-		width: 6vw;
-	}
-	@media (max-width: 400px) {
-		width: 7vw;
-	}
+	z-index: 10;
 
 	&:hover {
 		opacity: 0.55;
@@ -21,10 +13,11 @@
 
 	.span {
 		background: var(--color-gray1);
-		border-radius: 1vw;
-		height: 0.25vw;
-		margin: 0.2vw 0;
+		border-radius: 1px;
+		height: clamp(1px, 5px, 3px);
+		margin: clamp(3px, 4.5px, 6px) 0;
 		transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+		width: 100%;
 
 		&.white {
 			background: var(--color-white);
@@ -66,6 +59,95 @@
 			transform-origin: bottom;
 			width: 25%;
 			transform: rotatez(45deg) translate(4px, -15px);
+		}
+	}
+
+	@media (max-width: 1024px) {
+		width: clamp(30px, 6vw, 50px);
+
+		.span {
+			height: clamp(1px, 3px, 2px);
+			margin: clamp(3px, 4px, 4px) 0;
+		}
+
+		.input[type='checkbox'] {
+			display: none;
+
+			&:checked ~ .span:nth-of-type(1) {
+				transform-origin: bottom;
+				width: 25%;
+				transform: rotatez(45deg) translate(5px, 2px);
+			}
+
+			&:checked ~ .span:nth-of-type(2) {
+				transform-origin: top;
+				width: 50%;
+				transform: rotatez(-45deg);
+			}
+
+			&:checked ~ .span:nth-of-type(3) {
+				transform-origin: bottom;
+				width: 25%;
+				transform: rotatez(45deg)
+					translate(clamp(2px, 3px, 4px), clamp(-12px, -18px, -15px));
+			}
+		}
+	}
+
+	@media (max-width: 760px) {
+		.input[type='checkbox'] {
+			display: none;
+
+			&:checked ~ .span:nth-of-type(1) {
+				transform-origin: bottom;
+				width: 25%;
+				transform: rotatez(45deg)
+					translate(clamp(3px, 5px, 4px), clamp(1px, 3px, 2px));
+			}
+
+			&:checked ~ .span:nth-of-type(2) {
+				transform-origin: top;
+				width: clamp(55%, 30%, 50%);
+				transform: rotatez(-45deg);
+			}
+
+			&:checked ~ .span:nth-of-type(3) {
+				transform-origin: bottom;
+				width: 25%;
+				transform: rotatez(45deg)
+					translate(clamp(3px, 8px, 3px), clamp(-12px, -18px, -15px));
+			}
+		}
+	}
+
+	@media (max-width: 630px) {
+		width: clamp(40px, 2.5vw, 50px);
+
+		.span {
+			height: 1px;
+			margin: 4px 0;
+		}
+
+		.input[type='checkbox'] {
+			display: none;
+
+			&:checked ~ .span:nth-of-type(1) {
+				transform-origin: bottom;
+				width: 25%;
+				transform: rotatez(45deg) translate(5px, 2px);
+			}
+
+			&:checked ~ .span:nth-of-type(2) {
+				transform-origin: top;
+				width: clamp(50%, 30%, 50%);
+				transform: rotatez(-45deg);
+			}
+
+			&:checked ~ .span:nth-of-type(3) {
+				transform-origin: bottom;
+				width: 25%;
+				transform: rotatez(45deg) translate(3px, -11px);
+			}
 		}
 	}
 }

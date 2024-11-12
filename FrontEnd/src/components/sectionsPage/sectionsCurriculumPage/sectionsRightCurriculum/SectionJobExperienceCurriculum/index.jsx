@@ -5,24 +5,24 @@ import { CardJobExperience } from './CardJobExperience';
 import styles from './styles.module.scss';
 
 export const SectionJobExperienceCurriculum = () => {
-  const { jobExperienceList } = useContext(UserAdmContext);
+	const { jobExperienceList } = useContext(UserAdmContext);
 
-  const sortedJobExperienceList = jobExperienceList?.sort(
-    (a, b) => b.id - a.id,
-  );
+	const sortedJobExperienceList = jobExperienceList?.sort(
+		(a, b) => b.id - a.id,
+	);
 
-  return (
-    <div className={`${styles.sectionJobExperienceContainer}`}>
-      <div className={`${styles.jobExperienceHeader}`}>
-        <h4 className="title1 black">Job Experience</h4>
-      </div>
-      <div>
-        <ul>
-          {sortedJobExperienceList?.map((job) => {
-            return <CardJobExperience key={job.id} job={job} />;
-          })}
-        </ul>
-      </div>
-    </div>
-  );
+	return (
+		<div className={`${styles.sectionJobExperienceContainer}`}>
+			<div className={`${styles.jobExperienceHeader}`}>
+				<h4 className="title1 black">Job Experience</h4>
+			</div>
+			<div>
+				<ul>
+					{sortedJobExperienceList?.map((job) => {
+						return <CardJobExperience key={job.id} job={job} />;
+					})}
+				</ul>
+			</div>
+		</div>
+	);
 };

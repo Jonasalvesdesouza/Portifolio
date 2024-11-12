@@ -31,8 +31,6 @@ export const FormSendMeEmail = () => {
 	const inputClass = `${isResponsive ? `${styles.vertical}` : ''}`;
 	const textAreaClass = `${isResponsive ? `${styles.right} ${styles.vertical}` : `${styles.right}`}`;
 
-	console.log(isResponsive);
-
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
 			<div className={classContent}>

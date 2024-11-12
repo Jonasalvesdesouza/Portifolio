@@ -23,8 +23,6 @@ class HandleErrors {
       return res.status(403).json({ message: error.message });
     }
 
-    console.log(error);
-
     return res.status(500).json({ message: "Internal server error" });
   }
 }

@@ -6,13 +6,6 @@ export const CardJobExperience = ({ job }) => {
 	const initialDate = useDateFormatEduIsJobExp(job.initialDate);
 	const endDate = useDateFormatEduIsJobExp(job.endDate);
 
-	/* 	console.log(
-		`job.initialDate: `,
-		job.initialDate,
-		`job.endDate: `,
-		job.endDate,
-	); */
-
 	const work = job.title;
 	const office = job.companyName;
 
