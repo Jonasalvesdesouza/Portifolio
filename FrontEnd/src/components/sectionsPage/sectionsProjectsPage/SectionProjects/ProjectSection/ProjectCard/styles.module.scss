@@ -102,13 +102,15 @@ li {
 				}
 
 				&:hover {
-					background: var(--color-gray1);
+					background: var(--color-gray0);
 
 					a {
-						color: var(--color-white);
-
-						.icon {
+						.bntContent {
 							color: var(--color-white);
+
+							.icon {
+								color: var(--color-white);
+							}
 						}
 					}
 				}

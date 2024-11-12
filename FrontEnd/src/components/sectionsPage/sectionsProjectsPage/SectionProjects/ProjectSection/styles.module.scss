@@ -1,3 +1,7 @@
+%arrowIcon {
+	color: var(--color-yellow);
+}
+
 .projectSection {
 	position: relative;
 	width: 100%;
@@ -45,7 +49,7 @@
 
 				&:hover {
 					.arrowIcon {
-						color: var(--color-black);
+						@extend %arrowIcon;
 					}
 				}
 			}
@@ -55,7 +59,7 @@
 
 				&:hover {
 					.arrowIcon {
-						color: var(--color-black);
+						@extend %arrowIcon;
 					}
 				}
 			}
