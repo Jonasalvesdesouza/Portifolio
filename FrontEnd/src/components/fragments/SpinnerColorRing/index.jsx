@@ -5,8 +5,6 @@ import styles from './style.module.scss';
 export const SpinnerColorRing = ({ isResponsive }) => {
 	const classSpiner = `${isResponsive ? styles.vertical : styles.horizontal}`;
 
-	console.log(isResponsive);
-
 	return (
 		<div className={classSpiner}>
 			<ColorRing

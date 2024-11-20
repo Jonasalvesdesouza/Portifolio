@@ -15,19 +15,14 @@ import {
 	useCardAnimation,
 	useScrollManagerChrome,
 	useScrollManagerIsFirefox,
+	useRenderCheckObject,
 } from '../../hooks';
 
 export const HomePage = () => {
 	const { currentCard } = useContext(AppBehaviorContext);
 	const { profile } = useContext(UserAdmContext);
 
-	//Criar um hook....
-	const [isLoading, setLoading] = useState(true);
-	useEffect(() => {
-		if (profile.image) {
-			setLoading(false);
-		}
-	}, [profile]);
+	const isLoading = useRenderCheckObject(profile.image);
 
 	const userAgent = window.navigator.userAgent.toLowerCase();
 	const isChrome = /chrome/.test(userAgent);

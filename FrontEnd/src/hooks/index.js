@@ -42,3 +42,4 @@ export { useBodyOverflowToggle } from './useBodyOverflowToggle';
 export { useObjectImage } from './useObjectImage';
 export { useImageObject } from './useImageObject';
 export { useCloseModal } from './useCloseModal';
+export { useRenderCheckObject } from './useRenderCheckObject';
