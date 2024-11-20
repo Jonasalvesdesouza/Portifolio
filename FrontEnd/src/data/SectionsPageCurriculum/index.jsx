@@ -3,7 +3,7 @@ import {
 	SectionRightCurriculum,
 } from '../../components/sectionsPage/sectionsCurriculumPage';
 
-export const sectionsConfig = [
+export const SectionsPageCurriculum = [
 	{
 		component: <SectionLeftCurriculum key="left" />,
 		className: 'headerSection1',

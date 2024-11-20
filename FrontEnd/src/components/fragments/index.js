@@ -47,3 +47,5 @@ export { NavHomePage } from './NavHomePage';
 
 export { FilterCategoryArticles } from './filters/FilterCategoryArticles';
 export { FilterProjects } from './filters/FilterProjects';
+
+export { SpinnerColorRing } from './SpinnerColorRing';

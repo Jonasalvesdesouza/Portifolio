@@ -1,11 +1,11 @@
 import { Header } from '../../components/fragments';
 import { useSectionVisibilityCurriculum } from '../../hooks';
-import { sectionsConfig } from './data';
+import { SectionsPageCurriculum } from '../../data';
 
 import styles from './styles.module.scss';
 
 export const CurriculumPage = () => {
-	const sections = sectionsConfig;
+	const sections = SectionsPageCurriculum;
 	const { headerClass, sectionRefs } = useSectionVisibilityCurriculum(sections);
 
 	return (

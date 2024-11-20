@@ -1,77 +1,77 @@
 .curriculumContainer {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  background: linear-gradient(
-    to right,
-    var(--color-black) 50%,
-    var(--color-white) 50%
-  );
+	background: linear-gradient(
+		to right,
+		var(--color-black) 50%,
+		var(--color-white) 50%
+	);
 
-  gap: 100px;
+	gap: 100px;
 
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }
+	header {
+		position: sticky;
+		top: 0;
+		z-index: 1;
+	}
 
-  main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+	main {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
 
-    margin: 0 auto;
-    max-width: 78vw;
+		margin: 0 auto;
+		max-width: 78vw;
 
-    .leftContainer {
-      width: 45%;
-    }
-    .rightContainer {
-      width: 45%;
-    }
-  }
+		.leftContainer {
+			width: 45%;
+		}
+		.rightContainer {
+			width: 45%;
+		}
+	}
 
-  @media (max-width: 1024px) {
-    background: linear-gradient(
-      to bottom,
-      var(--color-black) 10%,
-      var(--color-black) 10%,
-      var(--color-white) 0%,
-      var(--color-white) 0%
-    );
+	@media (max-width: 1024px) {
+		background: linear-gradient(
+			to bottom,
+			var(--color-black) 10%,
+			var(--color-black) 10%,
+			var(--color-white) 0%,
+			var(--color-white) 0%
+		);
 
-    gap: 0;
+		gap: 0px;
 
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+		main {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 
-      max-width: 100%;
-      margin: 0;
+			max-width: 100%;
+			margin: 0;
 
-      .leftContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+			.leftContainer {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
 
-        width: 100%;
+				width: 100%;
 
-        background: var(--color-black);
+				background: var(--color-black);
 
-        padding-bottom: 5%;
-      }
-      .rightContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+				padding-bottom: 5%;
+			}
+			.rightContainer {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
 
-        width: 100%;
-        background: var(--color-white);
+				width: 100%;
+				background: var(--color-white);
 
-        padding-top: 5%;
-      }
-    }
-  }
+				padding-top: 5%;
+			}
+		}
+	}
 }

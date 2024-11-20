@@ -1,13 +1,10 @@
-import { useContext } from 'react';
-import { DefaultTemplate, TempladeHorizontal } from '../../components/templade';
-import { AppBehaviorContext } from '../../providers';
+import { useContext, useEffect, useState } from 'react';
 
-import {
-	SectionBannerHomePage,
-	SectionAboutHomePage,
-	SectionMeEmail,
-	SectionWorkplace,
-} from '../../components/sectionsPage/sectionsHomePage';
+import { DefaultTemplate, TempladeHorizontal } from '../../components/templade';
+import { SpinnerColorRing } from '../../components/fragments';
+import { AppBehaviorContext, UserAdmContext } from '../../providers';
+
+import { SectionsPageHome } from '../../data';
 
 import {
 	useScreenWidth,
@@ -22,13 +19,15 @@ import {
 
 export const HomePage = () => {
 	const { currentCard } = useContext(AppBehaviorContext);
+	const { profile } = useContext(UserAdmContext);
 
-	const cards = [
-		<SectionBannerHomePage key="banner" />,
-		<SectionAboutHomePage key="about" />,
-		<SectionWorkplace key="workplace" />,
-		<SectionMeEmail key="email" />,
-	];
+	//Criar um hook....
+	const [isLoading, setLoading] = useState(true);
+	useEffect(() => {
+		if (profile.image) {
+			setLoading(false);
+		}
+	}, [profile]);
 
 	const userAgent = window.navigator.userAgent.toLowerCase();
 	const isChrome = /chrome/.test(userAgent);
@@ -38,8 +37,8 @@ export const HomePage = () => {
 	const isResponsive = useResponsive();
 
 	const { handleTouchStart, handleTouchMove, handleTouchEnd } =
-		useCardSwipe(cards);
-	const { headerClass, sectionRefs } = useSectionVisibility(cards);
+		useCardSwipe(SectionsPageHome);
+	const { headerClass, sectionRefs } = useSectionVisibility(SectionsPageHome);
 	const { animate } = useCardAnimation(currentCard);
 
 	useScrollManagerChrome(
@@ -54,27 +53,34 @@ export const HomePage = () => {
 	return (
 		<>
 			{isResponsive ? (
-				<DefaultTemplate headerClass={headerClass}>
-					<div
-						onTouchStart={handleTouchStart}
-						onTouchMove={handleTouchMove}
-						onTouchEnd={handleTouchEnd}
-					>
-						{sectionRefs.map(({ ref }, index) => (
+				<DefaultTemplate
+					onTouchStart={handleTouchStart}
+					onTouchMove={handleTouchMove}
+					onTouchEnd={handleTouchEnd}
+					headerClass={headerClass}
+				>
+					{isLoading ? (
+						<SpinnerColorRing isResponsive={isResponsive} />
+					) : (
+						sectionRefs.map(({ ref }, index) => (
 							<div key={index} ref={ref.ref}>
-								{cards[index]}
+								{SectionsPageHome[index]}
 							</div>
-						))}
-					</div>
+						))
+					)}
 				</DefaultTemplate>
 			) : (
-				<TempladeHorizontal>
-					<div
-						onTouchStart={handleTouchStart}
-						onTouchMove={handleTouchMove}
-						onTouchEnd={handleTouchEnd}
-					>
-						<div className={animate ? 'fade-in' : ''}>{cards[currentCard]}</div>
+				<TempladeHorizontal
+					onTouchStart={handleTouchStart}
+					onTouchMove={handleTouchMove}
+					onTouchEnd={handleTouchEnd}
+				>
+					<div className={animate ? 'fade-in' : ''}>
+						{isLoading ? (
+							<SpinnerColorRing isResponsive={isResponsive} />
+						) : (
+							SectionsPageHome[currentCard]
+						)}
 					</div>
 				</TempladeHorizontal>
 			)}
