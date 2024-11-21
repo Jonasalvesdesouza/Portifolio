@@ -46,14 +46,14 @@ git clone https://github.com/Jonasalvesdesouza/Portifolio.git
 
 ```
 
-2. CD Portfolio/FrontEnd/Prototype
+2. CD Portfolio/Client
 
-3. Install frontend dependencies:
+3. Install Client dependencies:
 
 npm install
 
-4. Install backend dependencies:
-   CD Portfolio/BackEnd/Prototype
+4. Install Server dependencies:
+   CD Portfolio/Server
    npm install
 
 ### Environment Setting
