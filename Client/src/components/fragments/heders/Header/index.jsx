@@ -32,8 +32,6 @@ export const Header = ({ children, headerClass, isSticky }) => {
 	const logo = useBlackLogo ? BlackLogo : YellowLogo;
 	const logoAlt = useBlackLogo ? 'Black Logo' : 'Yellow Logo';
 
-	console.log(isSticky)
-
 	const classHamburguer = isOpenNav ? 'headerSection2' : headerClass;
 	const headerClassName = `${isSticky ? styles.sticky : ''} ${isSticky && testRouterIsBlogOrProjects ? styles['stickyWhite'] : ''} ${isSticky ? 'slide-in-top' : ''}`;
 	const classContainer = `${styles.headerContainer} ${isSticky ? styles.stickyContainer : ''}`;

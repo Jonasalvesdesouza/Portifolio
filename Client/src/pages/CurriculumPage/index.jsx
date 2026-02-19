@@ -1,6 +1,6 @@
 import { Header } from '../../components/fragments';
 import { useSectionVisibilityCurriculum } from '../../hooks';
-import { useSticky } from '../../hooks';
+import { useSticky, useResponsive } from '../../hooks';
 
 import { SectionsPageCurriculum } from '../../data';
 
@@ -8,17 +8,18 @@ import styles from './styles.module.scss';
 
 export const CurriculumPage = () => {
 	const sections = SectionsPageCurriculum;
+
 	const { headerClass, sectionRefs } = useSectionVisibilityCurriculum(sections);
 	  const [isSticky, filterRef] = useSticky();
-
+	  const isResponsive = useResponsive();
+	 
 	return (
 		<>
 			<div 
 				className={`${styles.curriculumContainer}`}
-				isSticky={isSticky}
 			>
 				<Header headerClass={headerClass} isSticky={isSticky} />
-				<main ref={filterRef}>
+				<main ref={isResponsive === true ? filterRef : null} >
 					<div ref={sectionRefs[0][0]} className={`${styles.leftContainer}`}>
 						{sections[0].component}
 					</div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 export const useSectionVisibilityCurriculum = (sections) => {
-	const sectionRefs = sections.map(() => useInView({ threshold: 0.55 }));
+	const sectionRefs = sections.map(() => useInView({ threshold: 0.05 }));
 
 	const [headerClass, setHeaderClass] = useState('');
 
