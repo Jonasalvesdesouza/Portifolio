@@ -18,7 +18,7 @@ class UserControllers {
 
   async login(req: Request, res: Response): Promise<Response> {
     const response = await this.userServices.login(req.body);
-
+    
     return res.status(200).json(response);
   }
 

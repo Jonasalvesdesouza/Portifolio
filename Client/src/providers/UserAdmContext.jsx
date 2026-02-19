@@ -54,8 +54,8 @@ export const UserAdmProvider = ({ children }) => {
 			navigate(pathName);
 			return data;
 		},
+		
 	});
-
 	const { Profile } = useQuery({
 		queryKey: ['profile'],
 		queryFn: async () => {
@@ -76,7 +76,7 @@ export const UserAdmProvider = ({ children }) => {
 	const profileUpdate = async (payload, setLoading, reset) => {
 		try {
 			setLoading(true);
-			const profileId = payload.id;
+			const profileId = payload?.id;
 
 			const { data } = await api.patch(
 				`/profile/${profileId}`,
@@ -143,7 +143,7 @@ export const UserAdmProvider = ({ children }) => {
 		try {
 			setLoading(true);
 
-			const { data } = await api.patch('/profile/contact/', payload, headers);
+			const { data } = await api.patch(`/profile/contact/${profile.contact.id}`, payload, headers);
 
 			NotifySucess('User update successfully!');
 			reset();
@@ -220,6 +220,7 @@ export const UserAdmProvider = ({ children }) => {
 		setIsopenUpdateImage,
 	) => {
 		try {
+			console.log(project)
 			setLoading(true);
 
 			const { data } = await api.patch(
@@ -227,6 +228,7 @@ export const UserAdmProvider = ({ children }) => {
 				payload,
 				headers,
 			);
+
 
 			setProjectsList(
 				projectsList.map((project) => {

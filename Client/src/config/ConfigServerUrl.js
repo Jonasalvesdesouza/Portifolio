@@ -1,1 +1,1 @@
-export const ConfigServerUrl = 'http://localhost:3500';
+export const ConfigServerUrl = 'http://localhost:3550';

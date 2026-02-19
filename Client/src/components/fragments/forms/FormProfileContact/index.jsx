@@ -23,8 +23,8 @@ export const FormProfileContact = () => {
 	} = useForm({
 		resolver: zodResolver(contactProfileSchema),
 		values: {
-			email: editContactProfile.email,
-			cel: editContactProfile.cel,
+			email: editContactProfile?.email,
+			cel: editContactProfile?.cel,
 		},
 	});
 

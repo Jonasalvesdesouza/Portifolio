@@ -23,15 +23,15 @@ export const FormProfile = () => {
 	} = useForm({
 		resolver: zodResolver(profileFormSchema),
 		values: {
-			profession: editProfile.profession,
-			presentation: editProfile.presentation,
-			about: editProfile.about,
-			bio: editProfile.bio,
+			profession: editProfile?.profession,
+			presentation: editProfile?.presentation,
+			about: editProfile?.about,
+			bio: editProfile?.bio,
 		},
 	});
 
 	const onSubmit = (payLoad) => {
-		const updatedPayload = { ...payLoad, id: profile.id };
+		const updatedPayload = { ...payLoad, id: profile?.id };
 		profileUpdate(updatedPayload, setLoading, reset);
 	};
 

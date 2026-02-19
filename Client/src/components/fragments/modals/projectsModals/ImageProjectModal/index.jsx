@@ -18,7 +18,7 @@ export const ImageProjectModal = ({ project, setIsOpenInsertImage }) => {
 		useCloseModal(setIsOpenInsertImage);
 
 	useBodyOverflowToggle(projectImage);
-
+	
 	const handleClick = () => {
 		setIsOpenInsertImage(false);
 	};

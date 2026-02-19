@@ -22,7 +22,7 @@ export const HomePage = () => {
 	const { currentCard } = useContext(AppBehaviorContext);
 	const { profile } = useContext(UserAdmContext);
 
-	const isLoading = useRenderCheckObject(profile.image);
+	const isLoading = useRenderCheckObject(profile?.image);
 
 	const userAgent = window.navigator.userAgent.toLowerCase();
 	const isChrome = /chrome/.test(userAgent);

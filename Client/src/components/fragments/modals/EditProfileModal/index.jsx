@@ -52,7 +52,7 @@ export const EditProfileModal = ({ setIsOpenEditProfile }) => {
 				</div>
 
 				<div className={styles.formsModal}>
-					{profile.image === null ? (
+					{profile?.image === null ? (
 						<FormProfileImage />
 					) : (
 						<FormUpdateProfileImage />

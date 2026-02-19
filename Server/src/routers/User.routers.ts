@@ -24,6 +24,7 @@ UserRouter.post(
   (req, res) => userControllers.userRegister(req, res)
 );
 
+
 UserRouter.post("/login", ValidateBody.execute(LoginUserSchema), (req, res) =>
   userControllers.login(req, res)
 );

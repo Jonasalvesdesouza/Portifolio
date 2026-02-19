@@ -10,33 +10,30 @@ export const InsertImage = ({
   setIsopenUpdateImage,
   setIsOpenInsertImage,
   setProject,
-  projectImage,
-  setImageProject,
+
 }) => {
   const handleInsertImage = () => {
     setIsOpenInsertImage(true);
-    setImageProject(null);
     setProject(project);
   };
 
   const handleUpdateImage = () => {
     setIsopenUpdateImage(true);
     setProject(project);
-    setImageProject(projectImage);
   };
 
   return (
     <div className={styles.insertImageContainer}>
       <Button
         onClick={
-          projectImage != '/src/assets/DefaultImage.ai.svg'
+          project.image != null
             ? handleUpdateImage
-            : projectImage === '/src/assets/DefaultImage.ai.svg'
+            : project.image === null
               ? handleInsertImage
               : null
         }
       >
-        {projectImage != '/src/assets/DefaultImage.ai.svg' ? (
+        {project.image != null ? (
           <FaImage />
         ) : (
           <BiSolidImageAdd />

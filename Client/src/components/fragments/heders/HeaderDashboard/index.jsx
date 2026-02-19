@@ -1,10 +1,9 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 import YellowLogo from '../../../../assets/YellowLogo.svg';
 
 import { Button } from '../../Button';
 import { AppBehaviorContext, UserAdmContext } from '../../../../providers';
-import { NavModal } from '../../modals/NavModal';
 
 import styles from './styles.module.scss';
 
@@ -16,7 +15,7 @@ export const HeaderDashboard = ({ setIsOpenEditProfile }) => {
   const handleClick = () => {
     setIsOpenEditProfile(true);
     setEditProfile(profile);
-    setEditContactProfile(profile.contact);
+    setEditContactProfile(profile?.contact);
     setFocussed('editProfile');
   };
 

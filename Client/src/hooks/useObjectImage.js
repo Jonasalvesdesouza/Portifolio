@@ -11,10 +11,10 @@ export const useObjectImage = (object, externalImage) => {
 				return externalImage;
 			}
 
-			if (!object.image) {
+			if (!object?.image) {
 				return ImageDefault;
 			} else {
-				const imagePath = object.image.path;
+				const imagePath = object?.image.path;
 				const imageName = imagePath?.substring(imagePath.lastIndexOf('/') + 1);
 				return `${ConfigServerUrl}/uploads/${imageName?.replace(/\s/g, '%20')}`;
 			}

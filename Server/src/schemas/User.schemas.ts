@@ -23,4 +23,9 @@ const UserReturnSchema = userSchema.omit({
   password: true,
 });
 
-export { userSchema, UserSchema, LoginUserSchema, UserReturnSchema };
+export { 
+  userSchema,
+  UserSchema,
+  LoginUserSchema,
+  UserReturnSchema 
+};

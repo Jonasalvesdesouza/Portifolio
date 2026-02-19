@@ -12,4 +12,8 @@ const BodySocialMediaSchema = socialMediaSchema.omit({
 
 const SocialMediaUpdateSchema = BodySocialMediaSchema.partial();
 
-export { socialMediaSchema, BodySocialMediaSchema, SocialMediaUpdateSchema };
+export { 
+  socialMediaSchema, 
+  BodySocialMediaSchema, 
+  SocialMediaUpdateSchema 
+};

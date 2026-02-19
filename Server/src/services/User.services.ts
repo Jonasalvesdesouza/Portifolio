@@ -95,6 +95,11 @@ class UserServices {
       where: { id },
       include: { profile: true },
     });
+
+    if (!user) {
+      throw new AppError(404, "User not found");
+    }
+    
     return UserReturnSchema.parse(user);
   }
 }
