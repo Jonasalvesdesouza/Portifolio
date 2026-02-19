@@ -357,7 +357,7 @@ export const UserAdmProvider = ({ children }) => {
 		}
 	};
 
-	const articleImageUpdate = async (
+		const articleImageUpdate = async (
 		payLoad,
 		setLoading,
 		reset,
@@ -393,6 +393,8 @@ export const UserAdmProvider = ({ children }) => {
 		}
 	};
 
+
+
 	const articleUpdate = async (payload, setLoading, reset, setIsOpen) => {
 		try {
 			setLoading('edit');
@@ -402,6 +404,8 @@ export const UserAdmProvider = ({ children }) => {
 				payload,
 				headers,
 			);
+
+			console.log(data)
 
 			const newArticlesList = articlesList.map((article) => {
 				if (article.id === editArticles.id) {

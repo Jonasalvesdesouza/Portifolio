@@ -21,18 +21,25 @@ export const FormUpdateArticleImage = ({ setIsopenUpdateImage, article }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (payLoad) => {
-    const formData = new FormData();
-    formData.append('path', payLoad.path[0]);
+ const onSubmit = (payLoad) => {
+  if (!article) {
+    console.error('Nenhum artigo selecionado');
+    alert('Nenhum artigo selecionado');
+    return;
+  }
 
-    articleImageUpdate(
-      formData,
-      setLoading,
-      reset,
-      setIsopenUpdateImage,
-      article,
-    );
-  };
+  const formData = new FormData();
+  formData.append('path', payLoad.path[0]);
+
+  articleImageUpdate(
+    formData,
+    setLoading,
+    reset,
+    setIsopenUpdateImage,
+    article
+  );
+};
+
 
   const handleClick = () => {
     setStateImage(true);

@@ -29,7 +29,7 @@ export const ArticleCard = ({ article }) => {
 		useContext(UserAdmContext);
 
 	const [loading, setLoading] = useState('');
-	const [modalType, setModalType] = useState(null);
+	const [modalType, setModalType] = useState('');
 
 	const dateArticle = useFormtDate(article.updatedAt);
 	const maxLength = 250;

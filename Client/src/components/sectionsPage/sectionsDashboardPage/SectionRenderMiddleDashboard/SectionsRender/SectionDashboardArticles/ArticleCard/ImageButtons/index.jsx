@@ -1,6 +1,8 @@
 import { FaImage } from 'react-icons/fa6';
 import { BiSolidImageAdd } from 'react-icons/bi';
 
+import DefaultImage from '/src/assets/DefaultImage.ai.svg';
+
 import { Button } from '../../../../../../../fragments';
 
 import styles from './styles.module.scss';
@@ -25,20 +27,21 @@ export const ImageButtons = ({
     setImageArticle(articleImage);
   };
 
+
   return (
     <div className={styles.insertImageContainer}>
       <div>
         <Button
           className={styles.btnImg}
           onClick={
-            articleImage != '/src/assets/DefaultImage.ai.svg'
+            articleImage != DefaultImage
               ? handleUpdateImage
-              : articleImage === '/src/assets/DefaultImage.ai.svg'
+              : articleImage == DefaultImage
                 ? handleInsertImage
                 : null
           }
         >
-          {articleImage != '/src/assets/DefaultImage.ai.svg' ? (
+          {articleImage != DefaultImage ? (
             <FaImage />
           ) : (
             <BiSolidImageAdd />
